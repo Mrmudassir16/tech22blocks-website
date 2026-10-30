@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <!-- MSME Gear & Tricolor Emblem -->
+  <g transform="translate(15, 10)">
+    <circle cx="30" cy="30" r="28" fill="#F8FAFC" stroke="#0284C7" stroke-width="2"/>
+    <!-- Gear teeth elements -->
+    <path d="M28 2h4v6h-4zM28 52h4v6h-4zM2 28h6v4H2zM52 28h6v4h-6z" fill="#0284C7"/>
+    <!-- Saffron top arc -->
+    <path d="M12 25A20 20 0 0 1 48 25" stroke="#FF9933" stroke-width="4" stroke-linecap="round"/>
+    <!-- White center / blue wheel -->
+    <circle cx="30" cy="30" r="10" fill="#FFFFFF" stroke="#000080" stroke-width="2"/>
+    <circle cx="30" cy="30" r="3" fill="#000080"/>
+    <!-- Green bottom arc -->
+    <path d="M12 35A20 20 0 0 0 48 35" stroke="#138808" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <!-- Text -->
+  <g fill="#1E293B">
+    <text x="85" y="32" font-family="Inter, -apple-system, sans-serif" font-weight="900" font-size="22" letter-spacing="1">
+      <tspan fill="#003366">MSME</tspan>
+    </text>
+    <text x="85" y="47" font-family="Inter, -apple-system, sans-serif" font-weight="600" font-size="8.5" fill="#475569" letter-spacing="0.5">
+      MICRO, SMALL &amp; MEDIUM ENTERPRISES
+    </text>
+    <text x="85" y="58" font-family="Inter, -apple-system, sans-serif" font-weight="500" font-size="8" fill="#64748B" letter-spacing="0.4">
+      GOVERNMENT OF INDIA REGISTRATION
+    </text>
+  </g>
+</svg>

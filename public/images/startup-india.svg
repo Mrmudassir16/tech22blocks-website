@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <!-- Startup India Logo Icon -->
+  <g transform="translate(10, 12)">
+    <!-- Stylized forward motion arrows -->
+    <path d="M0 32L24 8L34 18L18 34L34 50L24 60L0 32Z" fill="#F37023"/>
+    <path d="M22 32L38 16L48 26L38 36L48 46L38 56L22 32Z" fill="#F89D22"/>
+    <path d="M44 32L54 22L62 30L52 38L62 46L54 54L44 32Z" fill="#FFC82C"/>
+  </g>
+  <!-- Text -->
+  <g fill="#1E293B">
+    <text x="82" y="38" font-family="Inter, -apple-system, sans-serif" font-weight="800" font-size="24" letter-spacing="-0.5">
+      <tspan fill="#F37023">#</tspan>startupindia
+    </text>
+    <text x="82" y="54" font-family="Inter, -apple-system, sans-serif" font-weight="600" font-size="9" fill="#64748B" letter-spacing="1.2">
+      DPIIT RECOGNIZED ENTITY
+    </text>
+  </g>
+</svg>
