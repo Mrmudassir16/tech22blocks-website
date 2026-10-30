@@ -1,52 +1,47 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
-import WhatWeDo from '@/components/WhatWeDo';
-import ServiceEditorial from '@/components/ServiceEditorial';
-import ProductShowcase from '@/components/ProductShowcase';
-import FoundersSection from '@/components/FoundersSection';
-import PortfolioPreview from '@/components/PortfolioPreview';
-import BlogPreview from '@/components/BlogPreview';
-import NewsSection from '@/components/NewsSection';
-import FAQSection from '@/components/FAQSection';
 import RecognitionStrip from '@/components/RecognitionStrip';
+import CompanyIntro from '@/components/CompanyIntro';
+import ServicesOverview from '@/components/ServicesOverview';
+import FeaturedProduct from '@/components/FeaturedProduct';
+import WhyTech22Blocks from '@/components/WhyTech22Blocks';
+import SelectedWork from '@/components/SelectedWork';
+import LeadershipPreview from '@/components/LeadershipPreview';
+import LatestNewsPreview from '@/components/LatestNewsPreview';
 import FinalCTA from '@/components/FinalCTA';
 
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero: Who Tech22Blocks is & Primary Value Proposition */}
+      {/* 1. Hero: Positioning & Value Proposition */}
       <HeroSection />
 
-      {/* 2. Recognition Strip: Startup India & MSME Certification */}
+      {/* 2. Official Recognition: Startup India & MSME Certification */}
       <RecognitionStrip />
 
-      {/* 3. What We Do & The Tech22Blocks Philosophy */}
-      <WhatWeDo />
+      {/* 3. Short Company Introduction (Who We Are + Badges + Learn More CTA) */}
+      <CompanyIntro />
 
-      {/* 4. Capabilities & Services (Alternating Editorial Layout) */}
-      <ServiceEditorial />
+      {/* 4. Services Overview (Clean Cards + Explore All Services CTA) */}
+      <ServicesOverview />
 
-      {/* 5. Our Products: In-house AI Call Assistant */}
-      <ProductShowcase />
+      {/* 5. Featured Product: VoiSage AI (Concise + Explore VoiSage CTA) */}
+      <FeaturedProduct />
 
-      {/* 6. Leadership & Heritage: Father & Son One Vision */}
-      <FoundersSection />
+      {/* 6. Why Tech22Blocks (4 Core Differentiators) */}
+      <WhyTech22Blocks />
 
-      {/* 7. Featured Work & Case Studies Preview */}
-      <PortfolioPreview />
+      {/* 7. Selected Work / Portfolio (3 Projects + View All Projects CTA) */}
+      <SelectedWork />
 
-      {/* 8. Corporate Disclosures: News & Events */}
-      <NewsSection isPreview={true} />
+      {/* 8. Short Leadership & Credibility Section (Father & Son photo + Meet Team CTA) */}
+      <LeadershipPreview />
 
-      {/* 9. Engineering & Strategy Insights (Blogs) */}
-      <BlogPreview isPreview={true} />
+      {/* 9. Latest News & Announcements (3 Latest Items + View All News CTA) */}
+      <LatestNewsPreview />
 
-      {/* 10. IT & Software SEO FAQ Section */}
-      <FAQSection />
-
-      {/* 11. Final Call To Action */}
+      {/* 10. Final Call To Action (Have a project in mind? Talk to Tech22Blocks) */}
       <FinalCTA />
     </>
   );
 }
-

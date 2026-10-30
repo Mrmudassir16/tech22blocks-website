@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import ServiceEditorial from '@/components/ServiceEditorial';
+import FAQSection from '@/components/FAQSection';
 import FinalCTA from '@/components/FinalCTA';
 import RecognitionStrip from '@/components/RecognitionStrip';
 
@@ -35,6 +36,9 @@ export default function ServicesPage() {
 
       {/* Alternating Services Editorial */}
       <ServiceEditorial />
+
+      {/* Technical FAQ */}
+      <FAQSection />
 
       {/* Final Call to Action */}
       <FinalCTA />

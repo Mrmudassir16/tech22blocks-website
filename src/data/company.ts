@@ -169,16 +169,42 @@ export const COMPANY = {
   product: {
     headline: "We don't just build for clients. We build for ourselves too.",
     subheadline: "Every great product starts with a frustration. Ours started with a phone call — or more accurately, a call we really didn't want to answer.",
-    name: "AI Call Assistant for Unknown Calls",
+    name: "VoiSage AI",
+    tagline: "Autonomous AI Call Assistant for Unknown Calls & Voice Automation",
     status: "Under Active Development",
     problem: "Spam calls, unsolicited sales pitches, and unknown callers disrupt daily business focus and executive productivity. Yet ignoring every unknown number risks missing important customer calls, delivery coordinators, or genuine partners.",
-    solution: "We are building an intelligent AI Call Assistant that answers unknown incoming calls in real-time, inquires about the caller's intent with natural conversational responsiveness, verifies caller legitimacy, and delivers an instant transcription and contextual summary directly to your dashboard.",
-    features: [
-      "Real-time conversational voice processing with low latency",
-      "Instant caller verification and purpose classification",
-      "Actionable call summary and audio transcription delivered immediately",
-      "Custom screening rules tailored to business hours and priority contacts"
+    solution: "VoiSage AI is an intelligent AI voice assistant that answers unknown incoming calls in real-time, inquires about the caller's intent with natural conversational responsiveness, verifies caller legitimacy, and delivers instant structured summaries directly to your dashboard.",
+    capabilities: [
+      {
+        title: "Autonomous Call Screening",
+        description: "Answers unknown numbers instantly with conversational, low-latency voice models."
+      },
+      {
+        title: "Intent & Priority Classification",
+        description: "Distinguishes spam and automated robocalls from high-priority client inquiries."
+      },
+      {
+        title: "Real-time Transcription & Summaries",
+        description: "Delivers live audio transcription, speaker diarization, and concise action points."
+      },
+      {
+        title: "Executive Privacy Shield",
+        description: "Shields executive focus during engineering hours while preserving critical business leads."
+      }
     ],
+    features: [
+      "Real-time conversational voice processing with sub-600ms response latency",
+      "Instant caller verification, intent extraction, and spam prevention",
+      "Actionable call summary and audio transcription delivered immediately via Webhook / WhatsApp",
+      "Custom screening rules tailored to business hours, VIP caller bypass, and team routing"
+    ],
+    technicalArchitecture: {
+      audioStreaming: "WebRTC / SIP trunking with ultra-low latency voice packet streaming",
+      speechToText: "High-precision real-time streaming STT with multi-accent Indian English & Regional language support",
+      languageModel: "Optimized LLM orchestration fine-tuned for polite, precise, and concise conversational inquiry",
+      textToSpeech: "Natural, expressive neural TTS with human-like prosody and interruption handling",
+      infrastructure: "Cloud-native microservices with end-to-end encrypted audio and data sovereignty compliance"
+    },
     cta: "Interested in early access or enterprise deployment? Contact our team."
   },
 
