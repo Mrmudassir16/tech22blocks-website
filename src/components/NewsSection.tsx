@@ -100,3 +100,4 @@ export default function NewsSection({ isPreview = false }: { isPreview?: boolean
     </section>
   );
 }
+

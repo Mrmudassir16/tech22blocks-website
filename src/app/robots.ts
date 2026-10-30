@@ -9,3 +9,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: 'https://tech22blocks.in/sitemap.xml',
   };
 }
+
