@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { getAssetUrl } from '@/utils/assets';
 
 export default function RecognitionStrip() {
   return (
@@ -23,7 +24,7 @@ export default function RecognitionStrip() {
             <div className="bg-white px-5 py-3 rounded-lg border border-slate-200 shadow-sm flex items-center space-x-3 transition-transform hover:-translate-y-0.5">
               <div className="relative h-10 w-44">
                 <Image
-                  src="/images/startup-india.svg"
+                  src={getAssetUrl('/images/startup-india.svg')}
                   alt="Startup India - DPIIT Recognized Entity"
                   fill
                   className="object-contain"
@@ -35,7 +36,7 @@ export default function RecognitionStrip() {
             <div className="bg-white px-5 py-3 rounded-lg border border-slate-200 shadow-sm flex items-center space-x-3 transition-transform hover:-translate-y-0.5">
               <div className="relative h-10 w-44">
                 <Image
-                  src="/images/msme.svg"
+                  src={getAssetUrl('/images/msme.svg')}
                   alt="MSME - Ministry of Micro, Small and Medium Enterprises"
                   fill
                   className="object-contain"

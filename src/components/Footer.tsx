@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, ExternalLink, Linkedin } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import { getAssetUrl } from '@/utils/assets';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -38,7 +39,7 @@ export default function Footer() {
             <div className="bg-white p-2 rounded-md inline-block w-auto">
               <div className="relative h-9 w-44">
                 <Image
-                  src="/images/tech22blocks-logo.jpg"
+                  src={getAssetUrl('/images/tech22blocks-logo.jpg')}
                   alt="Tech22Blocks"
                   fill
                   className="object-contain object-left"

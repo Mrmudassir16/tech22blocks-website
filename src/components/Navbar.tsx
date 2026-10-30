@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assets';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -39,7 +40,7 @@ export default function Navbar() {
             >
               <div className="relative h-10 w-48 sm:h-11 sm:w-56 overflow-hidden">
                 <Image
-                  src="/images/tech22blocks-logo.jpg"
+                  src={getAssetUrl('/images/tech22blocks-logo.jpg')}
                   alt="Tech22Blocks - RRK Software Technologies Private Limited"
                   fill
                   sizes="(max-width: 640px) 192px, 224px"

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Linkedin, CheckCircle2 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import { getAssetUrl } from '@/utils/assets';
 
 export default function FoundersSection() {
   const { foundersVision, leadership } = COMPANY;
@@ -32,7 +33,7 @@ export default function FoundersSection() {
             <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100">
               <div className="relative aspect-[3/2] w-full">
                 <Image
-                  src="/images/founders-father-son.jpg"
+                  src={getAssetUrl('/images/founders-father-son.jpg')}
                   alt="Rajkumar Adepu (Director/Chairman) and Shivasai Adepu (Director/CEO) - Tech22Blocks Founders"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
