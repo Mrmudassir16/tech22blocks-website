@@ -14,11 +14,11 @@ export default function ContactPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-slate-900 text-white py-20 lg:py-24 border-b border-slate-800">
+      <section className="bg-slate-950 text-white py-20 lg:py-24 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8] mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#38bdf8]"></span>
+              <span className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse"></span>
               <span>Direct Communication</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
@@ -49,10 +49,10 @@ export default function ContactPage() {
                   RRK SOFTWARE TECHNOLOGIES PRIVATE LIMITED
                 </h2>
                 <p className="text-sm font-semibold text-slate-600 mt-1">
-                  Operating as Tech22Blocks
+                  Operating as Tech22Blocks &bull; Est. 2025
                 </p>
                 <p className="text-base text-slate-600 mt-4 leading-relaxed">
-                  We work closely with startup founders, operators, and business owners looking for a transparent technical team that builds fast and stays for the long game.
+                  We work closely with startup founders, operators, and enterprise executives looking for a transparent technical team that builds fast and stays for the long game.
                 </p>
               </div>
 
@@ -113,7 +113,7 @@ export default function ContactPage() {
               <div className="p-4 rounded-xl bg-slate-100 border border-slate-200 text-xs text-slate-600 space-y-1">
                 <div className="flex items-center font-bold text-slate-800">
                   <ShieldCheck className="w-4 h-4 text-[#0a85b1] mr-1.5" />
-                  <span>Statutory Notice</span>
+                  <span>Statutory Compliance Notice</span>
                 </div>
                 <p>
                   RRK Software Technologies Private Limited operates strictly under applicable Indian corporate laws and maintains full statutory and GST compliance.
@@ -141,4 +141,3 @@ export default function ContactPage() {
     </>
   );
 }
-

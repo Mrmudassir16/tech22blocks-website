@@ -15,11 +15,19 @@ export default function PortfolioPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-slate-900 text-white py-20 lg:py-28 relative overflow-hidden">
+      <section className="bg-slate-950 text-white py-20 lg:py-28 relative overflow-hidden border-b border-slate-800">
+        <div 
+          className="absolute inset-0 opacity-[0.035] pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(circle, #38bdf8 1px, transparent 1px)',
+            backgroundSize: '28px 28px'
+          }}
+        />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8] mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#38bdf8]"></span>
+              <span className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse"></span>
               <span>Client Case Studies &amp; Implementations</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
@@ -54,4 +62,3 @@ export default function PortfolioPage() {
     </>
   );
 }
-

@@ -14,24 +14,27 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://tech22blocks.in'),
   title: {
-    default: 'Tech22Blocks | Practical Software Solutions & Engineering',
+    default: 'Tech22Blocks | Engineering Software That Ships — AI Products & Custom Solutions',
     template: '%s | Tech22Blocks (RRK Software Technologies)',
   },
-  description: 'Tech22Blocks (RRK Software Technologies Private Limited) is a technology company building practical software solutions, web platforms, mobile apps, and AI systems for startups and growing businesses.',
+  description: 'Tech22Blocks (RRK Software Technologies Private Limited) builds proprietary software products including VoiSage AI and delivers custom enterprise solutions across web, mobile, cloud, and AI for organizations of all stages.',
   keywords: [
     'Tech22Blocks',
     'RRK Software Technologies Private Limited',
-    'Software Development Company',
-    'Startup Tech Partner',
-    'Website Development',
-    'Mobile Application Development',
-    'iOS Android Development',
+    'Enterprise Software Engineering',
     'Custom Software Development',
-    'UI UX Design',
+    'VoiSage AI Voice Assistant',
+    'Web Development Next.js',
+    'Mobile Application Development iOS Android',
+    'UI UX Design Systems',
+    'AI & Machine Learning Engineering',
+    'Generative AI Intelligent Automation',
+    'Cloud Services DevOps Kubernetes',
+    'Cybersecurity Hardening',
     'IT Consulting Advisory',
-    'AI Call Assistant',
     'Warangal Software Company',
-    'Hanamkonda Telangana Technology'
+    'Telangana Technology Enterprise',
+    'DPIIT Startup India Certified'
   ],
   authors: [{ name: 'Tech22Blocks' }, { name: 'Shivasai Adepu' }, { name: 'Rajkumar Adepu' }],
   creator: 'RRK Software Technologies Private Limited',
@@ -52,8 +55,8 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: 'https://tech22blocks.in',
     siteName: 'Tech22Blocks',
-    title: 'Tech22Blocks — Practical Software Solutions for Startups',
-    description: 'RRK Software Technologies Private Limited operating as Tech22Blocks. A technology partner that speaks plainly, builds fast, and actually shows up.',
+    title: 'Tech22Blocks — Engineering Software That Ships',
+    description: 'RRK Software Technologies Private Limited operating as Tech22Blocks. Proprietary intelligent products and custom digital solutions. From ambitious ideas to enterprise-scale solutions.',
     images: [
       {
         url: '/images/tech22blocks-logo.jpg',

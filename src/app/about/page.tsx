@@ -3,11 +3,12 @@ import type { Metadata } from 'next';
 import FoundersSection from '@/components/FoundersSection';
 import MissionGoalsSection from '@/components/MissionGoalsSection';
 import RecognitionStrip from '@/components/RecognitionStrip';
+import FinalCTA from '@/components/FinalCTA';
 import { COMPANY } from '@/data/company';
 
 export const metadata: Metadata = {
-  title: 'About Us | Tech22Blocks',
-  description: COMPANY.mission.statement,
+  title: 'About Us — Heritage, Mission & The 22 Principles | Tech22Blocks',
+  description: 'Operating under RRK Software Technologies Private Limited, Tech22Blocks combines generational perspective with modern software craftsmanship.',
 };
 
 export default function AboutPage() {
@@ -16,34 +17,33 @@ export default function AboutPage() {
   return (
     <>
       {/* Premium Page Hero */}
-      <section className="bg-slate-900 text-white py-20 lg:py-28 relative overflow-hidden">
-        {/* Subtle grid accent */}
+      <section className="bg-slate-950 text-white py-20 lg:py-28 relative overflow-hidden border-b border-slate-800">
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.035] pointer-events-none"
           style={{
             backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
+              'radial-gradient(circle, #38bdf8 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
           }}
         />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2 mb-6">
-              <span className="block w-5 h-0.5 bg-[#0a85b1]" />
-              <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#38bdf8]">
-                About Tech22Blocks
+            <div className="inline-flex items-center gap-2 mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse" />
+              <span className="text-xs font-bold uppercase tracking-widest text-[#38bdf8]">
+                About Tech22Blocks &bull; Est. 2025
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-              About Tech22Blocks
+              Technology built on trust, persistence, and practical craft.
             </h1>
 
             <p className="mt-6 text-xl text-slate-300 font-light leading-relaxed max-w-2xl">
               Operating under RRK Software Technologies Private Limited, Tech22Blocks combines
-              generational perspective with agile software craftsmanship — building technology
-              that is accessible, honest, and human.
+              strategic generational perspective with agile software craftsmanship — building systems
+              that are accessible, honest, and resilient.
             </p>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function AboutPage() {
       <RecognitionStrip />
 
       {/* Our Story: Editorial Section */}
-      <section className="py-20 lg:py-24 bg-white">
+      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
 
           <div className="border-b border-slate-200 pb-8">
@@ -94,7 +94,7 @@ export default function AboutPage() {
 
             <p className="text-base text-slate-600">
               Today, from our registered headquarters in Warangal/Hanamkonda, we work directly with
-              emerging founders, SMEs, and commercial partners to design, engineer, and deploy digital
+              ambitious founders, growing businesses, and enterprise partners to design, engineer, and deploy digital
               systems that deliver real-world outcomes.
             </p>
           </div>
@@ -106,6 +106,9 @@ export default function AboutPage() {
 
       {/* Mission & 4 Official Goals */}
       <MissionGoalsSection />
+
+      {/* Final Call to Action */}
+      <FinalCTA />
     </>
   );
 }

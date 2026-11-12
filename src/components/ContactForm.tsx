@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, ShieldCheck } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 
 export default function ContactForm() {
@@ -10,7 +10,7 @@ export default function ContactForm() {
     email: '',
     company: '',
     phone: '',
-    service: 'Website Development',
+    service: 'Software Development',
     message: ''
   });
 
@@ -20,7 +20,6 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus('submitting');
 
-    // Simulate clean form handling, preparing payload for mailer or API
     setTimeout(() => {
       setStatus('submitted');
     }, 800);
@@ -33,9 +32,9 @@ export default function ContactForm() {
           <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-200">
             <CheckCircle className="w-7 h-7" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-900">Message Received</h3>
+          <h3 className="text-2xl font-bold text-slate-900">Inquiry Received</h3>
           <p className="text-slate-600 max-w-md mx-auto text-sm leading-relaxed">
-            Thank you for reaching out to Tech22Blocks. Shivasai and our technical team will review your requirements and respond directly within 24 business hours.
+            Thank you for reaching out to Tech22Blocks. Director &amp; CEO Shivasai Adepu and our technical engineering desk will review your inquiry and follow up directly within 24 business hours.
           </p>
           <div className="pt-4">
             <button
@@ -46,13 +45,13 @@ export default function ContactForm() {
                   email: '',
                   company: '',
                   phone: '',
-                  service: 'Website Development',
+                  service: 'Software Development',
                   message: ''
                 });
               }}
               className="text-xs font-semibold text-[#0a85b1] hover:underline"
             >
-              Send another inquiry
+              Submit another project inquiry
             </button>
           </div>
         </div>
@@ -103,7 +102,7 @@ export default function ContactForm() {
                 type="text"
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                placeholder="e.g. Acme Corp"
+                placeholder="e.g. Acme Enterprises"
                 className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0a85b1] focus:border-transparent transition-all placeholder:text-slate-400"
               />
             </div>
@@ -128,7 +127,7 @@ export default function ContactForm() {
           {/* Service Selector */}
           <div>
             <label htmlFor="service" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-              What can we help you with?
+              Area of Interest / Service Required
             </label>
             <select
               id="service"
@@ -136,20 +135,24 @@ export default function ContactForm() {
               onChange={(e) => setFormData({ ...formData, service: e.target.value })}
               className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0a85b1] focus:border-transparent transition-all"
             >
-              <option value="Website Development">Website Development</option>
-              <option value="Mobile Applications">Mobile Application (iOS &amp; Android)</option>
-              <option value="UI/UX Design">UI/UX Design</option>
-              <option value="Custom Software">Custom Software Engineering</option>
-              <option value="IT Consulting & Advisory">IT Consulting &amp; Advisory</option>
-              <option value="AI Call Assistant">Inquiry on AI Call Assistant Product</option>
-              <option value="Other">Other Strategic Requirement</option>
+              <option value="Software Development">Software Development (Custom Core Systems)</option>
+              <option value="Web Development">Web Platforms &amp; Client Portals</option>
+              <option value="Mobile Applications">Mobile App Development (iOS &amp; Android)</option>
+              <option value="UI/UX Design">UI/UX Design &amp; Product Systems</option>
+              <option value="AI & Machine Learning">AI &amp; Machine Learning Engineering</option>
+              <option value="Generative AI & Automation">Generative AI &amp; Intelligent Automation</option>
+              <option value="Cloud Services & DevOps">Cloud Services &amp; DevOps Engineering</option>
+              <option value="Cybersecurity">Cybersecurity &amp; System Hardening</option>
+              <option value="IT Consulting & Advisory">IT Consulting &amp; Technical Advisory</option>
+              <option value="VoiSage AI Product">VoiSage AI (Proprietary Voice System)</option>
+              <option value="Other">Other Custom Engagement</option>
             </select>
           </div>
 
           {/* Message */}
           <div>
             <label htmlFor="message" className="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">
-              Project Overview / Message <span className="text-rose-500">*</span>
+              Project Brief or Technical Objectives <span className="text-rose-500">*</span>
             </label>
             <textarea
               id="message"
@@ -157,43 +160,35 @@ export default function ContactForm() {
               rows={4}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Tell us about what you want to build, current challenges, or timelines..."
+              placeholder="Tell us about your project requirements, architectural challenges, or targeted timeline..."
               className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0a85b1] focus:border-transparent transition-all placeholder:text-slate-400"
             />
           </div>
 
-          {/* Direct contact footnote */}
-          <div className="text-xs text-slate-500 pt-1">
-            Prefer direct contact? Email us anytime at{' '}
-            <a href={`mailto:${COMPANY.email}`} className="text-[#0a85b1] font-semibold hover:underline">
-              {COMPANY.email}
-            </a>{' '}
-            or call{' '}
-            <a href={`tel:${COMPANY.phone}`} className="text-[#0a85b1] font-semibold hover:underline">
-              {COMPANY.phoneDisplay}
-            </a>.
-          </div>
-
-          {/* Submit */}
-          <div>
+          {/* Submit CTA */}
+          <div className="pt-2">
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-white bg-[#0a85b1] hover:bg-[#0284c7] rounded-lg shadow-sm hover:shadow transition-all duration-150 disabled:opacity-75 focus:outline-none focus:ring-2 focus:ring-[#0a85b1] focus:ring-offset-2"
+              className="w-full flex items-center justify-center px-6 py-3.5 rounded-lg text-sm font-semibold text-white bg-[#0a85b1] hover:bg-[#0284c7] transition-all duration-150 disabled:opacity-70 shadow-sm"
             >
               {status === 'submitting' ? (
-                <span>Submitting inquiry...</span>
+                <span>Transmitting Project Brief...</span>
               ) : (
                 <>
-                  <span>Send Message</span>
+                  <span>Schedule Architectural Consultation</span>
                   <Send className="w-4 h-4 ml-2" />
                 </>
               )}
             </button>
+          </div>
+
+          <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-500 pt-1">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#0a85b1]" />
+            <span>Strict privacy. Mutual NDAs executed prior to codebase review.</span>
           </div>
         </form>
       )}
     </div>
   );
 }
-

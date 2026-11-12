@@ -6,7 +6,7 @@ import { COMPANY } from '@/data/company';
 import FinalCTA from '@/components/FinalCTA';
 
 export const metadata: Metadata = {
-  title: 'Blogs & Insights — Software & AI Architecture',
+  title: 'Blogs & Insights — Software & AI Architecture | Tech22Blocks',
   description: 'Read technical perspectives and strategic software insights from Tech22Blocks, covering AI business tools, product development, and custom software decisions.',
 };
 
@@ -16,11 +16,11 @@ export default function BlogsPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-slate-900 text-white py-20 lg:py-24 border-b border-slate-800">
+      <section className="bg-slate-950 text-white py-20 lg:py-24 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8] mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#38bdf8]"></span>
+              <span className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse"></span>
               <span>Engineering Perspectives</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
@@ -29,9 +29,6 @@ export default function BlogsPage() {
             <p className="mt-6 text-xl text-slate-300 font-light leading-relaxed">
               Pragmatic thoughts on technology architecture, AI software, and building durable digital products for modern business.
             </p>
-            <p className="mt-3 text-xs text-slate-400 font-mono">
-              [Note: Sample technical articles authored by Tech22Blocks engineering desk]
-            </p>
           </div>
         </div>
       </section>
@@ -39,7 +36,7 @@ export default function BlogsPage() {
       {/* Articles Stream */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-          {blogs.map((blog, index) => (
+          {blogs.map((blog) => (
             <article 
               key={blog.slug} 
               id={blog.slug}
@@ -97,4 +94,3 @@ export default function BlogsPage() {
     </>
   );
 }
-

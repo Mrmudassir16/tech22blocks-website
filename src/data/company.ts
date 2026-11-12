@@ -1,11 +1,13 @@
 export interface ServiceItem {
   id: string;
   title: string;
+  category: 'Digital Experience' | 'Enterprise Systems' | 'Intelligence & Advisory';
   shortDesc: string;
   fullDesc: string;
   badge?: string;
   deliverables: string[];
   technologies: string[];
+  outcome: string;
 }
 
 export interface GoalItem {
@@ -41,12 +43,12 @@ export interface FAQItem {
 export const COMPANY = {
   name: "Tech22Blocks",
   legalName: "RRK SOFTWARE TECHNOLOGIES PRIVATE LIMITED",
-  tagline: "Technology + Trust + Practical Solutions + Long-Term Partnership",
+  tagline: "Engineering software that ships. From ambitious ideas to enterprise-scale solutions.",
   yearFounded: 2025,
   email: "shivasai@tech22blocks.in",
   phone: "+91 9392022598",
   phoneDisplay: "+91 93920 22598",
-  registeredAddress: "5-11-840, Hanamkonda, Warangal, 506009",
+  registeredAddress: "5-11-840, Hanamkonda, Warangal, 506009, Telangana, India",
   portfolioUrl: "https://tech22blocks.in/case-studies/",
   linkedinUrl: "https://www.linkedin.com/company/tech22blocks",
   
@@ -55,154 +57,259 @@ export const COMPANY = {
       name: "Shivasai Adepu",
       role: "Director / CEO",
       linkedin: "https://www.linkedin.com/in/shivasai-adepu",
-      bio: "Focuses on engineering excellence, modern product architecture, and executing technical solutions that give startups and small businesses a decisive competitive edge."
+      bio: "Leads engineering architecture, modern product systems, and technology strategy across proprietary R&D and enterprise client solutions."
     },
     {
       name: "Rajkumar Adepu",
       role: "Director / Chairman",
       linkedin: "https://www.linkedin.com",
-      bio: "Brings operational wisdom, long-term strategic perspective, and disciplined governance to ensure enduring value, integrity, and client trust."
+      bio: "Brings operational wisdom, long-term strategic perspective, and disciplined corporate governance to ensure enduring client relationships and organizational integrity."
     }
   ],
 
   story: {
-    title: "The Tech22blocks story",
-    subtitle: "Built on a simple observation: startups and small businesses deserve great technology.",
-    p1: "Tech22blocks was born out of a simple observation: startups and small businesses deserve great technology — not watered-down versions of what enterprises get, not freelancers who vanish after the first payment, and not agencies that charge for slide decks instead of shipping code.",
-    p2: "We built Tech22blocks to be the tech partner we wish we'd had when we were starting out — a team that speaks plainly, builds fast, and actually shows up.",
-    p3: "The name? Think of it as the 22 building blocks of great software: clarity, speed, design, logic, testing, communication, honesty… and a few more we made up along the way.",
+    title: "The Tech22Blocks Story",
+    subtitle: "Built on a simple conviction: businesses of all stages deserve world-class software engineering.",
+    p1: "Tech22Blocks was founded on a simple observation: organizations today face a stark choice between generic off-the-shelf templates, unreliable contractors, and rigid legacy agencies that bill for slide decks rather than working software.",
+    p2: "We built Tech22Blocks to be the technology partner we always envisioned: a team that speaks plainly, engineers with precision, and takes end-to-end accountability for shipping production code.",
+    p3: "The name? Think of it as the 22 building blocks of great software: clarity, speed, design, logic, testing, communication, scalability, honesty... and the discipline to execute them consistently."
   },
 
   foundersVision: {
     mainHeading: "Father & Son. One Vision.",
     supportingHeading: "Building Tech22Blocks Together Since 2025",
     narrative: [
-      "Tech22Blocks was founded in 2025 by a father and son who shared a simple belief: technology should solve real problems and create meaningful opportunities.",
-      "What started as a shared vision became a company built on trust, persistence, and the courage to build something of their own. While experience brings perspective, the next generation brings fresh ideas, technology, and a willingness to challenge the way things have always been done.",
-      "Together, they bring two generations of thinking to one mission: building practical technology solutions that help businesses grow and prepare for the future.",
-      "At Tech22Blocks, this is more than a business partnership. It is a journey built on family, trust, and a shared vision for what technology can become."
+      "Tech22Blocks was founded in 2025 by a father and son who shared a simple belief: technology should solve real problems and create meaningful, enduring opportunities.",
+      "What started as a shared vision became a company built on trust, persistence, and the courage to engineer software of the highest caliber. While decades of business experience bring strategic perspective and corporate discipline, the next generation brings modern technology architectures, AI capabilities, and the drive to challenge conventional agency models.",
+      "Together, they bring two generations of thinking to one mission: building practical technology solutions that help businesses scale, innovate, and prepare for the future.",
+      "At Tech22Blocks, this is more than a commercial enterprise. It is a journey built on family values, transparent integrity, and a long-term commitment to our partners."
     ]
   },
 
   mission: {
     title: "Our Mission",
     subtitle: "Why we show up every day.",
-    statement: "To make high-quality software development accessible, honest, and human.",
-    description: "We believe technology should empower startups to compete — not just survive. Every website, app, and tool we create is designed to give your business a real edge. Not a cosmetic one. We're not chasing projects; we're building relationships with companies that want to grow, and we're committed to growing with them."
+    statement: "To make high-caliber software development and intelligent technology accessible, honest, and impactful.",
+    description: "We believe technology should empower ambitious organizations to lead their markets — not just survive. Every web platform, mobile application, AI system, and custom tool we build is designed to deliver a measurable operational and commercial edge. We don't chase project volume; we forge long-term technology partnerships with companies committed to lasting growth."
   },
 
   goals: [
     {
       number: "01",
       title: "Build for impact, not volume",
-      description: "We'd rather do 10 projects exceptionally well than 100 adequately. Every client gets our full attention, not a template."
+      description: "We prioritize deep, dedicated engagements over high-volume turnover. Every client receives direct engineering leadership and custom architecture, never a commoditized template."
     },
     {
       number: "02",
-      title: "Lead in AI-driven software for SMBs",
-      description: "The future of business software is smart and personalized. We're building AI tools that bring that future to every business size."
+      title: "Pioneer practical AI for business operations",
+      description: "The future of enterprise software is intelligent and autonomous. Through internal R&D like VoiSage AI and bespoke client integrations, we make artificial intelligence practically useful today."
     },
     {
       number: "03",
-      title: "Become the most trusted startup tech partner",
-      description: "Trust is built project by project. We're in this for the long game — fairly, consistently, with integrity."
+      title: "Be the most trusted technology engineering partner",
+      description: "Trust is built release by release. We operate with complete transparency, shared code repositories, realistic milestones, and unwavering engineering honesty."
     },
     {
       number: "04",
-      title: "Grow a team that loves what it builds",
-      description: "Great products come from happy, curious people. We invest in our team because they're the reason everything works."
+      title: "Foster an engineering culture of craft and curiosity",
+      description: "Exceptional digital products are built by curious, motivated engineers. We continuously invest in our team, research emerging technologies, and cultivate a culture of craftsmanship."
     }
   ] as GoalItem[],
 
+  // Comprehensive 10-Service Portfolio
   services: [
     {
-      id: "website-development",
-      title: "Website Development",
-      shortDesc: "High-performance, search-optimized web platforms built with modern architectures for speed and conversions.",
-      fullDesc: "We build modern, resilient websites and web applications engineered for speed, clean indexing, and seamless customer interactions. Every platform is tailored to your business model with scalable component architectures.",
-      deliverables: ["Custom Full-Stack Web Applications", "Responsive Corporate Platforms", "Performance & Core Web Vitals Optimization", "Search Engine Optimization & Structured Data"],
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js"]
+      id: "software-development",
+      title: "Software Development",
+      category: "Enterprise Systems",
+      shortDesc: "Bespoke core systems, enterprise application architectures, and robust business workflows tailored to your operating model.",
+      fullDesc: "Off-the-shelf software inevitably forces organizations to compromise their business logic. We architect bespoke software systems, internal operations portals, high-throughput APIs, and scalable backends crafted specifically around your unique workflow, compliance, and growth objectives.",
+      deliverables: [
+        "Tailored Enterprise Operations & ERP Platforms",
+        "High-Throughput REST & GraphQL API Architectures",
+        "Legacy Codebase Modernization & Refactoring",
+        "Multi-Tenant Database Design & Optimization"
+      ],
+      technologies: ["Node.js", "Python", "Go", "PostgreSQL", "Docker", "Microservices"],
+      outcome: "Eliminates operational bottlenecks and replaces disconnected spreadsheets with a unified system of record."
+    },
+    {
+      id: "web-development",
+      title: "Web Development",
+      category: "Digital Experience",
+      shortDesc: "High-performance, search-optimized web platforms built with modern component architectures for speed and conversions.",
+      fullDesc: "We build modern, resilient websites and complex web applications engineered for speed, clean indexing, and seamless customer interactions. Every platform is tailored with modern SSR/SSG architectures, high Core Web Vitals scores, and responsive fidelity across all screen dimensions.",
+      deliverables: [
+        "Full-Stack Web Applications & Client Portals",
+        "Modern Headless CMS & Marketing Platforms",
+        "Core Web Vitals & Sub-Second LCP Performance",
+        "Enterprise Technical SEO & Schema Markup"
+      ],
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Edge Functions"],
+      outcome: "Delivers sub-second page loads, higher search rankings, and friction-free user journeys."
     },
     {
       id: "mobile-applications",
-      title: "Mobile Application — iOS & Android",
-      shortDesc: "Native and cross-platform mobile apps engineered for responsive performance, reliability, and smooth user flows.",
-      fullDesc: "Transforming mobile workflows with intuitive iOS and Android applications. From device integration to offline synchronization and clean app-store compliance, we build apps users rely on every day.",
-      deliverables: ["Cross-Platform Mobile Apps (iOS & Android)", "High-Fidelity Native Performance", "Secure API & Payment Integrations", "Offline-First Data Synchronization"],
-      technologies: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"]
+      title: "Mobile App Development",
+      category: "Digital Experience",
+      shortDesc: "Native and cross-platform iOS & Android applications engineered for fluid 60 FPS performance, offline sync, and security.",
+      fullDesc: "Transforming mobile interactions with intuitive iOS and Android applications. From native hardware integrations and biometric authentication to offline-first data caching and clean App Store/Play Store publication, we engineer apps that users rely on daily.",
+      deliverables: [
+        "Cross-Platform Mobile Apps (iOS & Android)",
+        "Fluid 60 FPS Native UI Performance",
+        "Offline Data Synchronization & Encrypted Storage",
+        "Full Lifecycle Store Submission & Maintenance"
+      ],
+      technologies: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase"],
+      outcome: "Empowers customers and field teams with responsive, always-available mobile interfaces."
     },
     {
       id: "uiux-design",
-      title: "UI/UX Design",
-      shortDesc: "Intuitive digital interfaces engineered through empathetic user research, structured wireframing, and design systems.",
-      fullDesc: "Design isn't just decoration at Tech22Blocks; it is the fundamental bridge between business logic and user intent. We design clean, purposeful digital workflows that minimize cognitive load and maximize retention.",
-      deliverables: ["Comprehensive UX Research & User Journeys", "Interactive Prototypes & Wireframing", "Enterprise Design Systems & Component Libraries", "Usability Audits & Conversion Optimization"],
-      technologies: ["Figma", "Design Systems", "Prototyping", "Design Tokens"]
+      title: "UI/UX Design & Product Strategy",
+      category: "Digital Experience",
+      shortDesc: "Purposeful digital interfaces engineered through empathetic user research, interactive wireframing, and design systems.",
+      fullDesc: "At Tech22Blocks, design is not cosmetic decoration; it is the fundamental bridge between business logic and human intent. We design clean, purposeful digital workflows, scalable component libraries, and interactive prototypes that minimize cognitive load and maximize product adoption.",
+      deliverables: [
+        "Comprehensive User Journey Mapping & UX Research",
+        "Interactive Clickable Prototypes & Wireframing",
+        "Scalable Enterprise Design Systems & Tokens",
+        "Usability Heuristic Audits & Conversion Optimization"
+      ],
+      technologies: ["Figma", "Design Tokens", "Design Systems", "Prototyping", "Design QA"],
+      outcome: "Translates complex business workflows into intuitive, beautiful experiences that users love."
     },
     {
-      id: "custom-software",
-      title: "Custom Software",
-      shortDesc: "Tailored software systems built to solve specific operational bottlenecks and scale seamlessly with business growth.",
-      fullDesc: "Off-the-shelf software often forces you to compromise your processes. We architect bespoke software systems, internal tooling, and automated workflows crafted specifically around your unique operating model.",
-      deliverables: ["Tailored ERP & Internal Operations Portals", "Scalable REST & GraphQL APIs", "Legacy System Migration & Modernization", "Database Architecture & Optimization"],
-      technologies: ["PostgreSQL", "Next.js", "Docker", "Node.js / Python", "Cloud Infrastructure"]
+      id: "ai-machine-learning",
+      title: "AI & Machine Learning",
+      category: "Intelligence & Advisory",
+      shortDesc: "Predictive models, computer vision, and machine intelligence pipelines integrated into daily business operations.",
+      fullDesc: "Transform raw organizational data into decisive operational advantages. We design and deploy predictive analytics models, automated document processing, computer vision pipelines, and custom machine learning workflows that uncover actionable business patterns.",
+      deliverables: [
+        "Predictive Analytics & Forecasting Models",
+        "Computer Vision & Document OCR Extraction",
+        "Customer Churn & Recommendation Systems",
+        "MLOps, Continuous Training & Pipeline Monitoring"
+      ],
+      technologies: ["Python", "PyTorch", "TensorFlow", "Scikit-Learn", "FastAPI"],
+      outcome: "Automates repetitive decision-making and uncovers predictive insights buried in your data."
+    },
+    {
+      id: "generative-ai",
+      title: "Generative AI & Intelligent Automation",
+      category: "Intelligence & Advisory",
+      shortDesc: "Domain-tailored LLM applications, autonomous voice agents, and agentic workflows that automate complex tasks.",
+      fullDesc: "Leverage cutting-edge generative models without hallucination risks or data leakage. We architect enterprise Retrieval-Augmented Generation (RAG) systems, multi-agent automated workflows, and custom voice interfaces — drawing directly from our hands-on R&D with VoiSage AI.",
+      deliverables: [
+        "Enterprise RAG (Retrieval-Augmented Generation) Systems",
+        "Autonomous Agentic Workflows & Multi-LLM Pipelines",
+        "Real-Time Conversational Voice Interfaces",
+        "Data Privacy & On-Premises Model Inference"
+      ],
+      technologies: ["LangChain", "LlamaIndex", "OpenAI / Anthropic APIs", "Hugging Face", "Vector DBs"],
+      outcome: "Reduces manual knowledge work hours by up to 80% while keeping proprietary company data secure."
+    },
+    {
+      id: "cloud-devops",
+      title: "Cloud Services & DevOps",
+      category: "Enterprise Systems",
+      shortDesc: "Resilient cloud infrastructure, automated CI/CD pipelines, container orchestration, and 24/7 reliability engineering.",
+      fullDesc: "Build infrastructure that never lets your business down. We design modern cloud-native architectures, containerize microservices, automate build-and-deploy pipelines, and implement proactive observability to achieve zero-downtime releases and cloud cost efficiency.",
+      deliverables: [
+        "Cloud Architecture Design & Migration (AWS / GCP / Azure)",
+        "Automated CI/CD Deployment Pipelines",
+        "Docker & Kubernetes Container Orchestration",
+        "Infrastructure as Code (Terraform) & Cloud Cost Audits"
+      ],
+      technologies: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Terraform", "GitHub Actions"],
+      outcome: "Ensures 99.99% system availability, instant rollback capabilities, and optimized monthly cloud spend."
+    },
+    {
+      id: "cybersecurity",
+      title: "Cybersecurity & System Hardening",
+      category: "Enterprise Systems",
+      shortDesc: "Application security assessments, vulnerability remediation, access control auditing, and compliance readiness.",
+      fullDesc: "Protect your intellectual property, client databases, and operational integrity. We perform comprehensive codebase vulnerability audits, API security penetration reviews, role-based access control (RBAC) implementations, and data-at-rest encryption to keep your digital perimeter secure.",
+      deliverables: [
+        "Web & Mobile Application Vulnerability Audits",
+        "API Security Hardening & Zero-Trust Architecture",
+        "Role-Based Access Control (RBAC) & Single Sign-On",
+        "Data Encryption at Rest & In-Transit Verification"
+      ],
+      technologies: ["OWASP Top 10", "OAuth2 / OIDC", "Static Code Analysis", "TLS/SSL Hardening"],
+      outcome: "Safeguards confidential business records, builds customer trust, and fulfills enterprise vendor security audits."
     },
     {
       id: "it-consulting",
-      title: "IT Consulting & Advisory",
-      shortDesc: "Pragmatic technical advisory helping startup founders and executives make informed architectural decisions.",
-      fullDesc: "Direct, jargon-free technical advisory. We evaluate your current stack, identify architectural vulnerabilities, guide vendor selection, and construct actionable technology roadmaps aligned with business objectives.",
-      deliverables: ["Technology Stack Selection & Due Diligence", "Codebase & Security Architecture Audits", "Scalability & Cloud Cost Optimization", "CTO Advisory for High-Growth Startups"],
-      technologies: ["System Architecture", "Cloud Audits", "DevOps & CI/CD", "Security Standards"]
+      title: "IT Consulting & Technology Advisory",
+      category: "Intelligence & Advisory",
+      shortDesc: "Pragmatic technical advisory helping business leaders make informed architectural, vendor, and scaling decisions.",
+      fullDesc: "Direct, jargon-free technology consulting. We evaluate existing codebases, identify scalability bottlenecks, evaluate build vs. buy trade-offs, and construct actionable engineering roadmaps aligned tightly with your commercial milestones.",
+      deliverables: [
+        "Technology Stack Selection & Architecture Due Diligence",
+        "Codebase Quality & Technical Debt Audits",
+        "Fractional CTO & Strategic Engineering Leadership",
+        "Vendor & SaaS Tooling Evaluation"
+      ],
+      technologies: ["Architecture Audits", "Due Diligence", "Roadmapping", "Tech Governance"],
+      outcome: "Prevents costly re-architecture mistakes and aligns software investments directly with business growth."
     },
     {
       id: "web3",
-      title: "Web3.0",
-      badge: "Coming Soon",
-      shortDesc: "Decentralized architecture research and smart contract integrations currently under focused development.",
-      fullDesc: "We are carefully developing capabilities in decentralized infrastructure, blockchain integration, and cryptographic protocols to help businesses explore Web3 utility with security and pragmatism.",
-      deliverables: ["Smart Contract Architecture & Testing", "Decentralized Identity Frameworks", "Asset Tokenization Advisory", "Web3 API Integration"],
-      technologies: ["Solidity", "EVM", "IPFS", "Zero-Knowledge Concepts"]
+      title: "Web3 & Distributed Systems",
+      category: "Enterprise Systems",
+      badge: "Emerging Capabilities",
+      shortDesc: "Decentralized architecture research, cryptographic verification, and smart contract integrations.",
+      fullDesc: "We provide pragmatic exploration of distributed ledger technology, cryptographic data integrity, and smart contract integration for businesses seeking decentralized transparency and tamper-evident record keeping.",
+      deliverables: [
+        "Smart Contract Architecture & Security Review",
+        "Decentralized Storage & Cryptographic Verification",
+        "Tokenomics & Web3 API Integration",
+        "Consensus & Distributed Ledger Feasibility Audits"
+      ],
+      technologies: ["Solidity", "EVM", "IPFS", "Web3.js", "Zero-Knowledge Proofs"],
+      outcome: "Enables tamper-proof verification and transparent decentralized transaction processing."
     }
   ] as ServiceItem[],
 
+  // Proprietary Product: VoiSage AI
   product: {
-    headline: "We don't just build for clients. We build for ourselves too.",
-    subheadline: "Every great product starts with a frustration. Ours started with a phone call — or more accurately, a call we really didn't want to answer.",
     name: "VoiSage AI",
-    tagline: "Autonomous AI Call Assistant for Unknown Calls & Voice Automation",
+    badge: "In-House Proprietary R&D",
     status: "Under Active Development",
-    problem: "Spam calls, unsolicited sales pitches, and unknown callers disrupt daily business focus and executive productivity. Yet ignoring every unknown number risks missing important customer calls, delivery coordinators, or genuine partners.",
-    solution: "VoiSage AI is an intelligent AI voice assistant that answers unknown incoming calls in real-time, inquires about the caller's intent with natural conversational responsiveness, verifies caller legitimacy, and delivers instant structured summaries directly to your dashboard.",
+    tagline: "Autonomous Voice Intelligence for Unknown Incoming Calls",
+    headline: "An intelligent voice assistant that screens unknown callers in real-time.",
+    subheadline: "Built by Tech22Blocks to protect executive focus, eliminate spam, and ensure critical business inquiries are never missed.",
+    problem: "Executives and founders receive dozens of unknown calls every day. Ignoring them risks losing legitimate client deals, while answering every ring severely fragments focus and derails engineering progress.",
+    solution: "VoiSage AI is an intelligent voice assistant that answers unknown incoming calls in real time. It inquires about caller intent with natural conversational responsiveness, verifies caller legitimacy, and instantly dispatches a structured executive brief to your WhatsApp and internal dashboard.",
     capabilities: [
       {
         title: "Autonomous Call Screening",
-        description: "Answers unknown numbers instantly with conversational, low-latency voice models."
+        description: "Answers unknown numbers instantly with conversational, ultra-low-latency voice intelligence."
       },
       {
-        title: "Intent & Priority Classification",
-        description: "Distinguishes spam and automated robocalls from high-priority client inquiries."
+        title: "Real-Time Intent Classification",
+        description: "Distinguishes spam and automated robocalls from high-priority client and commercial inquiries."
       },
       {
-        title: "Real-time Transcription & Summaries",
-        description: "Delivers live audio transcription, speaker diarization, and concise action points."
+        title: "Live Diarization & Transcription",
+        description: "Transcribes caller dialogue in real time and generates concise, actionable executive bullet points."
       },
       {
-        title: "Executive Privacy Shield",
-        description: "Shields executive focus during engineering hours while preserving critical business leads."
+        title: "Multi-Channel Briefing Dispatch",
+        description: "Sends caller identity, intent, and urgent callback flags immediately via WhatsApp and Webhook."
       }
     ],
     features: [
       "Real-time conversational voice processing with sub-600ms response latency",
-      "Instant caller verification, intent extraction, and spam prevention",
+      "Instant caller verification, intent extraction, and automated spam filtering",
       "Actionable call summary and audio transcription delivered immediately via Webhook / WhatsApp",
       "Custom screening rules tailored to business hours, VIP caller bypass, and team routing"
     ],
     technicalArchitecture: {
-      audioStreaming: "WebRTC / SIP trunking with ultra-low latency voice packet streaming",
-      speechToText: "High-precision real-time streaming STT with multi-accent Indian English & Regional language support",
-      languageModel: "Optimized LLM orchestration fine-tuned for polite, precise, and concise conversational inquiry",
-      textToSpeech: "Natural, expressive neural TTS with human-like prosody and interruption handling",
+      audioStreaming: "WebRTC & SIP trunking with ultra-low latency voice packet streaming",
+      speechToText: "High-precision streaming STT with multi-accent Indian English and regional language recognition",
+      languageModel: "Fine-tuned conversational LLM tailored for polite, objective, and concise caller inquiry",
+      textToSpeech: "Natural neural TTS with human-like prosody, fluid cadence, and interruption handling",
       infrastructure: "Cloud-native microservices with end-to-end encrypted audio and data sovereignty compliance"
     },
     cta: "Interested in early access or enterprise deployment? Contact our team."
@@ -217,7 +324,7 @@ export const COMPANY = {
       summary: "A message from Director & CEO Shivasai Adepu and Director & Chairman Rajkumar Adepu on our foundational year, client partnerships, and technological focus.",
       content: [
         "To our partners, clients, and collaborators:",
-        "When Tech22Blocks was incorporated under RRK Software Technologies Private Limited, we set out with a clear mandate: build technology that delivers tangible commercial value to startups and growing businesses without unnecessary corporate bloat.",
+        "When Tech22Blocks was incorporated under RRK Software Technologies Private Limited, we set out with a clear mandate: build technology that delivers tangible commercial value to organizations without unnecessary agency overhead.",
         "Over the past financial year, our commitment to shipping reliable code, working with transparency, and prioritizing software quality over vanity metrics has allowed us to establish enduring relationships with our clients.",
         "As we look ahead, we continue to expand our engineering capabilities in AI-driven tools, custom enterprise software, and mission-critical digital platforms. We thank everyone who has placed their trust in our family and our team."
       ],
@@ -231,7 +338,7 @@ export const COMPANY = {
       summary: "Formal establishment of corporate operations, governance structure, and registration as an official technology enterprise.",
       content: [
         "RRK Software Technologies Private Limited announces the commencement of official corporate operations under the brand identity Tech22Blocks.",
-        "Founded by Shivasai Adepu (Director/CEO) and Rajkumar Adepu (Director/Chairman), the company establishes its headquarters in Warangal/Hanamkonda, Telangana, committed to providing enterprise-grade software development for emerging businesses."
+        "Founded by Shivasai Adepu (Director/CEO) and Rajkumar Adepu (Director/Chairman), the company establishes its headquarters in Warangal/Hanamkonda, Telangana, committed to providing enterprise-grade software development for emerging and established businesses."
       ],
       pdfAvailable: false
     },
@@ -243,19 +350,19 @@ export const COMPANY = {
       summary: "R&D update regarding our proprietary AI voice screener designed to shield business owners from unsolicited interruptions while preserving genuine leads.",
       content: [
         "Tech22Blocks announces active development of its internal product initiative: an AI Call Assistant for unknown numbers.",
-        "Designed to filter unsolicited calls and provide real-time transcription and intent detection, the product reflects the company's ethos of building tools for real-world daily frustrations."
+        "Designed to filter unsolicited calls and provide real-time transcription and intent detection, the product reflects the company's ethos of building tools for real-world daily operational frustrations."
       ],
       pdfAvailable: false
     },
     {
-      id: "startup-india-msme-registration",
+      id: "dpiit-startup-india-recognition",
       date: "March 2025",
       category: "Corporate Announcement",
-      title: "Tech22Blocks Secures Official Recognition under Startup India & MSME Schemes",
-      summary: "Attainment of formal DPIIT recognition and Ministry of Micro, Small and Medium Enterprises certification.",
+      title: "Tech22Blocks Awarded Official Recognition Under DPIIT #StartupIndia & MSME Schemes",
+      summary: "Statutory recognition and certification by the Government of India acknowledging our contribution to technology innovation.",
       content: [
-        "Tech22Blocks (RRK Software Technologies Private Limited) has formally received official recognition under the Startup India initiative by the Department for Promotion of Industry and Internal Trade (DPIIT), alongside certification from the Ministry of MSME, Government of India.",
-        "These certifications reaffirm our legal compliance and dedication to driving indigenous technology innovation."
+        "RRK Software Technologies Private Limited (operating as Tech22Blocks) has been officially certified by the Department for Promotion of Industry and Internal Trade (DPIIT) under the #StartupIndia initiative.",
+        "Additionally certified under the Ministry of Micro, Small and Medium Enterprises (MSME), this recognition underscores our commitment to transparent compliance, technological innovation, and sustainable corporate governance."
       ],
       pdfAvailable: false
     }
@@ -263,15 +370,15 @@ export const COMPANY = {
 
   blogs: [
     {
-      slug: "ai-and-the-future-of-business-software",
-      title: "AI and the Future of Business Software: Moving Beyond Gimmicks to Practical Utility",
+      slug: "how-ai-is-reshaping-business-software",
+      title: "How AI is Reshaping Business Software: Beyond the Hype",
       category: "Artificial Intelligence",
       readTime: "5 min read",
-      summary: "Why the real breakthrough of AI for growing businesses isn't chatbots, but deep workflow automation and pragmatic intelligence embedded directly into daily operations.",
+      summary: "Why the real AI revolution isn't about flashy demos — it's about eliminating operational friction and automating routine business communications.",
       content: [
-        "Artificial intelligence has reached a critical inflection point for small and mid-sized enterprises. For the past two years, the technology sector was flooded with conversational wrappers and generic AI demonstrations that offered little enduring business value.",
-        "At Tech22Blocks, we believe the next wave of business software is pragmatic. It is about automating high-friction manual bottlenecks — screening unknown callers, reconciling invoices, auto-generating compliance reports, and personalizing user touchpoints without requiring complex prompt engineering.",
-        "When business software is built with intelligence from the ground up, employees spend less time on repetitive data entry and more time on core strategic growth. The key for startups is to adopt AI that solves a specific operational pain point, not AI for its own sake."
+        "Artificial intelligence in 2026 has transitioned from speculative experimentation into practical operational utility. For forward-thinking businesses, the true competitive advantage does not stem from generic generative chatbots, but from specialized, domain-tailored automation.",
+        "At Tech22Blocks, our focus is squarely on deploying AI where human attention is chronically fragmented. Consider inbound telephone communications: executive leadership and sales directors spend substantial working hours screening unsolicited calls, fearing that ignoring an unknown number might forfeit a high-value opportunity.",
+        "By engineering voice systems that handle caller intake, classify intent, and synthesize action items from the ground up, employees spend less time on repetitive triaging and more on strategic execution. The key for organizations is to adopt AI that directly eliminates specific operational friction."
       ]
     },
     {
@@ -281,9 +388,9 @@ export const COMPANY = {
       readTime: "4 min read",
       summary: "Exploring the fundamental architectural and design choices that separate durable software products from bloated, abandoned systems.",
       content: [
-        "Many software projects fail not because of missing features, but because of excessive complexity. When startups attempt to launch with every conceivable feature on day one, release cycles drag on, codebases become brittle, and users are overwhelmed by cluttered user interfaces.",
-        "Building better digital products begins with extreme clarity of purpose. What is the single core transaction your customer needs to perform? How quickly can they accomplish it without error?",
-        "By focusing on disciplined architecture, fast load times, and intuitive typography, software companies build products that retain users and withstand high operational loads without constant firefighting."
+        "Many software projects fail not because of missing features, but because of premature complexity. When teams attempt to launch with every conceivable feature on day one, release cycles drag on, codebases become brittle, and users are overwhelmed by cluttered interfaces.",
+        "Building better digital products begins with extreme clarity of purpose. What is the single core transaction your customer needs to perform? How quickly can they accomplish it without friction or error?",
+        "By focusing on disciplined architecture, fast load times, and intuitive typography, technology companies build products that retain users and withstand high operational loads without constant firefighting."
       ]
     },
     {
@@ -293,7 +400,7 @@ export const COMPANY = {
       readTime: "6 min read",
       summary: "An essential checklist for executives evaluating whether to buy off-the-shelf SaaS or invest in proprietary custom software solutions.",
       content: [
-        "Deciding between commercial SaaS platforms and building custom software is one of the most critical technology decisions a founder or business leader will face.",
+        "Deciding between commercial SaaS platforms and building custom software is one of the most critical technology decisions a founder or executive will face.",
         "While SaaS provides rapid initial setup, recurring subscription costs escalate quickly as team sizes grow. More importantly, off-the-shelf software forces businesses to adapt their unique operational workflows to someone else's opinionated template.",
         "Custom software becomes the superior investment when your process itself is your competitive differentiator, when data ownership and security are non-negotiable, and when scaling custom automation delivers direct operational savings.",
         "Before writing a line of code, ensure your business requirements are clearly defined, your data schema is documented, and you are partnering with an engineering team that speaks plainly and ships reliably."
@@ -303,33 +410,32 @@ export const COMPANY = {
 
   faqs: [
     {
-      question: "What services does Tech22Blocks provide?",
-      answer: "Tech22Blocks provides end-to-end technology solutions including Website Development, Mobile Application Development for iOS & Android, UI/UX Design, Custom Software Engineering, and IT Consulting & Advisory, with Web3.0 capabilities currently in development."
+      question: "What capabilities and services does Tech22Blocks provide?",
+      answer: "Tech22Blocks provides comprehensive end-to-end digital technology solutions across three core pillars: Digital Experience (Web Development, Mobile App Development, UI/UX Design), Enterprise Systems (Custom Software Engineering, Cloud & DevOps, Cybersecurity), and Intelligence & Advisory (AI & Machine Learning, Generative AI & Automation, IT Consulting, Web3)."
     },
     {
-      question: "Does Tech22Blocks work with startups?",
-      answer: "Yes. Tech22Blocks was founded specifically to make high-quality engineering and design accessible to startups and growing small businesses, providing the technical leadership of an in-house partner without enterprise bloat."
+      question: "Does Tech22Blocks only work with startups?",
+      answer: "No. While we have deep roots in helping ambitious startups launch fast with solid engineering, we partner with organizations of all sizes — from early-stage founders to scaling SMBs and established enterprises requiring dedicated custom software engineering and modernization."
     },
     {
-      question: "Do you develop Android and iOS applications?",
-      answer: "Yes, we design, build, and deploy high-performance mobile applications for both iOS and Android using modern cross-platform frameworks and native architectures, handling the entire lifecycle from UI design to app store publication."
+      question: "What is VoiSage AI and how does it relate to Tech22Blocks?",
+      answer: "VoiSage AI is Tech22Blocks' proprietary in-house AI product — an autonomous voice assistant engineered to screen unknown incoming calls, detect caller intent in real time, and deliver executive summaries directly to your dashboard. Developing our own proprietary products ensures our engineering team tests and masters real-world AI pipelines before deploying them for clients."
     },
     {
-      question: "Can Tech22Blocks build custom software for internal operations?",
-      answer: "Absolutely. We build bespoke software systems, internal management portals, workflow automation tools, and scalable APIs tailored precisely to your company's operational needs and database requirements."
+      question: "How does Tech22Blocks handle cross-platform mobile development?",
+      answer: "We design, build, and deploy high-performance mobile applications for both iOS and Android using modern frameworks (React Native, Flutter) as well as native code where required, handling the complete lifecycle from UI/UX design to App Store and Google Play publication."
     },
     {
-      question: "Do you provide UI/UX design services?",
-      answer: "Yes. Our design approach emphasizes clear user journeys, clean typography, interactive wireframes, and scalable design systems that make digital products intuitive and visually compelling."
+      question: "Can Tech22Blocks integrate AI models into existing business systems?",
+      answer: "Yes. We specialize in building secure, production-grade AI solutions — including custom RAG systems, workflow automation agents, computer vision pipelines, and intelligent API integrations that connect seamlessly into your existing database and ERP software."
     },
     {
-      question: "Does Tech22Blocks build AI solutions?",
-      answer: "Yes. In addition to client AI integrations, we are actively developing our own proprietary AI Call Assistant for unknown calls, giving us hands-on production expertise in voice automation and machine intelligence."
+      question: "Where is Tech22Blocks located and what is your legal entity?",
+      answer: "Tech22Blocks operates under RRK Software Technologies Private Limited, officially incorporated in 2025 with registered headquarters in Hanamkonda / Warangal, Telangana, India. We are officially recognized by the Government of India under DPIIT #StartupIndia and MSME."
     },
     {
-      question: "How can I start a project with Tech22Blocks?",
-      answer: "You can reach out through our Contact page, email us directly at shivasai@tech22blocks.in, or call +91 9392022598. We will schedule a direct consultation to discuss your project scope, technical requirements, and timeline."
+      question: "How do we begin a project engagement with Tech22Blocks?",
+      answer: "You can reach out through our Contact page, email us directly at shivasai@tech22blocks.in, or call +91 9392022598. We will schedule an introductory architectural discovery session with our leadership team to analyze your technical requirements, scope, and timeline."
     }
   ] as FAQItem[]
 };
-

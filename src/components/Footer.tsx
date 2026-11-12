@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-slate-900 text-slate-300">
-      {/* Brand-blue top accent */}
+      {/* Brand-blue top accent stripe */}
       <div className="h-0.5 bg-gradient-to-r from-[#0a85b1] via-[#38bdf8] to-[#0a85b1]" />
 
       {/* Recognition banner */}
@@ -18,12 +18,12 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2.5 text-sm text-slate-400">
             <span className="w-1.5 h-1.5 rounded-full bg-[#0a85b1]" />
-            <span>Government of India Recognized Enterprise</span>
+            <span>Government of India Recognized Technology Enterprise</span>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded border border-slate-700/60">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">#StartupIndia</span>
-              <span className="text-[11px] text-slate-500 border-l border-slate-700 pl-2">DPIIT Recognized</span>
+              <span className="text-[11px] text-slate-500 border-l border-slate-700 pl-2">DPIIT Certified</span>
             </div>
             <div className="flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded border border-slate-700/60">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">MSME</span>
@@ -43,7 +43,7 @@ export default function Footer() {
               <div className="relative h-9 w-44">
                 <Image
                   src={getAssetUrl('/images/tech22blocks-logo.jpg')}
-                  alt="Tech22Blocks"
+                  alt="Tech22Blocks Logo"
                   fill
                   className="object-contain object-left"
                 />
@@ -51,8 +51,7 @@ export default function Footer() {
             </div>
             <p className="text-sm font-semibold text-slate-200">{COMPANY.legalName}</p>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              A technology company focused on practical software solutions for startups and small businesses.
-              We build fast, speak plainly, and engineer reliable digital products.
+              An engineering-first technology company delivering proprietary software products and custom digital solutions. We build fast, speak plainly, and engineer resilient systems.
             </p>
             <div className="pt-1 flex items-center gap-3">
               <a
@@ -64,7 +63,7 @@ export default function Footer() {
               >
                 <Linkedin className="w-4 h-4" />
               </a>
-              <span className="text-xs text-slate-600">Operating as Tech22Blocks</span>
+              <span className="text-xs text-slate-500">Operating as Tech22Blocks &bull; Est. 2025</span>
             </div>
           </div>
 
@@ -76,7 +75,7 @@ export default function Footer() {
                 { href: '/', label: 'Home' },
                 { href: '/about', label: 'About Us' },
                 { href: '/about#founders', label: 'The Founders' },
-                { href: '/portfolio', label: 'Portfolio' },
+                { href: '/portfolio', label: 'Portfolio & Case Studies' },
                 { href: '/news-events', label: 'News & Events' },
                 { href: '/blogs', label: 'Blogs & Insights' },
               ].map((item) => (
@@ -94,11 +93,15 @@ export default function Footer() {
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-100">Capabilities</h3>
             <ul className="space-y-2 text-sm">
               {[
-                { href: '/services#website-development', label: 'Website Development' },
+                { href: '/services#software-development', label: 'Software Development' },
+                { href: '/services#web-development', label: 'Web Platforms' },
                 { href: '/services#mobile-applications', label: 'Mobile Apps (iOS & Android)' },
                 { href: '/services#uiux-design', label: 'UI/UX Design' },
-                { href: '/services#custom-software', label: 'Custom Software' },
-                { href: '/services#it-consulting', label: 'IT Consulting & Advisory' },
+                { href: '/services#ai-machine-learning', label: 'AI & Machine Learning' },
+                { href: '/services#generative-ai', label: 'Generative AI & Automation' },
+                { href: '/services#cloud-devops', label: 'Cloud & DevOps' },
+                { href: '/services#cybersecurity', label: 'Cybersecurity' },
+                { href: '/services#it-consulting', label: 'IT Consulting' },
               ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="text-slate-400 hover:text-white transition-colors link-hover-underline">
@@ -106,12 +109,12 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
+              <li className="pt-1">
                 <Link
                   href="/products"
-                  className="text-sky-400 hover:text-sky-300 font-medium transition-colors flex items-center gap-1"
+                  className="text-sky-400 hover:text-sky-300 font-medium transition-colors flex items-center gap-1.5"
                 >
-                  VoiSage AI
+                  <span>VoiSage AI</span>
                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-900/60 text-sky-300 border border-sky-700/50">
                     Product
                   </span>
@@ -164,7 +167,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-600 gap-4">
+        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>© {currentYear} {COMPANY.legalName}. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span>CIN / Reg: Telangana, India</span>
@@ -173,12 +176,12 @@ export default function Footer() {
               href={COMPANY.portfolioUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-500 hover:text-white transition-colors"
+              className="text-slate-400 hover:text-white transition-colors"
             >
               Case Studies
             </a>
-            <span className="text-slate-700 hidden sm:inline">·</span>
-            <span className="text-slate-700 hidden sm:inline">Made with precision in India 🇮🇳</span>
+            <span className="text-slate-700 hidden sm:inline">&bull;</span>
+            <span className="text-slate-500 hidden sm:inline">Made with precision in India 🇮🇳</span>
           </div>
         </div>
       </div>
