@@ -1,25 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   ArrowRight, 
-  PhoneIncoming, 
-  ShieldCheck, 
   CheckCircle2, 
   Sparkles, 
   Radio, 
-  MessageSquare, 
   Lock,
-  Cpu,
   Clock,
-  ExternalLink
+  PhoneIncoming,
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import { getAssetUrl } from '@/utils/assets';
 
 export default function FeaturedProduct() {
   const { product } = COMPANY;
 
   return (
-    <section className="py-20 lg:py-28 bg-slate-950 text-white relative overflow-hidden" aria-labelledby="featured-product-heading">
+    <section className="py-20 lg:py-28 bg-slate-950 text-white relative overflow-hidden border-b border-slate-800" aria-labelledby="featured-product-heading">
       
       {/* Background Architectural Grid */}
       <div 
@@ -41,14 +41,14 @@ export default function FeaturedProduct() {
         {/* Section Pill */}
         <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8] mb-4">
           <span className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse"></span>
-          <span>Proprietary Products &bull; In-House R&amp;D</span>
+          <span>Featured In-House Product &bull; Proprietary R&amp;D</span>
         </div>
 
-        {/* Split Grid: Left Story & Value, Right Product Interface Visualization */}
+        {/* Split Grid: Left Story & Value, Right Actual Product Interface Visual */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left: Product Value Proposition */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column: Product Value Proposition */}
+          <div className="lg:col-span-6 space-y-6">
             
             <div className="space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#0a85b1]/30 border border-[#0a85b1]/50 text-xs font-semibold uppercase tracking-wider text-sky-300">
@@ -60,12 +60,12 @@ export default function FeaturedProduct() {
                 Autonomous voice intelligence for unknown incoming calls.
               </h2>
               
-              <p className="text-lg text-slate-300 leading-relaxed font-light">
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-light">
                 {product.headline}
               </p>
             </div>
 
-            <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-normal">
+            <p className="text-sm text-slate-400 leading-relaxed font-normal">
               {product.problem} {product.solution}
             </p>
 
@@ -74,7 +74,7 @@ export default function FeaturedProduct() {
               {product.capabilities.map((cap, i) => (
                 <div 
                   key={i} 
-                  className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 flex items-start space-x-3 hover:border-slate-700 transition-colors"
+                  className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-start space-x-3 hover:border-slate-700 transition-colors"
                 >
                   <CheckCircle2 className="w-4 h-4 text-sky-400 flex-shrink-0 mt-0.5" />
                   <div>
@@ -102,82 +102,45 @@ export default function FeaturedProduct() {
 
           </div>
 
-          {/* Right: High-Fidelity Product UI Mockup */}
-          <div className="lg:col-span-5">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/95 p-6 shadow-2xl space-y-5 relative">
+          {/* Right Column: Actual High-Resolution Product Screenshot Visual */}
+          <div className="lg:col-span-6 relative">
+            <div className="relative rounded-2xl border border-slate-800 bg-slate-900/90 p-3 shadow-2xl overflow-hidden group">
               
-              {/* Product Header */}
-              <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-                <div className="flex items-center space-x-2.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <div>
-                    <p className="text-xs font-bold text-white tracking-wide">VoiSage Live Assistant</p>
-                    <p className="text-[10px] text-slate-400 font-mono">Real-Time Inbound Voice Pipeline</p>
-                  </div>
-                </div>
-                <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 font-semibold">
-                  ACTIVE AGENT
-                </span>
-              </div>
+              {/* Product Visual Container */}
+              <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-950">
+                <Image
+                  src={getAssetUrl('/images/voisage-product-screen.jpg')}
+                  alt="VoiSage AI Voice Screening Assistant Product Interface"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
 
-              {/* Live Triage Card */}
-              <div className="bg-slate-950 rounded-xl p-4 border border-slate-800/90 space-y-3">
-                <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
-                    Incoming Call &bull; Unknown Number
+                {/* Overlay Status Badge */}
+                <div className="absolute top-3 left-3 bg-slate-950/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-700/80 text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span className="text-[11px] font-mono font-medium text-emerald-400">
+                    Live Call Inbound Screening
                   </span>
-                  <div className="flex items-center gap-1 text-emerald-400 font-mono text-[11px]">
-                    <Clock className="w-3 h-3" />
-                    <span>00:18</span>
-                  </div>
                 </div>
 
-                <div className="flex items-center space-x-3.5">
-                  <div className="w-10 h-10 rounded-lg bg-sky-950 border border-sky-800 flex items-center justify-center text-sky-400">
-                    <PhoneIncoming className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-white tracking-wide font-mono">+91 98490 •••••</p>
-                    <p className="text-xs text-emerald-400 font-medium">Intent: Commercial API Integration Inquiry</p>
-                  </div>
-                </div>
-
-                {/* Voice Spectrogram Stream */}
-                <div className="pt-2 flex items-center gap-1.5 h-7 bg-slate-900/80 rounded px-3 border border-slate-800">
-                  <span className="text-[9px] font-mono text-slate-500 mr-1">NEURAL SPEECH</span>
-                  {[35, 80, 50, 95, 60, 100, 45, 85, 40, 75, 90, 30, 60, 85, 50, 95, 40, 70, 85, 60].map((val, i) => (
-                    <span 
-                      key={i} 
-                      className="w-1 bg-gradient-to-t from-[#0a85b1] to-sky-400 rounded-full"
-                      style={{ height: `${val}%` }}
-                    />
-                  ))}
-                  <span className="text-[9px] font-mono text-sky-400 ml-auto">&lt;580ms latency</span>
-                </div>
-              </div>
-
-              {/* Instant Executive Brief Dispatch */}
-              <div className="rounded-xl bg-slate-950/70 border border-slate-800 p-4 space-y-2">
-                <div className="flex items-center justify-between text-[11px]">
-                  <span className="font-bold text-sky-400 uppercase tracking-wider flex items-center gap-1">
-                    <MessageSquare className="w-3.5 h-3.5" />
-                    Structured Executive Brief
+                {/* Latency Metric Tag */}
+                <div className="absolute bottom-3 right-3 bg-slate-950/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-700/80 text-white flex items-center gap-1.5">
+                  <Zap className="w-3.5 h-3.5 text-[#38bdf8]" />
+                  <span className="text-[11px] font-mono text-sky-300 font-semibold">
+                    Sub-600ms Voice Pipeline
                   </span>
-                  <span className="text-slate-400 font-mono text-[10px]">Auto-Dispatched</span>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed italic bg-slate-900/50 p-2.5 rounded border border-slate-800/80">
-                  &ldquo;Caller inquired regarding enterprise API integration timeline for logistics tracking. Verified valid corporate interest. Direct callback scheduled for 3:00 PM.&rdquo;
-                </p>
               </div>
 
-              {/* Technical Trust Footnote */}
-              <div className="pt-2 flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-800/80 font-mono">
-                <span className="flex items-center gap-1">
+              {/* Footnote */}
+              <div className="px-3 pt-3 pb-1 flex items-center justify-between text-[11px] text-slate-400 font-mono border-t border-slate-800/80 mt-2">
+                <span className="flex items-center gap-1 text-slate-400">
                   <Lock className="w-3 h-3 text-[#0a85b1]" />
-                  Zero Audio Retained Without Consent
+                  Zero Audio Retention Without Consent
                 </span>
                 <span className="text-sky-400">
-                  Indian English &bull; Regional Dialects
+                  WhatsApp Executive Brief
                 </span>
               </div>
 

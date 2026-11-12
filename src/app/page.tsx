@@ -7,40 +7,36 @@ import FeaturedProduct from '@/components/FeaturedProduct';
 import WhyTech22Blocks from '@/components/WhyTech22Blocks';
 import SelectedWork from '@/components/SelectedWork';
 import LeadershipPreview from '@/components/LeadershipPreview';
-import LatestNewsPreview from '@/components/LatestNewsPreview';
 import FinalCTA from '@/components/FinalCTA';
 
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero: Positioning & Value Proposition */}
+      {/* 1. Hero: Positioning, Value Proposition & Real Visual Asset */}
       <HeroSection />
 
-      {/* 2. Official Recognition: Startup India & MSME Certification */}
+      {/* 2. Official Recognition: Compact Trust Section (Startup India & MSME) */}
       <RecognitionStrip />
 
-      {/* 3. Short Company Introduction (Who We Are + Badges + Learn More CTA) */}
+      {/* 3. Who We Are & Merged Two Business Divisions */}
       <CompanyIntro />
 
-      {/* 4. Services Overview (Clean Cards + Explore All Services CTA) */}
+      {/* 4. Our Capabilities: Visual Engineering Pillars & 10 Services */}
       <ServicesOverview />
 
-      {/* 5. Featured Product: VoiSage AI (Concise + Explore VoiSage CTA) */}
+      {/* 5. VoiSage AI: High-Impact In-House Product Showcase */}
       <FeaturedProduct />
 
-      {/* 6. Why Tech22Blocks (4 Core Differentiators) */}
+      {/* 6. Why Tech22Blocks: Concise Operational Philosophy */}
       <WhyTech22Blocks />
 
-      {/* 7. Selected Work / Portfolio (3 Projects + View All Projects CTA) */}
+      {/* 7. Selected Work: Focused Capability Case Studies */}
       <SelectedWork />
 
-      {/* 8. Short Leadership & Credibility Section (Father & Son photo + Meet Team CTA) */}
+      {/* 8. Leadership: Compact Founder Introduction with Photograph */}
       <LeadershipPreview />
 
-      {/* 9. Latest News & Announcements (3 Latest Items + View All News CTA) */}
-      <LatestNewsPreview />
-
-      {/* 10. Final Call To Action (Have a project in mind? Talk to Tech22Blocks) */}
+      {/* 9. Final Call To Action: Direct Consultation Gateway */}
       <FinalCTA />
     </>
   );

@@ -62,19 +62,15 @@ export default function MissionGoalsSection() {
                 </div>
 
                 {/* Goal Description */}
-                <div className="md:col-span-6">
-                  <p className="text-base text-slate-600 leading-relaxed">
-                    {goal.description}
-                  </p>
+                <div className="md:col-span-6 text-base text-slate-600 leading-relaxed">
+                  {goal.description}
                 </div>
               </div>
             ))}
           </div>
-
         </div>
 
       </div>
     </section>
   );
 }
-

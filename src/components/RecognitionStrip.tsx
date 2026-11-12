@@ -1,54 +1,60 @@
 import React from 'react';
 import Image from 'next/image';
 import { getAssetUrl } from '@/utils/assets';
+import { ShieldCheck, Award } from 'lucide-react';
 
 export default function RecognitionStrip() {
   return (
-    <section className="bg-white border-y border-slate-200 py-10" aria-label="Official Recognition">
+    <section className="bg-slate-50/80 border-b border-slate-200/80 py-6" aria-label="Official Corporate Recognition">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-
-          {/* Left: Text */}
-          <div>
-            <div className="label-eyebrow mb-1">Official Recognition</div>
-            <h3 className="text-lg font-bold text-slate-900 tracking-tight">
-              Certified &amp; Registered in India
-            </h3>
-            <p className="text-sm text-slate-600 mt-0.5">
-              Operating under RRK Software Technologies Private Limited with full statutory compliance.
-            </p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-5">
+          
+          {/* Trust Statement */}
+          <div className="flex items-center space-x-3 text-center md:text-left">
+            <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#0a85b1] flex-shrink-0 shadow-2xs">
+              <ShieldCheck className="w-4 h-4" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-slate-900 tracking-tight">
+                Government of India Recognized Enterprise
+              </p>
+              <p className="text-[11px] text-slate-500 font-mono">
+                Operating under RRK Software Technologies Private Limited &bull; Full Statutory &amp; GST Compliance
+              </p>
+            </div>
           </div>
 
-          {/* Right: Logo badges */}
-          <div className="flex flex-wrap items-center gap-5">
-
-            {/* Startup India */}
-            <div className="bg-white px-5 py-3 rounded-xl border border-slate-200 shadow-sm hover:-translate-y-0.5 transition-transform">
-              <div className="relative h-10 w-44">
+          {/* Official Seals */}
+          <div className="flex items-center gap-4 sm:gap-6">
+            
+            {/* Startup India Badge */}
+            <div className="bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-2xs flex items-center space-x-2.5 transition-transform hover:-translate-y-0.5">
+              <div className="relative h-7 w-32">
                 <Image
                   src={getAssetUrl('/images/startup-india.svg')}
-                  alt="Startup India — DPIIT Recognized Entity"
+                  alt="DPIIT #StartupIndia Recognized Entity"
                   fill
-                  sizes="176px"
+                  sizes="128px"
                   className="object-contain"
                 />
               </div>
             </div>
 
-            {/* MSME */}
-            <div className="bg-white px-5 py-3 rounded-xl border border-slate-200 shadow-sm hover:-translate-y-0.5 transition-transform">
-              <div className="relative h-10 w-44">
+            {/* MSME Badge */}
+            <div className="bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-2xs flex items-center space-x-2.5 transition-transform hover:-translate-y-0.5">
+              <div className="relative h-7 w-32">
                 <Image
                   src={getAssetUrl('/images/msme.svg')}
-                  alt="MSME — Ministry of Micro, Small and Medium Enterprises"
+                  alt="MSME — Ministry of Micro, Small & Medium Enterprises"
                   fill
-                  sizes="176px"
+                  sizes="128px"
                   className="object-contain"
                 />
               </div>
             </div>
 
           </div>
+
         </div>
       </div>
     </section>
