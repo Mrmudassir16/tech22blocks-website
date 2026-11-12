@@ -5,49 +5,70 @@ import { COMPANY } from '@/data/company';
 
 export default function FinalCTA() {
   return (
-    <section className="bg-slate-900 text-white py-20 lg:py-24 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center space-y-6">
-          
-          <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8]">
-            <span className="w-2 h-2 rounded-full bg-[#38bdf8]"></span>
-            <span>Start a Conversation</span>
+    <section
+      className="bg-slate-900 text-white py-24 lg:py-32 relative overflow-hidden border-t border-slate-800"
+    >
+      {/* Very subtle diagonal stripe pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(45deg, #ffffff 0, #ffffff 1px, transparent 0, transparent 50%)',
+          backgroundSize: '32px 32px',
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-3xl mx-auto text-center space-y-7">
+
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+            <span className="text-[11px] font-bold uppercase tracking-widest text-sky-400">
+              Start a Conversation
+            </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+          {/* Headline */}
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
             Have a project in mind?<br />
-            Let&apos;s build something meaningful together.
+            <span className="text-[#38bdf8]">{"Let's build it right."}</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 max-w-xl mx-auto leading-relaxed font-light">
-            Whether you need a custom web platform, a mobile application, or an intelligent voice automation system — our founders and engineering team are ready to build with you.
+          {/* Supporting text */}
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-xl mx-auto">
+            Whether you need a custom web platform, a mobile application, or an intelligent voice
+            automation system — our founders and engineering team are ready to build with you.
           </p>
 
-          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <Link
               href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-[#0a85b1] hover:bg-[#0284c7] rounded-lg shadow-sm transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-white bg-[#0a85b1] hover:bg-[#0369a1] rounded-full shadow-sm transition-colors"
             >
-              <span>Talk to Tech22Blocks</span>
-              <ArrowRight className="w-4 h-4 ml-2" />
+              Talk to Tech22Blocks
+              <ArrowRight className="w-4 h-4" />
             </Link>
-
             <a
               href={`mailto:${COMPANY.email}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700/80 rounded-lg transition-all border border-slate-700"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold text-slate-300 hover:text-white border border-slate-700 hover:border-slate-500 rounded-full transition-colors"
             >
-              <Mail className="w-4 h-4 mr-2 text-sky-400" />
-              <span>{COMPANY.email}</span>
+              <Mail className="w-4 h-4 text-sky-400" />
+              {COMPANY.email}
             </a>
           </div>
 
-          <div className="pt-4 text-xs text-slate-400 flex items-center justify-center space-x-6">
-            <span className="flex items-center">
-              <Phone className="w-3.5 h-3.5 mr-1 text-[#38bdf8]" />
+          {/* Contact row */}
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-slate-500">
+            <span className="flex items-center gap-1.5">
+              <Phone className="w-3.5 h-3.5 text-sky-500" />
               {COMPANY.phoneDisplay}
             </span>
-            <span>&bull;</span>
-            <span>Warangal, Telangana &bull; Reg: RRK Software Technologies Pvt. Ltd.</span>
+            <span className="text-slate-700">·</span>
+            <span>Warangal, Telangana</span>
+            <span className="text-slate-700">·</span>
+            <span>RRK Software Technologies Pvt. Ltd.</span>
           </div>
 
         </div>

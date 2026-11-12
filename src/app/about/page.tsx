@@ -1,16 +1,13 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import FoundersSection from '@/components/FoundersSection';
 import MissionGoalsSection from '@/components/MissionGoalsSection';
 import RecognitionStrip from '@/components/RecognitionStrip';
-import FinalCTA from '@/components/FinalCTA';
 import { COMPANY } from '@/data/company';
 
 export const metadata: Metadata = {
-  title: 'About Us — Our Story, Founders & Mission',
-  description: 'Learn about Tech22Blocks, founded in 2025 by father and son Rajkumar Adepu and Shivasai Adepu under RRK Software Technologies Private Limited.',
+  title: 'About Us | Tech22Blocks',
+  description: COMPANY.mission.statement,
 };
 
 export default function AboutPage() {
@@ -18,33 +15,49 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* Editorial Header */}
+      {/* Premium Page Hero */}
       <section className="bg-slate-900 text-white py-20 lg:py-28 relative overflow-hidden">
+        {/* Subtle grid accent */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8] mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#38bdf8]"></span>
-              <span>About Tech22Blocks</span>
+            {/* Eyebrow */}
+            <div className="inline-flex items-center gap-2 mb-6">
+              <span className="block w-5 h-0.5 bg-[#0a85b1]" />
+              <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#38bdf8]">
+                About Tech22Blocks
+              </span>
             </div>
+
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-              Two builders with one mission: to make great technology accessible.
+              About Tech22Blocks
             </h1>
-            <p className="mt-6 text-xl text-slate-300 font-light leading-relaxed">
-              Operating under RRK Software Technologies Private Limited, Tech22Blocks combines generational perspective with agile software craftsmanship.
+
+            <p className="mt-6 text-xl text-slate-300 font-light leading-relaxed max-w-2xl">
+              Operating under RRK Software Technologies Private Limited, Tech22Blocks combines
+              generational perspective with agile software craftsmanship — building technology
+              that is accessible, honest, and human.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Recognition strip */}
+      {/* Official Recognition */}
       <RecognitionStrip />
 
       {/* Our Story: Editorial Section */}
       <section className="py-20 lg:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          
+
           <div className="border-b border-slate-200 pb-8">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0a85b1]">
+            <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#0a85b1]">
               Origin &amp; Philosophy
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight mt-2">
@@ -80,22 +93,19 @@ export default function AboutPage() {
             </div>
 
             <p className="text-base text-slate-600">
-              Today, from our registered headquarters in Warangal/Hanamkonda, we work directly with emerging founders, SMEs, and commercial partners to design, engineer, and deploy digital systems that deliver real-world outcomes.
+              Today, from our registered headquarters in Warangal/Hanamkonda, we work directly with
+              emerging founders, SMEs, and commercial partners to design, engineer, and deploy digital
+              systems that deliver real-world outcomes.
             </p>
           </div>
-
         </div>
       </section>
 
-      {/* The Founders Section (Father & Son with Authentic Image) */}
+      {/* The Founders Section */}
       <FoundersSection />
 
       {/* Mission & 4 Official Goals */}
       <MissionGoalsSection />
-
-      {/* Corporate Final Call to Action */}
-      <FinalCTA />
     </>
   );
 }
-

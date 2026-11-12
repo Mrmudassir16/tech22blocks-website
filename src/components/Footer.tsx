@@ -9,22 +9,25 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-900 text-slate-300 border-t border-slate-800">
-      {/* Top Banner: Corporate Recognition */}
-      <div className="border-b border-slate-800 bg-slate-950/60 py-6">
+    <footer className="bg-slate-900 text-slate-300">
+      {/* Brand-blue top accent */}
+      <div className="h-0.5 bg-gradient-to-r from-[#0a85b1] via-[#38bdf8] to-[#0a85b1]" />
+
+      {/* Recognition banner */}
+      <div className="border-b border-slate-800 bg-slate-950/60 py-5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center space-x-3 text-sm text-slate-400">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#0a85b1]"></span>
+          <div className="flex items-center gap-2.5 text-sm text-slate-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0a85b1]" />
             <span>Government of India Recognized Enterprise</span>
           </div>
-          <div className="flex items-center gap-6">
-            <div className="flex items-center space-x-2 bg-slate-900/90 px-3.5 py-1.5 rounded border border-slate-700/60">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded border border-slate-700/60">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">#StartupIndia</span>
-              <span className="text-[11px] text-slate-400 border-l border-slate-700 pl-2">DPIIT Recognized</span>
+              <span className="text-[11px] text-slate-500 border-l border-slate-700 pl-2">DPIIT Recognized</span>
             </div>
-            <div className="flex items-center space-x-2 bg-slate-900/90 px-3.5 py-1.5 rounded border border-slate-700/60">
+            <div className="flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded border border-slate-700/60">
               <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">MSME</span>
-              <span className="text-[11px] text-slate-400 border-l border-slate-700 pl-2">Registered Entity</span>
+              <span className="text-[11px] text-slate-500 border-l border-slate-700 pl-2">Registered Entity</span>
             </div>
           </div>
         </div>
@@ -33,10 +36,10 @@ export default function Footer() {
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-          
-          {/* Column 1 & 2: Brand & Corporate Identity */}
+
+          {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="bg-white p-2 rounded-md inline-block w-auto">
+            <div className="bg-white p-2 rounded-md inline-block">
               <div className="relative h-9 w-44">
                 <Image
                   src={getAssetUrl('/images/tech22blocks-logo.jpg')}
@@ -46,137 +49,113 @@ export default function Footer() {
                 />
               </div>
             </div>
-            <p className="text-sm font-semibold text-slate-200">
-              {COMPANY.legalName}
+            <p className="text-sm font-semibold text-slate-200">{COMPANY.legalName}</p>
+            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
+              A technology company focused on practical software solutions for startups and small businesses.
+              We build fast, speak plainly, and engineer reliable digital products.
             </p>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-md">
-              A technology company focused on practical software solutions for startups and small businesses. We build fast, speak plainly, and engineer reliable digital products.
-            </p>
-            <div className="pt-2 flex items-center space-x-3">
+            <div className="pt-1 flex items-center gap-3">
               <a
                 href={COMPANY.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-[#0a85b1] text-slate-300 hover:text-white flex items-center justify-center transition-colors"
-                aria-label="LinkedIn Profile"
+                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-[#0a85b1] text-slate-400 hover:text-white flex items-center justify-center transition-colors"
+                aria-label="LinkedIn — Tech22Blocks"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
-              <span className="text-xs text-slate-500">Operating as Tech22Blocks</span>
+              <span className="text-xs text-slate-600">Operating as Tech22Blocks</span>
             </div>
           </div>
 
-          {/* Column 3: Corporate Pages */}
+          {/* Company Pages */}
           <div className="space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-100">Company</h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/" className="hover:text-white text-slate-400 transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-white text-slate-400 transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/about#founders" className="hover:text-white text-slate-400 transition-colors">
-                  The Founders
-                </Link>
-              </li>
-              <li>
-                <Link href="/portfolio" className="hover:text-white text-slate-400 transition-colors">
-                  Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link href="/news-events" className="hover:text-white text-slate-400 transition-colors">
-                  News & Events
-                </Link>
-              </li>
-              <li>
-                <Link href="/blogs" className="hover:text-white text-slate-400 transition-colors">
-                  Blogs & Insights
-                </Link>
-              </li>
+              {[
+                { href: '/', label: 'Home' },
+                { href: '/about', label: 'About Us' },
+                { href: '/about#founders', label: 'The Founders' },
+                { href: '/portfolio', label: 'Portfolio' },
+                { href: '/news-events', label: 'News & Events' },
+                { href: '/blogs', label: 'Blogs & Insights' },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-slate-400 hover:text-white transition-colors link-hover-underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 4: Services & Products */}
+          {/* Capabilities */}
           <div className="space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-100">Capabilities</h3>
             <ul className="space-y-2 text-sm">
+              {[
+                { href: '/services#website-development', label: 'Website Development' },
+                { href: '/services#mobile-applications', label: 'Mobile Apps (iOS & Android)' },
+                { href: '/services#uiux-design', label: 'UI/UX Design' },
+                { href: '/services#custom-software', label: 'Custom Software' },
+                { href: '/services#it-consulting', label: 'IT Consulting & Advisory' },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-slate-400 hover:text-white transition-colors link-hover-underline">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <Link href="/services#website-development" className="hover:text-white text-slate-400 transition-colors">
-                  Website Development
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#mobile-applications" className="hover:text-white text-slate-400 transition-colors">
-                  Mobile Apps (iOS & Android)
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#uiux-design" className="hover:text-white text-slate-400 transition-colors">
-                  UI/UX Design
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#custom-software" className="hover:text-white text-slate-400 transition-colors">
-                  Custom Software
-                </Link>
-              </li>
-              <li>
-                <Link href="/services#it-consulting" className="hover:text-white text-slate-400 transition-colors">
-                  IT Consulting & Advisory
-                </Link>
-              </li>
-              <li>
-                <Link href="/products" className="text-sky-400 hover:text-sky-300 font-medium transition-colors flex items-center gap-1">
-                  <span>AI Call Assistant</span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-900/60 text-sky-300 border border-sky-700/50">Product</span>
+                <Link
+                  href="/products"
+                  className="text-sky-400 hover:text-sky-300 font-medium transition-colors flex items-center gap-1"
+                >
+                  VoiSage AI
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-900/60 text-sky-300 border border-sky-700/50">
+                    Product
+                  </span>
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 5: Official Contact Info */}
+          {/* Contact */}
           <div className="space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-100">Official Contact</h3>
             <ul className="space-y-3 text-sm">
               <li>
                 <a
                   href={`mailto:${COMPANY.email}`}
-                  className="flex items-start text-slate-400 hover:text-white transition-colors group"
+                  className="flex items-start gap-2.5 text-slate-400 hover:text-white transition-colors group"
                 >
-                  <Mail className="w-4 h-4 mr-2.5 mt-0.5 text-[#0a85b1] group-hover:text-sky-400 flex-shrink-0" />
+                  <Mail className="w-4 h-4 mt-0.5 text-[#0a85b1] group-hover:text-sky-400 flex-shrink-0" />
                   <span className="break-all">{COMPANY.email}</span>
                 </a>
               </li>
               <li>
                 <a
                   href={`tel:${COMPANY.phone}`}
-                  className="flex items-center text-slate-400 hover:text-white transition-colors group"
+                  className="flex items-center gap-2.5 text-slate-400 hover:text-white transition-colors group"
                 >
-                  <Phone className="w-4 h-4 mr-2.5 text-[#0a85b1] group-hover:text-sky-400 flex-shrink-0" />
-                  <span>{COMPANY.phoneDisplay}</span>
+                  <Phone className="w-4 h-4 text-[#0a85b1] group-hover:text-sky-400 flex-shrink-0" />
+                  {COMPANY.phoneDisplay}
                 </a>
               </li>
-              <li className="flex items-start text-slate-400">
-                <MapPin className="w-4 h-4 mr-2.5 mt-0.5 text-[#0a85b1] flex-shrink-0" />
+              <li className="flex items-start gap-2.5 text-slate-400">
+                <MapPin className="w-4 h-4 mt-0.5 text-[#0a85b1] flex-shrink-0" />
                 <span className="leading-snug">
-                  <strong className="block text-slate-300 font-medium">Registered Address:</strong>
+                  <strong className="block text-slate-300 font-medium text-xs">Registered Address:</strong>
                   {COMPANY.registeredAddress}
                 </span>
               </li>
-              <li className="pt-1">
+              <li>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center text-xs font-semibold text-[#38bdf8] hover:underline"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-sky-400 hover:text-sky-300 transition-colors"
                 >
-                  <span>Open Contact Form</span>
-                  <ExternalLink className="w-3 h-3 ml-1" />
+                  Open Contact Form
+                  <ExternalLink className="w-3 h-3" />
                 </Link>
               </li>
             </ul>
@@ -185,23 +164,24 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-600 gap-4">
           <p>© {currentYear} {COMPANY.legalName}. All rights reserved.</p>
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center gap-6">
             <span>CIN / Reg: Telangana, India</span>
             <span>Operating as Tech22Blocks</span>
-            <a 
+            <a
               href={COMPANY.portfolioUrl}
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-slate-400 hover:text-white transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-500 hover:text-white transition-colors"
             >
               Case Studies
             </a>
+            <span className="text-slate-700 hidden sm:inline">·</span>
+            <span className="text-slate-700 hidden sm:inline">Made with precision in India 🇮🇳</span>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-
