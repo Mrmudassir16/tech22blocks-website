@@ -89,17 +89,17 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-22 w-full">
         <div className="max-w-4xl space-y-8">
           
-          {/* Corporate Division Pill */}
+          {/* Corporate Positioning Pill */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-sky-500/30 text-slate-200 text-xs backdrop-blur-md shadow-lg shadow-sky-950/30">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
             </span>
             <span className="font-mono text-[11px] font-semibold text-white tracking-wider uppercase">
-              Two Complementary Business Divisions
+              Software Engineering &bull; Digital Innovation
             </span>
             <span className="text-slate-600">&bull;</span>
-            <span className="text-sky-300 font-medium">Proprietary AI &bull; Custom Solutions</span>
+            <span className="text-sky-300 font-medium">Built to Ship</span>
           </div>
 
           {/* Prominent Editorial Headlines */}
@@ -118,7 +118,7 @@ export default function HeroSection() {
 
           {/* Strategic Narrative */}
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-light">
-            Tech22Blocks operates across two complementary business directions: developing our own proprietary intelligent software products (featuring <strong className="text-white font-semibold">VoiSage AI</strong>) and delivering mission-critical custom engineering for organizations of all sizes.
+            We build software that gives ambitious businesses a real edge &mdash; engineering our own intelligent products like <strong className="text-white font-semibold">VoiSage AI</strong> and delivering resilient, production-grade custom systems.
           </p>
 
           {/* Action CTAs */}
@@ -158,10 +158,10 @@ export default function HeroSection() {
             <div className="space-y-1">
               <div className="flex items-center gap-2 text-sky-400">
                 <Layers className="w-4 h-4" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">Dual Model</span>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider">Engineering Focus</span>
               </div>
-              <p className="text-sm font-semibold text-white">Proprietary + Custom</p>
-              <p className="text-[11px] text-slate-400">In-House Products &bull; Client Solutions</p>
+              <p className="text-sm font-semibold text-white">Products &amp; Custom Systems</p>
+              <p className="text-[11px] text-slate-400">Web, Mobile, AI &amp; Architecture</p>
             </div>
 
             <div className="space-y-1">

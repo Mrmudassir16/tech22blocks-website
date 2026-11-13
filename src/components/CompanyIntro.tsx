@@ -14,20 +14,20 @@ export default function CompanyIntro() {
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-2.5">
             <span className="w-5 h-0.5 bg-[#0a85b1]"></span>
-            <span>Who We Are &bull; Two Business Divisions</span>
+            <span>Who We Are &bull; Technology Builders</span>
           </div>
           <h2 id="who-we-are-heading" className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight">
-            A technology company built on dual capability: proprietary software and custom engineering.
+            Software engineered with purpose, persistence, and practical craft.
           </h2>
           <p className="mt-3 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            Operating under <strong className="text-slate-900 font-semibold">{COMPANY.legalName}</strong>, Tech22Blocks unites strategic governance with agile software craftsmanship. We serve companies across all stages — from early-stage innovators to established enterprises.
+            Operating under <strong className="text-slate-900 font-semibold">{COMPANY.legalName}</strong>, Tech22Blocks unites strategic governance with modern software craftsmanship. We build for ourselves and for ambitious organizations worldwide.
           </p>
         </div>
 
-        {/* Merged Two Business Divisions: Visual Split */}
+        {/* What We Do: Products & Custom Solutions */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
           
-          {/* Division 01: Proprietary Products */}
+          {/* Card 01: In-House Products */}
           <div className="rounded-2xl border border-sky-200/80 bg-gradient-to-br from-sky-50/60 via-white to-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs group hover:border-[#0a85b1]/50 transition-colors">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -35,16 +35,16 @@ export default function CompanyIntro() {
                   <Box className="w-5 h-5" />
                 </div>
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#0a85b1] bg-sky-50 px-2.5 py-1 rounded-full border border-sky-100">
-                  Division 01 &bull; R&amp;D
+                  In-House Products
                 </span>
               </div>
 
               <div>
                 <h3 className="text-xl font-bold text-slate-950 tracking-tight">
-                  Proprietary Technology Products
+                  Proprietary Software Products
                 </h3>
                 <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                  We invent and operate our own software tools. Our current featured initiative, <strong className="text-slate-900 font-semibold">VoiSage AI</strong>, is an autonomous voice assistant engineered to screen incoming calls, eliminate spam, and generate instant executive briefs.
+                  We invent and operate our own software tools. Our featured initiative, <strong className="text-slate-900 font-semibold">VoiSage AI</strong>, is an autonomous voice assistant engineered to screen incoming calls, eliminate spam, and generate instant executive briefs.
                 </p>
               </div>
 
@@ -62,16 +62,16 @@ export default function CompanyIntro() {
 
             <div className="pt-6 mt-4 border-t border-slate-100">
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-flex items-center text-xs font-bold text-[#0a85b1] hover:text-[#0284c7] group/link transition-colors"
               >
-                <span>Discover VoiSage AI &amp; Product R&amp;D</span>
+                <span>Discover VoiSage AI &amp; Product Details</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover/link:translate-x-1" />
               </Link>
             </div>
           </div>
 
-          {/* Division 02: Custom Technology Solutions */}
+          {/* Card 02: Custom Technology Solutions */}
           <div className="rounded-2xl border border-slate-200/90 bg-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs group hover:border-slate-300 transition-colors">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -79,7 +79,7 @@ export default function CompanyIntro() {
                   <Wrench className="w-5 h-5" />
                 </div>
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-700 bg-slate-100 px-2.5 py-1 rounded-full border border-slate-200">
-                  Division 02 &bull; Client Solutions
+                  Client Solutions
                 </span>
               </div>
 

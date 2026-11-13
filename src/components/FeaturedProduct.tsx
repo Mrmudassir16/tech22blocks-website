@@ -27,7 +27,7 @@ export default function FeaturedProduct() {
         <div className="inline-flex items-center gap-2 mb-4">
           <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
           <span className="text-[11px] font-bold uppercase tracking-widest text-sky-400">
-            Featured Proprietary Product
+            In-House Technology Innovation
           </span>
         </div>
 
@@ -73,14 +73,14 @@ export default function FeaturedProduct() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <Link
-                href="/products"
+                href="/products/"
                 className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#0a85b1] hover:bg-[#0369a1] rounded-lg shadow-sm transition-colors group"
               >
                 <span>Explore VoiSage AI</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <span className="text-xs text-slate-400 font-mono">
-                Built by Tech22Blocks &bull; Proprietary R&amp;D
+                Engineered by Tech22Blocks &bull; Live Voice System
               </span>
             </div>
           </div>

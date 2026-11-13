@@ -214,7 +214,7 @@ export const COMPANY = {
   // Proprietary Product: VoiSage AI
   product: {
     name: "VoiSage AI",
-    badge: "In-House Proprietary R&D",
+    badge: "In-House Innovation",
     status: "Under Active Development",
     tagline: "Autonomous Voice Intelligence for Unknown Incoming Calls",
     headline: "An intelligent voice assistant that screens unknown callers in real-time.",

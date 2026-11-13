@@ -41,7 +41,7 @@ export default function FinalCTA() {
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/contact"
+              href="/contact/"
               className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#0a85b1] hover:bg-[#0284c7] rounded-lg shadow-lg shadow-[#0a85b1]/20 transition-all duration-150 group"
             >
               <span>Schedule a Project Consultation</span>

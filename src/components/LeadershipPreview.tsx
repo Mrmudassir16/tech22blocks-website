@@ -87,7 +87,7 @@ export default function LeadershipPreview() {
               {/* Navigation to Full About Page */}
               <div className="pt-2">
                 <Link
-                  href="/about"
+                  href="/about/"
                   className="inline-flex items-center text-xs font-bold text-[#0a85b1] hover:text-[#0284c7] group transition-colors"
                 >
                   <span>Read our full story, mission, and 22 principles on About Us</span>
