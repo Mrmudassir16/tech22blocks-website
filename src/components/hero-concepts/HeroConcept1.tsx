@@ -194,3 +194,4 @@ export default function HeroConcept1() {
     </section>
   );
 }
+

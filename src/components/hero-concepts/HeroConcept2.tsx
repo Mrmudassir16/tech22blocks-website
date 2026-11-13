@@ -188,3 +188,4 @@ export default function HeroConcept2() {
     </section>
   );
 }
+
