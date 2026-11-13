@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroConceptSwitcher from '@/components/hero-concepts/HeroConceptSwitcher';
+import HeroSection from '@/components/HeroSection';
 import RecognitionStrip from '@/components/RecognitionStrip';
 import CompanyIntro from '@/components/CompanyIntro';
 import ServicesOverview from '@/components/ServicesOverview';
@@ -11,8 +11,8 @@ import FinalCTA from '@/components/FinalCTA';
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero: Interactive Working Preview Switcher (Concepts 1, 2, and 3) */}
-      <HeroConceptSwitcher initialConcept="concept-1" />
+      {/* 1. Hero: Approved Immersive Full-Bleed Cinematic Hero */}
+      <HeroSection />
 
       {/* 2. Official Recognition: Compact Professional Trust Section (Startup India & MSME) */}
       <RecognitionStrip />
@@ -20,16 +20,16 @@ export default function HomePage() {
       {/* 3. Who We Are & Merged Two Business Divisions */}
       <CompanyIntro />
 
-      {/* 4. Our Services / Capabilities: Visual Engineering Pillars & 10 Services */}
+      {/* 4. Our Services: Exactly the 6 Services from Founder Requirements PDF */}
       <ServicesOverview />
 
-      {/* 5. VoiSage AI: Restored Clean In-House Product Showcase */}
+      {/* 5. VoiSage AI: Clean In-House Product Showcase */}
       <FeaturedProduct />
 
       {/* 6. Why Tech22Blocks: Concise Operational Philosophy */}
       <WhyTech22Blocks />
 
-      {/* 7. Leadership: Compact Founder Introduction with Photograph */}
+      {/* 7. Leadership: Compact Founder Introduction with Genuine Photograph */}
       <LeadershipPreview />
 
       {/* 8. Final Call To Action: Direct Project Consultation Gateway */}

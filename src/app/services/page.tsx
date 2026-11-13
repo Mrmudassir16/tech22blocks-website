@@ -6,8 +6,8 @@ import FinalCTA from '@/components/FinalCTA';
 import RecognitionStrip from '@/components/RecognitionStrip';
 
 export const metadata: Metadata = {
-  title: 'Our Services & Capabilities — Software Engineering & AI Solutions',
-  description: 'Explore the full spectrum of software capabilities offered by Tech22Blocks: Custom Software Engineering, Web Platforms, Mobile Apps (iOS & Android), UI/UX Design, AI & Machine Learning, Generative AI, Cloud & DevOps, Cybersecurity, and IT Consulting.',
+  title: 'Our Services — Tech22Blocks',
+  description: 'Explore the 6 core software services offered by Tech22Blocks: Website Development, Mobile Application (iOS & Android), UI/UX Design, Custom Software, IT Consulting & Advisory, and Web3.0.',
 };
 
 export default function ServicesPage() {

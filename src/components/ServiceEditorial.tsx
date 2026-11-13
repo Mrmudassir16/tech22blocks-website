@@ -37,7 +37,7 @@ export default function ServiceEditorial() {
             End-to-End Technology Capabilities
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            Whether architecting resilient cloud backends, engineering fluid mobile ecosystems, or deploying generative AI workflows — our teams build for operational longevity, clear business outcomes, and zero technical debt.
+            From website development and native mobile applications to bespoke custom software, UI/UX design, strategic IT consulting, and emerging Web3 technologies &mdash; we engineer practical solutions that solve real business bottlenecks.
           </p>
         </div>
 
@@ -136,6 +136,7 @@ export default function ServiceEditorial() {
 // Bespoke, service-specific creative visual compositions
 function ServiceCreativeIllustration({ serviceId, title }: { serviceId: string; title: string }) {
   switch (serviceId) {
+    case 'custom-software':
     case 'software-development':
       return (
         <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
@@ -174,6 +175,7 @@ function ServiceCreativeIllustration({ serviceId, title }: { serviceId: string; 
         </div>
       );
 
+    case 'website-development':
     case 'web-development':
       return (
         <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">

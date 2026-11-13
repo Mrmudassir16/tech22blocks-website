@@ -88,7 +88,7 @@ export default function CompanyIntro() {
                   Custom Technology Solutions
                 </h3>
                 <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                  We engineer bespoke software architectures, full-stack web platforms, native iOS &amp; Android mobile apps, cloud DevOps pipelines, and AI integrations. We partner directly with leaders to build software that scales reliably.
+                  We engineer bespoke custom software, high-performance website platforms, native iOS &amp; Android mobile applications, UI/UX design, and strategic IT advisory. We partner directly with leaders to build software that scales reliably.
                 </p>
               </div>
 
@@ -99,17 +99,17 @@ export default function CompanyIntro() {
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0a85b1] flex-shrink-0" />
-                  <span>Enterprise web, mobile, cloud infrastructure, and AI systems</span>
+                  <span>Full-stack web, mobile applications, custom software, and advisory</span>
                 </div>
               </div>
             </div>
 
             <div className="pt-6 mt-4 border-t border-slate-100">
               <Link
-                href="/services"
+                href="/services/"
                 className="inline-flex items-center text-xs font-bold text-slate-800 hover:text-[#0a85b1] group/link transition-colors"
               >
-                <span>Explore Full Service Portfolio</span>
+                <span>Explore 6 Core Services</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover/link:translate-x-1" />
               </Link>
             </div>

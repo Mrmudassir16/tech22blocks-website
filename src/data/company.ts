@@ -116,28 +116,13 @@ export const COMPANY = {
     }
   ] as GoalItem[],
 
-  // Comprehensive 10-Service Portfolio
+  // The 6 Official Services (As defined in Tech22Blocks Requirements PDF)
   services: [
     {
-      id: "software-development",
-      title: "Software Development",
-      category: "Enterprise Systems",
-      shortDesc: "Bespoke core systems, enterprise application architectures, and robust business workflows tailored to your operating model.",
-      fullDesc: "Off-the-shelf software inevitably forces organizations to compromise their business logic. We architect bespoke software systems, internal operations portals, high-throughput APIs, and scalable backends crafted specifically around your unique workflow, compliance, and growth objectives.",
-      deliverables: [
-        "Tailored Enterprise Operations & ERP Platforms",
-        "High-Throughput REST & GraphQL API Architectures",
-        "Legacy Codebase Modernization & Refactoring",
-        "Multi-Tenant Database Design & Optimization"
-      ],
-      technologies: ["Node.js", "Python", "Go", "PostgreSQL", "Docker", "Microservices"],
-      outcome: "Eliminates operational bottlenecks and replaces disconnected spreadsheets with a unified system of record."
-    },
-    {
-      id: "web-development",
-      title: "Web Development",
+      id: "website-development",
+      title: "Website Development",
       category: "Digital Experience",
-      shortDesc: "High-performance, search-optimized web platforms built with modern component architectures for speed and conversions.",
+      shortDesc: "High-performance, search-optimized web platforms built with modern component architectures for speed, reliability, and conversions.",
       fullDesc: "We build modern, resilient websites and complex web applications engineered for speed, clean indexing, and seamless customer interactions. Every platform is tailored with modern SSR/SSG architectures, high Core Web Vitals scores, and responsive fidelity across all screen dimensions.",
       deliverables: [
         "Full-Stack Web Applications & Client Portals",
@@ -150,7 +135,7 @@ export const COMPANY = {
     },
     {
       id: "mobile-applications",
-      title: "Mobile App Development",
+      title: "Mobile Application (iOS & Android)",
       category: "Digital Experience",
       shortDesc: "Native and cross-platform iOS & Android applications engineered for fluid 60 FPS performance, offline sync, and security.",
       fullDesc: "Transforming mobile interactions with intuitive iOS and Android applications. From native hardware integrations and biometric authentication to offline-first data caching and clean App Store/Play Store publication, we engineer apps that users rely on daily.",
@@ -165,7 +150,7 @@ export const COMPANY = {
     },
     {
       id: "uiux-design",
-      title: "UI/UX Design & Product Strategy",
+      title: "UI/UX Design",
       category: "Digital Experience",
       shortDesc: "Purposeful digital interfaces engineered through empathetic user research, interactive wireframing, and design systems.",
       fullDesc: "At Tech22Blocks, design is not cosmetic decoration; it is the fundamental bridge between business logic and human intent. We design clean, purposeful digital workflows, scalable component libraries, and interactive prototypes that minimize cognitive load and maximize product adoption.",
@@ -179,68 +164,23 @@ export const COMPANY = {
       outcome: "Translates complex business workflows into intuitive, beautiful experiences that users love."
     },
     {
-      id: "ai-machine-learning",
-      title: "AI & Machine Learning",
-      category: "Intelligence & Advisory",
-      shortDesc: "Predictive models, computer vision, and machine intelligence pipelines integrated into daily business operations.",
-      fullDesc: "Transform raw organizational data into decisive operational advantages. We design and deploy predictive analytics models, automated document processing, computer vision pipelines, and custom machine learning workflows that uncover actionable business patterns.",
-      deliverables: [
-        "Predictive Analytics & Forecasting Models",
-        "Computer Vision & Document OCR Extraction",
-        "Customer Churn & Recommendation Systems",
-        "MLOps, Continuous Training & Pipeline Monitoring"
-      ],
-      technologies: ["Python", "PyTorch", "TensorFlow", "Scikit-Learn", "FastAPI"],
-      outcome: "Automates repetitive decision-making and uncovers predictive insights buried in your data."
-    },
-    {
-      id: "generative-ai",
-      title: "Generative AI & Intelligent Automation",
-      category: "Intelligence & Advisory",
-      shortDesc: "Domain-tailored LLM applications, autonomous voice agents, and agentic workflows that automate complex tasks.",
-      fullDesc: "Leverage cutting-edge generative models without hallucination risks or data leakage. We architect enterprise Retrieval-Augmented Generation (RAG) systems, multi-agent automated workflows, and custom voice interfaces — drawing directly from our hands-on R&D with VoiSage AI.",
-      deliverables: [
-        "Enterprise RAG (Retrieval-Augmented Generation) Systems",
-        "Autonomous Agentic Workflows & Multi-LLM Pipelines",
-        "Real-Time Conversational Voice Interfaces",
-        "Data Privacy & On-Premises Model Inference"
-      ],
-      technologies: ["LangChain", "LlamaIndex", "OpenAI / Anthropic APIs", "Hugging Face", "Vector DBs"],
-      outcome: "Reduces manual knowledge work hours by up to 80% while keeping proprietary company data secure."
-    },
-    {
-      id: "cloud-devops",
-      title: "Cloud Services & DevOps",
+      id: "custom-software",
+      title: "Custom Software",
       category: "Enterprise Systems",
-      shortDesc: "Resilient cloud infrastructure, automated CI/CD pipelines, container orchestration, and 24/7 reliability engineering.",
-      fullDesc: "Build infrastructure that never lets your business down. We design modern cloud-native architectures, containerize microservices, automate build-and-deploy pipelines, and implement proactive observability to achieve zero-downtime releases and cloud cost efficiency.",
+      shortDesc: "Bespoke core systems, enterprise application architectures, and robust business workflows tailored to your operating model.",
+      fullDesc: "Off-the-shelf software inevitably forces organizations to compromise their business logic. We architect bespoke software systems, internal operations portals, high-throughput APIs, and scalable backends crafted specifically around your unique workflow, compliance, and growth objectives.",
       deliverables: [
-        "Cloud Architecture Design & Migration (AWS / GCP / Azure)",
-        "Automated CI/CD Deployment Pipelines",
-        "Docker & Kubernetes Container Orchestration",
-        "Infrastructure as Code (Terraform) & Cloud Cost Audits"
+        "Tailored Enterprise Operations & ERP Platforms",
+        "High-Throughput REST & GraphQL API Architectures",
+        "Legacy Codebase Modernization & Refactoring",
+        "Multi-Tenant Database Design & Optimization"
       ],
-      technologies: ["AWS", "Google Cloud", "Docker", "Kubernetes", "Terraform", "GitHub Actions"],
-      outcome: "Ensures 99.99% system availability, instant rollback capabilities, and optimized monthly cloud spend."
-    },
-    {
-      id: "cybersecurity",
-      title: "Cybersecurity & System Hardening",
-      category: "Enterprise Systems",
-      shortDesc: "Application security assessments, vulnerability remediation, access control auditing, and compliance readiness.",
-      fullDesc: "Protect your intellectual property, client databases, and operational integrity. We perform comprehensive codebase vulnerability audits, API security penetration reviews, role-based access control (RBAC) implementations, and data-at-rest encryption to keep your digital perimeter secure.",
-      deliverables: [
-        "Web & Mobile Application Vulnerability Audits",
-        "API Security Hardening & Zero-Trust Architecture",
-        "Role-Based Access Control (RBAC) & Single Sign-On",
-        "Data Encryption at Rest & In-Transit Verification"
-      ],
-      technologies: ["OWASP Top 10", "OAuth2 / OIDC", "Static Code Analysis", "TLS/SSL Hardening"],
-      outcome: "Safeguards confidential business records, builds customer trust, and fulfills enterprise vendor security audits."
+      technologies: ["Node.js", "Python", "Go", "PostgreSQL", "Docker", "Microservices"],
+      outcome: "Eliminates operational bottlenecks and replaces disconnected spreadsheets with a unified system of record."
     },
     {
       id: "it-consulting",
-      title: "IT Consulting & Technology Advisory",
+      title: "IT Consulting & Advisory",
       category: "Intelligence & Advisory",
       shortDesc: "Pragmatic technical advisory helping business leaders make informed architectural, vendor, and scaling decisions.",
       fullDesc: "Direct, jargon-free technology consulting. We evaluate existing codebases, identify scalability bottlenecks, evaluate build vs. buy trade-offs, and construct actionable engineering roadmaps aligned tightly with your commercial milestones.",
@@ -255,10 +195,10 @@ export const COMPANY = {
     },
     {
       id: "web3",
-      title: "Web3 & Distributed Systems",
+      title: "Web3.0 (Coming Soon)",
       category: "Enterprise Systems",
-      badge: "Emerging Capabilities",
-      shortDesc: "Decentralized architecture research, cryptographic verification, and smart contract integrations.",
+      badge: "Coming Soon",
+      shortDesc: "Decentralized architecture research, cryptographic verification, and next-generation distributed systems.",
       fullDesc: "We provide pragmatic exploration of distributed ledger technology, cryptographic data integrity, and smart contract integration for businesses seeking decentralized transparency and tamper-evident record keeping.",
       deliverables: [
         "Smart Contract Architecture & Security Review",
@@ -411,7 +351,7 @@ export const COMPANY = {
   faqs: [
     {
       question: "What capabilities and services does Tech22Blocks provide?",
-      answer: "Tech22Blocks provides comprehensive end-to-end digital technology solutions across three core pillars: Digital Experience (Web Development, Mobile App Development, UI/UX Design), Enterprise Systems (Custom Software Engineering, Cloud & DevOps, Cybersecurity), and Intelligence & Advisory (AI & Machine Learning, Generative AI & Automation, IT Consulting, Web3)."
+      answer: "Tech22Blocks provides 6 core software services: Website Development, Mobile Application (iOS & Android), UI/UX Design, Custom Software, IT Consulting & Advisory, and Web3.0 (Coming Soon). In addition to client solutions, we develop proprietary technology products including our autonomous voice assistant, VoiSage AI."
     },
     {
       question: "Does Tech22Blocks only work with startups?",

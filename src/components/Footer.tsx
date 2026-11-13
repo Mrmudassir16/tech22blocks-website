@@ -88,20 +88,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Capabilities */}
+          {/* Capabilities — Exactly the 6 Services from Requirements PDF */}
           <div className="space-y-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-100">Capabilities</h3>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-100">Our Services</h3>
             <ul className="space-y-2 text-sm">
               {[
-                { href: '/services#software-development', label: 'Software Development' },
-                { href: '/services#web-development', label: 'Web Platforms' },
-                { href: '/services#mobile-applications', label: 'Mobile Apps (iOS & Android)' },
-                { href: '/services#uiux-design', label: 'UI/UX Design' },
-                { href: '/services#ai-machine-learning', label: 'AI & Machine Learning' },
-                { href: '/services#generative-ai', label: 'Generative AI & Automation' },
-                { href: '/services#cloud-devops', label: 'Cloud & DevOps' },
-                { href: '/services#cybersecurity', label: 'Cybersecurity' },
-                { href: '/services#it-consulting', label: 'IT Consulting' },
+                { href: '/services/#website-development', label: 'Website Development' },
+                { href: '/services/#mobile-applications', label: 'Mobile Apps (iOS & Android)' },
+                { href: '/services/#uiux-design', label: 'UI/UX Design' },
+                { href: '/services/#custom-software', label: 'Custom Software' },
+                { href: '/services/#it-consulting', label: 'IT Consulting & Advisory' },
+                { href: '/services/#web3', label: 'Web3.0 (Coming Soon)' },
               ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="text-slate-400 hover:text-white transition-colors link-hover-underline">
@@ -111,12 +108,12 @@ export default function Footer() {
               ))}
               <li className="pt-1">
                 <Link
-                  href="/products"
+                  href="/products/"
                   className="text-sky-400 hover:text-sky-300 font-medium transition-colors flex items-center gap-1.5"
                 >
                   <span>VoiSage AI</span>
                   <span className="text-[10px] px-1.5 py-0.5 rounded bg-sky-900/60 text-sky-300 border border-sky-700/50">
-                    Product
+                    Proprietary Product
                   </span>
                 </Link>
               </li>
