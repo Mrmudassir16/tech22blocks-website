@@ -81,7 +81,7 @@ export default function LeadershipPreview() {
                   href="/about/"
                   className="inline-flex items-center text-xs font-bold text-[#0a85b1] hover:text-[#0284c7] group transition-colors"
                 >
-                  <span>Read our full story, mission, and 22 principles on About Us</span>
+                  <span>Read our full founding story and company mission on About Us</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>

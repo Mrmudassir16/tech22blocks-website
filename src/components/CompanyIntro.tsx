@@ -51,7 +51,7 @@ export default function CompanyIntro() {
               <div className="space-y-2 pt-2 border-t border-sky-100 text-xs text-slate-700">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0a85b1] flex-shrink-0" />
-                  <span>Real-time voice intelligence with sub-600ms latency</span>
+                  <span>Real-time conversational voice intelligence and call screening</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0a85b1] flex-shrink-0" />
@@ -121,7 +121,7 @@ export default function CompanyIntro() {
         <div className="flex items-center justify-between text-xs text-slate-600 border-t border-slate-200/80 pt-5">
           <span>RRK Software Technologies Private Limited &bull; Warangal, Telangana</span>
           <Link
-            href="/about"
+            href="/about/"
             className="font-bold text-[#0a85b1] hover:underline flex items-center gap-1"
           >
             <span>Learn more about our heritage &amp; founders</span>

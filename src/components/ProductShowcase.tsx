@@ -84,7 +84,7 @@ export default function ProductShowcase() {
                   <p className="text-xs text-slate-400 mt-0.5">Connect directly with our engineering team.</p>
                 </div>
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="inline-flex items-center px-4 py-2.5 rounded-lg text-sm font-semibold text-white bg-[#0a85b1] hover:bg-[#0284c7] transition-all shadow whitespace-nowrap"
                 >
                   <span>Inquire About VoiSage</span>
@@ -256,7 +256,7 @@ export default function ProductShowcase() {
             <div className="p-5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
               <div className="flex items-center space-x-2 text-emerald-400 font-bold text-xs uppercase tracking-wider">
                 <CheckCircle2 className="w-4 h-4" />
-                <span>Sub-600ms Latency Budget</span>
+                <span>Low-Latency Streaming Pipeline</span>
               </div>
               <p className="text-slate-300 text-xs leading-relaxed">
                 End-to-end voice turnaround engineered for near-instant responsiveness, feeling like a natural human conversation.

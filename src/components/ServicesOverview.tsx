@@ -65,7 +65,7 @@ const HOMEPAGE_SERVICES = [
   {
     num: '06',
     id: 'web3',
-    title: 'Web3.0 — Coming Soon',
+    title: 'Web3.0',
     tagline: 'Decentralized architecture and verification.',
     description: 'Pragmatic research and architectural exploration of distributed ledger technology, smart contracts, and cryptographic data verification.',
     technologies: ['Distributed Ledgers', 'Cryptographic Proofs', 'Smart Contracts'],

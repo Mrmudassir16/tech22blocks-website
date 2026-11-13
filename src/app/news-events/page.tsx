@@ -110,7 +110,7 @@ export default function NewsEventsPage() {
                 <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between text-xs text-slate-500 gap-4">
                   <span>Issued by: Office of the Directors (Shivasai Adepu &amp; Rajkumar Adepu)</span>
                   <Link
-                    href="/contact"
+                    href="/contact/"
                     className="text-[#0a85b1] font-semibold hover:underline"
                   >
                     Direct Press or Partner Inquiries &rarr;

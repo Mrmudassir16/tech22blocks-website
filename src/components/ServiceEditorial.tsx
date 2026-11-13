@@ -1,24 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   ArrowRight, 
   Code2, 
   Globe, 
   Smartphone, 
   Layout, 
-  Cpu, 
-  Sparkles, 
-  Cloud, 
-  ShieldCheck, 
   Compass, 
   Layers, 
   CheckCircle2, 
-  Network,
-  Lock,
-  GitBranch,
-  Workflow
+  Lock
 } from 'lucide-react';
-import { COMPANY, ServiceItem } from '@/data/company';
+import { COMPANY } from '@/data/company';
+import { getAssetUrl } from '@/utils/assets';
 
 export default function ServiceEditorial() {
   const { services } = COMPANY;
@@ -37,12 +32,12 @@ export default function ServiceEditorial() {
             End-to-End Technology Capabilities
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-            From website development and native mobile applications to bespoke custom software, UI/UX design, strategic IT consulting, and emerging Web3 technologies &mdash; we engineer practical solutions that solve real business bottlenecks.
+            From modern website platforms and native mobile applications to tailored custom software, intuitive UI/UX design, strategic IT advisory, and emerging Web3 technologies &mdash; we engineer practical solutions that solve real business bottlenecks.
           </p>
         </div>
 
         {/* Alternating Service Showcase */}
-        <div className="space-y-20 lg:space-y-28">
+        <div className="space-y-24 lg:space-y-32">
           {services.map((service, index) => {
             const isReversed = index % 2 === 1;
 
@@ -135,9 +130,9 @@ export default function ServiceEditorial() {
                   </div>
                 </div>
 
-                {/* Creative Visual Composition (Replaces terminal outputs and fake metrics) */}
+                {/* Purposeful Visual Composition */}
                 <div className={`lg:col-span-6 ${isReversed ? 'lg:col-start-1' : ''}`}>
-                  <ServiceCreativeIllustration serviceId={service.id} title={service.title} />
+                  <ServiceCreativeIllustration serviceId={service.id} />
                 </div>
 
               </div>
@@ -150,363 +145,267 @@ export default function ServiceEditorial() {
   );
 }
 
-// Bespoke, service-specific creative visual compositions
-function ServiceCreativeIllustration({ serviceId, title }: { serviceId: string; title: string }) {
+// Purposeful, service-specific visual compositions for the 6 official services
+function ServiceCreativeIllustration({ serviceId }: { serviceId: string }) {
   switch (serviceId) {
-    case 'custom-software':
-    case 'software-development':
-      return (
-        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
-            <div className="flex items-center space-x-2">
-              <Code2 className="w-5 h-5 text-[#0a85b1]" />
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Bespoke Core Architecture</span>
-            </div>
-            <span className="text-[10px] font-mono text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
-              Modular Subsystems
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 text-xs">
-            <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
-              <span className="text-[10px] font-mono font-bold text-[#0a85b1] uppercase">Layer 01 &bull; Ingestion</span>
-              <p className="font-semibold text-slate-900">API Gateway &amp; Auth</p>
-              <p className="text-[11px] text-slate-500">Structured token authentication, tenant isolation, and rate-limiting.</p>
-            </div>
-            <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
-              <span className="text-[10px] font-mono font-bold text-[#0a85b1] uppercase">Layer 02 &bull; Compute</span>
-              <p className="font-semibold text-slate-900">Distributed Business Logic</p>
-              <p className="text-[11px] text-slate-500">Decoupled microservices, event-driven message queues, worker threads.</p>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-900 text-white space-y-2">
-            <div className="flex items-center justify-between text-[11px] font-mono text-sky-400">
-              <span>DATABASE ARCHITECTURE</span>
-              <span className="text-emerald-400 font-bold">RELATIONAL INTEGRITY</span>
-            </div>
-            <p className="text-xs text-slate-300">
-              Robust relational schemas with transactional consistency, continuous audit logging, and automated snapshot backups.
-            </p>
-          </div>
-        </div>
-      );
-
+    
+    // 01. Website Development: Browser Frame UI & Architecture Performance
     case 'website-development':
     case 'web-development':
       return (
-        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
+        <div className="rounded-2xl border border-slate-200 bg-slate-900 text-white shadow-xl overflow-hidden">
+          {/* Browser Chrome Header */}
+          <div className="bg-slate-950 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Globe className="w-5 h-5 text-[#0a85b1]" />
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Modern Web Experience</span>
+              <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
+              <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
+              <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
             </div>
-            <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-              Edge-Optimized
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-[11px] font-mono text-slate-400 max-w-xs truncate">
+              <Lock className="w-3 h-3 text-emerald-400" />
+              <span>https://platform.tech22blocks.in</span>
+            </div>
+            <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
+              SSR &bull; Edge
             </span>
           </div>
 
-          <div className="p-5 rounded-xl bg-white border border-slate-200 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-900">Hybrid Rendering Topology</span>
-              <span className="text-[11px] font-mono text-slate-500">SSR + Static ISR</span>
-            </div>
-            <div className="space-y-2 text-xs text-slate-600">
-              <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-                <span>Critical Path Hydration</span>
-                <span className="font-mono text-slate-800 font-semibold">Optimized Core Web Vitals</span>
+          {/* Browser Content Canvas */}
+          <div className="p-6 space-y-4">
+            {/* Performance Indicators */}
+            <div className="grid grid-cols-3 gap-3">
+              <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/70 text-center space-y-1">
+                <span className="text-xl font-mono font-extrabold text-emerald-400">99</span>
+                <p className="text-[10px] font-mono uppercase text-slate-400">Performance</p>
               </div>
-              <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-                <span>Edge CDN Distribution</span>
-                <span className="font-mono text-slate-800 font-semibold">Fast Global Delivery</span>
+              <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/70 text-center space-y-1">
+                <span className="text-xl font-mono font-extrabold text-sky-400">100</span>
+                <p className="text-[10px] font-mono uppercase text-slate-400">Accessibility</p>
               </div>
-              <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-                <span>Enterprise Semantic Hierarchy</span>
-                <span className="font-mono text-slate-800 font-semibold">Complete Schema.org Coverage</span>
+              <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/70 text-center space-y-1">
+                <span className="text-xl font-mono font-extrabold text-emerald-400">100</span>
+                <p className="text-[10px] font-mono uppercase text-slate-400">SEO / Semantics</p>
               </div>
             </div>
-          </div>
 
-          <div className="p-3 bg-sky-50 rounded-lg border border-sky-100 text-xs text-sky-900 text-center font-medium">
-            Architected for discovery, accessibility (WCAG 2.1 AA), and fluid user transitions.
+            {/* Architecture Topology */}
+            <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/60 space-y-2.5 text-xs">
+              <div className="flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span>HYBRID RENDERING ARCHITECTURE</span>
+                <span className="text-sky-300">NEXT.js + REACT</span>
+              </div>
+              <div className="space-y-1.5 text-slate-300 font-mono text-[11px]">
+                <div className="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+                  <span>Critical Path Hydration</span>
+                  <span className="text-emerald-400 font-semibold">Instant FCP</span>
+                </div>
+                <div className="p-2 rounded bg-slate-900/80 border border-slate-800 flex justify-between">
+                  <span>Incremental Static Regeneration</span>
+                  <span className="text-sky-400 font-semibold">Static Cache</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-[11px] text-slate-400 text-center font-mono">
+              Engineered for responsive fluidity across mobile, tablet, and desktop viewports.
+            </div>
           </div>
         </div>
       );
 
+    // 02. Mobile Application Development: Authentic Device Showcase
     case 'mobile-applications':
       return (
-        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
-            <div className="flex items-center space-x-2">
-              <Smartphone className="w-5 h-5 text-[#0a85b1]" />
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Unified Mobile Engine</span>
+        <div className="rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden group">
+          <div className="relative aspect-[16/10] w-full bg-slate-950 overflow-hidden">
+            <Image
+              src={getAssetUrl('/images/mobile-apps-showcase.jpg')}
+              alt="Native mobile application development for iOS and Android"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-center group-hover:scale-102 transition-transform duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+            
+            {/* Floating Platform Badges */}
+            <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2 text-white">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-bold bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
+                  Apple iOS Native
+                </span>
+                <span className="text-xs font-mono font-bold bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
+                  Google Android
+                </span>
+              </div>
+              <span className="text-[11px] font-mono text-emerald-400 bg-slate-950/80 px-2 py-0.5 rounded border border-emerald-800">
+                Offline-First Sync
+              </span>
             </div>
-            <span className="text-[10px] font-mono text-sky-800 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">
-              iOS &bull; Android
-            </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 text-xs">
-            <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Apple Platform</span>
-              <p className="font-bold text-slate-900">iOS Native Bridge</p>
-              <p className="text-[11px] text-slate-600 leading-snug">Apple Keychain security, Haptic feedback, APNs push channels.</p>
+          <div className="p-6 bg-slate-50 border-t border-slate-200 space-y-3">
+            <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
+                <p className="font-bold text-slate-900">Hardware Integration</p>
+                <p className="text-[11px] text-slate-600">Biometrics, Secure Enclave, APNs &amp; FCM Push notifications.</p>
+              </div>
+              <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
+                <p className="font-bold text-slate-900">Performance Budget</p>
+                <p className="text-[11px] text-slate-600">60 FPS native rendering with encrypted local SQLite persistence.</p>
+              </div>
             </div>
-            <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Google Platform</span>
-              <p className="font-bold text-slate-900">Android Runtime</p>
-              <p className="text-[11px] text-slate-600 leading-snug">Material Design 3, background sync jobs, biometric authentication.</p>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-900 text-white space-y-2">
-            <div className="flex items-center justify-between text-[11px] font-mono text-sky-400">
-              <span>LOCAL-FIRST PERSISTENCE</span>
-              <span className="text-emerald-400">OFFLINE READY</span>
-            </div>
-            <p className="text-xs text-slate-300">
-              Encrypted local SQLite database automatically reconciles with backend servers whenever device connectivity is restored.
-            </p>
           </div>
         </div>
       );
 
+    // 03. UI/UX Design: Figma-Inspired Design System Studio
     case 'uiux-design':
       return (
-        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
+        <div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200">
             <div className="flex items-center space-x-2">
               <Layout className="w-5 h-5 text-[#0a85b1]" />
               <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Design System Architecture</span>
             </div>
-            <span className="text-[10px] font-mono text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+            <span className="text-[10px] font-mono text-slate-500 bg-slate-50 px-2.5 py-0.5 rounded-full border border-slate-200">
               Tokens &bull; Components
             </span>
           </div>
 
-          <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-3">
-            <span className="text-xs font-bold text-slate-900 block">System Foundations</span>
+          {/* Tokens Grid */}
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-3">
+            <span className="text-xs font-bold text-slate-900 block">Foundational Design Tokens</span>
             <div className="grid grid-cols-3 gap-2 text-center text-xs">
-              <div className="p-2.5 rounded-lg bg-sky-50 border border-sky-100">
+              <div className="p-3 rounded-lg bg-white border border-slate-200 shadow-2xs space-y-0.5">
                 <span className="block font-bold text-[#0a85b1]">Typography</span>
-                <span className="text-[10px] text-slate-500">Fluid Scales</span>
+                <span className="text-[10px] text-slate-500 font-mono">Major Third (1.25)</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
-                <span className="block font-bold text-slate-800">Color Matrix</span>
-                <span className="text-[10px] text-slate-500">WCAG 2.1 AA</span>
+              <div className="p-3 rounded-lg bg-white border border-slate-200 shadow-2xs space-y-0.5">
+                <span className="block font-bold text-slate-900">Color Palette</span>
+                <span className="text-[10px] text-slate-500 font-mono">WCAG AAA Contrast</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-200">
-                <span className="block font-bold text-slate-800">Spacing 8pt</span>
-                <span className="text-[10px] text-slate-500">Harmonic Grid</span>
+              <div className="p-3 rounded-lg bg-white border border-slate-200 shadow-2xs space-y-0.5">
+                <span className="block font-bold text-slate-900">8pt Spatial Grid</span>
+                <span className="text-[10px] text-slate-500 font-mono">Harmonic Scale</span>
               </div>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5 text-xs text-slate-700">
-            <span className="font-semibold text-slate-900 block">Empathetic UX Research:</span>
-            <p className="text-[11px] text-slate-600 leading-relaxed">
-              Every workflow undergoes wireframing, clickable prototype verification, and user friction testing to eliminate unnecessary steps.
-            </p>
-          </div>
-        </div>
-      );
-
-    case 'ai-machine-learning':
-      return (
-        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
-            <div className="flex items-center space-x-2">
-              <Cpu className="w-5 h-5 text-[#0a85b1]" />
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Predictive Machine Intelligence</span>
-            </div>
-            <span className="text-[10px] font-mono text-sky-800 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">
-              MLOps Pipeline
-            </span>
-          </div>
-
-          <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-3">
-            <div className="flex items-center justify-between text-xs">
-              <span className="font-bold text-slate-900">Data Transformation Pipeline</span>
-              <span className="font-mono text-slate-500 text-[10px]">Continuous Training</span>
-            </div>
-            <div className="space-y-1.5 text-xs text-slate-600">
-              <div className="p-2 bg-slate-50 rounded flex justify-between items-center">
-                <span>1. Feature Extraction &amp; Cleaning</span>
-                <span className="text-[10px] font-mono text-[#0a85b1]">Automated</span>
+          {/* Interactive Component States Preview */}
+          <div className="space-y-2">
+            <span className="text-xs font-bold text-slate-900 block">Component States &amp; User Journeys</span>
+            <div className="grid grid-cols-3 gap-2 text-center text-xs font-mono">
+              <div className="p-2.5 rounded-lg bg-[#0a85b1] text-white font-semibold">
+                Default
               </div>
-              <div className="p-2 bg-slate-50 rounded flex justify-between items-center">
-                <span>2. Model Training &amp; Validation</span>
-                <span className="text-[10px] font-mono text-[#0a85b1]">Cross-Validated</span>
+              <div className="p-2.5 rounded-lg bg-[#0284c7] text-white font-semibold shadow-xs">
+                Hover
               </div>
-              <div className="p-2 bg-slate-50 rounded flex justify-between items-center">
-                <span>3. Real-Time Inference Gateway</span>
-                <span className="text-[10px] font-mono text-[#0a85b1]">Low Latency</span>
+              <div className="p-2.5 rounded-lg bg-slate-100 text-slate-400 border border-slate-200">
+                Disabled
               </div>
             </div>
           </div>
 
           <div className="p-3 bg-sky-50 rounded-lg border border-sky-100 text-xs text-sky-900 text-center font-medium">
-            Trained on your proprietary domain data with strict intellectual property isolation.
+            Clickable prototypes, interactive user workflows, and developer-ready Figma tokens.
           </div>
         </div>
       );
 
-    case 'generative-ai':
+    // 04. Custom Software Development: Authentic Enterprise Platform Visual
+    case 'custom-software':
+    case 'software-development':
       return (
-        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
-            <div className="flex items-center space-x-2">
-              <Sparkles className="w-5 h-5 text-[#0a85b1]" />
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Agentic Automation &amp; RAG</span>
-            </div>
-            <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-              VoiSage Heritage
-            </span>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-900 text-white space-y-3">
-            <div className="flex items-center justify-between text-xs font-mono text-sky-400">
-              <span>MULTI-AGENT ORCHESTRATION</span>
-              <span>RAG ACCURATE</span>
-            </div>
-            <div className="space-y-2 text-xs text-slate-300">
-              <div className="p-2.5 rounded bg-slate-800/80 flex items-center justify-between">
-                <span>Vector Semantic Search</span>
-                <span className="text-sky-300 font-mono text-[11px]">Domain Context</span>
-              </div>
-              <div className="p-2.5 rounded bg-slate-800/80 flex items-center justify-between">
-                <span>Conversational Reasoning Engine</span>
-                <span className="text-sky-300 font-mono text-[11px]">Zero Hallucination Gate</span>
-              </div>
-              <div className="p-2.5 rounded bg-slate-800/80 flex items-center justify-between">
-                <span>Action &amp; Webhook Dispatch</span>
-                <span className="text-emerald-400 font-mono text-[11px]">Automated</span>
-              </div>
+        <div className="rounded-2xl border border-slate-200 bg-white shadow-xl overflow-hidden group">
+          <div className="relative aspect-[16/10] w-full bg-slate-950 overflow-hidden">
+            <Image
+              src={getAssetUrl('/images/enterprise-platform-mockup.jpg')}
+              alt="Custom software and enterprise core systems architecture"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover object-center group-hover:scale-102 transition-transform duration-300"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+            
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+              <span className="text-xs font-mono font-bold bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/30">
+                Bespoke Core Platform
+              </span>
+              <span className="text-[11px] font-mono text-emerald-400 bg-slate-950/80 px-2 py-0.5 rounded border border-emerald-800">
+                Transactional Integrity
+              </span>
             </div>
           </div>
 
-          <div className="p-3 bg-white rounded-lg border border-slate-200 text-xs text-slate-700 text-center">
-            Incorporates our proven sub-600ms latency pipelines engineered for VoiSage AI.
+          <div className="p-6 bg-slate-50 border-t border-slate-200 space-y-3">
+            <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
+                <span className="text-[10px] font-mono text-[#0a85b1] font-bold uppercase">Layer 01 &bull; API &amp; Auth</span>
+                <p className="font-semibold text-slate-900">Tenant Isolation &amp; RBAC</p>
+                <p className="text-[11px] text-slate-600">Granular role-based permissions and high-throughput REST/GraphQL endpoints.</p>
+              </div>
+              <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1">
+                <span className="text-[10px] font-mono text-[#0a85b1] font-bold uppercase">Layer 02 &bull; Compute</span>
+                <p className="font-semibold text-slate-900">Decoupled Microservices</p>
+                <p className="text-[11px] text-slate-600">Event-driven message queues, worker threads, and PostgreSQL ACID persistence.</p>
+              </div>
+            </div>
           </div>
         </div>
       );
 
-    case 'cloud-devops':
-      return (
-        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
-            <div className="flex items-center space-x-2">
-              <Cloud className="w-5 h-5 text-[#0a85b1]" />
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Cloud Infrastructure &amp; DevOps</span>
-            </div>
-            <span className="text-[10px] font-mono text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
-              IaC Terraform
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3 text-xs">
-            <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1">
-              <span className="text-[10px] font-mono font-bold text-[#0a85b1] uppercase">Orchestration</span>
-              <p className="font-bold text-slate-900">Kubernetes &bull; Docker</p>
-              <p className="text-[11px] text-slate-500">Automated pod scaling, self-healing containers, rolling deployments.</p>
-            </div>
-            <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1">
-              <span className="text-[10px] font-mono font-bold text-[#0a85b1] uppercase">Delivery</span>
-              <p className="font-bold text-slate-900">Automated CI/CD</p>
-              <p className="text-[11px] text-slate-500">Linting, unit testing, image builds, and zero-downtime production promotions.</p>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-900 text-white space-y-2">
-            <div className="flex items-center justify-between text-[11px] font-mono text-sky-400">
-              <span>HIGH AVAILABILITY TOPOLOGY</span>
-              <span className="text-emerald-400">99.99% SLA TARGET</span>
-            </div>
-            <p className="text-xs text-slate-300">
-              Multi-region failover, load balancing, real-time APM telemetry, and structured log aggregation.
-            </p>
-          </div>
-        </div>
-      );
-
-    case 'cybersecurity':
-      return (
-        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
-            <div className="flex items-center space-x-2">
-              <ShieldCheck className="w-5 h-5 text-[#0a85b1]" />
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Perimeter &amp; Code Hardening</span>
-            </div>
-            <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-              Zero-Trust Core
-            </span>
-          </div>
-
-          <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2.5 text-xs">
-            <span className="font-bold text-slate-900 block">Security Verification Dimensions</span>
-            <div className="space-y-1.5">
-              <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-                <span>OWASP Top 10 Vulnerability Sweep</span>
-                <span className="text-emerald-600 font-semibold font-mono text-[11px]">Hardened</span>
-              </div>
-              <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-                <span>Role-Based Access Control (RBAC)</span>
-                <span className="text-emerald-600 font-semibold font-mono text-[11px]">Enforced</span>
-              </div>
-              <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-                <span>AES-256 Rest &amp; TLS 1.3 Transit Encryption</span>
-                <span className="text-emerald-600 font-semibold font-mono text-[11px]">Active</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="p-3 bg-sky-50 rounded-lg border border-sky-100 text-xs text-sky-900 text-center font-medium">
-            Prepares your software to clear rigorous enterprise vendor security diligence.
-          </div>
-        </div>
-      );
-
+    // 05. IT Consulting & Advisory: Strategic Architecture Evaluation Matrix
     case 'it-consulting':
       return (
-        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
+        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200">
             <div className="flex items-center space-x-2">
               <Compass className="w-5 h-5 text-[#0a85b1]" />
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Strategic Technical Advisory</span>
+              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Architecture Due Diligence</span>
             </div>
             <span className="text-[10px] font-mono text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
-              Fractional CTO
+              Audit &amp; Strategy
             </span>
           </div>
 
           <div className="grid grid-cols-2 gap-3 text-xs">
-            <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1">
-              <span className="text-[10px] font-mono font-bold text-[#0a85b1] uppercase">Assessment</span>
-              <p className="font-bold text-slate-900">Codebase &amp; Debt Audit</p>
-              <p className="text-[11px] text-slate-500">Identification of architectural vulnerabilities, memory leaks, and scaling risks.</p>
+            <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="font-bold text-slate-900">Code Health</span>
+                <span className="text-emerald-600 font-mono font-bold">Grade A</span>
+              </div>
+              <p className="text-[11px] text-slate-500">Comprehensive static code analysis, vulnerability sweeps, and memory leak profiling.</p>
             </div>
-            <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1">
-              <span className="text-[10px] font-mono font-bold text-[#0a85b1] uppercase">Planning</span>
-              <p className="font-bold text-slate-900">Roadmap Alignment</p>
-              <p className="text-[11px] text-slate-500">Milestone scoping, vendor trade-off analysis, and cloud cost rationalization.</p>
+
+            <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
+              <div className="flex items-center justify-between text-[11px]">
+                <span className="font-bold text-slate-900">Technical Debt</span>
+                <span className="text-[#0a85b1] font-mono font-bold">Remediated</span>
+              </div>
+              <p className="text-[11px] text-slate-500">Identification of legacy bottlenecks, dependency risks, and refactoring priorities.</p>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900 text-white space-y-1 text-xs">
-            <span className="text-sky-400 font-mono text-[11px] uppercase tracking-wider block font-bold">
-              Executive Engineering Stewardship
-            </span>
-            <p className="text-slate-300">
-              Direct advisory from CEO Shivasai Adepu on selecting technologies that sustain long-term business viability.
-            </p>
+          <div className="p-4 rounded-xl bg-slate-900 text-white space-y-2 text-xs">
+            <div className="flex items-center justify-between text-[11px] font-mono text-sky-400">
+              <span>ENGAGEMENT ROADMAP</span>
+              <span className="text-emerald-400 font-semibold">FOUNDER DIRECT</span>
+            </div>
+            <div className="grid grid-cols-3 gap-2 text-center text-[10px] font-mono pt-1">
+              <div className="p-1.5 rounded bg-slate-800 border border-slate-700">1. Audit</div>
+              <div className="p-1.5 rounded bg-slate-800 border border-slate-700">2. Architecture</div>
+              <div className="p-1.5 rounded bg-slate-800 border border-slate-700">3. Roadmap</div>
+            </div>
           </div>
         </div>
       );
 
+    // 06. Web3.0: Cryptographic Verification R&D
     case 'web3':
       return (
-        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
+        <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-white p-7 shadow-sm space-y-5">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200">
             <div className="flex items-center space-x-2">
               <Layers className="w-5 h-5 text-[#0a85b1]" />
               <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Distributed Ledger Architecture</span>
@@ -523,12 +422,12 @@ function ServiceCreativeIllustration({ serviceId, title }: { serviceId: string; 
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900 text-white space-y-1 text-xs">
+          <div className="p-4 rounded-xl bg-slate-900 text-white space-y-1.5 text-xs">
             <span className="text-amber-400 font-mono text-[11px] uppercase tracking-wider block font-bold">
               Research &amp; Feasibility Notice
             </span>
-            <p className="text-slate-300">
-              Web3.0 capabilities remain under internal exploratory research and will be scheduled for client deployment as standards and industry adoption mature.
+            <p className="text-slate-300 text-[11px] leading-relaxed">
+              Web3.0 capabilities remain under internal exploratory research and will be scheduled for client deployment as standards, regulatory guidelines, and industry adoption mature.
             </p>
           </div>
         </div>

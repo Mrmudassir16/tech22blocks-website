@@ -130,7 +130,7 @@ export default function FeaturedProduct() {
 
                 {/* Metrics strip */}
                 <div className="flex items-center gap-2 flex-wrap pt-1">
-                  {['< 600ms Latency', 'LLM Integration', 'WhatsApp Dispatch'].map((m) => (
+                  {['Streaming Voice Engine', 'LLM Classification', 'WhatsApp Dispatch'].map((m) => (
                     <span
                       key={m}
                       className="text-[10px] font-mono px-2 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-400"
