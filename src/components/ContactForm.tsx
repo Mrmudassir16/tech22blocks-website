@@ -135,16 +135,13 @@ export default function ContactForm() {
               onChange={(e) => setFormData({ ...formData, service: e.target.value })}
               className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-[#0a85b1] focus:border-transparent transition-all"
             >
-              <option value="Software Development">Software Development (Custom Core Systems)</option>
-              <option value="Web Development">Web Platforms &amp; Client Portals</option>
-              <option value="Mobile Applications">Mobile App Development (iOS &amp; Android)</option>
-              <option value="UI/UX Design">UI/UX Design &amp; Product Systems</option>
-              <option value="AI & Machine Learning">AI &amp; Machine Learning Engineering</option>
-              <option value="Generative AI & Automation">Generative AI &amp; Intelligent Automation</option>
-              <option value="Cloud Services & DevOps">Cloud Services &amp; DevOps Engineering</option>
-              <option value="Cybersecurity">Cybersecurity &amp; System Hardening</option>
-              <option value="IT Consulting & Advisory">IT Consulting &amp; Technical Advisory</option>
-              <option value="VoiSage AI Product">VoiSage AI (Proprietary Voice System)</option>
+              <option value="Website Development">Website Development</option>
+              <option value="Mobile Applications">Mobile Application (iOS &amp; Android)</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Custom Software">Custom Software</option>
+              <option value="IT Consulting & Advisory">IT Consulting &amp; Advisory</option>
+              <option value="Web3.0">Web3.0 (Coming Soon)</option>
+              <option value="VoiSage AI Product">VoiSage AI (Proprietary Voice Product)</option>
               <option value="Other">Other Custom Engagement</option>
             </select>
           </div>
