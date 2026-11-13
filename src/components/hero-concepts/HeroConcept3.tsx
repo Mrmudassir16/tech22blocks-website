@@ -15,19 +15,26 @@ import {
   Layers, 
   Activity,
   Zap,
-  Sliders
+  Sliders,
+  Server,
+  Database,
+  Radio,
+  ArrowUpRight
 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 
-type BlueprintTab = 'all' | 'voisage' | 'enterprise';
+type ArchitectureLayer = 'all' | 'frontend' | 'voisage' | 'backend';
 
 export default function HeroConcept3() {
-  const [activeTab, setActiveTab] = useState<BlueprintTab>('all');
+  const [activeLayer, setActiveLayer] = useState<ArchitectureLayer>('all');
 
   return (
-    <section className="relative bg-[#061423] text-white overflow-hidden border-b border-slate-800">
+    <section 
+      className="relative bg-[#030e1a] text-white overflow-hidden border-b border-slate-800"
+      aria-label="Hero Section - Concept C: Distinctive Digital Engineering Visual Composition"
+    >
       
-      {/* 1. Technical CAD / Blueprint Grid Background */}
+      {/* 1. Technical CAD Blueprint Grid Background */}
       <div 
         className="absolute inset-0 opacity-[0.06] pointer-events-none"
         style={{
@@ -40,42 +47,42 @@ export default function HeroConcept3() {
         }}
       />
 
-      {/* Blueprint Ambient Blue Lighting */}
+      {/* Blueprint Ambient Blue Glow */}
       <div 
         className="absolute top-1/4 left-1/3 -translate-x-1/2 w-[700px] h-[400px] bg-[#0a85b1]/15 rounded-full blur-[140px] pointer-events-none" 
       />
 
       {/* 2. Top Blueprint Telemetry HUD Bar */}
-      <div className="border-b border-sky-900/40 bg-[#040e1a]/80 backdrop-blur-md">
+      <div className="border-b border-sky-900/40 bg-[#020b14]/90 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-slate-400">
           <div className="flex items-center gap-3">
             <span className="px-2 py-0.5 rounded bg-sky-950 border border-sky-800 text-sky-300 font-bold uppercase tracking-wider">
-              Concept 03 &bull; Architectural Blueprint Matrix
+              Concept C &bull; Digital Engineering Visual Composition
             </span>
             <span className="hidden sm:inline text-slate-600">|</span>
-            <span className="hidden sm:inline text-slate-300">SYSTEM: TECH22-PROD-CLUSTER</span>
+            <span className="hidden sm:inline text-slate-300">CLUSTER: TECH22-PROD-SYSTEMS</span>
           </div>
           <div className="flex items-center gap-4 text-slate-400">
             <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              EDGE ROUTING ACTIVE
+              MULTI-TIER TOPOLOGY
             </span>
             <span className="hidden sm:inline text-slate-600">|</span>
-            <span className="hidden sm:inline text-sky-300 font-mono">LATENCY &lt; 25MS</span>
+            <span className="hidden sm:inline text-sky-300 font-mono">LATENCY &lt; 20MS</span>
           </div>
         </div>
       </div>
 
       {/* 3. Main Hero Blueprint Canvas */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
-          {/* Left Column: Command Authority & Editorial Positioning */}
+          {/* Left Column: Command Authority & Copy */}
           <div className="lg:col-span-6 space-y-7">
             
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-950/70 border border-sky-700/50 text-sky-300 text-xs font-mono">
               <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-              <span>{COMPANY.legalName} &bull; Dual Business Model</span>
+              <span>{COMPANY.legalName} &bull; Dual Capability</span>
             </div>
 
             <div className="space-y-4">
@@ -93,24 +100,24 @@ export default function HeroConcept3() {
             </div>
 
             <p className="text-base text-slate-300 leading-relaxed font-light">
-              Tech22Blocks operates across two synchronized vectors: our own in-house voice AI engineering (<strong className="text-white font-semibold">VoiSage AI</strong>) and high-throughput custom software systems built for organizations requiring rigorous craftsmanship and zero fluff.
+              We design, build, and operate resilient digital systems. From our in-house voice AI platform (<strong className="text-white font-semibold">VoiSage AI</strong>) to mission-critical custom enterprise software, we engineer production code that drives real business performance.
             </p>
 
-            {/* CTAs */}
+            {/* Standardized CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold text-white bg-[#0a85b1] hover:bg-[#0284c7] rounded-lg shadow-lg shadow-[#0a85b1]/30 transition-all duration-200 group"
+                href="/contact/"
+                className="inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold text-white bg-[#0a85b1] hover:bg-[#0284c7] rounded-xl shadow-lg shadow-[#0a85b1]/30 transition-all duration-200 group"
               >
-                <span>Deploy With Tech22Blocks</span>
+                <span>Discuss Your Project</span>
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
               </Link>
 
               <Link
-                href="/services"
-                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-slate-200 bg-slate-900/90 hover:bg-slate-800 rounded-lg border border-slate-700 transition-all duration-200"
+                href="/services/"
+                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-slate-200 bg-slate-900/90 hover:bg-slate-800 rounded-xl border border-slate-700 transition-all duration-200"
               >
-                <span>View Architecture</span>
+                <span>Explore Our Capabilities</span>
               </Link>
             </div>
 
@@ -132,114 +139,136 @@ export default function HeroConcept3() {
 
           </div>
 
-          {/* Right Column: Interactive Blueprint Matrix Console */}
+          {/* Right Column: Distinctive Digital Engineering Visual Composition */}
           <div className="lg:col-span-6">
-            <div className="rounded-2xl border border-sky-800/60 bg-[#07192b]/95 p-5 shadow-2xl backdrop-blur-md space-y-4">
+            <div className="rounded-2xl border border-sky-800/60 bg-[#051829]/90 p-5 sm:p-6 shadow-2xl backdrop-blur-md space-y-5">
               
-              {/* Matrix Interactive Controls */}
-              <div className="flex items-center justify-between pb-3 border-b border-sky-900/50">
+              {/* Header with Interactive Filter Tabs */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-sky-900/50 gap-3">
                 <div className="flex items-center gap-2">
                   <Sliders className="w-4 h-4 text-sky-400" />
                   <span className="text-xs font-mono font-bold tracking-wider uppercase text-white">
-                    System Architecture Matrix
+                    System Architecture Topology
                   </span>
                 </div>
                 
-                {/* Mode Selector */}
-                <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800 text-[11px] font-mono">
-                  <button
-                    onClick={() => setActiveTab('all')}
-                    className={`px-2 py-0.5 rounded transition-colors ${activeTab === 'all' ? 'bg-[#0a85b1] text-white font-bold' : 'text-slate-400 hover:text-white'}`}
-                  >
-                    All
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('voisage')}
-                    className={`px-2 py-0.5 rounded transition-colors ${activeTab === 'voisage' ? 'bg-[#0a85b1] text-white font-bold' : 'text-slate-400 hover:text-white'}`}
-                  >
-                    VoiSage AI
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('enterprise')}
-                    className={`px-2 py-0.5 rounded transition-colors ${activeTab === 'enterprise' ? 'bg-[#0a85b1] text-white font-bold' : 'text-slate-400 hover:text-white'}`}
-                  >
-                    Enterprise
-                  </button>
+                {/* Layer Filters */}
+                <div className="flex items-center gap-1 bg-slate-950/80 p-1 rounded-lg border border-slate-800 text-[11px] font-mono">
+                  {(['all', 'frontend', 'voisage', 'backend'] as ArchitectureLayer[]).map((layer) => (
+                    <button
+                      key={layer}
+                      onClick={() => setActiveLayer(layer)}
+                      className={`px-2.5 py-1 rounded-md transition-colors capitalize ${
+                        activeLayer === layer
+                          ? 'bg-[#0a85b1] text-white font-semibold'
+                          : 'text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      {layer === 'all' ? 'Full Stack' : layer === 'voisage' ? 'VoiSage AI' : layer}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              {/* Blueprint Dynamic Nodes */}
-              <div className="space-y-3">
+              {/* Topology Layers Display */}
+              <div className="space-y-3 font-mono text-xs">
                 
-                {/* Node 1: Client Delivery Tier */}
-                <div className={`p-3.5 rounded-xl border transition-all ${activeTab === 'enterprise' || activeTab === 'all' ? 'border-sky-500/50 bg-sky-950/40' : 'border-slate-800/60 bg-slate-900/30 opacity-60'}`}>
-                  <div className="flex items-center justify-between text-xs mb-1.5">
-                    <span className="font-mono text-sky-400 font-bold">01 // CLIENT APPLICATIONS</span>
-                    <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">ACTIVE</span>
+                {/* Layer 1: Client Experience (Web & Mobile) */}
+                <div className={`p-4 rounded-xl border transition-all duration-200 ${
+                  activeLayer === 'all' || activeLayer === 'frontend'
+                    ? 'bg-slate-900/90 border-sky-500/50 shadow-md'
+                    : 'bg-slate-900/30 border-slate-800/40 opacity-40'
+                }`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2 text-sky-300 font-bold">
+                      <Globe className="w-4 h-4 text-sky-400" />
+                      <span>01. Client Experience Layer</span>
+                    </div>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-sky-950 text-sky-400 border border-sky-800">
+                      Edge SSR &bull; Native 60 FPS
+                    </span>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div className="p-2 rounded bg-slate-900/90 border border-slate-800 flex items-center gap-2">
-                      <Globe className="w-3.5 h-3.5 text-sky-400" />
-                      <span className="text-slate-200 truncate">Enterprise Web (Next.js)</span>
-                    </div>
-                    <div className="p-2 rounded bg-slate-900/90 border border-slate-800 flex items-center gap-2">
-                      <Smartphone className="w-3.5 h-3.5 text-sky-400" />
-                      <span className="text-slate-200 truncate">iOS &bull; Android &bull; Flutter</span>
-                    </div>
+                  <p className="text-[11px] text-slate-300 leading-relaxed font-sans mb-2">
+                    Next.js full-stack web platforms and cross-platform React Native / Flutter apps with offline sync.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 text-[10px] text-slate-400">
+                    <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Next.js 14</span>
+                    <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">React Native</span>
+                    <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">TypeScript</span>
+                    <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Tailwind</span>
                   </div>
                 </div>
 
-                {/* Node 2: Dual Division Engine (VoiSage AI vs Custom Core) */}
-                <div className={`p-3.5 rounded-xl border transition-all ${activeTab === 'voisage' || activeTab === 'all' ? 'border-[#0a85b1] bg-[#0a85b1]/15 shadow-lg shadow-[#0a85b1]/10' : 'border-slate-800/60 bg-slate-900/30 opacity-60'}`}>
-                  <div className="flex items-center justify-between text-xs mb-1.5">
-                    <span className="font-mono text-sky-300 font-bold">02 // DUAL INTELLIGENCE CORE</span>
-                    <span className="text-[10px] font-mono text-sky-300 bg-sky-950 px-2 py-0.5 rounded border border-sky-800">&lt; 600MS VOICE</span>
+                {/* Connector Beam */}
+                <div className="flex justify-center -my-1">
+                  <div className="w-0.5 h-3 bg-sky-500/40" />
+                </div>
+
+                {/* Layer 2: Intelligence & Voice Engine (VoiSage AI) */}
+                <div className={`p-4 rounded-xl border transition-all duration-200 ${
+                  activeLayer === 'all' || activeLayer === 'voisage'
+                    ? 'bg-gradient-to-r from-sky-950/80 via-slate-900 to-sky-950/80 border-sky-400/60 shadow-lg shadow-sky-950/50'
+                    : 'bg-slate-900/30 border-slate-800/40 opacity-40'
+                }`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2 text-white font-bold">
+                      <Radio className="w-4 h-4 text-sky-400 animate-pulse" />
+                      <span className="text-sky-300">02. Voice Intelligence Engine</span>
+                    </div>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 font-bold">
+                      &lt; 600ms Latency
+                    </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                    <div className="p-2.5 rounded bg-slate-900/90 border border-slate-800">
-                      <p className="font-semibold text-white flex items-center gap-1.5 mb-0.5">
-                        <Sparkles className="w-3 h-3 text-sky-400" />
-                        VoiSage AI Pipeline
-                      </p>
-                      <p className="text-[11px] text-slate-400">Autonomous call triage, ASR, LLM synthesis, WhatsApp summaries.</p>
-                    </div>
-                    <div className="p-2.5 rounded bg-slate-900/90 border border-slate-800">
-                      <p className="font-semibold text-white flex items-center gap-1.5 mb-0.5">
-                        <Cpu className="w-3 h-3 text-sky-400" />
-                        Custom Microservices
-                      </p>
-                      <p className="text-[11px] text-slate-400">Secure gRPC / REST APIs, event brokers, and workflow engines.</p>
-                    </div>
+                  <p className="text-[11px] text-slate-300 leading-relaxed font-sans mb-2">
+                    Autonomous voice screening system (VoiSage AI) processing caller verification, intent extraction, and WhatsApp summaries.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 text-[10px] text-slate-300">
+                    <span className="px-2 py-0.5 rounded bg-sky-900/50 border border-sky-700 text-sky-200">Real-Time ASR</span>
+                    <span className="px-2 py-0.5 rounded bg-sky-900/50 border border-sky-700 text-sky-200">LLM Intent</span>
+                    <span className="px-2 py-0.5 rounded bg-sky-900/50 border border-sky-700 text-sky-200">Automated Dispatch</span>
                   </div>
                 </div>
 
-                {/* Node 3: Cloud & Persistence Infrastructure */}
-                <div className="p-3.5 rounded-xl border border-sky-900/40 bg-slate-900/60 text-xs space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-slate-400 font-bold">03 // PERSISTENCE &amp; DEPLOYMENT</span>
-                    <span className="text-[10px] font-mono text-slate-400">22/22 TESTS PASSED</span>
+                {/* Connector Beam */}
+                <div className="flex justify-center -my-1">
+                  <div className="w-0.5 h-3 bg-sky-500/40" />
+                </div>
+
+                {/* Layer 3: Enterprise Backend & Cloud Infrastructure */}
+                <div className={`p-4 rounded-xl border transition-all duration-200 ${
+                  activeLayer === 'all' || activeLayer === 'backend'
+                    ? 'bg-slate-900/90 border-sky-500/50 shadow-md'
+                    : 'bg-slate-900/30 border-slate-800/40 opacity-40'
+                }`}>
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2 text-sky-300 font-bold">
+                      <Server className="w-4 h-4 text-sky-400" />
+                      <span>03. Core Software &amp; Cloud Layer</span>
+                    </div>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-sky-950 text-sky-400 border border-sky-800">
+                      High-Throughput APIs
+                    </span>
                   </div>
-                  <div className="flex flex-wrap gap-2 text-[11px] font-mono text-slate-300">
-                    <span className="px-2 py-1 rounded bg-slate-800/80 border border-slate-700 flex items-center gap-1">
-                      <Cloud className="w-3 h-3 text-sky-400" />
-                      Multi-Cloud Edge
-                    </span>
-                    <span className="px-2 py-1 rounded bg-slate-800/80 border border-slate-700 flex items-center gap-1">
-                      <Layers className="w-3 h-3 text-sky-400" />
-                      ACID PostgreSQL + Vector DB
-                    </span>
-                    <span className="px-2 py-1 rounded bg-slate-800/80 border border-slate-700 text-emerald-400">
-                      Zero-Lock-in Git
-                    </span>
+                  <p className="text-[11px] text-slate-300 leading-relaxed font-sans mb-2">
+                    Bespoke backend architectures, microservices, secure relational databases, and CI/CD automation pipelines.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 text-[10px] text-slate-400">
+                    <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Node.js</span>
+                    <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Python</span>
+                    <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">PostgreSQL</span>
+                    <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700">Docker</span>
                   </div>
                 </div>
 
               </div>
 
-              {/* Terminal Footnote */}
-              <div className="p-2 rounded bg-slate-950 border border-slate-800 font-mono text-[10px] text-slate-400 flex items-center justify-between">
-                <span>$ tech22 status --architecture</span>
-                <span className="text-emerald-400">ALL 3 NODES HEALTHY (100% OPERATIONAL)</span>
+              {/* Topology Footer Stats */}
+              <div className="pt-3 border-t border-sky-900/50 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span>Architecture Status:</span>
+                <span className="text-emerald-400 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  Verified Scalable &bull; 99.9% Uptime Target
+                </span>
               </div>
 
             </div>
@@ -251,4 +280,3 @@ export default function HeroConcept3() {
     </section>
   );
 }
-

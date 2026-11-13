@@ -56,13 +56,12 @@ export const COMPANY = {
     {
       name: "Shivasai Adepu",
       role: "Director / CEO",
-      linkedin: "https://www.linkedin.com/in/shivasai-adepu",
+      linkedin: "https://www.linkedin.com/in/shivasaiadepu/",
       bio: "Leads engineering architecture, modern product systems, and technology strategy across proprietary R&D and enterprise client solutions."
     },
     {
       name: "Rajkumar Adepu",
       role: "Director / Chairman",
-      linkedin: "https://www.linkedin.com",
       bio: "Brings operational wisdom, long-term strategic perspective, and disciplined corporate governance to ensure enduring client relationships and organizational integrity."
     }
   ],
@@ -135,7 +134,7 @@ export const COMPANY = {
     },
     {
       id: "mobile-applications",
-      title: "Mobile Application (iOS & Android)",
+      title: "Mobile Application Development (iOS & Android)",
       category: "Digital Experience",
       shortDesc: "Native and cross-platform iOS & Android applications engineered for fluid 60 FPS performance, offline sync, and security.",
       fullDesc: "Transforming mobile interactions with intuitive iOS and Android applications. From native hardware integrations and biometric authentication to offline-first data caching and clean App Store/Play Store publication, we engineer apps that users rely on daily.",
@@ -165,7 +164,7 @@ export const COMPANY = {
     },
     {
       id: "custom-software",
-      title: "Custom Software",
+      title: "Custom Software Development",
       category: "Enterprise Systems",
       shortDesc: "Bespoke core systems, enterprise application architectures, and robust business workflows tailored to your operating model.",
       fullDesc: "Off-the-shelf software inevitably forces organizations to compromise their business logic. We architect bespoke software systems, internal operations portals, high-throughput APIs, and scalable backends crafted specifically around your unique workflow, compliance, and growth objectives.",

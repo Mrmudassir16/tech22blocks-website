@@ -81,7 +81,7 @@ export default function RootLayout({
       '@type': 'Person',
       name: leader.name,
       jobTitle: leader.role,
-      sameAs: leader.linkedin
+      ...('linkedin' in leader && leader.linkedin ? { sameAs: leader.linkedin } : {})
     })),
     address: {
       '@type': 'PostalAddress',

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   ArrowRight, 
   ShieldCheck, 
@@ -7,57 +8,59 @@ import {
   Zap, 
   Lock,
   Layers,
-  Activity
+  Activity,
+  CheckCircle2
 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import { getAssetUrl } from '@/utils/assets';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[85vh] lg:min-h-[88vh] flex flex-col justify-between bg-[#040e18] text-white overflow-hidden border-b border-slate-800">
+    <section 
+      className="relative min-h-[88vh] lg:min-h-[92vh] flex flex-col justify-between bg-[#020b14] text-white overflow-hidden border-b border-slate-800"
+      aria-label="Tech22Blocks Corporate Hero"
+    >
       
-      {/* 1. Immersive Deep Blue Cinematic Background Layers */}
+      {/* 1. Immersive Full-Width Corporate Image Background with Deep Blue Treatment */}
       <div className="absolute inset-0 pointer-events-none">
         
-        {/* Deep navy to brand blue gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030911] via-[#051829] to-[#040e18]" />
+        {/* Real High-Resolution Corporate Technology Visual Asset */}
+        <div className="absolute inset-0 w-full h-full opacity-40 mix-blend-luminosity">
+          <Image
+            src={getAssetUrl('/images/hero-corporate-engineering.jpg')}
+            alt="Tech22Blocks enterprise software engineering visual"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </div>
+
+        {/* Multi-Stage Deep Blue Gradient Overlay for Absolute WCAG AAA Text Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020b14] via-[#031526]/90 to-[#020b14]/85" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020b14] via-transparent to-[#020b14]/70" />
         
         {/* Architectural Perspective Grid */}
         <div 
-          className="absolute inset-0 opacity-[0.07]"
+          className="absolute inset-0 opacity-[0.06]"
           style={{
             backgroundImage: `
               linear-gradient(to right, #0a85b1 1px, transparent 1px),
               linear-gradient(to bottom, #0a85b1 1px, transparent 1px)
             `,
-            backgroundSize: '56px 56px',
-            maskImage: 'radial-gradient(ellipse at 50% 40%, black 40%, transparent 80%)',
-            WebkitMaskImage: 'radial-gradient(ellipse at 50% 40%, black 40%, transparent 80%)'
+            backgroundSize: '64px 64px',
+            maskImage: 'radial-gradient(ellipse at 50% 50%, black 40%, transparent 85%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at 50% 50%, black 40%, transparent 85%)'
           }}
         />
 
         {/* Ambient Brand Blue Glow Spotlights */}
         <div 
-          className="absolute -top-32 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-[#0a85b1]/20 rounded-full blur-[140px]" 
+          className="absolute -top-32 left-1/3 w-[800px] h-[500px] bg-[#0a85b1]/20 rounded-full blur-[140px]" 
         />
         <div 
-          className="absolute top-1/3 -right-24 w-[500px] h-[400px] bg-sky-500/15 rounded-full blur-[120px]" 
+          className="absolute bottom-10 -right-24 w-[600px] h-[450px] bg-sky-500/15 rounded-full blur-[130px]" 
         />
-        <div 
-          className="absolute bottom-0 -left-24 w-[500px] h-[400px] bg-[#0369a1]/20 rounded-full blur-[130px]" 
-        />
-
-        {/* Diagonal Light Telemetry Beams (SVG) */}
-        <svg 
-          className="absolute inset-0 w-full h-full opacity-[0.08]" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <line x1="0" y1="0" x2="100%" y2="100%" stroke="#38bdf8" strokeWidth="1" strokeDasharray="8 12" />
-          <line x1="20%" y1="0" x2="100%" y2="80%" stroke="#0a85b1" strokeWidth="1" strokeDasharray="6 14" />
-          <line x1="0" y1="30%" x2="70%" y2="100%" stroke="#0284c7" strokeWidth="1" strokeDasharray="10 16" />
-        </svg>
-
-        {/* High-Contrast Vignette for Perfect Typography Legibility */}
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#040e18]/60 to-[#040e18]/90" />
       </div>
 
       {/* 2. Corporate Status Bar */}
@@ -75,7 +78,7 @@ export default function HeroSection() {
             <span className="text-sky-300 font-mono text-[11px]">Est. 2025</span>
           </div>
           <div className="flex items-center gap-4 text-slate-400 font-mono text-[11px]">
-            <span className="flex items-center gap-1.5 text-emerald-400">
+            <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
               <Activity className="w-3.5 h-3.5" />
               Production Verified
             </span>
@@ -86,7 +89,7 @@ export default function HeroSection() {
       </div>
 
       {/* 3. Hero Main Content Canvas */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-22 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 w-full">
         <div className="max-w-4xl space-y-8">
           
           {/* Corporate Positioning Pill */}
@@ -106,7 +109,7 @@ export default function HeroSection() {
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.05]">
               Engineering software <br className="hidden sm:block" />
-              <span className="relative inline-block bg-gradient-to-r from-sky-400 via-[#38bdf8] to-[#0a85b1] bg-clip-text text-transparent">
+              <span className="relative inline-block bg-gradient-to-r from-sky-300 via-[#38bdf8] to-[#0a85b1] bg-clip-text text-transparent">
                 that ships.
               </span>
             </h1>
@@ -118,10 +121,10 @@ export default function HeroSection() {
 
           {/* Strategic Narrative */}
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-light">
-            We build software that gives ambitious businesses a real edge &mdash; engineering our own intelligent products like <strong className="text-white font-semibold">VoiSage AI</strong> and delivering resilient, production-grade custom systems.
+            We build software that gives ambitious organizations an enduring edge &mdash; engineering our own intelligent products like <strong className="text-white font-semibold">VoiSage AI</strong> and delivering resilient, production-grade custom systems across web, mobile, and cloud.
           </p>
 
-          {/* Action CTAs */}
+          {/* Standardized CTAs */}
           <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
             <Link
               href="/contact/"
@@ -135,60 +138,56 @@ export default function HeroSection() {
               href="/services/"
               className="inline-flex items-center justify-center px-7 py-4 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 rounded-xl border border-white/20 hover:border-white/30 backdrop-blur-md transition-all duration-200"
             >
-              <span>Our 6 Core Services</span>
-            </Link>
-
-            <Link
-              href="/products/"
-              className="inline-flex items-center justify-center px-6 py-4 text-sm font-semibold text-sky-300 hover:text-white transition-colors"
-            >
-              <Sparkles className="w-4 h-4 mr-2 text-sky-400" />
-              <span>Discover VoiSage AI</span>
+              <span>Explore Our Capabilities</span>
             </Link>
           </div>
 
         </div>
       </div>
 
-      {/* 4. Docked Full-Width Metrics & Trust Strip */}
-      <div className="relative z-10 w-full border-t border-white/10 bg-slate-950/70 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {/* 4. Docked Trust Metrics Strip */}
+      <div className="relative z-10 border-t border-white/10 bg-[#020b14]/80 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-mono text-slate-300">
             
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-sky-400">
-                <Layers className="w-4 h-4" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">Engineering Focus</span>
-              </div>
-              <p className="text-sm font-semibold text-white">Products &amp; Custom Systems</p>
-              <p className="text-[11px] text-slate-400">Web, Mobile, AI &amp; Architecture</p>
-            </div>
-
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-sky-400">
-                <Zap className="w-4 h-4" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">Sub-600ms Voice</span>
-              </div>
-              <p className="text-sm font-semibold text-white">VoiSage AI Screening</p>
-              <p className="text-[11px] text-slate-400">Autonomous Inbound Triage</p>
-            </div>
-
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-sky-400">
-                <Lock className="w-4 h-4" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">Complete IP</span>
-              </div>
-              <p className="text-sm font-semibold text-white">100% Code Ownership</p>
-              <p className="text-[11px] text-slate-400">Shared Git Repos &bull; Zero Lock-in</p>
-            </div>
-
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-emerald-400">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-sky-950/80 border border-sky-800/60 flex items-center justify-center text-sky-400 flex-shrink-0">
                 <ShieldCheck className="w-4 h-4" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider">Recognized</span>
               </div>
-              <p className="text-sm font-semibold text-white">DPIIT &bull; MSME Registered</p>
-              <p className="text-[11px] text-slate-400">RRK Software Technologies</p>
+              <div>
+                <p className="font-bold text-white uppercase text-[11px]">DPIIT Startup India</p>
+                <p className="text-[10px] text-slate-400">Govt. Recognized</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-sky-950/80 border border-sky-800/60 flex items-center justify-center text-sky-400 flex-shrink-0">
+                <CheckCircle2 className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="font-bold text-white uppercase text-[11px]">MSME Registered</p>
+                <p className="text-[10px] text-slate-400">Enterprise Entity</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-sky-950/80 border border-sky-800/60 flex items-center justify-center text-sky-400 flex-shrink-0">
+                <Lock className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="font-bold text-white uppercase text-[11px]">100% IP Transferred</p>
+                <p className="text-[10px] text-slate-400">Zero Vendor Lock-In</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 rounded-lg bg-sky-950/80 border border-sky-800/60 flex items-center justify-center text-sky-400 flex-shrink-0">
+                <Layers className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="font-bold text-white uppercase text-[11px]">6 Core Services</p>
+                <p className="text-[10px] text-slate-400">Production Engineering</p>
+              </div>
             </div>
 
           </div>

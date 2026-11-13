@@ -73,11 +73,11 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               {[
                 { href: '/', label: 'Home' },
-                { href: '/about', label: 'About Us' },
-                { href: '/about#founders', label: 'The Founders' },
-                { href: '/portfolio', label: 'Portfolio & Case Studies' },
-                { href: '/news-events', label: 'News & Events' },
-                { href: '/blogs', label: 'Blogs & Insights' },
+                { href: '/about/', label: 'About Us' },
+                { href: '/about/#founders', label: 'The Founders' },
+                { href: '/portfolio/', label: 'Portfolio & Case Studies' },
+                { href: '/news-events/', label: 'News & Events' },
+                { href: '/blogs/', label: 'Blogs & Insights' },
               ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="text-slate-400 hover:text-white transition-colors link-hover-underline">
@@ -94,9 +94,9 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               {[
                 { href: '/services/#website-development', label: 'Website Development' },
-                { href: '/services/#mobile-applications', label: 'Mobile Apps (iOS & Android)' },
+                { href: '/services/#mobile-applications', label: 'Mobile Application Development (iOS & Android)' },
                 { href: '/services/#uiux-design', label: 'UI/UX Design' },
-                { href: '/services/#custom-software', label: 'Custom Software' },
+                { href: '/services/#custom-software', label: 'Custom Software Development' },
                 { href: '/services/#it-consulting', label: 'IT Consulting & Advisory' },
                 { href: '/services/#web3', label: 'Web3.0 (Coming Soon)' },
               ].map((item) => (

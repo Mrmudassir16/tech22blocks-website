@@ -7,7 +7,7 @@ import RecognitionStrip from '@/components/RecognitionStrip';
 
 export const metadata: Metadata = {
   title: 'Our Services — Tech22Blocks',
-  description: 'Explore the 6 core software services offered by Tech22Blocks: Website Development, Mobile Application (iOS & Android), UI/UX Design, Custom Software, IT Consulting & Advisory, and Web3.0.',
+  description: 'Explore the 6 core software services offered by Tech22Blocks: Website Development, Mobile Application Development (iOS & Android), UI/UX Design, Custom Software Development, IT Consulting & Advisory, and Web3.0.',
 };
 
 export default function ServicesPage() {

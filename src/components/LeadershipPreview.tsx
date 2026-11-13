@@ -57,7 +57,7 @@ export default function LeadershipPreview() {
                     <p className="text-slate-500 text-xs font-mono">Director &amp; CEO</p>
                   </div>
                   <a
-                    href="https://www.linkedin.com/in/shivasai-adepu"
+                    href="https://www.linkedin.com/in/shivasaiadepu/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-7 h-7 rounded-md bg-sky-50 hover:bg-[#0a85b1] text-[#0a85b1] hover:text-white flex items-center justify-center transition-colors"
@@ -72,15 +72,6 @@ export default function LeadershipPreview() {
                     <p className="font-bold text-sm text-slate-900">Rajkumar Adepu</p>
                     <p className="text-slate-500 text-xs font-mono">Director &amp; Chairman</p>
                   </div>
-                  <a
-                    href="https://www.linkedin.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-7 h-7 rounded-md bg-sky-50 hover:bg-[#0a85b1] text-[#0a85b1] hover:text-white flex items-center justify-center transition-colors"
-                    aria-label="Rajkumar Adepu LinkedIn"
-                  >
-                    <Linkedin className="w-3.5 h-3.5" />
-                  </a>
                 </div>
               </div>
 

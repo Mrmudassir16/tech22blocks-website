@@ -50,7 +50,7 @@ export default function FoundersSection() {
                     <h3 className="text-lg font-bold text-white mt-0.5">Shivasai Adepu</h3>
                     <p className="text-xs text-slate-300 mt-1">Product Architecture &amp; Technology</p>
                     <a
-                      href="https://www.linkedin.com/in/shivasai-adepu"
+                      href="https://www.linkedin.com/in/shivasaiadepu/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="mt-3 inline-flex items-center text-xs font-semibold text-[#38bdf8] hover:text-white transition-colors"

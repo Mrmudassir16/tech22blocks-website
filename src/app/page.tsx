@@ -11,19 +11,19 @@ import FinalCTA from '@/components/FinalCTA';
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero: Approved Immersive Full-Bleed Cinematic Hero */}
+      {/* 1. Hero: Selected Concept A (Immersive Full-Width Corporate Image-Led Hero) */}
       <HeroSection />
 
       {/* 2. Official Recognition: Compact Professional Trust Section (Startup India & MSME) */}
       <RecognitionStrip />
 
-      {/* 3. Who We Are & Merged Two Business Divisions */}
+      {/* 3. Who We Are: Two Business Areas (Proprietary Products & Custom Technology Solutions) */}
       <CompanyIntro />
 
       {/* 4. Our Services: Exactly the 6 Services from Founder Requirements PDF */}
       <ServicesOverview />
 
-      {/* 5. VoiSage AI: Clean In-House Product Showcase */}
+      {/* 5. VoiSage AI: Focused In-House Product Showcase */}
       <FeaturedProduct />
 
       {/* 6. Why Tech22Blocks: Concise Operational Philosophy */}
