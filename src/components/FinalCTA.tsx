@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Mail, Phone, MapPin, ShieldCheck, Clock } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 
 export default function FinalCTA() {
@@ -68,8 +68,8 @@ export default function FinalCTA() {
               <span>Warangal, Telangana, India</span>
             </div>
             <div className="flex items-center justify-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#38bdf8]" />
-              <span>DPIIT #StartupIndia Certified</span>
+              <Clock className="w-3.5 h-3.5 text-[#38bdf8]" />
+              <span>Direct Founder Engagement</span>
             </div>
           </div>
 

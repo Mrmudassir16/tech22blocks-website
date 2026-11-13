@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { Calendar, Tag, FileText, ChevronRight, Download, Filter } from 'lucide-react';
 import { COMPANY, NewsItem } from '@/data/company';
 import FinalCTA from '@/components/FinalCTA';
-import RecognitionStrip from '@/components/RecognitionStrip';
 
 export default function NewsEventsPage() {
   const { newsAndEvents } = COMPANY;
@@ -36,9 +35,6 @@ export default function NewsEventsPage() {
           </div>
         </div>
       </section>
-
-      {/* Recognition strip */}
-      <RecognitionStrip />
 
       {/* Corporate Newsroom Section */}
       <section className="py-16 lg:py-24 bg-white">

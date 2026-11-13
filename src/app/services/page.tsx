@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import ServiceEditorial from '@/components/ServiceEditorial';
 import FAQSection from '@/components/FAQSection';
 import FinalCTA from '@/components/FinalCTA';
-import RecognitionStrip from '@/components/RecognitionStrip';
 
 export const metadata: Metadata = {
   title: 'Our Services — Tech22Blocks',
@@ -38,9 +37,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
-      {/* Recognition Strip */}
-      <RecognitionStrip />
 
       {/* Alternating Services Editorial */}
       <ServiceEditorial />

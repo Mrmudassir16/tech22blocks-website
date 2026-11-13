@@ -1,73 +1,81 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { 
   ArrowRight, 
-  ArrowUpRight,
   Globe, 
   Smartphone, 
   Layout, 
   Code2, 
   Compass, 
   Layers, 
-  ChevronRight,
-  CheckCircle2,
-  Sparkles
+  ChevronRight
 } from 'lucide-react';
-import { COMPANY } from '@/data/company';
-import { getAssetUrl } from '@/utils/assets';
 
-const SERVICE_ICONS: Record<string, React.ReactNode> = {
-  'website-development': <Globe className="w-4 h-4 text-[#0a85b1]" />,
-  'mobile-applications': <Smartphone className="w-4 h-4 text-[#0a85b1]" />,
-  'uiux-design': <Layout className="w-4 h-4 text-[#0a85b1]" />,
-  'custom-software': <Code2 className="w-4 h-4 text-[#0a85b1]" />,
-  'it-consulting': <Compass className="w-4 h-4 text-[#0a85b1]" />,
-  'web3': <Layers className="w-4 h-4 text-[#0a85b1]" />
-};
-
-const FLAGSHIP_SERVICES = [
+const HOMEPAGE_SERVICES = [
   {
+    num: '01',
     id: 'website-development',
-    serviceIndex: '01',
-    image: '/images/enterprise-platform-mockup.jpg',
-    imageAlt: 'Modern responsive web platforms and full-stack enterprise web applications',
-    badge: 'Digital Experience',
     title: 'Website Development',
-    description: 'High-performance, search-optimized web platforms built with modern component architectures for speed, reliability, and customer conversions.',
-    deliverables: ['Full-Stack Web Applications', 'Sub-Second LCP Performance', 'Enterprise Technical SEO'],
+    tagline: 'Modern, scalable web experiences.',
+    description: 'High-performance web platforms and full-stack applications engineered for speed, clean indexing, and seamless customer interactions.',
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
-    href: '/services/#website-development',
-  },
-  {
-    id: 'mobile-applications',
-    serviceIndex: '02',
-    image: '/images/mobile-apps-showcase.jpg',
-    imageAlt: 'Cross-platform iOS and Android mobile applications engineered with native fidelity',
+    icon: Globe,
     badge: 'Digital Experience',
-    title: 'Mobile Application Development (iOS & Android)',
-    description: 'Native and cross-platform iOS & Android mobile applications engineered for fluid 60 FPS performance, offline data sync, and security.',
-    deliverables: ['Cross-Platform Apps', 'Fluid 60 FPS Native UI', 'Offline Data Synchronization'],
-    technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin'],
-    href: '/services/#mobile-applications',
   },
   {
+    num: '02',
+    id: 'mobile-applications',
+    title: 'Mobile Application Development',
+    tagline: 'Applications for iOS and Android.',
+    description: 'Native and cross-platform mobile apps engineered for fluid 60 FPS performance, offline data synchronization, and security.',
+    technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin'],
+    icon: Smartphone,
+    badge: 'Digital Experience',
+  },
+  {
+    num: '03',
+    id: 'uiux-design',
+    title: 'UI/UX Design',
+    tagline: 'Intuitive and thoughtful digital experiences.',
+    description: 'Purposeful digital workflows, interactive wireframes, and scalable component design systems that minimize user friction.',
+    technologies: ['Figma', 'Design Systems', 'User Research', 'Tokens'],
+    icon: Layout,
+    badge: 'Digital Experience',
+  },
+  {
+    num: '04',
     id: 'custom-software',
-    serviceIndex: '03',
-    image: '/images/ai-cloud-automation.jpg',
-    imageAlt: 'Bespoke custom software architecture, distributed backends, and cloud automation',
-    badge: 'Enterprise Systems',
     title: 'Custom Software Development',
-    description: 'Bespoke core systems, enterprise application architectures, and robust business workflows tailored specifically to your operating model.',
-    deliverables: ['Tailored Enterprise Platforms', 'High-Throughput APIs', 'Legacy Modernization'],
+    tagline: 'Software tailored to business needs.',
+    description: 'Bespoke core systems, enterprise operations portals, and high-throughput APIs crafted specifically around your unique operating model.',
     technologies: ['Node.js', 'Python', 'Go', 'PostgreSQL'],
-    href: '/services/#custom-software',
+    icon: Code2,
+    badge: 'Enterprise Systems',
+  },
+  {
+    num: '05',
+    id: 'it-consulting',
+    title: 'IT Consulting & Advisory',
+    tagline: 'Technology guidance and architecture.',
+    description: 'Pragmatic technical advisory helping business leaders evaluate technology trade-offs, audit architecture, and plan roadmaps.',
+    technologies: ['Stack Selection', 'Architecture Audits', 'Due Diligence'],
+    icon: Compass,
+    badge: 'Intelligence & Advisory',
+  },
+  {
+    num: '06',
+    id: 'web3',
+    title: 'Web3.0 — Coming Soon',
+    tagline: 'Decentralized architecture and verification.',
+    description: 'Pragmatic research and architectural exploration of distributed ledger technology, smart contracts, and cryptographic data verification.',
+    technologies: ['Distributed Ledgers', 'Cryptographic Proofs', 'Smart Contracts'],
+    icon: Layers,
+    badge: 'Coming Soon',
+    comingSoon: true,
   },
 ];
 
 export default function ServicesOverview() {
-  const { services } = COMPANY;
-
   return (
     <section className="py-20 lg:py-28 bg-slate-50/80 border-b border-slate-200/80" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,13 +85,13 @@ export default function ServicesOverview() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-2.5">
               <span className="w-5 h-0.5 bg-[#0a85b1]"></span>
-              <span>Engineering Capabilities &bull; Core Services</span>
+              <span>Our Services &bull; Custom Solutions</span>
             </div>
             <h2 id="services-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">
-              Software Built to Scale, Ship, and Perform.
+              Software Engineered for Performance and Scale
             </h2>
             <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Practical technology solutions engineered to solve real problems and create measurable advantage for startups, growing businesses, and enterprises.
+              Practical technology solutions engineered to solve real business bottlenecks and create measurable operational advantage.
             </p>
           </div>
 
@@ -92,179 +100,96 @@ export default function ServicesOverview() {
               href="/services/"
               className="inline-flex items-center text-sm font-bold text-[#0a85b1] hover:text-[#0284c7] group transition-colors"
             >
-              <span>Explore All 6 Services</span>
+              <span>Explore All Services</span>
               <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
 
-        {/* 1. Flagship Visual Showcase Cards (3 Top Visual Disciplines) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {FLAGSHIP_SERVICES.map((flagship) => (
-            <div
-              key={flagship.id}
-              className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden flex flex-col justify-between shadow-xs hover:shadow-lg hover:border-[#0a85b1]/40 transition-all duration-300 group"
-            >
-              <div>
-                {/* Visual Asset Container */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
-                  <Image
-                    src={getAssetUrl(flagship.image)}
-                    alt={flagship.imageAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent pointer-events-none" />
+        {/* Balanced 2x3 Grid (6 Official Services) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+          {HOMEPAGE_SERVICES.map((service) => {
+            const IconComponent = service.icon;
+            return (
+              <div
+                key={service.id}
+                className="bg-white rounded-2xl border border-slate-200/90 p-7 lg:p-8 flex flex-col justify-between shadow-xs hover:shadow-md hover:border-[#0a85b1]/40 transition-all duration-200 group"
+              >
+                <div className="space-y-4">
                   
-                  {/* Category Pill Over Image */}
-                  <div className="absolute top-4 left-4 flex items-center gap-2">
-                    <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-sky-300 border border-white/10">
-                      {flagship.badge}
-                    </span>
-                  </div>
-
-                  {/* Service Index */}
-                  <div className="absolute top-4 right-4">
-                    <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-black/50 backdrop-blur-md text-white/80 border border-white/10">
-                      {flagship.serviceIndex}
-                    </span>
-                  </div>
-
-                  {/* Tech stack badge over bottom of image */}
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[11px] text-white/90 font-mono">
-                    <span className="truncate">{flagship.technologies.join(' • ')}</span>
-                  </div>
-                </div>
-
-                {/* Card Content Body */}
-                <div className="p-6 sm:p-7 space-y-4">
-                  <h3 className="text-xl font-bold text-slate-950 group-hover:text-[#0a85b1] transition-colors leading-snug">
-                    {flagship.title}
-                  </h3>
-
-                  <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                    {flagship.description}
-                  </p>
-
-                  {/* Deliverables Bullet List */}
-                  <div className="space-y-2 pt-2 border-t border-slate-100">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
-                      Key Deliverables
-                    </span>
-                    {flagship.deliverables.map((deliv, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-slate-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#0a85b1] flex-shrink-0" />
-                        <span>{deliv}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Card Footer Link */}
-              <div className="px-6 sm:px-7 py-4 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between">
-                <Link
-                  href={flagship.href}
-                  className="inline-flex items-center text-xs font-bold text-[#0a85b1] hover:text-[#0284c7] group/link"
-                >
-                  <span>View Full Architecture &amp; Deliverables</span>
-                  <ChevronRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover/link:translate-x-1" />
-                </Link>
-                <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#0a85b1] transition-colors" />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* 2. Structured Directory Strip for All 6 Official Services */}
-        <div className="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-xs mb-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-slate-100 gap-3">
-            <div>
-              <h3 className="text-base font-bold text-slate-950">
-                Complete Service Directory
-              </h3>
-              <p className="text-xs text-slate-500 mt-0.5">
-                All 6 core service disciplines from our technical charter, available for project-based and dedicated engineering engagements.
-              </p>
-            </div>
-            <span className="text-xs font-mono font-semibold text-[#0a85b1] px-2.5 py-1 rounded-full bg-sky-50 border border-sky-100 self-start sm:self-auto">
-              6 Official Disciplines
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {services.map((service, index) => {
-              const isComingSoon = service.id === 'web3';
-              return (
-                <Link
-                  key={service.id}
-                  href={`/services/#${service.id}`}
-                  className="flex items-center justify-between p-3.5 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-white hover:border-[#0a85b1]/40 hover:shadow-xs transition-all duration-200 group/item"
-                >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center flex-shrink-0 group-hover/item:bg-[#0a85b1] group-hover/item:text-white transition-colors">
-                      <div className="group-hover/item:text-white text-[#0a85b1] transition-colors">
-                        {SERVICE_ICONS[service.id] || <Code2 className="w-4 h-4" />}
-                      </div>
+                  {/* Card Header with Distinctive Icon & Index */}
+                  <div className="flex items-center justify-between">
+                    <div className="w-11 h-11 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0a85b1] group-hover:bg-[#0a85b1] group-hover:text-white transition-colors">
+                      <IconComponent className="w-5 h-5 transition-colors" />
                     </div>
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-slate-900 group-hover/item:text-[#0a85b1] truncate transition-colors">
-                          {service.title}
+                    <div className="flex items-center gap-2">
+                      {service.comingSoon ? (
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200 font-semibold uppercase">
+                          Coming Soon
                         </span>
-                        {isComingSoon && (
-                          <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-50 text-amber-700 border border-amber-200 font-semibold uppercase">
-                            Soon
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-[11px] font-mono text-slate-400 block truncate">
-                        {service.category}
+                      ) : (
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200/60 font-semibold">
+                          {service.badge}
+                        </span>
+                      )}
+                      <span className="text-xs font-mono font-bold text-slate-400">
+                        {service.num}
                       </span>
                     </div>
                   </div>
-                  <ChevronRight className="w-4 h-4 text-slate-400 group-hover/item:text-[#0a85b1] group-hover/item:translate-x-0.5 transition-all flex-shrink-0 ml-2" />
-                </Link>
-              );
-            })}
-          </div>
+
+                  {/* Title & Tagline */}
+                  <div className="space-y-1.5">
+                    <h3 className="text-xl font-bold text-slate-950 group-hover:text-[#0a85b1] transition-colors leading-snug">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs font-semibold text-[#0a85b1]">
+                      {service.tagline}
+                    </p>
+                    <p className="text-sm text-slate-600 leading-relaxed pt-1">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* Technology Chips */}
+                  <div className="pt-2 flex flex-wrap gap-1.5">
+                    {service.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-slate-50 text-slate-600 border border-slate-200/70"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                </div>
+
+                {/* Footer Link */}
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                  <Link
+                    href={`/services/#${service.id}`}
+                    className="inline-flex items-center text-xs font-bold text-[#0a85b1] hover:text-[#0284c7] group/link"
+                  >
+                    <span>View Technical Specifications</span>
+                    <ChevronRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+
+              </div>
+            );
+          })}
         </div>
 
-        {/* 3. Dedicated Redirection Banner to /services/ */}
-        <div className="rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900 to-[#051829] border border-slate-800 p-8 sm:p-10 text-white relative overflow-hidden shadow-md">
-          {/* Subtle brand glow in corner */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#0a85b1]/15 rounded-full blur-[80px] pointer-events-none" />
-
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div className="max-w-2xl space-y-2">
-              <span className="text-xs font-mono font-semibold text-sky-400 uppercase tracking-widest">
-                Comprehensive Technical Specifications
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                Explore Detailed Deliverables &amp; Technology Stacks
-              </h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
-                Review complete technical descriptions, technology stacks, execution outcomes, and engagement models across all 6 services on our dedicated services page.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 flex-shrink-0">
-              <Link
-                href="/services/"
-                className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold text-white bg-[#0a85b1] hover:bg-[#0369a1] rounded-xl shadow-md transition-colors group"
-              >
-                <span>Explore All 6 Services</span>
-                <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/contact/"
-                className="inline-flex items-center justify-center px-5 py-3.5 text-sm font-semibold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 rounded-xl border border-slate-700 transition-colors"
-              >
-                <span>Discuss a Requirement</span>
-              </Link>
-            </div>
-          </div>
+        {/* Single Centered Action CTA */}
+        <div className="text-center pt-2">
+          <Link
+            href="/services/"
+            className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold text-white bg-[#0a85b1] hover:bg-[#0284c7] rounded-xl shadow-sm transition-colors group"
+          >
+            <span>Explore All Services</span>
+            <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
 
       </div>

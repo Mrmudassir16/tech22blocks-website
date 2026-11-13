@@ -95,7 +95,7 @@ export default function CompanyIntro() {
               <div className="space-y-2 pt-2 border-t border-slate-100 text-xs text-slate-700">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0a85b1] flex-shrink-0" />
-                  <span>Complete codebase ownership, shared Git repos, zero lock-in</span>
+                  <span>Direct codebase access, shared Git repositories, and clear documentation</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0a85b1] flex-shrink-0" />
@@ -109,7 +109,7 @@ export default function CompanyIntro() {
                 href="/services/"
                 className="inline-flex items-center text-xs font-bold text-slate-800 hover:text-[#0a85b1] group/link transition-colors"
               >
-                <span>Explore 6 Core Services</span>
+                <span>Explore Our Services</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover/link:translate-x-1" />
               </Link>
             </div>

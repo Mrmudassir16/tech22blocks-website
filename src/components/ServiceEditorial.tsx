@@ -84,7 +84,7 @@ export default function ServiceEditorial() {
                   {/* Concrete Value Delivered */}
                   <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-900">
-                      Target Business Impact:
+                      Business Problem Addressed &amp; Value:
                     </span>
                     <p className="text-sm text-slate-700 leading-relaxed">
                       {service.outcome}
@@ -106,13 +106,30 @@ export default function ServiceEditorial() {
                     </ul>
                   </div>
 
-                  {/* Action Link */}
+                  {/* Technology Stacks */}
                   <div className="pt-2">
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                      Relevant Technologies
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {service.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Action Link */}
+                  <div className="pt-3">
                     <Link
-                      href="/contact"
+                      href="/contact/"
                       className="inline-flex items-center text-sm font-bold text-[#0a85b1] hover:text-[#0284c7] group transition-colors"
                     >
-                      <span>Consult with our engineers on {service.title}</span>
+                      <span>Discuss Your {service.title} Project</span>
                       <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </div>
@@ -154,7 +171,7 @@ function ServiceCreativeIllustration({ serviceId, title }: { serviceId: string; 
             <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
               <span className="text-[10px] font-mono font-bold text-[#0a85b1] uppercase">Layer 01 &bull; Ingestion</span>
               <p className="font-semibold text-slate-900">API Gateway &amp; Auth</p>
-              <p className="text-[11px] text-slate-500">Zero-trust token validation, multi-tenant isolation, rate-limiting.</p>
+              <p className="text-[11px] text-slate-500">Structured token authentication, tenant isolation, and rate-limiting.</p>
             </div>
             <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-2xs space-y-1.5">
               <span className="text-[10px] font-mono font-bold text-[#0a85b1] uppercase">Layer 02 &bull; Compute</span>
@@ -165,8 +182,8 @@ function ServiceCreativeIllustration({ serviceId, title }: { serviceId: string; 
 
           <div className="p-4 rounded-xl bg-slate-900 text-white space-y-2">
             <div className="flex items-center justify-between text-[11px] font-mono text-sky-400">
-              <span>UNIFIED TRANSACTION INTEGRITY</span>
-              <span className="text-emerald-400">ACID VERIFIED</span>
+              <span>DATABASE ARCHITECTURE</span>
+              <span className="text-emerald-400 font-bold">RELATIONAL INTEGRITY</span>
             </div>
             <p className="text-xs text-slate-300">
               Robust relational schemas with transactional consistency, continuous audit logging, and automated snapshot backups.
@@ -197,11 +214,11 @@ function ServiceCreativeIllustration({ serviceId, title }: { serviceId: string; 
             <div className="space-y-2 text-xs text-slate-600">
               <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
                 <span>Critical Path Hydration</span>
-                <span className="font-mono text-slate-800 font-semibold">Zero Layout Shift</span>
+                <span className="font-mono text-slate-800 font-semibold">Optimized Core Web Vitals</span>
               </div>
               <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
-                <span>Global Edge CDN Distribution</span>
-                <span className="font-mono text-slate-800 font-semibold">Sub-Second Asset Delivery</span>
+                <span>Edge CDN Distribution</span>
+                <span className="font-mono text-slate-800 font-semibold">Fast Global Delivery</span>
               </div>
               <div className="flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-100">
                 <span>Enterprise Semantic Hierarchy</span>
@@ -494,24 +511,24 @@ function ServiceCreativeIllustration({ serviceId, title }: { serviceId: string; 
               <Layers className="w-5 h-5 text-[#0a85b1]" />
               <span className="text-xs font-bold text-slate-900 uppercase tracking-wider">Distributed Ledger Architecture</span>
             </div>
-            <span className="text-[10px] font-mono text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-              Emerging Tech
+            <span className="text-[10px] font-mono text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-300 font-bold uppercase tracking-wider">
+              Coming Soon &bull; R&amp;D
             </span>
           </div>
 
           <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2 text-xs">
-            <span className="font-bold text-slate-900 block">Cryptographic Verification Focus</span>
+            <span className="font-bold text-slate-900 block">Cryptographic Verification Exploration</span>
             <p className="text-[11px] text-slate-600 leading-relaxed">
-              Pragmatic smart contract design, immutable audit trails, and decentralized storage protocols without speculative distractions.
+              Active internal research exploring distributed ledger architectures, smart contract designs, and tamper-evident cryptographic data verification.
             </p>
           </div>
 
           <div className="p-4 rounded-xl bg-slate-900 text-white space-y-1 text-xs">
-            <span className="text-sky-400 font-mono text-[11px] uppercase tracking-wider block font-bold">
-              Security-First Smart Contracts
+            <span className="text-amber-400 font-mono text-[11px] uppercase tracking-wider block font-bold">
+              Research &amp; Feasibility Notice
             </span>
             <p className="text-slate-300">
-              Rigorous mathematical verification, re-entrancy protection, and automated fuzzing tests before on-chain deployment.
+              Web3.0 capabilities remain under internal exploratory research and will be scheduled for client deployment as standards and industry adoption mature.
             </p>
           </div>
         </div>

@@ -71,7 +71,7 @@ export const COMPANY = {
     subtitle: "Built on a simple conviction: businesses of all stages deserve world-class software engineering.",
     p1: "Tech22Blocks was founded on a simple observation: organizations today face a stark choice between generic off-the-shelf templates, unreliable contractors, and rigid legacy agencies that bill for slide decks rather than working software.",
     p2: "We built Tech22Blocks to be the technology partner we always envisioned: a team that speaks plainly, engineers with precision, and takes end-to-end accountability for shipping production code.",
-    p3: "The name? Think of it as the 22 building blocks of great software: clarity, speed, design, logic, testing, communication, scalability, honesty... and the discipline to execute them consistently."
+    p3: "Operating under RRK Software Technologies Private Limited, Tech22Blocks pursues two focused business areas: developing proprietary technology products, including our autonomous voice system VoiSage AI, and providing custom software engineering, digital platforms, and advisory for businesses."
   },
 
   foundersVision: {

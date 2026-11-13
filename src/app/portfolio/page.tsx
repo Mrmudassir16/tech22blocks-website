@@ -1,7 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import PortfolioPreview from '@/components/PortfolioPreview';
-import RecognitionStrip from '@/components/RecognitionStrip';
 import FinalCTA from '@/components/FinalCTA';
 import { ExternalLink } from 'lucide-react';
 import { COMPANY } from '@/data/company';
@@ -50,9 +49,6 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
-
-      {/* Recognition strip */}
-      <RecognitionStrip />
 
       {/* Portfolio Preview Module */}
       <PortfolioPreview />

@@ -2,7 +2,6 @@ import React from 'react';
 import type { Metadata } from 'next';
 import ProductShowcase from '@/components/ProductShowcase';
 import FinalCTA from '@/components/FinalCTA';
-import RecognitionStrip from '@/components/RecognitionStrip';
 import { Shield, Sparkles, Cpu, Layers } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -82,9 +81,6 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
-
-      {/* Recognition strip */}
-      <RecognitionStrip />
 
       {/* Contact CTA */}
       <FinalCTA />

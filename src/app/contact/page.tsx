@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { Mail, Phone, MapPin, ShieldCheck, Clock, Building } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import ContactForm from '@/components/ContactForm';
-import RecognitionStrip from '@/components/RecognitionStrip';
 
 export const metadata: Metadata = {
   title: 'Contact Us — Partner with Tech22Blocks',
@@ -30,9 +29,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* Recognition Strip */}
-      <RecognitionStrip />
 
       {/* Main Split Section */}
       <section className="py-20 lg:py-28 bg-white">
