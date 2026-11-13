@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroSection from '@/components/HeroSection';
+import HeroConceptSwitcher from '@/components/hero-concepts/HeroConceptSwitcher';
 import RecognitionStrip from '@/components/RecognitionStrip';
 import CompanyIntro from '@/components/CompanyIntro';
 import ServicesOverview from '@/components/ServicesOverview';
@@ -11,8 +11,8 @@ import FinalCTA from '@/components/FinalCTA';
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero: Positioning, Value Proposition & Software Engineering Architecture */}
-      <HeroSection />
+      {/* 1. Hero: Interactive Working Preview Switcher (Concepts 1, 2, and 3) */}
+      <HeroConceptSwitcher initialConcept="concept-1" />
 
       {/* 2. Official Recognition: Compact Professional Trust Section (Startup India & MSME) */}
       <RecognitionStrip />
