@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function FinalCTA() {
   return (
@@ -16,17 +17,18 @@ export default function FinalCTA() {
         }}
       />
 
-      {/* Blue Ambient Glow */}
+      {/* Blue Ambient Glow & Signature Star Watermark */}
       <div 
         aria-hidden="true" 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#0a85b1]/15 rounded-full blur-[100px] pointer-events-none" 
       />
+      <StarWatermark size={680} position="center" variant="white" opacity={0.035} rotate={-10} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8]">
-            <span className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse"></span>
+            <StarEmblem size={13} variant="white" opacity={0.9} />
             <span>Initiate an Engineering Dialogue</span>
           </div>
 

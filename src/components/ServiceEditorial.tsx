@@ -14,18 +14,20 @@ import {
 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import { getAssetUrl } from '@/utils/assets';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function ServiceEditorial() {
   const { services } = COMPANY;
 
   return (
-    <section className="py-20 lg:py-28 bg-white" aria-labelledby="services-detail-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 lg:py-28 bg-white overflow-hidden" aria-labelledby="services-detail-heading">
+      <StarWatermark size={680} position="top-right" variant="blue" opacity={0.02} rotate={-12} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16 lg:mb-24">
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-3">
-            <span className="w-6 h-0.5 bg-[#0a85b1]"></span>
+            <StarEmblem size={13} variant="blue" />
             <span>Comprehensive Service Architecture</span>
           </div>
           <h2 id="services-detail-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">

@@ -6,6 +6,7 @@ import FoundersSection from '@/components/FoundersSection';
 import MissionGoalsSection from '@/components/MissionGoalsSection';
 import FinalCTA from '@/components/FinalCTA';
 import { COMPANY } from '@/data/company';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export const metadata: Metadata = {
   title: 'About Us — Heritage, Mission & Leadership | Tech22Blocks',
@@ -19,6 +20,7 @@ export default function AboutPage() {
     <>
       {/* Premium Page Hero */}
       <section className="bg-slate-950 text-white py-20 lg:py-28 relative overflow-hidden border-b border-slate-800">
+        <StarWatermark size={580} position="top-right" variant="white" opacity={0.035} rotate={15} />
         <div
           className="absolute inset-0 opacity-[0.035] pointer-events-none"
           style={{
@@ -31,7 +33,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse" />
+              <StarEmblem size={13} variant="white" opacity={0.9} />
               <span className="text-xs font-bold uppercase tracking-widest text-[#38bdf8]">
                 About Tech22Blocks &bull; Est. 2025
               </span>
@@ -49,8 +51,9 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story & Two Business Areas: Editorial Section */}
-      <section className="py-20 lg:py-24 bg-white border-b border-slate-200/80">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="relative py-20 lg:py-24 bg-white border-b border-slate-200/80 overflow-hidden">
+        <StarWatermark size={600} position="top-right" variant="blue" opacity={0.022} rotate={-10} />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
 
           <div className="border-b border-slate-200 pb-8">
             <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#0a85b1]">

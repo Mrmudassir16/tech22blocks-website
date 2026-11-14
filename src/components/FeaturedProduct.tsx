@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, PhoneIncoming, CheckCircle2 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function FeaturedProduct() {
   const { product } = COMPANY;
@@ -25,7 +26,7 @@ export default function FeaturedProduct() {
 
         {/* Eyebrow */}
         <div className="inline-flex items-center gap-2 mb-4">
-          <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
+          <StarEmblem size={13} variant="white" opacity={0.9} />
           <span className="text-[11px] font-bold uppercase tracking-widest text-sky-400">
             In-House Technology Innovation
           </span>
@@ -86,8 +87,12 @@ export default function FeaturedProduct() {
           </div>
 
           {/* Right: Product Interface Mockup */}
-          <div className="lg:col-span-5">
-            <div className="rounded-2xl border border-slate-700 bg-slate-950 shadow-2xl overflow-hidden">
+          <div className="lg:col-span-5 relative">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#0a85b1]/15 rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.045]">
+              <StarEmblem size={420} variant="white" rotate={-10} />
+            </div>
+            <div className="relative z-10 rounded-2xl border border-slate-700 bg-slate-950 shadow-2xl overflow-hidden">
 
               {/* Mockup header */}
               <div className="border-b border-slate-800 px-5 py-3 flex items-center justify-between bg-slate-900">

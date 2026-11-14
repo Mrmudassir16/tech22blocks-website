@@ -3,18 +3,20 @@ import Image from 'next/image';
 import { Linkedin, CheckCircle2 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import { getAssetUrl } from '@/utils/assets';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function FoundersSection() {
   const { foundersVision, leadership } = COMPANY;
 
   return (
-    <section id="founders" className="py-20 lg:py-28 bg-white border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="founders" className="relative py-20 lg:py-28 bg-white border-t border-slate-200 overflow-hidden">
+      <StarWatermark size={580} position="bottom-left" variant="blue" opacity={0.022} rotate={20} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-3">
-            <span className="w-6 h-0.5 bg-[#0a85b1]"></span>
+            <StarEmblem size={13} variant="blue" />
             <span>Leadership &amp; Heritage</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">

@@ -7,6 +7,7 @@ import {
   Wrench, 
   Target 
 } from 'lucide-react';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 const WHY_POINTS = [
   {
@@ -45,13 +46,14 @@ const WHY_POINTS = [
 
 export default function WhyTech22Blocks() {
   return (
-    <section className="py-20 lg:py-28 bg-white border-b border-slate-200/80" aria-labelledby="why-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 lg:py-28 bg-white border-b border-slate-200/80 overflow-hidden" aria-labelledby="why-heading">
+      <StarWatermark size={560} position="top-right" variant="blue" opacity={0.022} rotate={25} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-14">
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-2.5">
-            <span className="w-5 h-0.5 bg-[#0a85b1]"></span>
+            <StarEmblem size={13} variant="blue" />
             <span>Why Tech22Blocks &bull; Engineering Philosophy</span>
           </div>
           <h2 id="why-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">

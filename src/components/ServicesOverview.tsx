@@ -10,6 +10,7 @@ import {
   Layers, 
   ChevronRight
 } from 'lucide-react';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 const HOMEPAGE_SERVICES = [
   {
@@ -77,14 +78,15 @@ const HOMEPAGE_SERVICES = [
 
 export default function ServicesOverview() {
   return (
-    <section className="py-20 lg:py-28 bg-slate-50/80 border-b border-slate-200/80" aria-labelledby="services-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 lg:py-28 bg-slate-50/80 border-b border-slate-200/80 overflow-hidden" aria-labelledby="services-heading">
+      <StarWatermark size={640} position="top-left" variant="blue" opacity={0.025} rotate={-15} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-2.5">
-              <span className="w-5 h-0.5 bg-[#0a85b1]"></span>
+              <StarEmblem size={13} variant="blue" />
               <span>Our Services &bull; Custom Solutions</span>
             </div>
             <h2 id="services-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">
@@ -113,9 +115,10 @@ export default function ServicesOverview() {
             return (
               <div
                 key={service.id}
-                className="bg-white rounded-2xl border border-slate-200/90 p-7 lg:p-8 flex flex-col justify-between shadow-xs hover:shadow-md hover:border-[#0a85b1]/40 transition-all duration-200 group"
+                className="relative overflow-hidden bg-white rounded-2xl border border-slate-200/90 p-7 lg:p-8 flex flex-col justify-between shadow-xs hover:shadow-md hover:border-[#0a85b1]/40 transition-all duration-200 group"
               >
-                <div className="space-y-4">
+                <StarWatermark size={180} position="bottom-right" variant="blue" opacity={0.02} rotate={10} className="transition-opacity duration-300 group-hover:opacity-40" />
+                <div className="relative z-10 space-y-4">
                   
                   {/* Card Header with Distinctive Icon & Index */}
                   <div className="flex items-center justify-between">
@@ -166,7 +169,7 @@ export default function ServicesOverview() {
                 </div>
 
                 {/* Footer Link */}
-                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between relative z-10">
                   <Link
                     href={`/services/#${service.id}`}
                     className="inline-flex items-center text-xs font-bold text-[#0a85b1] hover:text-[#0284c7] group/link"

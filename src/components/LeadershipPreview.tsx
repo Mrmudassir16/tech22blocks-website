@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, Linkedin } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import { getAssetUrl } from '@/utils/assets';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function LeadershipPreview() {
   const { foundersVision, leadership } = COMPANY;
@@ -13,8 +14,9 @@ export default function LeadershipPreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Compact Leadership Card */}
-        <div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-6 sm:p-8 lg:p-10 shadow-2xs">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/60 p-6 sm:p-8 lg:p-10 shadow-2xs">
+          <StarWatermark size={360} position="bottom-right" variant="blue" opacity={0.03} rotate={15} />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             
             {/* Left: Actual Founders' Photograph */}
             <div className="lg:col-span-4">
@@ -32,7 +34,7 @@ export default function LeadershipPreview() {
             {/* Right: Compact Leadership Overview */}
             <div className="lg:col-span-8 space-y-4">
               <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1]">
-                <span className="w-4 h-0.5 bg-[#0a85b1]"></span>
+                <StarEmblem size={13} variant="blue" />
                 <span>Leadership &bull; Est. 2025</span>
               </div>
 

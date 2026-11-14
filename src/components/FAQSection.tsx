@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function FAQSection() {
   const { faqs } = COMPANY;
@@ -13,15 +14,15 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-white border-t border-slate-200" aria-labelledby="faq-heading">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 lg:py-28 bg-white border-t border-slate-200 overflow-hidden" aria-labelledby="faq-heading">
+      <StarWatermark size={520} position="bottom-right" variant="blue" opacity={0.02} rotate={15} />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-3">
-            <span className="w-4 h-0.5 bg-[#0a85b1]"></span>
+            <StarEmblem size={13} variant="blue" />
             <span>Clarity &amp; Questions</span>
-            <span className="w-4 h-0.5 bg-[#0a85b1]"></span>
           </div>
           <h2 id="faq-heading" className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
             Frequently Asked Questions

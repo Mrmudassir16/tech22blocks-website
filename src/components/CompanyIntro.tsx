@@ -4,16 +4,18 @@ import Image from 'next/image';
 import { ArrowRight, Box, Wrench, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import { getAssetUrl } from '@/utils/assets';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function CompanyIntro() {
   return (
-    <section className="py-18 lg:py-24 bg-white border-b border-slate-200/80" aria-labelledby="who-we-are-heading">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-18 lg:py-24 bg-white border-b border-slate-200/80 overflow-hidden" aria-labelledby="who-we-are-heading">
+      <StarWatermark size={580} position="bottom-right" variant="blue" opacity={0.025} rotate={15} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-2.5">
-            <span className="w-5 h-0.5 bg-[#0a85b1]"></span>
+            <StarEmblem size={13} variant="blue" />
             <span>Who We Are &bull; Technology Builders</span>
           </div>
           <h2 id="who-we-are-heading" className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight leading-tight">
@@ -28,8 +30,9 @@ export default function CompanyIntro() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
           
           {/* Card 01: In-House Products */}
-          <div className="rounded-2xl border border-sky-200/80 bg-gradient-to-br from-sky-50/60 via-white to-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs group hover:border-[#0a85b1]/50 transition-colors">
-            <div className="space-y-4">
+          <div className="relative overflow-hidden rounded-2xl border border-sky-200/80 bg-gradient-to-br from-sky-50/60 via-white to-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs group hover:border-[#0a85b1]/50 transition-colors">
+            <StarWatermark size={240} position="bottom-right" variant="blue" opacity={0.035} rotate={10} />
+            <div className="relative z-10 space-y-4">
               <div className="flex items-center justify-between">
                 <div className="w-11 h-11 rounded-xl bg-sky-100/80 border border-sky-200 flex items-center justify-center text-[#0a85b1]">
                   <Box className="w-5 h-5" />
@@ -60,7 +63,7 @@ export default function CompanyIntro() {
               </div>
             </div>
 
-            <div className="pt-6 mt-4 border-t border-slate-100">
+            <div className="pt-6 mt-4 border-t border-slate-100 relative z-10">
               <Link
                 href="/products/"
                 className="inline-flex items-center text-xs font-bold text-[#0a85b1] hover:text-[#0284c7] group/link transition-colors"
@@ -72,8 +75,9 @@ export default function CompanyIntro() {
           </div>
 
           {/* Card 02: Custom Technology Solutions */}
-          <div className="rounded-2xl border border-slate-200/90 bg-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs group hover:border-slate-300 transition-colors">
-            <div className="space-y-4">
+          <div className="relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs group hover:border-slate-300 transition-colors">
+            <StarWatermark size={240} position="bottom-right" variant="blue" opacity={0.02} rotate={-10} />
+            <div className="relative z-10 space-y-4">
               <div className="flex items-center justify-between">
                 <div className="w-11 h-11 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-800">
                   <Wrench className="w-5 h-5" />
@@ -104,7 +108,7 @@ export default function CompanyIntro() {
               </div>
             </div>
 
-            <div className="pt-6 mt-4 border-t border-slate-100">
+            <div className="pt-6 mt-4 border-t border-slate-100 relative z-10">
               <Link
                 href="/services/"
                 className="inline-flex items-center text-xs font-bold text-slate-800 hover:text-[#0a85b1] group/link transition-colors"

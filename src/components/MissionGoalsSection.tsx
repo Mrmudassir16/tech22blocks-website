@@ -1,17 +1,19 @@
 import React from 'react';
 import { COMPANY } from '@/data/company';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function MissionGoalsSection() {
   const { mission, goals } = COMPANY;
 
   return (
-    <section className="py-20 lg:py-28 bg-slate-50 border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+    <section className="relative py-20 lg:py-28 bg-slate-50 border-t border-slate-200 overflow-hidden">
+      <StarWatermark size={580} position="top-right" variant="blue" opacity={0.025} rotate={-15} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 relative z-10">
         
         {/* Mission Statement: Editorial Hero Block */}
         <div className="max-w-4xl">
           <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-3">
-            <span className="w-6 h-0.5 bg-[#0a85b1]"></span>
+            <StarEmblem size={13} variant="blue" />
             <span>{mission.title}</span>
           </div>
           <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">

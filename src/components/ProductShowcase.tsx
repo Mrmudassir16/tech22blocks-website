@@ -13,13 +13,15 @@ import {
   Lock 
 } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function ProductShowcase() {
   const { product } = COMPANY;
 
   return (
     <section className="py-20 lg:py-28 bg-slate-900 text-white relative overflow-hidden" aria-labelledby="product-heading">
-      {/* Subtle architectural background grid */}
+      {/* Subtle architectural background grid & Star Watermark */}
+      <StarWatermark size={650} position="top-right" variant="white" opacity={0.035} rotate={15} />
       <div 
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -32,7 +34,7 @@ export default function ProductShowcase() {
         
         {/* Section Pill */}
         <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8] mb-4">
-          <span className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse"></span>
+          <StarEmblem size={13} variant="white" opacity={0.9} />
           <span>Proprietary Voice Intelligence</span>
         </div>
 

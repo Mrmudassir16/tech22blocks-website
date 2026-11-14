@@ -4,15 +4,18 @@ import Image from 'next/image';
 import { Mail, Phone, MapPin, ExternalLink, Linkedin } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import { getAssetUrl } from '@/utils/assets';
+import { StarWatermark } from '@/components/StarEmblem';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300">
+    <footer className="relative bg-slate-900 text-slate-300 overflow-hidden">
       {/* Brand-blue top accent stripe */}
       <div className="h-0.5 bg-gradient-to-r from-[#0a85b1] via-[#38bdf8] to-[#0a85b1]" />
 
+      <StarWatermark size={500} position="top-right" variant="white" opacity={0.02} rotate={20} />
+
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
 
           {/* Company Column */}

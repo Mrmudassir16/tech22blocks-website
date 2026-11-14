@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Calendar, Tag, FileText, ChevronRight, Download, Filter } from 'lucide-react';
 import { COMPANY, NewsItem } from '@/data/company';
 import FinalCTA from '@/components/FinalCTA';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function NewsEventsPage() {
   const { newsAndEvents } = COMPANY;
@@ -19,11 +20,12 @@ export default function NewsEventsPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-slate-900 text-white py-20 lg:py-24 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-slate-900 text-white py-20 lg:py-24 border-b border-slate-800 overflow-hidden">
+        <StarWatermark size={580} position="top-right" variant="white" opacity={0.035} rotate={15} />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8] mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#38bdf8]"></span>
+              <StarEmblem size={13} variant="white" opacity={0.9} />
               <span>Corporate Communications &amp; Disclosures</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">

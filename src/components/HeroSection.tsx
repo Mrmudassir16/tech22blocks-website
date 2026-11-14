@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
+import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 
 export default function HeroSection() {
   return (
@@ -51,6 +52,9 @@ export default function HeroSection() {
         <div 
           className="absolute bottom-10 -right-24 w-[600px] h-[450px] bg-sky-500/15 rounded-full blur-[130px]" 
         />
+
+        {/* Signature Brand Star Architectural Watermark */}
+        <StarWatermark size={700} position="top-right" variant="white" opacity={0.035} rotate={-12} />
       </div>
 
       {/* 2. Hero Main Content Canvas */}
@@ -59,10 +63,7 @@ export default function HeroSection() {
           
           {/* Corporate Positioning Eyebrow */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-sky-500/30 text-slate-200 text-xs backdrop-blur-md shadow-lg shadow-sky-950/30">
-            <span className="flex h-2 w-2 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
-            </span>
+            <StarEmblem size={13} variant="white" opacity={0.9} />
             <span className="font-mono text-[11px] font-semibold text-white tracking-wider uppercase">
               Software Engineering &bull; Digital Innovation
             </span>
