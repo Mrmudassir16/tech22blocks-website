@@ -15,6 +15,7 @@ import {
 import { COMPANY } from '@/data/company';
 import { getAssetUrl } from '@/utils/assets';
 import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
+import { BespokeServiceVisual } from '@/components/design-system/BespokeServiceShowcase';
 
 export default function ServiceEditorial() {
   const { services } = COMPANY;
@@ -134,7 +135,7 @@ export default function ServiceEditorial() {
 
                 {/* Purposeful Visual Composition */}
                 <div className={`lg:col-span-6 ${isReversed ? 'lg:col-start-1' : ''}`}>
-                  <ServiceCreativeIllustration serviceId={service.id} />
+                  <BespokeServiceVisual id={service.id} />
                 </div>
 
               </div>

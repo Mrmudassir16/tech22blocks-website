@@ -1,11 +1,27 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
 import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
+import { useDesignMode } from '@/context/DesignModeContext';
+import { HeroVariantA, HeroVariantB, HeroVariantC } from '@/components/design-system/CreativeHeroVariants';
 
 export default function HeroSection() {
+  const { mode } = useDesignMode();
+
+  if (mode === 'option-a') {
+    return <HeroVariantA />;
+  }
+  if (mode === 'option-b') {
+    return <HeroVariantB />;
+  }
+  if (mode === 'option-c') {
+    return <HeroVariantC />;
+  }
+
   return (
     <section 
       className="relative min-h-[78vh] lg:min-h-[84vh] flex items-center bg-[#020b14] text-white overflow-hidden border-b border-slate-800"
@@ -100,7 +116,7 @@ export default function HeroSection() {
 
             <Link
               href="/services/"
-              className="inline-flex items-center justify-center px-7 py-4 text-sm font-semibold text-white bg-white/10 hover:bg-white/15 rounded-xl border border-white/20 hover:border-white/30 backdrop-blur-md transition-all duration-200"
+              className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-500 rounded-xl transition-all duration-200"
             >
               <span>Explore Our Capabilities</span>
             </Link>
@@ -108,7 +124,6 @@ export default function HeroSection() {
 
         </div>
       </div>
-
     </section>
   );
 }
