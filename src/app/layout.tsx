@@ -3,8 +3,6 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { COMPANY } from '@/data/company';
-import { DesignModeProvider } from '@/context/DesignModeContext';
-import DesignStudioDock from '@/components/design-system/DesignStudioDock';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -111,14 +109,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col font-sans bg-white text-slate-900 antialiased selection:bg-sky-100 selection:text-sky-900">
-        <DesignModeProvider>
-          <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-          <DesignStudioDock />
-        </DesignModeProvider>
+        <Navbar />
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
