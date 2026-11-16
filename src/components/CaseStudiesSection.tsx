@@ -80,7 +80,7 @@ export default function CaseStudiesSection() {
   return (
     <section 
       id="case-studies"
-      className="relative py-24 lg:py-32 bg-[#F2F6FA] overflow-hidden" 
+      className="relative py-24 lg:py-32 bg-[#F2F6FA]" 
       aria-labelledby="case-studies-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -109,115 +109,110 @@ export default function CaseStudiesSection() {
         </div>
 
         {/* Stacking / Overlapping Sticky Cards Wrapper (Exact Techco Implementation) */}
-        <div className="space-y-8 relative pb-12">
-          {CASE_STUDIES.map((study, idx) => {
-            // Calculate sticky top offset so cards cleanly stack and overlap
-            const stickyTop = 90 + idx * 20;
+        <div className="relative pb-24 space-y-12">
+          {CASE_STUDIES.map((study, idx) => (
+            <div
+              key={study.id}
+              className="sticky top-20 sm:top-24 bg-white rounded-2xl overflow-hidden transition-all duration-300"
+              style={{
+                zIndex: 10 + idx * 5,
+                boxShadow: '0 16px 45px rgba(2, 9, 63, 0.16), 0 4px 12px rgba(2, 9, 63, 0.08)',
+                border: '1px solid rgba(2, 9, 63, 0.06)',
+              }}
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+                
+                {/* Left Column: Details, Metadata, Core Technologies, and Read Case Button */}
+                <div className="lg:col-span-7 p-8 sm:p-12 lg:p-14 flex flex-col justify-between">
+                  <div>
+                    {/* Category Label */}
+                    <span className="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-3">
+                      {study.category}
+                    </span>
 
-            return (
-              <div
-                key={study.id}
-                className="sticky bg-white rounded-2xl overflow-hidden transition-all duration-300"
-                style={{
-                  top: `${stickyTop}px`,
-                  zIndex: 10 + idx,
-                  boxShadow: '0 8px 30px rgba(2, 9, 63, 0.14)',
-                }}
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                  
-                  {/* Left Column: Details, Metadata, Core Technologies, and Read Case Button */}
-                  <div className="lg:col-span-7 p-8 sm:p-12 lg:p-14 flex flex-col justify-between">
-                    <div>
-                      {/* Category Label */}
-                      <span className="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-3">
-                        {study.category}
-                      </span>
-
-                      {/* Case Study Title */}
-                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#02093F] mb-4 hover:text-[#0044EB] transition-colors">
-                        <Link href={study.href}>
-                          {study.title}
-                        </Link>
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 font-normal">
-                        {study.description}
-                      </p>
-
-                      {/* Industry & Country Metadata List */}
-                      <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-8 text-sm">
-                        <div className="text-slate-500">
-                          <strong className="text-[#02093F] font-bold">Industry:</strong> {study.industry}
-                        </div>
-                        <div className="text-slate-500">
-                          <strong className="text-[#02093F] font-bold">Country:</strong> {study.country}
-                        </div>
-                      </div>
-
-                      {/* Core Technologies Row with Circular Elevated Badges */}
-                      <div className="flex items-center gap-4 mb-8">
-                        <span className="text-sm font-bold text-[#02093F]">
-                          Core Technologies:
-                        </span>
-                        <div className="flex items-center gap-3">
-                          {study.technologies.map((tech, tIdx) => (
-                            <div 
-                              key={tIdx}
-                              className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-2.5 transition-transform hover:scale-110"
-                              style={{
-                                boxShadow: '0 4px 18px rgba(174, 191, 210, 0.45)',
-                              }}
-                              title={tech.name}
-                            >
-                              <Image 
-                                src={tech.icon} 
-                                alt={tech.name} 
-                                width={28} 
-                                height={28} 
-                                className="w-full h-full object-contain"
-                              />
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Blue Action Button (Techco Exact Style) */}
-                    <div>
-                      <Link
-                        href={study.href}
-                        className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#0044EB] text-white font-bold text-sm tracking-wide hover:bg-[#0030a8] transition-all shadow-md group"
-                      >
-                        <span>Read Case</span>
-                        <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">
-                          <ArrowUpRight className="w-3.5 h-3.5 text-white" />
-                        </span>
+                    {/* Case Study Title */}
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#02093F] mb-4 hover:text-[#0044EB] transition-colors">
+                      <Link href={study.href}>
+                        {study.title}
                       </Link>
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 font-normal">
+                      {study.description}
+                    </p>
+
+                    {/* Industry & Country Metadata List */}
+                    <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-8 text-sm">
+                      <div className="text-slate-500">
+                        <strong className="text-[#02093F] font-bold">Industry:</strong> {study.industry}
+                      </div>
+                      <div className="text-slate-500">
+                        <strong className="text-[#02093F] font-bold">Country:</strong> {study.country}
+                      </div>
+                    </div>
+
+                    {/* Core Technologies Row with Circular Elevated Badges */}
+                    <div className="flex items-center gap-4 mb-8">
+                      <span className="text-sm font-bold text-[#02093F]">
+                        Core Technologies:
+                      </span>
+                      <div className="flex items-center gap-3">
+                        {study.technologies.map((tech, tIdx) => (
+                          <div 
+                            key={tIdx}
+                            className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-2.5 transition-transform hover:scale-110"
+                            style={{
+                              boxShadow: '0 4px 18px rgba(174, 191, 210, 0.45)',
+                            }}
+                            title={tech.name}
+                          >
+                            <Image 
+                              src={tech.icon} 
+                              alt={tech.name} 
+                              width={28} 
+                              height={28} 
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  {/* Right Column: Vivid Solid Blue Card with Isometric Device Mockup */}
-                  <div className="lg:col-span-5 bg-gradient-to-br from-[#0044EB] to-[#002f9c] flex items-center justify-center p-6 sm:p-10 relative overflow-hidden min-h-[300px] lg:min-h-full">
-                    {/* Background subtle angle lines */}
-                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
-                    
-                    <div className="relative z-10 w-full max-w-[420px] transition-transform duration-500 hover:scale-105">
-                      <Image 
-                        src={study.image} 
-                        alt={study.title} 
-                        width={465} 
-                        height={430} 
-                        className="w-full h-auto object-contain drop-shadow-2xl"
-                      />
-                    </div>
+                  {/* Blue Action Button (Techco Exact Style) */}
+                  <div>
+                    <Link
+                      href={study.href}
+                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#0044EB] text-white font-bold text-sm tracking-wide hover:bg-[#0030a8] transition-all shadow-md group"
+                    >
+                      <span>Read Case</span>
+                      <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">
+                        <ArrowUpRight className="w-3.5 h-3.5 text-white" />
+                      </span>
+                    </Link>
                   </div>
-
                 </div>
+
+                {/* Right Column: Vivid Solid Blue Card with Isometric Device Mockup */}
+                <div className="lg:col-span-5 bg-gradient-to-br from-[#0044EB] to-[#002f9c] flex items-center justify-center p-6 sm:p-10 relative overflow-hidden min-h-[300px] lg:min-h-full">
+                  {/* Background subtle angle lines */}
+                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+                  
+                  <div className="relative z-10 w-full max-w-[420px] transition-transform duration-500 hover:scale-105">
+                    <Image 
+                      src={study.image} 
+                      alt={study.title} 
+                      width={465} 
+                      height={430} 
+                      className="w-full h-auto object-contain drop-shadow-2xl"
+                    />
+                  </div>
+                </div>
+
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
       </div>
