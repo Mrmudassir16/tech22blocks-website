@@ -107,3 +107,21 @@ body {
   transform: translateY(-2px);
   box-shadow: var(--shadow-card-hover);
 }
+
+/* GPU Hardware-Accelerated 3D Ambient Float */
+@keyframes ambient-orbit {
+  0% {
+    transform: perspective(1000px) rotateX(8deg) rotateY(-10deg) rotateZ(0deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(12deg) rotateY(10deg) rotateZ(2deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(8deg) rotateY(-10deg) rotateZ(0deg);
+  }
+}
+
+.animate-ambient-orbit {
+  animation: ambient-orbit 9s ease-in-out infinite;
+  will-change: transform;
+}

@@ -14,8 +14,8 @@ export default function HeroSection() {
     >
       {/* Background Volumetric Glow & Geometric Watermark */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-[750px] h-[550px] bg-[#0a85b1]/20 rounded-full blur-[140px]" />
-        <div className="absolute bottom-10 right-10 w-[600px] h-[450px] bg-sky-500/15 rounded-full blur-[130px]" />
+        <div className="absolute top-1/3 left-1/4 w-[750px] h-[550px] bg-[#0a85b1]/20 rounded-full blur-[100px] transform-gpu" />
+        <div className="absolute bottom-10 right-10 w-[600px] h-[450px] bg-sky-500/15 rounded-full blur-[90px] transform-gpu" />
         
         {/* Hexagonal Perspective Grid Overlay */}
         <div 

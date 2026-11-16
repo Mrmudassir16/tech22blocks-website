@@ -7,7 +7,7 @@ import { getAssetUrl } from '@/utils/assets';
 interface Star3DEngineProps {
   size?: number;
   interactive?: boolean;
-  autoRotateSpeed?: number; // seconds per full turn
+  autoRotateSpeed?: number;
   showCoordinates?: boolean;
   className?: string;
 }
@@ -20,56 +20,52 @@ export default function Star3DEngine({
   className = '',
 }: Star3DEngineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
+  const stageRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [ambientAngle, setAmbientAngle] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
-  // Smooth ambient rotation when idle
+  // Pause everything when hero is off-screen to preserve 100% CPU/GPU performance
   useEffect(() => {
-    let animationFrameId: number;
-    let startTime: number | null = null;
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const elapsed = (timestamp - startTime) / 1000;
-      setAmbientAngle((elapsed * (360 / autoRotateSpeed)) % 360);
-      animationFrameId = requestAnimationFrame(animate);
-    };
-
-    animationFrameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [autoRotateSpeed]);
-
-  // Gyroscopic 3D mouse tracking
+  // Gyroscopic 3D mouse tracking directly on DOM ref (Zero React re-renders)
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!interactive || !containerRef.current) return;
+    if (!interactive || !containerRef.current || !stageRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
     
-    // Max tilt: 24 degrees
-    const maxTilt = 22;
+    // Max tilt: 20 degrees
+    const maxTilt = 20;
     const targetRotY = (x / (rect.width / 2)) * maxTilt;
     const targetRotX = -(y / (rect.height / 2)) * maxTilt;
 
-    setRotateY(targetRotY);
-    setRotateX(targetRotX);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setRotateX(0);
-    setRotateY(0);
+    stageRef.current.style.transform = `perspective(1000px) rotateX(${targetRotX.toFixed(2)}deg) rotateY(${targetRotY.toFixed(2)}deg) rotateZ(0deg)`;
   };
 
   const handleMouseEnter = () => {
     setIsHovered(true);
+    if (stageRef.current) {
+      stageRef.current.style.animationPlayState = 'paused';
+    }
   };
 
-  const currentRotation = isHovered 
-    ? `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(0deg)`
-    : `perspective(1000px) rotateX(10deg) rotateY(${Math.sin(ambientAngle * Math.PI / 180) * 14}deg) rotateZ(${ambientAngle * 0.15}deg)`;
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (stageRef.current) {
+      stageRef.current.style.transform = '';
+      stageRef.current.style.animationPlayState = 'running';
+    }
+  };
 
   return (
     <div
@@ -82,6 +78,7 @@ export default function Star3DEngine({
         width: `${size}px`,
         height: `${size}px`,
         perspective: '1200px',
+        willChange: isVisible ? 'transform' : 'auto',
       }}
     >
       {/* 1. Ambient Volumetric Radial Halo */}
@@ -89,34 +86,41 @@ export default function Star3DEngine({
         className="absolute inset-0 rounded-full pointer-events-none transition-all duration-700"
         style={{
           background: isHovered 
-            ? 'radial-gradient(circle at center, rgba(10,133,177,0.35) 0%, rgba(0,82,255,0.15) 50%, transparent 72%)'
-            : 'radial-gradient(circle at center, rgba(10,133,177,0.22) 0%, rgba(2,132,199,0.08) 45%, transparent 70%)',
-          filter: 'blur(30px)',
-          transform: 'scale(1.2)',
+            ? 'radial-gradient(circle at center, rgba(10,133,177,0.35) 0%, rgba(2,132,199,0.12) 50%, transparent 72%)'
+            : 'radial-gradient(circle at center, rgba(10,133,177,0.22) 0%, rgba(2,132,199,0.06) 45%, transparent 70%)',
+          filter: 'blur(24px)',
+          transform: 'translateZ(0) scale(1.15)',
         }}
       />
 
-      {/* 2. Outer Orbital Coordinate Rings (Opposite Slow Counter-Rotations) */}
+      {/* 2. Outer Orbital Coordinate Rings (Pure GPU CSS animations, Zero JS CPU usage) */}
       <div 
-        className="absolute inset-2 border border-sky-500/20 rounded-full pointer-events-none"
+        className={`absolute inset-2 border border-sky-500/20 rounded-full pointer-events-none ${
+          isVisible ? 'animate-[spin_36s_linear_infinite]' : ''
+        }`}
         style={{
-          transform: `rotate(${ambientAngle * 0.4}deg)`,
           borderStyle: 'dashed',
+          transform: 'translateZ(0)',
         }}
       />
       <div 
-        className="absolute inset-10 border border-sky-400/15 rounded-full pointer-events-none"
+        className={`absolute inset-10 border border-sky-400/15 rounded-full pointer-events-none ${
+          isVisible ? 'animate-[spin_24s_linear_infinite_reverse]' : ''
+        }`}
         style={{
-          transform: `rotate(-${ambientAngle * 0.6}deg)`,
+          transform: 'translateZ(0)',
         }}
       />
 
-      {/* 3. 3D Gyroscopic Stage */}
+      {/* 3. 3D Gyroscopic Stage with CSS Keyframe Ambient Orbit */}
       <div
-        className="relative w-full h-full flex items-center justify-center transition-transform duration-300 ease-out"
+        ref={stageRef}
+        className={`relative w-full h-full flex items-center justify-center transition-transform duration-200 ease-out ${
+          !isHovered && isVisible ? 'animate-ambient-orbit' : ''
+        }`}
         style={{
-          transform: currentRotation,
           transformStyle: 'preserve-3d',
+          transform: isHovered ? undefined : 'perspective(1000px) rotateX(10deg) rotateY(-8deg)',
         }}
       >
         {/* Layer -1: Extruded Deep Shadow Star (translateZ -30px) */}
@@ -140,7 +144,6 @@ export default function Star3DEngine({
           className="absolute w-full h-full pointer-events-none opacity-30 text-sky-400"
           style={{ transform: 'translateZ(-15px)' }}
         >
-          {/* Hexagonal coordinate lines */}
           <polygon 
             points="50,5 90,28 90,72 50,95 10,72 10,28" 
             fill="none" 
@@ -154,17 +157,16 @@ export default function Star3DEngine({
             stroke="currentColor" 
             strokeWidth="0.4"
           />
-          {/* Axis crosshairs */}
           <line x1="50" y1="0" x2="50" y2="100" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 4" />
           <line x1="0" y1="50" x2="100" y2="50" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 4" />
         </svg>
 
         {/* Layer 1: Primary Luminous Tech22Blocks Star (translateZ 0px) */}
         <div 
-          className="relative w-3/4 h-3/4 transition-transform duration-300"
+          className="relative w-3/4 h-3/4"
           style={{
             transform: 'translateZ(0px)',
-            filter: 'drop-shadow(0 15px 35px rgba(0, 82, 255, 0.4)) drop-shadow(0 0 15px rgba(56, 189, 248, 0.3))',
+            filter: 'drop-shadow(0 15px 35px rgba(10, 133, 177, 0.45)) drop-shadow(0 0 15px rgba(56, 189, 248, 0.35))',
           }}
         >
           <Image
