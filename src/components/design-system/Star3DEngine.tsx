@@ -20,11 +20,9 @@ export default function Star3DEngine({
   className = '',
 }: Star3DEngineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
 
-  // Pause everything when hero is off-screen to preserve 100% CPU/GPU performance
+  // Automatically pause all animations when scrolled off-screen (0% CPU / 0% GPU during scroll)
   useEffect(() => {
     if (!containerRef.current) return;
     const observer = new IntersectionObserver(
@@ -37,66 +35,29 @@ export default function Star3DEngine({
     return () => observer.disconnect();
   }, []);
 
-  // Gyroscopic 3D mouse tracking directly on DOM ref (Zero React re-renders)
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!interactive || !containerRef.current || !stageRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    
-    // Max tilt: 20 degrees
-    const maxTilt = 20;
-    const targetRotY = (x / (rect.width / 2)) * maxTilt;
-    const targetRotX = -(y / (rect.height / 2)) * maxTilt;
-
-    stageRef.current.style.transform = `perspective(1000px) rotateX(${targetRotX.toFixed(2)}deg) rotateY(${targetRotY.toFixed(2)}deg) rotateZ(0deg)`;
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    if (stageRef.current) {
-      stageRef.current.style.animationPlayState = 'paused';
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (stageRef.current) {
-      stageRef.current.style.transform = '';
-      stageRef.current.style.animationPlayState = 'running';
-    }
-  };
-
   return (
     <div
       ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`relative flex items-center justify-center select-none ${className}`}
+      className={`relative flex items-center justify-center select-none pointer-events-none ${className}`}
       style={{
         width: `${size}px`,
         height: `${size}px`,
-        perspective: '1200px',
-        willChange: isVisible ? 'transform' : 'auto',
       }}
     >
-      {/* 1. Ambient Volumetric Radial Halo */}
+      {/* 1. Ambient Volumetric Radial Halo (Pre-rendered GPU composite) */}
       <div 
-        className="absolute inset-0 rounded-full pointer-events-none transition-all duration-700"
+        className="absolute inset-0 rounded-full pointer-events-none transform-gpu"
         style={{
-          background: isHovered 
-            ? 'radial-gradient(circle at center, rgba(10,133,177,0.35) 0%, rgba(2,132,199,0.12) 50%, transparent 72%)'
-            : 'radial-gradient(circle at center, rgba(10,133,177,0.22) 0%, rgba(2,132,199,0.06) 45%, transparent 70%)',
-          filter: 'blur(24px)',
-          transform: 'translateZ(0) scale(1.15)',
+          background: 'radial-gradient(circle at center, rgba(10,133,177,0.32) 0%, rgba(2,132,199,0.08) 45%, transparent 70%)',
+          filter: 'blur(20px)',
+          transform: 'scale(1.2) translateZ(0)',
         }}
       />
 
-      {/* 2. Outer Orbital Coordinate Rings (Pure GPU CSS animations, Zero JS CPU usage) */}
+      {/* 2. Outer Orbital Coordinate Rings (Pure GPU CSS animations, Zero JS calculation) */}
       <div 
-        className={`absolute inset-2 border border-sky-500/20 rounded-full pointer-events-none ${
-          isVisible ? 'animate-[spin_36s_linear_infinite]' : ''
+        className={`absolute inset-2 border border-sky-500/20 rounded-full pointer-events-none transform-gpu ${
+          isVisible ? 'animate-[spin_40s_linear_infinite]' : ''
         }`}
         style={{
           borderStyle: 'dashed',
@@ -104,45 +65,27 @@ export default function Star3DEngine({
         }}
       />
       <div 
-        className={`absolute inset-10 border border-sky-400/15 rounded-full pointer-events-none ${
-          isVisible ? 'animate-[spin_24s_linear_infinite_reverse]' : ''
+        className={`absolute inset-10 border border-sky-400/15 rounded-full pointer-events-none transform-gpu ${
+          isVisible ? 'animate-[spin_28s_linear_infinite_reverse]' : ''
         }`}
         style={{
           transform: 'translateZ(0)',
         }}
       />
 
-      {/* 3. 3D Gyroscopic Stage with CSS Keyframe Ambient Orbit */}
+      {/* 3. Automatic Floating Star Stage (Hardware-accelerated CSS float, Zero hover re-render) */}
       <div
-        ref={stageRef}
-        className={`relative w-full h-full flex items-center justify-center transition-transform duration-200 ease-out ${
-          !isHovered && isVisible ? 'animate-ambient-orbit' : ''
+        className={`relative w-full h-full flex items-center justify-center transform-gpu ${
+          isVisible ? 'animate-star-float' : ''
         }`}
         style={{
-          transformStyle: 'preserve-3d',
-          transform: isHovered ? undefined : 'perspective(1000px) rotateX(10deg) rotateY(-8deg)',
+          willChange: isVisible ? 'transform' : 'auto',
         }}
       >
-        {/* Layer -1: Extruded Deep Shadow Star (translateZ -30px) */}
-        <div 
-          className="absolute w-3/4 h-3/4 pointer-events-none opacity-20 filter blur-md"
-          style={{
-            transform: 'translateZ(-35px) scale(0.96)',
-          }}
-        >
-          <Image
-            src={getAssetUrl('/images/tech22blocks-star-hd.png')}
-            alt=""
-            fill
-            className="object-contain"
-          />
-        </div>
-
         {/* Layer 0: Concentric Hexagram Geometry Lines */}
         <svg 
           viewBox="0 0 100 100" 
           className="absolute w-full h-full pointer-events-none opacity-30 text-sky-400"
-          style={{ transform: 'translateZ(-15px)' }}
         >
           <polygon 
             points="50,5 90,28 90,72 50,95 10,72 10,28" 
@@ -161,45 +104,25 @@ export default function Star3DEngine({
           <line x1="0" y1="50" x2="100" y2="50" stroke="currentColor" strokeWidth="0.3" strokeDasharray="1 4" />
         </svg>
 
-        {/* Layer 1: Primary Luminous Tech22Blocks Star (translateZ 0px) */}
+        {/* Layer 1: High-Definition Luminous Star */}
         <div 
-          className="relative w-3/4 h-3/4"
+          className="relative w-3/4 h-3/4 transform-gpu"
           style={{
-            transform: 'translateZ(0px)',
-            filter: 'drop-shadow(0 15px 35px rgba(10, 133, 177, 0.45)) drop-shadow(0 0 15px rgba(56, 189, 248, 0.35))',
+            filter: 'drop-shadow(0 12px 28px rgba(10, 133, 177, 0.4))',
           }}
         >
           <Image
             src={getAssetUrl('/images/tech22blocks-star-white-hd.png')}
-            alt="Tech22Blocks 3D Architectural Star"
+            alt="Tech22Blocks Architectural Star"
             fill
             priority
             className="object-contain"
           />
-
-          {/* Refractive Cyan Glass Sheen */}
-          <div 
-            className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-50"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(56,189,248,0.2) 50%, transparent 100%)',
-              maskImage: 'url(/images/tech22blocks-star.svg)',
-              WebkitMaskImage: 'url(/images/tech22blocks-star.svg)',
-              maskSize: 'contain',
-              WebkitMaskSize: 'contain',
-              maskRepeat: 'no-repeat',
-              WebkitMaskRepeat: 'no-repeat',
-              maskPosition: 'center',
-              WebkitMaskPosition: 'center',
-            }}
-          />
         </div>
 
-        {/* Layer 2: Floating 3D Telemetry Nodes (translateZ 45px) */}
+        {/* Layer 2: Telemetry Nodes */}
         {showCoordinates && (
-          <div 
-            className="absolute inset-0 pointer-events-none"
-            style={{ transform: 'translateZ(45px)' }}
-          >
+          <div className="absolute inset-0 pointer-events-none">
             {/* Top-Right Capability Node */}
             <div className="absolute top-8 right-6 bg-slate-900/90 border border-sky-400/40 rounded-full px-2.5 py-1 text-[10px] font-mono text-sky-300 shadow-lg backdrop-blur-md flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -215,13 +138,11 @@ export default function Star3DEngine({
         )}
       </div>
 
-      {/* Interactive Drag / Hover Indicator */}
-      {interactive && (
-        <div className="absolute -bottom-6 text-[10px] font-mono text-slate-400/80 tracking-widest uppercase flex items-center gap-1 pointer-events-none">
-          <span className="w-1 h-1 rounded-full bg-sky-400" />
-          <span>Interactive 3D Engine &bull; Hover to Orbit</span>
-        </div>
-      )}
+      {/* Static Subtitle Badge */}
+      <div className="absolute -bottom-6 text-[10px] font-mono text-slate-400/80 tracking-widest uppercase flex items-center gap-1.5 pointer-events-none">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#0a85b1]" />
+        <span>Tech22Blocks Star Engine &bull; Autonomous Architecture</span>
+      </div>
     </div>
   );
 }

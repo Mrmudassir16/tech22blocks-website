@@ -125,3 +125,18 @@ body {
   animation: ambient-orbit 9s ease-in-out infinite;
   will-change: transform;
 }
+
+/* GPU Hardware-Accelerated Automatic Float (Zero JS overhead) */
+@keyframes star-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+.animate-star-float {
+  animation: star-float 6s ease-in-out infinite;
+  will-change: transform;
+}
