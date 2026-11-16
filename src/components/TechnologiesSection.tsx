@@ -251,7 +251,7 @@ export default function TechnologiesSection() {
         {/* Section Header with Techco Underline Shape */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0044EB]">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0a85b1]">
               Technologies
             </span>
             <Image 
@@ -263,8 +263,8 @@ export default function TechnologiesSection() {
             />
           </div>
 
-          <h2 id="tech-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#02093F] tracking-tight leading-tight">
-            We Use <span className="text-[#0044EB]">Technologies</span>
+          <h2 id="tech-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f172a] tracking-tight leading-tight">
+            Technologies We <span className="text-[#0a85b1]">Deploy</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
             Battle-tested frameworks, languages, and distributed systems engineered for speed and longevity.
@@ -274,7 +274,7 @@ export default function TechnologiesSection() {
         {/* Tab Navigation Pill Bar (Techco Exact Style) */}
         <div className="flex justify-center mb-14">
           <div 
-            className="inline-flex flex-wrap items-center justify-center gap-1.5 p-2 rounded-2xl bg-[#CCE3FF]/80 max-w-full"
+            className="inline-flex flex-wrap items-center justify-center gap-1.5 p-2 rounded-2xl bg-[#e0f2fe]/80 max-w-full"
             role="tablist"
             aria-label="Technology categories"
           >
@@ -290,8 +290,8 @@ export default function TechnologiesSection() {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`px-6 sm:px-8 py-3 rounded-xl text-sm sm:text-base font-bold transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-white text-[#02093F] shadow-md shadow-blue-900/10 scale-102'
-                      : 'text-[#02093F]/80 hover:text-[#02093F] hover:bg-white/40'
+                      ? 'bg-white text-[#0f172a] shadow-md shadow-blue-900/10 scale-102'
+                      : 'text-[#0f172a]/80 hover:text-[#0f172a] hover:bg-white/40'
                   }`}
                 >
                   {cat.label}
@@ -311,7 +311,7 @@ export default function TechnologiesSection() {
               <div className="mb-4 transition-transform duration-300 group-hover:scale-110">
                 {item.svg}
               </div>
-              <span className="text-sm font-bold text-[#02093F] tracking-tight">
+              <span className="text-sm font-bold text-[#0f172a] tracking-tight">
                 {item.name}
               </span>
             </div>

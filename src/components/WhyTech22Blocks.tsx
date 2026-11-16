@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   ArrowRight, 
   Cpu, 
@@ -50,15 +51,22 @@ export default function WhyTech22Blocks() {
       <StarWatermark size={560} position="top-right" variant="blue" opacity={0.02} rotate={25} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header: Clean Label without Star Bullet */}
+        {/* Section Header: Uniform Techco Underline Accent */}
         <div className="max-w-3xl mb-14">
-          <div className="inline-block mb-3">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0a85b1] bg-sky-50 px-3 py-1 rounded-full border border-sky-100">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0a85b1]">
               Why Tech22Blocks
             </span>
+            <Image 
+              src="/images/shape_title_under_line.svg" 
+              alt="" 
+              width={40} 
+              height={8} 
+              className="inline-block"
+            />
           </div>
-          <h2 id="why-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">
-            Engineering built on ownership, transparency and accountability.
+          <h2 id="why-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f172a] tracking-tight leading-tight">
+            Engineering built on <span className="text-[#0a85b1]">ownership</span> and accountability.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
             We focus on shipping software that creates tangible business value, partnering closely with leaders through dedicated engineering collaboration.

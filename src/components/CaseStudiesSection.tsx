@@ -88,7 +88,7 @@ export default function CaseStudiesSection() {
         {/* Section Header: Techco Exact Style with Underline Shape */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <div className="inline-flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0044EB]">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0a85b1]">
               Case Studies
             </span>
             <Image 
@@ -100,8 +100,8 @@ export default function CaseStudiesSection() {
             />
           </div>
 
-          <h2 id="case-studies-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#02093F] tracking-tight leading-tight">
-            Our latest <span className="text-[#0044EB]">Case</span> Studies
+          <h2 id="case-studies-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f172a] tracking-tight leading-tight">
+            Our latest <span className="text-[#0a85b1]">Case</span> Studies
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
             Explore how we build production software architectures for global enterprises, modern platforms, and proprietary products.
@@ -131,7 +131,7 @@ export default function CaseStudiesSection() {
                     </span>
 
                     {/* Case Study Title */}
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#02093F] mb-4 hover:text-[#0044EB] transition-colors">
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0f172a] mb-4 hover:text-[#0a85b1] transition-colors">
                       <Link href={study.href}>
                         {study.title}
                       </Link>
@@ -145,16 +145,16 @@ export default function CaseStudiesSection() {
                     {/* Industry & Country Metadata List */}
                     <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-8 text-sm">
                       <div className="text-slate-500">
-                        <strong className="text-[#02093F] font-bold">Industry:</strong> {study.industry}
+                        <strong className="text-[#0f172a] font-bold">Industry:</strong> {study.industry}
                       </div>
                       <div className="text-slate-500">
-                        <strong className="text-[#02093F] font-bold">Country:</strong> {study.country}
+                        <strong className="text-[#0f172a] font-bold">Country:</strong> {study.country}
                       </div>
                     </div>
 
                     {/* Core Technologies Row with Circular Elevated Badges */}
                     <div className="flex items-center gap-4 mb-8">
-                      <span className="text-sm font-bold text-[#02093F]">
+                      <span className="text-sm font-bold text-[#0f172a]">
                         Core Technologies:
                       </span>
                       <div className="flex items-center gap-3">
@@ -184,7 +184,7 @@ export default function CaseStudiesSection() {
                   <div>
                     <Link
                       href={study.href}
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#0044EB] text-white font-bold text-sm tracking-wide hover:bg-[#0030a8] transition-all shadow-md group"
+                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#0a85b1] text-white font-bold text-sm tracking-wide hover:bg-[#0369a1] transition-all shadow-md group"
                     >
                       <span>Read Case</span>
                       <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">
@@ -195,7 +195,7 @@ export default function CaseStudiesSection() {
                 </div>
 
                 {/* Right Column: Vivid Solid Blue Card with Isometric Device Mockup */}
-                <div className="lg:col-span-5 bg-gradient-to-br from-[#0044EB] to-[#002f9c] flex items-center justify-center p-6 sm:p-10 relative overflow-hidden min-h-[300px] lg:min-h-full">
+                <div className="lg:col-span-5 bg-gradient-to-br from-[#0a85b1] to-[#0369a1] flex items-center justify-center p-6 sm:p-10 relative overflow-hidden min-h-[300px] lg:min-h-full">
                   {/* Background subtle angle lines */}
                   <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
                   

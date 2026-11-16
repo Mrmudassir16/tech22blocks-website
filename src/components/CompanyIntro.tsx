@@ -10,13 +10,13 @@ export default function CompanyIntro() {
   return (
     <section 
       id="about-mission"
-      className="relative py-24 lg:py-32 bg-[#04092B] text-white overflow-hidden" 
+      className="relative py-24 lg:py-32 bg-[#020b14] text-white overflow-hidden" 
       aria-labelledby="about-heading"
     >
       {/* Background Star Texture & Ambient Blue Glows */}
       <div className="absolute inset-0 bg-[radial-gradient(#1e3a8a_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none" />
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#0044EB]/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#0044EB]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#0a85b1]/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#0a85b1]/15 rounded-full blur-3xl pointer-events-none" />
       <StarWatermark size={680} position="top-right" variant="blue" opacity={0.03} rotate={15} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -82,12 +82,12 @@ export default function CompanyIntro() {
                 height={480} 
                 className="w-full h-auto object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#04092B]/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020b14]/80 via-transparent to-transparent" />
             </div>
 
             {/* Overlapping White Funfact Card */}
             <div 
-              className="relative lg:-mt-24 w-full max-w-[460px] bg-white text-[#02093F] p-6 sm:p-8 rounded-2xl shadow-2xl border border-slate-100 z-20"
+              className="relative lg:-mt-24 w-full max-w-[460px] bg-white text-[#0f172a] p-6 sm:p-8 rounded-2xl shadow-2xl border border-slate-100 z-20"
               style={{
                 boxShadow: '0 20px 45px rgba(0, 0, 0, 0.35)',
               }}
@@ -105,7 +105,7 @@ export default function CompanyIntro() {
                     <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs ring-2 ring-white">
                       SA
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-[#0044EB] text-white flex items-center justify-center font-bold text-xs ring-2 ring-white">
+                    <div className="w-10 h-10 rounded-full bg-[#0a85b1] text-white flex items-center justify-center font-bold text-xs ring-2 ring-white">
                       +
                     </div>
                   </div>
@@ -116,7 +116,7 @@ export default function CompanyIntro() {
 
                 <Link 
                   href="/about" 
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-[#0044EB] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#0030a8] transition-colors shadow-md"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-[#0a85b1] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#0369a1] transition-colors shadow-md"
                 >
                   <span>Learn More</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -126,12 +126,12 @@ export default function CompanyIntro() {
               {/* Bottom Row: Pulsing Icon + Counter Values */}
               <div className="pt-6 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-11 h-11 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0044EB]">
+                  <div className="relative w-11 h-11 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0a85b1]">
                     <Globe2 className="w-5 h-5" />
-                    <span className="absolute inset-0 rounded-full border border-[#0044EB] animate-ping opacity-30 pointer-events-none" />
+                    <span className="absolute inset-0 rounded-full border border-[#0a85b1] animate-ping opacity-30 pointer-events-none" />
                   </div>
                   <div>
-                    <span className="block text-2xl font-extrabold text-[#02093F] leading-none">
+                    <span className="block text-2xl font-extrabold text-[#0f172a] leading-none">
                       100%
                     </span>
                     <span className="text-xs text-slate-500 font-medium">
@@ -143,7 +143,7 @@ export default function CompanyIntro() {
                 <div className="h-8 w-px bg-slate-200" />
 
                 <div>
-                  <span className="block text-2xl font-extrabold text-[#02093F] leading-none">
+                  <span className="block text-2xl font-extrabold text-[#0f172a] leading-none">
                     Sub-Sec
                   </span>
                   <span className="text-xs text-slate-500 font-medium">
@@ -154,7 +154,7 @@ export default function CompanyIntro() {
                 <div className="h-8 w-px bg-slate-200" />
 
                 <div>
-                  <span className="block text-2xl font-extrabold text-[#02093F] leading-none">
+                  <span className="block text-2xl font-extrabold text-[#0f172a] leading-none">
                     Zero
                   </span>
                   <span className="text-xs text-slate-500 font-medium">

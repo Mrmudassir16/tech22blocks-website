@@ -63,7 +63,7 @@ export default function WorkingProcessSection() {
             {/* Eyebrow and Heading with Techco Underline Shape */}
             <div className="mb-10">
               <div className="inline-flex items-center gap-2 mb-3">
-                <span className="text-xs font-bold uppercase tracking-widest text-[#0044EB]">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#0a85b1]">
                   Working Process
                 </span>
                 <Image 
@@ -75,8 +75,8 @@ export default function WorkingProcessSection() {
                 />
               </div>
 
-              <h2 id="process-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#02093F] tracking-tight leading-tight">
-                Our <span className="text-[#0044EB]">Approach</span>
+              <h2 id="process-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f172a] tracking-tight leading-tight">
+                Our <span className="text-[#0a85b1]">Approach</span>
               </h2>
             </div>
 
@@ -97,12 +97,12 @@ export default function WorkingProcessSection() {
                       aria-expanded={isOpen}
                     >
                       <span className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors ${
-                        isOpen ? 'text-[#0044EB]' : 'text-[#02093F] group-hover:text-[#0044EB]'
+                        isOpen ? 'text-[#0a85b1]' : 'text-[#0f172a] group-hover:text-[#0a85b1]'
                       }`}>
                         {step.num}. {step.title}
                       </span>
                       <span className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-                        isOpen ? 'text-[#0044EB]' : 'text-slate-400 group-hover:text-[#0044EB]'
+                        isOpen ? 'text-[#0a85b1]' : 'text-slate-400 group-hover:text-[#0a85b1]'
                       }`}>
                         {isOpen ? (
                           <Minus className="w-5 h-5 stroke-[2.5]" />
@@ -114,7 +114,7 @@ export default function WorkingProcessSection() {
 
                     {/* Expanded Body Box (Techco Light Blue Bubble) */}
                     {isOpen && (
-                      <div className="mt-3 p-5 sm:p-6 rounded-xl bg-[#E6F0FA] text-[#02093F] text-sm sm:text-base leading-relaxed transition-all duration-300">
+                      <div className="mt-3 p-5 sm:p-6 rounded-xl bg-[#f0f9ff] text-[#0f172a] text-sm sm:text-base leading-relaxed transition-all duration-300">
                         <p>{step.description}</p>
                       </div>
                     )}
@@ -140,8 +140,8 @@ export default function WorkingProcessSection() {
                       idx !== 0 ? '-mt-9 sm:-mt-10' : ''
                     } ${
                       isActive
-                        ? 'bg-[#0044EB] text-white border-2 border-[#0044EB] z-20 shadow-xl shadow-blue-600/30 scale-102 font-bold text-xl sm:text-2xl'
-                        : 'bg-white text-[#02093F] border border-[#02093F]/80 hover:border-[#0044EB] hover:text-[#0044EB] z-10 font-semibold text-lg sm:text-xl'
+                        ? 'bg-[#0a85b1] text-white border-2 border-[#0a85b1] z-20 shadow-xl shadow-blue-600/30 scale-102 font-bold text-xl sm:text-2xl'
+                        : 'bg-white text-[#0f172a] border border-[#0f172a]/80 hover:border-[#0a85b1] hover:text-[#0a85b1] z-10 font-semibold text-lg sm:text-xl'
                     }`}
                     style={{
                       position: 'relative',

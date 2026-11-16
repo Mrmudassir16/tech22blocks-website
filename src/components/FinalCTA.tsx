@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
@@ -27,10 +28,17 @@ export default function FinalCTA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           
-          <div className="inline-block">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-sky-400 bg-slate-900 px-3.5 py-1.5 rounded-full border border-sky-500/30">
+          <div className="inline-flex items-center gap-2 mb-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#38bdf8]">
               Initiate an Engineering Dialogue
             </span>
+            <Image 
+              src="/images/shape_title_under_line.svg" 
+              alt="" 
+              width={40} 
+              height={8} 
+              className="inline-block brightness-150"
+            />
           </div>
 
           <h2 id="cta-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
