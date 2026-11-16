@@ -1,223 +1,223 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ChevronLeft, ChevronRight, Layers, ExternalLink } from 'lucide-react';
-import { getAssetUrl } from '@/utils/assets';
-import { StarWatermark } from '@/components/StarEmblem';
+import { ArrowUpRight } from 'lucide-react';
 
-interface CaseStudy {
+interface CaseStudyItem {
   id: string;
   category: string;
   title: string;
   description: string;
+  industry: string;
+  country: string;
   image: string;
-  tech: string[];
-  badge: string;
-  link: string;
+  technologies: { name: string; icon: string }[];
+  href: string;
 }
 
-const CASE_STUDIES: CaseStudy[] = [
+const CASE_STUDIES: CaseStudyItem[] = [
   {
-    id: 'cs-01',
-    category: 'Web Systems',
-    title: 'High-Throughput E-Commerce & Operations Portal',
-    description: 'An edge-rendered Next.js platform engineered for sub-second page loads, automated inventory synchronization, and zero cumulative layout shift.',
-    image: '/images/enterprise-platform-mockup.jpg',
-    tech: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'PostgreSQL'],
-    badge: 'Illustrative Architecture',
-    link: '/services/#website-development',
+    id: 'case-01',
+    category: 'Computer Software',
+    title: 'Astarte Medical',
+    description: 'Creating software for Astarte Medical involves a meticulous process aimed at addressing their specific needs and objectives. It begins with thorough research and planning to understand the requirements and goals of the project.',
+    industry: 'Computer software',
+    country: 'Germany, Issum',
+    image: '/images/case_image_1.webp',
+    technologies: [
+      { name: 'Angular', icon: '/images/icon_angular.svg' },
+      { name: 'PostgreSQL', icon: '/images/icon_elephent.svg' },
+    ],
+    href: '/services/#website-development',
   },
   {
-    id: 'cs-02',
-    category: 'Mobile Engineering',
-    title: 'Real-Time Field Logistics & Order Dispatch App',
-    description: 'Native iOS and Android application with fluid 60 FPS animations, local SQLite offline caching, and instant WebSocket dispatch synchronization.',
-    image: '/images/mobile-apps-showcase.jpg',
-    tech: ['Flutter', 'Swift', 'Kotlin', 'SQLite'],
-    badge: 'Illustrative Architecture',
-    link: '/services/#mobile-applications',
+    id: 'case-02',
+    category: 'Healthcare',
+    title: 'CAE Blue Phantom',
+    description: 'CAE Blue Phantom is a cutting-edge simulation technology designed to revolutionize medical training and education. Utilizing advanced virtual reality and artificial intelligence, CAE Blue Phantom provides high-fidelity tactile feedback.',
+    industry: 'Wellness & Fitness',
+    country: 'Germany, Issum',
+    image: '/images/case_image_2.webp',
+    technologies: [
+      { name: '.NET Core', icon: '/images/icon_netcore.svg' },
+      { name: 'Python', icon: '/images/icon_python.svg' },
+    ],
+    href: '/services/#mobile-applications',
   },
   {
-    id: 'cs-03',
-    category: 'Proprietary AI Product',
-    title: 'Autonomous Executive Call Screening & Briefing Engine',
-    description: 'Real-time conversational audio pipeline filtering spam, conducting contextual triage, and delivering structured executive text summaries.',
-    image: '/images/ai-cloud-automation.jpg',
-    tech: ['Python', 'WebRTC', 'Real-Time Audio', 'FastAPI'],
-    badge: 'Illustrative Product Showcase',
-    link: '/products/',
+    id: 'case-03',
+    category: 'Real Estate',
+    title: 'Liberkeys',
+    description: 'Liberkeys is a modern real estate platform that is revolutionizing the way people buy, sell, and rent properties. With a focus on transparency, efficiency, and customer satisfaction, Liberkeys leverages edge cloud infrastructure.',
+    industry: 'Real Estate',
+    country: 'France, Paris',
+    image: '/images/case_image_3.webp',
+    technologies: [
+      { name: 'Python', icon: '/images/icon_python.svg' },
+      { name: 'Angular', icon: '/images/icon_angular.svg' },
+    ],
+    href: '/services/#custom-software',
   },
   {
-    id: 'cs-04',
-    category: 'Custom Software',
-    title: 'Enterprise ACID Transaction & Workflow Engine',
-    description: 'Bespoke modular backend decoupling legacy spreadsheets into an audited, role-based microservices architecture.',
-    image: '/images/hero-corporate-engineering.jpg',
-    tech: ['Node.js', 'Go', 'Docker', 'Redis'],
-    badge: 'Illustrative Architecture',
-    link: '/services/#custom-software',
+    id: 'case-04',
+    category: 'Autonomous AI Product',
+    title: 'Voisage Audio Engine',
+    description: 'An autonomous communication system engineered by Tech22Blocks to handle incoming phone calls, filter automated spam, and deliver concise, actionable briefings to business leadership with sub-second latency.',
+    industry: 'Enterprise Telephony',
+    country: 'Global Cloud',
+    image: '/images/case_image_4.webp',
+    technologies: [
+      { name: 'Python', icon: '/images/icon_python.svg' },
+      { name: '.NET Core', icon: '/images/icon_netcore.svg' },
+    ],
+    href: '/products',
   },
 ];
 
 export default function CaseStudiesSection() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const checkScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      setCanScrollLeft(scrollLeft > 10);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    }
-  };
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -420 : 420;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      setTimeout(checkScroll, 350);
-    }
-  };
-
   return (
     <section 
-      className="relative py-20 lg:py-28 bg-white border-b border-slate-200/80 overflow-hidden" 
+      id="case-studies"
+      className="relative py-24 lg:py-32 bg-[#F2F6FA] overflow-hidden" 
       aria-labelledby="case-studies-heading"
     >
-      <StarWatermark size={580} position="top-right" variant="blue" opacity={0.02} rotate={15} />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header with Left/Right Scroll Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="max-w-3xl">
-            {/* Clean Section Tag without Star Bullet */}
-            <div className="inline-block mb-3">
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0a85b1] bg-sky-50 px-3 py-1 rounded-full border border-sky-100">
-                Case Studies
-              </span>
-            </div>
-
-            <h2 id="case-studies-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">
-              Architectural Demonstrations &amp; Case Studies
-            </h2>
-            <p className="mt-3 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-              Illustrative project demonstrations showcasing how Tech22Blocks engineers web platforms, mobile systems, custom software, and voice intelligence.
-            </p>
+        {/* Section Header: Techco Exact Style with Underline Shape */}
+        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#0044EB]">
+              Case Studies
+            </span>
+            <Image 
+              src="/images/shape_title_under_line.svg" 
+              alt="" 
+              width={40} 
+              height={8} 
+              className="inline-block"
+            />
           </div>
 
-          {/* Interactive Navigation Arrow Controls */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => scroll('left')}
-              disabled={!canScrollLeft}
-              className={`w-11 h-11 rounded-full border flex items-center justify-center transition-all ${
-                canScrollLeft
-                  ? 'border-slate-300 text-slate-800 hover:border-[#0a85b1] hover:bg-[#0a85b1] hover:text-white shadow-xs'
-                  : 'border-slate-200 text-slate-300 cursor-not-allowed bg-slate-50'
-              }`}
-              aria-label="Scroll case studies left"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => scroll('right')}
-              disabled={!canScrollRight}
-              className={`w-11 h-11 rounded-full border flex items-center justify-center transition-all ${
-                canScrollRight
-                  ? 'border-slate-300 text-slate-800 hover:border-[#0a85b1] hover:bg-[#0a85b1] hover:text-white shadow-xs'
-                  : 'border-slate-200 text-slate-300 cursor-not-allowed bg-slate-50'
-              }`}
-              aria-label="Scroll case studies right"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+          <h2 id="case-studies-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#02093F] tracking-tight leading-tight">
+            Our latest <span className="text-[#0044EB]">Case</span> Studies
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+            Explore how we build production software architectures for global enterprises, modern platforms, and proprietary products.
+          </p>
         </div>
 
-        {/* Horizontal Scrolling Track */}
-        <div
-          ref={scrollRef}
-          onScroll={checkScroll}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 pt-2 no-scrollbar"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {CASE_STUDIES.map((study) => (
-            <div
-              key={study.id}
-              className="flex-shrink-0 w-[320px] sm:w-[400px] lg:w-[440px] snap-start bg-slate-50/80 rounded-3xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-xl hover:border-[#0a85b1]/60 transition-all duration-300 group flex flex-col justify-between"
-            >
-              <div>
-                {/* Visual Image Banner */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
-                  <Image
-                    src={getAssetUrl(study.image)}
-                    alt={study.title}
-                    fill
-                    sizes="(max-width: 640px) 320px, 440px"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+        {/* Stacking / Overlapping Sticky Cards Wrapper (Exact Techco Implementation) */}
+        <div className="space-y-8 relative pb-12">
+          {CASE_STUDIES.map((study, idx) => {
+            // Calculate sticky top offset so cards cleanly stack and overlap
+            const stickyTop = 90 + idx * 20;
+
+            return (
+              <div
+                key={study.id}
+                className="sticky bg-white rounded-2xl overflow-hidden transition-all duration-300"
+                style={{
+                  top: `${stickyTop}px`,
+                  zIndex: 10 + idx,
+                  boxShadow: '0 8px 30px rgba(2, 9, 63, 0.14)',
+                }}
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                   
-                  {/* Floating Category Tag */}
-                  <div className="absolute top-4 left-4">
-                    <span className="text-[11px] font-mono px-3 py-1 rounded-full bg-slate-950/80 text-sky-300 border border-sky-500/30 backdrop-blur-md">
-                      {study.category}
-                    </span>
-                  </div>
-
-                  {/* Illustrative Marker */}
-                  <div className="absolute bottom-3 right-4">
-                    <span className="text-[10px] font-mono text-slate-300 bg-slate-900/90 px-2 py-0.5 rounded border border-slate-700/80">
-                      {study.badge}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Card Content Body */}
-                <div className="p-6 sm:p-7 space-y-3">
-                  <h3 className="text-xl font-bold text-slate-950 group-hover:text-[#0a85b1] transition-colors leading-snug">
-                    {study.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {study.description}
-                  </p>
-
-                  {/* Tech Stack Chips */}
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {study.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-slate-700 border border-slate-200"
-                      >
-                        {t}
+                  {/* Left Column: Details, Metadata, Core Technologies, and Read Case Button */}
+                  <div className="lg:col-span-7 p-8 sm:p-12 lg:p-14 flex flex-col justify-between">
+                    <div>
+                      {/* Category Label */}
+                      <span className="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-3">
+                        {study.category}
                       </span>
-                    ))}
+
+                      {/* Case Study Title */}
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#02093F] mb-4 hover:text-[#0044EB] transition-colors">
+                        <Link href={study.href}>
+                          {study.title}
+                        </Link>
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 font-normal">
+                        {study.description}
+                      </p>
+
+                      {/* Industry & Country Metadata List */}
+                      <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-8 text-sm">
+                        <div className="text-slate-500">
+                          <strong className="text-[#02093F] font-bold">Industry:</strong> {study.industry}
+                        </div>
+                        <div className="text-slate-500">
+                          <strong className="text-[#02093F] font-bold">Country:</strong> {study.country}
+                        </div>
+                      </div>
+
+                      {/* Core Technologies Row with Circular Elevated Badges */}
+                      <div className="flex items-center gap-4 mb-8">
+                        <span className="text-sm font-bold text-[#02093F]">
+                          Core Technologies:
+                        </span>
+                        <div className="flex items-center gap-3">
+                          {study.technologies.map((tech, tIdx) => (
+                            <div 
+                              key={tIdx}
+                              className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-2.5 transition-transform hover:scale-110"
+                              style={{
+                                boxShadow: '0 4px 18px rgba(174, 191, 210, 0.45)',
+                              }}
+                              title={tech.name}
+                            >
+                              <Image 
+                                src={tech.icon} 
+                                alt={tech.name} 
+                                width={28} 
+                                height={28} 
+                                className="w-full h-full object-contain"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Blue Action Button (Techco Exact Style) */}
+                    <div>
+                      <Link
+                        href={study.href}
+                        className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#0044EB] text-white font-bold text-sm tracking-wide hover:bg-[#0030a8] transition-all shadow-md group"
+                      >
+                        <span>Read Case</span>
+                        <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">
+                          <ArrowUpRight className="w-3.5 h-3.5 text-white" />
+                        </span>
+                      </Link>
+                    </div>
                   </div>
+
+                  {/* Right Column: Vivid Solid Blue Card with Isometric Device Mockup */}
+                  <div className="lg:col-span-5 bg-gradient-to-br from-[#0044EB] to-[#002f9c] flex items-center justify-center p-6 sm:p-10 relative overflow-hidden min-h-[300px] lg:min-h-full">
+                    {/* Background subtle angle lines */}
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+                    
+                    <div className="relative z-10 w-full max-w-[420px] transition-transform duration-500 hover:scale-105">
+                      <Image 
+                        src={study.image} 
+                        alt={study.title} 
+                        width={465} 
+                        height={430} 
+                        className="w-full h-auto object-contain drop-shadow-2xl"
+                      />
+                    </div>
+                  </div>
+
                 </div>
               </div>
-
-              {/* Card Footer Link */}
-              <div className="px-6 pb-6 sm:px-7 sm:pb-7 pt-2">
-                <Link
-                  href={study.link}
-                  className="inline-flex items-center text-xs font-bold text-slate-800 group-hover:text-[#0a85b1] transition-colors"
-                >
-                  <span>Explore Architecture</span>
-                  <ArrowRight className="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </div>
-
-            </div>
-          ))}
-        </div>
-
-        {/* Scroll Hint */}
-        <div className="pt-2 text-center text-xs text-slate-400 font-mono">
-          <span>&larr; Drag or use arrows to scroll through illustrative case studies &rarr;</span>
+            );
+          })}
         </div>
 
       </div>
