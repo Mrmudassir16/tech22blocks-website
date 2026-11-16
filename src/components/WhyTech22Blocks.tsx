@@ -7,7 +7,7 @@ import {
   Wrench, 
   Target 
 } from 'lucide-react';
-import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
+import { StarWatermark } from '@/components/StarEmblem';
 
 const WHY_POINTS = [
   {
@@ -47,14 +47,15 @@ const WHY_POINTS = [
 export default function WhyTech22Blocks() {
   return (
     <section className="relative py-20 lg:py-28 bg-white border-b border-slate-200/80 overflow-hidden" aria-labelledby="why-heading">
-      <StarWatermark size={560} position="top-right" variant="blue" opacity={0.022} rotate={25} />
+      <StarWatermark size={560} position="top-right" variant="blue" opacity={0.02} rotate={25} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
+        {/* Section Header: Clean Label without Star Bullet */}
         <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-2.5">
-            <StarEmblem size={13} variant="blue" />
-            <span>Why Tech22Blocks &bull; Engineering Philosophy</span>
+          <div className="inline-block mb-3">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0a85b1] bg-sky-50 px-3 py-1 rounded-full border border-sky-100">
+              Why Tech22Blocks
+            </span>
           </div>
           <h2 id="why-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">
             Engineering built on ownership, transparency and accountability.
@@ -68,27 +69,44 @@ export default function WhyTech22Blocks() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {WHY_POINTS.map((point) => {
             const Icon = point.icon;
+
             return (
               <div 
-                key={point.num}
-                className="p-7 rounded-2xl bg-slate-50/80 border border-slate-200/90 hover:border-slate-300 hover:shadow-xs transition-all flex flex-col justify-between"
+                key={point.num} 
+                className="relative rounded-2xl p-6 sm:p-7 bg-slate-50/70 border border-slate-200/90 flex flex-col justify-between shadow-2xs hover:shadow-lg hover:border-[#0a85b1]/60 hover:bg-white hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div className="space-y-4">
-                  <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#0a85b1] shadow-2xs">
-                    <Icon className="w-5 h-5" />
+                  
+                  {/* Top Bar: Icon + Monospace Step */}
+                  <div className="flex items-center justify-between">
+                    <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-[#0a85b1] group-hover:bg-[#0a85b1] group-hover:text-white transition-colors duration-200 shadow-2xs">
+                      <Icon className="w-5 h-5 transition-colors" />
+                    </div>
+                    <span className="text-sm font-mono font-bold text-slate-400">
+                      {point.num}
+                    </span>
                   </div>
+
+                  {/* Title & Category */}
                   <div>
-                    <h3 className="text-base font-bold text-slate-950 tracking-tight">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#0a85b1] font-semibold">
+                      {point.category}
+                    </span>
+                    <h3 className="text-lg font-bold text-slate-950 mt-1 leading-snug group-hover:text-[#0a85b1] transition-colors">
                       {point.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2">
-                      {point.description}
-                    </p>
                   </div>
+
+                  {/* Narrative Body */}
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    {point.description}
+                  </p>
+
                 </div>
-                <div className="pt-6 border-t border-slate-200/70 mt-6 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                  <span>{point.num}</span>
-                  <span>{point.category}</span>
+
+                <div className="pt-4 mt-4 border-t border-slate-200/60 flex items-center justify-between text-xs text-slate-400 font-mono">
+                  <span>Core Principle</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#0a85b1]/40 group-hover:bg-[#0a85b1] transition-colors" />
                 </div>
               </div>
             );

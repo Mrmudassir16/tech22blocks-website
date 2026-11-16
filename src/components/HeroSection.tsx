@@ -9,7 +9,7 @@ import Star3DEngine from '@/components/design-system/Star3DEngine';
 export default function HeroSection() {
   return (
     <section 
-      className="relative min-h-[85vh] flex items-center bg-[#020b14] text-white overflow-hidden border-b border-slate-800"
+      className="relative min-h-[82vh] lg:min-h-[86vh] flex items-center bg-[#020b14] text-white overflow-hidden border-b border-slate-800"
       aria-label="Tech22Blocks Corporate Hero"
     >
       {/* Background Volumetric Glow & Geometric Watermark */}
@@ -38,14 +38,6 @@ export default function HeroSection() {
           
           {/* Left Column: Bold Editorial Positioning */}
           <div className="lg:col-span-7 space-y-7">
-            
-            {/* Star-Notch Eyebrow */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-sky-500/40 text-slate-200 text-xs backdrop-blur-md shadow-xl shadow-sky-950/40">
-              <StarEmblem size={13} variant="white" opacity={0.9} />
-              <span className="font-mono text-[11px] font-semibold text-white tracking-wider uppercase">
-                Software Engineering &bull; Digital Innovation
-              </span>
-            </div>
 
             {/* Core Typography */}
             <div className="space-y-4">

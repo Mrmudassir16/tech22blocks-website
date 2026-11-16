@@ -1,9 +1,10 @@
 import React from 'react';
 import HeroSection from '@/components/HeroSection';
-import RecognitionStrip from '@/components/RecognitionStrip';
 import CompanyIntro from '@/components/CompanyIntro';
 import ServicesOverview from '@/components/ServicesOverview';
-import FeaturedProduct from '@/components/FeaturedProduct';
+import CaseStudiesSection from '@/components/CaseStudiesSection';
+import WorkingProcessSection from '@/components/WorkingProcessSection';
+import TechnologiesSection from '@/components/TechnologiesSection';
 import WhyTech22Blocks from '@/components/WhyTech22Blocks';
 import LeadershipPreview from '@/components/LeadershipPreview';
 import FinalCTA from '@/components/FinalCTA';
@@ -11,28 +12,31 @@ import FinalCTA from '@/components/FinalCTA';
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero: Selected Concept A (Immersive Full-Width Corporate Image-Led Hero) */}
+      {/* 1. Hero: Cleaned Editorial Headline & 3D Gyroscopic Star Engine */}
       <HeroSection />
 
-      {/* 2. Official Recognition: Compact Professional Trust Section (Startup India & MSME) */}
-      <RecognitionStrip />
-
-      {/* 3. Who We Are: Two Business Areas (Proprietary Products & Custom Technology Solutions) */}
+      {/* 2. Who We Are: Techco-Inspired Image & Dual Business Model Composition */}
       <CompanyIntro />
 
-      {/* 4. Our Services: Exactly the 6 Services from Founder Requirements PDF */}
+      {/* 3. Our Services: 6-Card Balanced Grid Inspired by Techco */}
       <ServicesOverview />
 
-      {/* 5. VoiSage AI: Focused In-House Product Showcase */}
-      <FeaturedProduct />
+      {/* 4. Case Studies: Interactive Horizontal Scrolling Showcase */}
+      <CaseStudiesSection />
 
-      {/* 6. Why Tech22Blocks: Concise Operational Philosophy */}
+      {/* 5. Working Process: Interactive Overlapping & Expandable Step Pills */}
+      <WorkingProcessSection />
+
+      {/* 6. Our Technologies: Categorized Modern Tech Stack Grid */}
+      <TechnologiesSection />
+
+      {/* 7. Why Tech22Blocks: Four Value Principles */}
       <WhyTech22Blocks />
 
-      {/* 7. Leadership: Compact Founder Introduction with Genuine Photograph */}
+      {/* 8. Leadership: Founders Introduction with Genuine Photography */}
       <LeadershipPreview />
 
-      {/* 8. Final Call To Action: Direct Project Consultation Gateway */}
+      {/* 9. Final Call To Action: Direct Project Consultation Gateway */}
       <FinalCTA />
     </>
   );

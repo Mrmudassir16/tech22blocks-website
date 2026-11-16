@@ -27,9 +27,10 @@ export default function FinalCTA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-8">
           
-          <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8]">
-            <StarEmblem size={13} variant="white" opacity={0.9} />
-            <span>Initiate an Engineering Dialogue</span>
+          <div className="inline-block">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-sky-400 bg-slate-900 px-3.5 py-1.5 rounded-full border border-sky-500/30">
+              Initiate an Engineering Dialogue
+            </span>
           </div>
 
           <h2 id="cta-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">

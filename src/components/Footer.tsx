@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -43,6 +45,17 @@ export default function Footer() {
                 aria-label="LinkedIn — Tech22Blocks"
               >
                 <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-[#0a85b1] text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="X (formerly Twitter) — Tech22Blocks"
+                title="Tech22Blocks on X (formerly Twitter)"
+              >
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
               </a>
               <span className="text-xs text-slate-500">Operating as Tech22Blocks &bull; Est. 2025</span>
             </div>
@@ -131,18 +144,52 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom bar with exact required copyright */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© 2026 RRK Software Technologies Private Limited. All rights reserved. Operating as Tech22Blocks.</p>
-          <div className="flex items-center gap-4 text-slate-400">
-            <Link href="/about/" className="hover:text-white transition-colors">About</Link>
-            <span className="text-slate-700">&bull;</span>
-            <Link href="/portfolio/" className="hover:text-white transition-colors">Portfolio</Link>
-            <span className="text-slate-700">&bull;</span>
-            <Link href="/blogs/" className="hover:text-white transition-colors">Blogs</Link>
-            <span className="text-slate-700">&bull;</span>
-            <Link href="/contact/" className="hover:text-white transition-colors">Contact</Link>
+        {/* Bottom bar with exact required copyright & authentic recognition logos */}
+        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col lg:flex-row items-center justify-between text-xs text-slate-400 gap-6">
+          
+          {/* Left: Copyright & Statutory Operating Entity */}
+          <div className="text-center lg:text-left space-y-1">
+            <p className="text-slate-300 font-medium">
+              &copy; 2026 RRK Software Technologies Private Limited. All rights reserved. Operating as Tech22Blocks.
+            </p>
+            <div className="flex items-center justify-center lg:justify-start gap-4 text-slate-500 text-[11px]">
+              <Link href="/about/" className="hover:text-slate-300 transition-colors">About</Link>
+              <span>&bull;</span>
+              <Link href="/portfolio/" className="hover:text-slate-300 transition-colors">Portfolio</Link>
+              <span>&bull;</span>
+              <Link href="/blogs/" className="hover:text-slate-300 transition-colors">Blogs</Link>
+              <span>&bull;</span>
+              <Link href="/contact/" className="hover:text-slate-300 transition-colors">Contact</Link>
+            </div>
           </div>
+
+          {/* Right: Authentic DPIIT #StartupIndia & MSME Recognition Marks */}
+          <div className="flex items-center gap-3 bg-white p-2 sm:px-3 sm:py-2 rounded-xl shadow-xs border border-slate-700/80">
+            {/* DPIIT #StartupIndia Official */}
+            <div className="relative h-7 w-28 sm:w-32">
+              <Image
+                src={getAssetUrl('/images/dpiit-startup-india-official.png')}
+                alt="DPIIT #StartupIndia - Government of India Recognized"
+                fill
+                sizes="130px"
+                className="object-contain object-center"
+              />
+            </div>
+
+            <div className="h-6 w-px bg-slate-300" />
+
+            {/* Ministry of MSME Official */}
+            <div className="relative h-7 w-24 sm:w-28">
+              <Image
+                src={getAssetUrl('/images/msme-gov-official.png')}
+                alt="Ministry of MSME, Govt. of India Registered Enterprise"
+                fill
+                sizes="115px"
+                className="object-contain object-center"
+              />
+            </div>
+          </div>
+
         </div>
       </div>
     </footer>

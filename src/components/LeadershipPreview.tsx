@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, Linkedin } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import { getAssetUrl } from '@/utils/assets';
-import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
+import { StarWatermark } from '@/components/StarEmblem';
 
 export default function LeadershipPreview() {
   const { foundersVision, leadership } = COMPANY;
@@ -33,9 +33,10 @@ export default function LeadershipPreview() {
 
             {/* Right: Compact Leadership Overview */}
             <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1]">
-                <StarEmblem size={13} variant="blue" />
-                <span>Leadership &bull; Est. 2025</span>
+              <div className="inline-block">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#0a85b1] bg-sky-50 px-3 py-1 rounded-full border border-sky-100">
+                  Leadership
+                </span>
               </div>
 
               <div>
@@ -48,42 +49,49 @@ export default function LeadershipPreview() {
               </div>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl">
-                Founded by a father and son uniting two generations of thinking: decades of business experience and corporate governance paired with modern AI capabilities and agile software engineering.
+                Founded by a father and son who believe technology should solve practical problems and build enduring value. Decades of operational business governance pair with modern software architectures and AI engineering.
               </p>
 
               {/* Founder Badges */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 max-w-xl">
-                <div className="p-3 rounded-lg bg-white border border-slate-200 flex items-center justify-between shadow-2xs">
-                  <div>
-                    <p className="font-bold text-sm text-slate-900">Shivasai Adepu</p>
-                    <p className="text-slate-500 text-xs font-mono">Director &amp; CEO</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div className="p-3.5 rounded-xl bg-white border border-slate-200/80">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-bold text-slate-950">Shivasai Adepu</p>
+                      <p className="text-xs text-[#0a85b1] font-semibold">Director &amp; CEO</p>
+                    </div>
+                    {leadership[0].linkedin && (
+                      <a
+                        href={leadership[0].linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-slate-400 hover:text-[#0a85b1] transition-colors p-1"
+                        aria-label="LinkedIn Profile"
+                      >
+                        <Linkedin className="w-4 h-4" />
+                      </a>
+                    )}
                   </div>
-                  <a
-                    href="https://www.linkedin.com/in/shivasaiadepu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-7 h-7 rounded-md bg-sky-50 hover:bg-[#0a85b1] text-[#0a85b1] hover:text-white flex items-center justify-center transition-colors"
-                    aria-label="Shivasai Adepu LinkedIn"
-                  >
-                    <Linkedin className="w-3.5 h-3.5" />
-                  </a>
+                  <p className="text-[11px] text-slate-500 mt-1.5 leading-snug">
+                    Engineering architecture, AI product systems, and tech strategy.
+                  </p>
                 </div>
 
-                <div className="p-3 rounded-lg bg-white border border-slate-200 flex items-center justify-between shadow-2xs">
-                  <div>
-                    <p className="font-bold text-sm text-slate-900">Rajkumar Adepu</p>
-                    <p className="text-slate-500 text-xs font-mono">Director &amp; Chairman</p>
-                  </div>
+                <div className="p-3.5 rounded-xl bg-white border border-slate-200/80">
+                  <p className="text-sm font-bold text-slate-950">Rajkumar Adepu</p>
+                  <p className="text-xs text-slate-600 font-semibold">Director &amp; Chairman</p>
+                  <p className="text-[11px] text-slate-500 mt-1.5 leading-snug">
+                    Corporate governance, operational wisdom, and client stewardship.
+                  </p>
                 </div>
               </div>
 
-              {/* Navigation to Full About Page */}
               <div className="pt-2">
                 <Link
-                  href="/about/"
+                  href="/about/#founders"
                   className="inline-flex items-center text-xs font-bold text-[#0a85b1] hover:text-[#0284c7] group transition-colors"
                 >
-                  <span>Read our full founding story and company mission on About Us</span>
+                  <span>Read the Full Founder Story</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
