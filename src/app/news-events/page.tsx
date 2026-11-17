@@ -20,18 +20,20 @@ export default function NewsEventsPage() {
   return (
     <>
       {/* Header */}
-      <section className="relative bg-slate-900 text-white py-20 lg:py-24 border-b border-slate-800 overflow-hidden">
-        <StarWatermark size={580} position="top-right" variant="white" opacity={0.035} rotate={15} />
+      <section className="relative bg-[#030712] text-white py-24 lg:py-32 border-b border-white/[0.08] overflow-hidden">
+        <StarWatermark size={650} position="top-right" variant="white" opacity={0.02} rotate={15} />
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[500px] bg-sky-500/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#38bdf8] mb-4">
+            <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#38bdf8] mb-4 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
               <StarEmblem size={13} variant="white" opacity={0.9} />
-              <span>Corporate Communications &amp; Disclosures</span>
+              <span>// Corporate Communications &amp; Disclosures</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white">
               News &amp; Events
             </h1>
-            <p className="mt-6 text-xl text-slate-300 font-light leading-relaxed">
+            <p className="mt-6 text-xl text-slate-300 font-normal leading-relaxed">
               Official press releases, annual company letters, financial year milestones, and strategic announcements from RRK Software Technologies Private Limited (operating as Tech22Blocks).
             </p>
           </div>
@@ -39,13 +41,13 @@ export default function NewsEventsPage() {
       </section>
 
       {/* Corporate Newsroom Section */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-24 lg:py-32 bg-[#060b18] text-white border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Filter Bar */}
-          <div className="flex flex-wrap items-center justify-between pb-8 mb-10 border-b border-slate-200 gap-4">
-            <div className="flex items-center space-x-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">
-              <Filter className="w-4 h-4" />
+          <div className="flex flex-wrap items-center justify-between pb-8 mb-12 border-b border-white/[0.08] gap-4">
+            <div className="flex items-center space-x-2 text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider">
+              <Filter className="w-4 h-4 text-sky-400" />
               <span>Filter By Category:</span>
             </div>
 
@@ -54,10 +56,10 @@ export default function NewsEventsPage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                  className={`px-4 py-2 rounded-full text-xs font-mono font-semibold tracking-wide transition-all ${
                     selectedCategory === cat
-                      ? 'bg-[#0a85b1] text-white shadow-sm'
-                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                      ? 'bg-white/[0.12] text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] border border-white/20'
+                      : 'bg-white/[0.03] text-slate-400 hover:text-white border border-white/[0.06] hover:bg-white/[0.06]'
                   }`}
                 >
                   {cat}
@@ -66,54 +68,54 @@ export default function NewsEventsPage() {
             </div>
           </div>
 
-          {/* Chronological Disclosures Stream (BlackRock IR Purpose) */}
+          {/* Chronological Disclosures Stream */}
           <div className="space-y-12">
             {filteredItems.map((item) => (
               <article
                 key={item.id}
                 id={item.id}
-                className="bg-slate-50/70 border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-5 hover:border-slate-300 transition-colors"
+                className="bg-[#0b1120]/80 border border-white/[0.08] hover:border-sky-500/40 rounded-3xl p-8 sm:p-10 space-y-6 transition-all duration-300 shadow-xl backdrop-blur-xl"
               >
                 {/* Meta Header */}
-                <div className="flex flex-wrap items-center justify-between text-xs text-slate-500 font-mono gap-2 border-b border-slate-200 pb-4">
+                <div className="flex flex-wrap items-center justify-between text-xs text-slate-400 font-mono gap-2 border-b border-white/[0.06] pb-5">
                   <div className="flex items-center space-x-3">
-                    <span className="flex items-center text-slate-600 font-bold">
-                      <Calendar className="w-3.5 h-3.5 mr-1.5 text-slate-400" />
+                    <span className="flex items-center text-slate-300 font-medium">
+                      <Calendar className="w-3.5 h-3.5 mr-1.5 text-sky-400" />
                       {item.date}
                     </span>
                     <span>&bull;</span>
-                    <span className="px-2.5 py-0.5 rounded bg-white text-slate-700 font-semibold border border-slate-200">
+                    <span className="px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 font-semibold border border-sky-400/20">
                       {item.category}
                     </span>
                   </div>
-                  <span className="text-[11px] text-slate-400">
+                  <span className="text-[11px] text-slate-500">
                     RRK Software Technologies Pvt. Ltd. Official Release
                   </span>
                 </div>
 
                 {/* Release Headline */}
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight leading-snug">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-[-0.02em] leading-snug">
                   {item.title}
                 </h2>
 
                 {/* Summary */}
-                <p className="text-base text-slate-700 font-medium leading-relaxed bg-white p-4 rounded-xl border border-slate-200/80">
+                <div className="text-base text-slate-200 font-normal leading-relaxed bg-white/[0.02] p-5 rounded-2xl border border-white/[0.04]">
                   {item.summary}
-                </p>
+                </div>
 
                 {/* Full Release Body */}
-                <div className="space-y-3 text-sm text-slate-600 leading-relaxed pt-2">
+                <div className="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed font-normal pt-2">
                   {item.content.map((paragraph, pIdx) => (
                     <p key={pIdx}>{paragraph}</p>
                   ))}
                 </div>
 
                 {/* Footer Attribution */}
-                <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between text-xs text-slate-500 gap-4">
+                <div className="pt-6 border-t border-white/[0.06] flex flex-wrap items-center justify-between text-xs text-slate-400 gap-4 font-mono">
                   <span>Issued by: Office of the Directors (Shivasai Adepu &amp; Rajkumar Adepu)</span>
                   <Link
                     href="/contact/"
-                    className="text-[#0a85b1] font-semibold hover:underline"
+                    className="text-sky-400 font-semibold hover:text-sky-300 transition-colors uppercase tracking-wider"
                   >
                     Direct Press or Partner Inquiries &rarr;
                   </Link>
@@ -130,4 +132,3 @@ export default function NewsEventsPage() {
     </>
   );
 }
-

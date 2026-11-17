@@ -51,29 +51,29 @@ const CASE_STUDIES: CaseStudyItem[] = [
     id: 'case-03',
     category: 'Real Estate',
     title: 'Liberkeys',
-    description: 'Liberkeys is a modern real estate platform that is revolutionizing the way people buy, sell, and rent properties. With a focus on transparency, efficiency, and customer satisfaction, Liberkeys leverages edge cloud infrastructure.',
-    industry: 'Real Estate',
-    country: 'France, Paris',
+    description: 'Liberkeys is a modern real estate platform that is revolutionizing the way people buy, sell, and rent properties. With a focus on transparency, efficiency, and customer satisfaction, Liberkeys offers a full-service real estate experience.',
+    industry: 'Real estate software',
+    country: 'Germany, Issum',
     image: '/images/case_image_3.webp',
     technologies: [
-      { name: 'Python', icon: '/images/icon_python.svg' },
       { name: 'Angular', icon: '/images/icon_angular.svg' },
+      { name: 'Python', icon: '/images/icon_python.svg' },
     ],
     href: '/services/#custom-software',
   },
   {
     id: 'case-04',
-    category: 'Autonomous AI Product',
-    title: 'Voisage Audio Engine',
-    description: 'An autonomous communication system engineered by Tech22Blocks to handle incoming phone calls, filter automated spam, and deliver concise, actionable briefings to business leadership with sub-second latency.',
-    industry: 'Enterprise Telephony',
-    country: 'Global Cloud',
-    image: '/images/case_image_4.webp',
+    category: 'Enterprise Cloud',
+    title: 'NovaCore Systems',
+    description: 'Engineered high-throughput enterprise middleware with distributed telemetry, robust fault tolerance, and automated cloud deployments tailored for real-time transactional workloads.',
+    industry: 'Fintech & Cloud Systems',
+    country: 'India, Hyderabad',
+    image: '/images/case_image_1.webp',
     technologies: [
-      { name: 'Python', icon: '/images/icon_python.svg' },
       { name: '.NET Core', icon: '/images/icon_netcore.svg' },
+      { name: 'PostgreSQL', icon: '/images/icon_elephent.svg' },
     ],
-    href: '/products',
+    href: '/services/#it-consulting',
   },
 ];
 
@@ -81,15 +81,19 @@ export default function CaseStudiesSection() {
   return (
     <section 
       id="case-studies"
-      className="relative py-24 lg:py-32 bg-[#F2F6FA]" 
+      className="relative py-28 lg:py-36 bg-[#060b18] text-white border-b border-white/[0.08]" 
       aria-labelledby="case-studies-heading"
     >
+      {/* Background Volumetric Flares */}
+      <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] bg-sky-500/[0.08] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+      <div className="absolute bottom-10 right-0 w-[550px] h-[550px] bg-[#0a85b1]/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header: Techco Exact Style with Underline Shape */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#0a85b1]">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
+          <div className="inline-flex items-center gap-2 mb-4">
+            <span className="text-xs font-semibold uppercase tracking-widest font-mono text-[#38bdf8]">
               Case Studies
             </span>
             <Image 
@@ -97,28 +101,26 @@ export default function CaseStudiesSection() {
               alt="" 
               width={40} 
               height={8} 
-              className="inline-block"
+              className="inline-block brightness-200"
             />
           </div>
 
-          <h2 id="case-studies-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f172a] tracking-tight leading-tight">
-            Our latest <span className="text-[#0a85b1]">Case</span> Studies
+          <h2 id="case-studies-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight">
+            Our latest <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-[#0a85b1] bg-clip-text text-transparent">Case</span> Studies
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+          <p className="mt-5 text-base sm:text-lg text-slate-400 leading-relaxed font-normal">
             Explore how we build production software architectures for global enterprises, modern platforms, and proprietary products.
           </p>
         </div>
 
-        {/* Stacking / Overlapping Sticky Cards Wrapper (Exact Techco Implementation) */}
+        {/* Stacking / Overlapping Sticky Cards Wrapper */}
         <div className="relative pb-24 space-y-12">
           {CASE_STUDIES.map((study, idx) => (
             <div
               key={study.id}
-              className="sticky top-20 sm:top-24 bg-white rounded-2xl overflow-hidden transition-all duration-300"
+              className="sticky top-24 sm:top-28 bg-[#0b1120]/95 rounded-3xl overflow-hidden border border-white/[0.1] shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-300"
               style={{
                 zIndex: 10 + idx * 5,
-                boxShadow: '0 16px 45px rgba(2, 9, 63, 0.16), 0 4px 12px rgba(2, 9, 63, 0.08)',
-                border: '1px solid rgba(2, 9, 63, 0.06)',
               }}
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
@@ -126,46 +128,45 @@ export default function CaseStudiesSection() {
                 {/* Left Column: Details, Metadata, Core Technologies, and Read Case Button */}
                 <div className="lg:col-span-7 p-8 sm:p-12 lg:p-14 flex flex-col justify-between">
                   <div>
-                    {/* Category Label */}
-                    <span className="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-3">
-                      {study.category}
-                    </span>
+                    {/* Category Label with Monospace Tag */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
+                        // {study.category}
+                      </span>
+                    </div>
 
                     {/* Case Study Title */}
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0f172a] mb-4 hover:text-[#0a85b1] transition-colors">
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-5 hover:text-[#38bdf8] transition-colors leading-tight">
                       <Link href={study.href}>
                         {study.title}
                       </Link>
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 font-normal">
+                    <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 font-normal">
                       {study.description}
                     </p>
 
                     {/* Industry & Country Metadata List */}
                     <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-8 text-sm">
-                      <div className="text-slate-500">
-                        <strong className="text-[#0f172a] font-bold">Industry:</strong> {study.industry}
+                      <div className="text-slate-400">
+                        <strong className="text-white font-semibold">Industry:</strong> {study.industry}
                       </div>
-                      <div className="text-slate-500">
-                        <strong className="text-[#0f172a] font-bold">Country:</strong> {study.country}
+                      <div className="text-slate-400">
+                        <strong className="text-white font-semibold">Country:</strong> {study.country}
                       </div>
                     </div>
 
-                    {/* Core Technologies Row with Circular Elevated Badges */}
+                    {/* Core Technologies Row with Elevated Badges */}
                     <div className="flex items-center gap-4 mb-8">
-                      <span className="text-sm font-bold text-[#0f172a]">
+                      <span className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400">
                         Core Technologies:
                       </span>
                       <div className="flex items-center gap-3">
                         {study.technologies.map((tech, tIdx) => (
                           <div 
                             key={tIdx}
-                            className="w-12 h-12 rounded-full bg-white flex items-center justify-center p-2.5 transition-transform hover:scale-110"
-                            style={{
-                              boxShadow: '0 4px 18px rgba(174, 191, 210, 0.45)',
-                            }}
+                            className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.1] flex items-center justify-center p-2.5 transition-all duration-200 hover:scale-110 hover:border-sky-400/50 hover:bg-sky-500/[0.1] shadow-lg"
                             title={tech.name}
                           >
                             <Image 
@@ -181,24 +182,24 @@ export default function CaseStudiesSection() {
                     </div>
                   </div>
 
-                  {/* Blue Action Button (Techco Exact Style) */}
+                  {/* Action Button */}
                   <div>
                     <Link
                       href={study.href}
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#0a85b1] text-white font-bold text-sm tracking-wide hover:bg-[#0369a1] transition-all shadow-md group"
+                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 via-[#0a85b1] to-[#0284c7] text-white font-mono font-semibold text-xs tracking-wider uppercase hover:from-sky-400 hover:to-sky-500 transition-all shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:shadow-[0_0_30px_rgba(14,165,233,0.5)] group"
                     >
                       <span>Read Case</span>
-                      <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">
+                      <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                         <ArrowUpRight className="w-3.5 h-3.5 text-white" />
                       </span>
                     </Link>
                   </div>
                 </div>
 
-                {/* Right Column: Vivid Solid Blue Card with Isometric Device Mockup */}
-                <div className="lg:col-span-5 bg-gradient-to-br from-[#0a85b1] to-[#0369a1] flex items-center justify-center p-6 sm:p-10 relative overflow-hidden min-h-[300px] lg:min-h-full">
-                  {/* Background subtle angle lines */}
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+                {/* Right Column: Vivid Deep Gradient Showcase with Isometric Device Mockup */}
+                <div className="lg:col-span-5 bg-gradient-to-br from-[#0a85b1]/20 via-[#0369a1]/10 to-[#030712] border-t lg:border-t-0 lg:border-l border-white/[0.08] flex items-center justify-center p-8 sm:p-12 relative overflow-hidden min-h-[320px] lg:min-h-full">
+                  {/* Subtle Grid Pattern Overlay */}
+                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
                   
                   <div className="relative z-10 w-full max-w-[420px] transition-transform duration-500 hover:scale-105">
                     <Image 
@@ -206,7 +207,7 @@ export default function CaseStudiesSection() {
                       alt={study.title} 
                       width={465} 
                       height={430} 
-                      className="w-full h-auto object-contain drop-shadow-2xl"
+                      className="w-full h-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)]"
                     />
                   </div>
                 </div>

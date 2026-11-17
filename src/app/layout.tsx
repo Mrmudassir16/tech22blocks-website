@@ -8,7 +8,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#0a85b1',
+  themeColor: '#030712',
 };
 
 export const metadata: Metadata = {
@@ -101,14 +101,21 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
+        {/* Google Fonts: Plus Jakarta Sans & JetBrains Mono */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col font-sans bg-white text-slate-900 antialiased selection:bg-sky-100 selection:text-sky-900">
+      <body className="min-h-screen flex flex-col font-sans bg-[#030712] text-slate-100 antialiased selection:bg-sky-500/30 selection:text-white">
         <Navbar />
         <main className="flex-1">
           {children}

@@ -19,7 +19,7 @@ export default function ImmersiveContact() {
 
   return (
     <section 
-      className="relative py-16 lg:py-24 bg-[#020617] text-white overflow-hidden border-t border-slate-800"
+      className="relative py-20 lg:py-28 bg-[#060b18] text-white overflow-hidden border-t border-white/[0.08]"
       aria-label="Direct Engineering Consultation"
     >
       {/* Immersive Cybernetic Grid & Volumetric Lighting */}

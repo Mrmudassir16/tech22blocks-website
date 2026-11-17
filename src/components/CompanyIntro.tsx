@@ -11,22 +11,21 @@ export default function CompanyIntro() {
   return (
     <section 
       id="about-mission"
-      className="relative py-24 lg:py-32 bg-[#020b14] text-white overflow-hidden" 
+      className="relative py-28 lg:py-36 bg-[#030712] text-white overflow-hidden border-b border-white/[0.08]" 
       aria-labelledby="about-heading"
     >
-      {/* Background Star Texture & Ambient Blue Glows */}
-      <div className="absolute inset-0 bg-[radial-gradient(#1e3a8a_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none" />
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#0a85b1]/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#0a85b1]/15 rounded-full blur-3xl pointer-events-none" />
-      <StarWatermark size={680} position="top-right" variant="blue" opacity={0.03} rotate={15} />
+      {/* Background Volumetric Flares */}
+      <div className="absolute top-1/2 -left-40 w-[600px] h-[600px] bg-[#0a85b1]/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+      <div className="absolute bottom-0 right-10 w-[500px] h-[500px] bg-sky-500/[0.1] rounded-full blur-[130px] pointer-events-none transform-gpu" />
+      <StarWatermark size={680} position="top-right" variant="white" opacity={0.02} rotate={15} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Heading, Focus Underline, and Mission Statement */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-7">
             <div className="inline-flex items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[#38bdf8]">
+              <span className="text-xs font-semibold uppercase tracking-widest font-mono text-[#38bdf8]">
                 About Us
               </span>
               <Image 
@@ -34,12 +33,12 @@ export default function CompanyIntro() {
                 alt="" 
                 width={40} 
                 height={8} 
-                className="inline-block brightness-150"
+                className="inline-block brightness-200"
               />
             </div>
 
-            <h2 id="about-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
-              Tech22Blocks <span className="text-[#38bdf8]">Mission &amp; Goal</span>
+            <h2 id="about-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white">
+              Tech22Blocks <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-[#0a85b1] bg-clip-text text-transparent">Mission &amp; Goal</span>
             </h2>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
@@ -50,117 +49,106 @@ export default function CompanyIntro() {
               Operating under RRK Software Technologies Private Limited, our technical leadership combines battle-tested architectural principles with modern cloud technologies to engineer scalable digital systems, real-time mobile platforms, and proprietary intelligence products.
             </p>
 
-            {/* Core Capability Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div className="flex items-center gap-2.5 text-sm text-slate-200">
+            {/* Core Capability Checklist with Obsidian Glass Capsules */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm text-slate-200 backdrop-blur-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
-                <span>Proprietary Tech IP</span>
+                <span className="font-medium">Proprietary Tech IP</span>
               </div>
-              <div className="flex items-center gap-2.5 text-sm text-slate-200">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm text-slate-200 backdrop-blur-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
-                <span>Zero Architectural Shortcuts</span>
+                <span className="font-medium">Zero Architectural Shortcuts</span>
               </div>
-              <div className="flex items-center gap-2.5 text-sm text-slate-200">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm text-slate-200 backdrop-blur-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
-                <span>Direct Git Repo Access</span>
+                <span className="font-medium">Direct Git Repo Access</span>
               </div>
-              <div className="flex items-center gap-2.5 text-sm text-slate-200">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm text-slate-200 backdrop-blur-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
-                <span>Statutory Compliance Handover</span>
+                <span className="font-medium">Statutory Compliance Handover</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Photo + Overlapping Funfact Card (Techco Exact Composition) */}
+          {/* Right Column: High-Craft Photo Staging + Glassmorphic Funfact Card */}
           <div className="lg:col-span-6 relative flex flex-col items-center lg:items-end">
             
-            {/* Engineer Working Photo */}
-            <div className="relative w-full max-w-[420px] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            {/* Engineer Working Photo with Luminous Edge */}
+            <div className="relative w-full max-w-[440px] rounded-2xl overflow-hidden shadow-2xl border border-white/[0.12] group">
               <Image 
                 src={getAssetUrl('/images/about_image_6.webp')} 
                 alt="Tech22Blocks Engineering Team at work" 
                 width={396} 
                 height={480} 
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020b14]/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
             </div>
 
-            {/* Overlapping White Funfact Card */}
+            {/* Overlapping Glassmorphic Funfact Card */}
             <div 
-              className="relative lg:-mt-24 w-full max-w-[460px] bg-white text-[#0f172a] p-6 sm:p-8 rounded-2xl shadow-2xl border border-slate-100 z-20"
-              style={{
-                boxShadow: '0 20px 45px rgba(0, 0, 0, 0.35)',
-              }}
+              className="relative lg:-mt-24 w-full max-w-[480px] bg-[#0b1120]/95 text-white p-7 sm:p-9 rounded-2xl shadow-[0_25px_50px_rgba(0,0,0,0.5)] border border-white/[0.12] backdrop-blur-2xl z-20"
             >
-              {/* Top Row: Happy Customers Avatars + Learn More Button */}
-              <div className="flex items-center justify-between pb-6 border-b border-slate-100">
+              {/* Top Row: Trusted Avatars + Learn More Button */}
+              <div className="flex items-center justify-between pb-6 border-b border-white/[0.08]">
                 <div>
-                  <div className="flex items-center -space-x-3 mb-2">
-                    <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs ring-2 ring-white">
+                  <div className="flex items-center -space-x-2.5 mb-2.5">
+                    <div className="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs ring-2 ring-[#0b1120]">
                       TK
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold text-xs ring-2 ring-white">
+                    <div className="w-9 h-9 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold text-xs ring-2 ring-[#0b1120]">
                       MK
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs ring-2 ring-white">
+                    <div className="w-9 h-9 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs ring-2 ring-[#0b1120]">
                       SA
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-[#0a85b1] text-white flex items-center justify-center font-bold text-xs ring-2 ring-white">
+                    <div className="w-9 h-9 rounded-full bg-[#0a85b1] text-white flex items-center justify-center font-bold text-xs ring-2 ring-[#0b1120]">
                       +
                     </div>
                   </div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                  <span className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400">
                     Trusted by Founders &amp; Enterprises
                   </span>
                 </div>
 
                 <Link 
                   href="/about" 
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-[#0a85b1] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#0369a1] transition-colors shadow-md"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-[#0a85b1] hover:from-sky-400 hover:to-sky-500 text-white text-xs font-mono font-semibold uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:-translate-y-0.5"
                 >
                   <span>Learn More</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
 
-              {/* Bottom Row: Pulsing Icon + Counter Values */}
-              <div className="pt-6 flex items-center justify-between">
+              {/* Bottom Row: Key Engineering Metrics */}
+              <div className="pt-6 grid grid-cols-2 gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-11 h-11 rounded-full bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0a85b1]">
+                  <div className="relative w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-400/20 flex items-center justify-center text-[#38bdf8] flex-shrink-0">
                     <Globe2 className="w-5 h-5" />
-                    <span className="absolute inset-0 rounded-full border border-[#0a85b1] animate-ping opacity-30 pointer-events-none" />
                   </div>
                   <div>
-                    <span className="block text-2xl font-extrabold text-[#0f172a] leading-none">
+                    <span className="block text-2xl font-extrabold text-white leading-none">
                       100%
                     </span>
-                    <span className="text-xs text-slate-500 font-medium">
+                    <span className="text-xs font-mono text-slate-400">
                       Code Handover
                     </span>
                   </div>
                 </div>
 
-                <div className="h-8 w-px bg-slate-200" />
-
-                <div>
-                  <span className="block text-2xl font-extrabold text-[#0f172a] leading-none">
-                    Sub-Sec
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium">
-                    Edge Performance
-                  </span>
-                </div>
-
-                <div className="h-8 w-px bg-slate-200" />
-
-                <div>
-                  <span className="block text-2xl font-extrabold text-[#0f172a] leading-none">
-                    Zero
-                  </span>
-                  <span className="text-xs text-slate-500 font-medium">
-                    Lock-In
-                  </span>
+                <div className="flex items-center gap-3">
+                  <div className="relative w-11 h-11 rounded-xl bg-emerald-500/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="block text-2xl font-extrabold text-white leading-none">
+                      Enterprise
+                    </span>
+                    <span className="text-xs font-mono text-slate-400">
+                      Quality Standards
+                    </span>
+                  </div>
                 </div>
               </div>
 

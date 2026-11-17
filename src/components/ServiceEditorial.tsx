@@ -21,20 +21,20 @@ export default function ServiceEditorial() {
   const { services } = COMPANY;
 
   return (
-    <section className="relative py-20 lg:py-28 bg-white overflow-hidden" aria-labelledby="services-detail-heading">
-      <StarWatermark size={680} position="top-right" variant="blue" opacity={0.02} rotate={-12} />
+    <section className="relative py-28 lg:py-36 bg-[#060b18] text-white border-b border-white/[0.08] overflow-hidden" aria-labelledby="services-detail-heading">
+      <StarWatermark size={680} position="top-right" variant="white" opacity={0.015} rotate={-12} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16 lg:mb-24">
-          <div className="inline-flex items-center space-x-2 text-xs font-bold uppercase tracking-widest text-[#0a85b1] mb-3">
-            <StarEmblem size={13} variant="blue" />
-            <span>Comprehensive Service Architecture</span>
+          <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-sky-400 mb-3 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
+            <StarEmblem size={13} variant="white" />
+            <span>// Comprehensive Service Architecture</span>
           </div>
-          <h2 id="services-detail-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-950 tracking-tight leading-tight">
+          <h2 id="services-detail-heading" className="text-3xl sm:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight">
             End-to-End Technology Capabilities
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+          <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             From modern website platforms and native mobile applications to tailored custom software, intuitive UI/UX design, strategic IT advisory, and emerging Web3 technologies &mdash; we engineer practical solutions that solve real business bottlenecks.
           </p>
         </div>
@@ -57,48 +57,48 @@ export default function ServiceEditorial() {
                 <div className={`lg:col-span-6 space-y-6 ${isReversed ? 'lg:col-start-7' : ''}`}>
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
-                      <span className="font-mono text-xs font-bold text-[#0a85b1] bg-sky-50 px-2.5 py-1 rounded border border-sky-100">
+                      <span className="font-mono text-xs font-semibold text-sky-300 bg-sky-500/10 px-3 py-1 rounded-full border border-sky-400/20">
                         Capability {String(index + 1).padStart(2, '0')}
                       </span>
-                      <span className="text-xs font-mono font-semibold text-slate-500 uppercase tracking-wider">
+                      <span className="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider">
                         {service.category}
                       </span>
                       {service.badge && (
-                        <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-200">
+                        <span className="text-xs font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-400/10 text-amber-300 border border-amber-400/30">
                           {service.badge}
                         </span>
                       )}
                     </div>
                     
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight">
+                    <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
                       {service.title}
                     </h3>
                     
-                    <p className="text-base text-slate-600 leading-relaxed">
+                    <p className="text-base text-slate-300 leading-relaxed font-normal">
                       {service.fullDesc}
                     </p>
                   </div>
 
                   {/* Concrete Value Delivered */}
-                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-1">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-900">
-                      Business Problem Addressed &amp; Value:
+                  <div className="p-5 rounded-2xl bg-[#0b1120]/80 border border-white/[0.08] backdrop-blur-xl space-y-2 shadow-lg">
+                    <span className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
+                      // Business Problem Addressed &amp; Value:
                     </span>
-                    <p className="text-sm text-slate-700 leading-relaxed">
+                    <p className="text-sm text-slate-300 leading-relaxed font-normal">
                       {service.outcome}
                     </p>
                   </div>
 
                   {/* Core Deliverables List */}
-                  <div className="space-y-2.5 pt-1">
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                  <div className="space-y-3 pt-1">
+                    <p className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-300">
                       Key Deliverables &amp; Artifacts
                     </p>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-700">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-300">
                       {service.deliverables.map((del, dIdx) => (
                         <li key={dIdx} className="flex items-start space-x-2">
-                          <CheckCircle2 className="w-4 h-4 text-[#0a85b1] flex-shrink-0 mt-0.5" />
-                          <span className="text-xs sm:text-sm">{del}</span>
+                          <CheckCircle2 className="w-4 h-4 text-sky-400 flex-shrink-0 mt-0.5" />
+                          <span className="text-xs sm:text-sm font-medium">{del}</span>
                         </li>
                       ))}
                     </ul>
@@ -106,14 +106,14 @@ export default function ServiceEditorial() {
 
                   {/* Technology Stacks */}
                   <div className="pt-2">
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                    <p className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400 mb-2">
                       Relevant Technologies
                     </p>
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-2">
                       {service.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="text-[11px] font-mono px-2.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200/60"
+                          className="text-[11px] font-mono px-3 py-1 rounded-lg bg-white/[0.04] text-slate-300 border border-white/[0.08]"
                         >
                           {tech}
                         </span>
@@ -125,7 +125,7 @@ export default function ServiceEditorial() {
                   <div className="pt-3">
                     <Link
                       href="/contact/"
-                      className="inline-flex items-center text-sm font-bold text-[#0a85b1] hover:text-[#0284c7] group transition-colors"
+                      className="inline-flex items-center text-xs font-mono font-semibold uppercase tracking-wider text-sky-400 hover:text-sky-300 group transition-colors"
                     >
                       <span>Discuss Your {service.title} Project</span>
                       <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
