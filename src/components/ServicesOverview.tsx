@@ -124,7 +124,7 @@ export default function ServicesOverview() {
       {/* Background Decorative Shapes from Techco */}
       <div className="absolute top-1/4 -left-10 w-64 h-96 opacity-40 pointer-events-none">
         <Image 
-          src="/images/shape_angle_1.webp" 
+          src={getAssetUrl('/images/shape_angle_1.webp')} 
           alt="" 
           width={280} 
           height={400} 
@@ -133,7 +133,7 @@ export default function ServicesOverview() {
       </div>
       <div className="absolute top-1/3 -right-10 w-72 h-96 opacity-40 pointer-events-none">
         <Image 
-          src="/images/shape_angle_2.webp" 
+          src={getAssetUrl('/images/shape_angle_2.webp')} 
           alt="" 
           width={300} 
           height={420} 
@@ -150,7 +150,7 @@ export default function ServicesOverview() {
               Our Services
             </span>
             <Image 
-              src="/images/shape_title_under_line.svg" 
+              src={getAssetUrl('/images/shape_title_under_line.svg')} 
               alt="" 
               width={40} 
               height={8} 

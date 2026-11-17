@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ArrowRight, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
+import { getAssetUrl } from '@/utils/assets';
 
 export default function FinalCTA() {
   return (
@@ -33,7 +34,7 @@ export default function FinalCTA() {
               Initiate an Engineering Dialogue
             </span>
             <Image 
-              src="/images/shape_title_under_line.svg" 
+              src={getAssetUrl('/images/shape_title_under_line.svg')} 
               alt="" 
               width={40} 
               height={8} 

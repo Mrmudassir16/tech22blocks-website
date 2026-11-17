@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, Globe2, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { StarWatermark } from '@/components/StarEmblem';
+import { getAssetUrl } from '@/utils/assets';
 
 export default function CompanyIntro() {
   return (
@@ -29,7 +30,7 @@ export default function CompanyIntro() {
                 About Us
               </span>
               <Image 
-                src="/images/shape_title_under_line.svg" 
+                src={getAssetUrl('/images/shape_title_under_line.svg')} 
                 alt="" 
                 width={40} 
                 height={8} 
@@ -76,7 +77,7 @@ export default function CompanyIntro() {
             {/* Engineer Working Photo */}
             <div className="relative w-full max-w-[420px] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
               <Image 
-                src="/images/about_image_6.webp" 
+                src={getAssetUrl('/images/about_image_6.webp')} 
                 alt="Tech22Blocks Engineering Team at work" 
                 width={396} 
                 height={480} 

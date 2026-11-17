@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assets';
 
 interface CaseStudyItem {
   id: string;
@@ -92,7 +93,7 @@ export default function CaseStudiesSection() {
               Case Studies
             </span>
             <Image 
-              src="/images/shape_title_under_line.svg" 
+              src={getAssetUrl('/images/shape_title_under_line.svg')} 
               alt="" 
               width={40} 
               height={8} 
@@ -168,7 +169,7 @@ export default function CaseStudiesSection() {
                             title={tech.name}
                           >
                             <Image 
-                              src={tech.icon} 
+                              src={getAssetUrl(tech.icon)} 
                               alt={tech.name} 
                               width={28} 
                               height={28} 
@@ -201,7 +202,7 @@ export default function CaseStudiesSection() {
                   
                   <div className="relative z-10 w-full max-w-[420px] transition-transform duration-500 hover:scale-105">
                     <Image 
-                      src={study.image} 
+                      src={getAssetUrl(study.image)} 
                       alt={study.title} 
                       width={465} 
                       height={430} 

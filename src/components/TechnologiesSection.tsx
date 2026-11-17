@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { getAssetUrl } from '@/utils/assets';
 
 interface TechItem {
   name: string;
@@ -68,7 +69,7 @@ const TECHNOLOGIES: Record<string, { name: string; svg: React.ReactNode }[]> = {
       name: 'Angular',
       svg: (
         <div className="w-12 h-12 flex items-center justify-center">
-          <Image src="/images/icon_angular.svg" alt="Angular" width={40} height={40} className="w-10 h-10 object-contain" />
+          <Image src={getAssetUrl('/images/icon_angular.svg')} alt="Angular" width={40} height={40} className="w-10 h-10 object-contain" />
         </div>
       ),
     },
@@ -87,7 +88,7 @@ const TECHNOLOGIES: Record<string, { name: string; svg: React.ReactNode }[]> = {
       name: 'PostgreSQL',
       svg: (
         <div className="w-12 h-12 flex items-center justify-center">
-          <Image src="/images/icon_elephent.svg" alt="PostgreSQL" width={40} height={40} className="w-10 h-10 object-contain" />
+          <Image src={getAssetUrl('/images/icon_elephent.svg')} alt="PostgreSQL" width={40} height={40} className="w-10 h-10 object-contain" />
         </div>
       ),
     },
@@ -202,7 +203,7 @@ const TECHNOLOGIES: Record<string, { name: string; svg: React.ReactNode }[]> = {
       name: 'Python',
       svg: (
         <div className="w-12 h-12 flex items-center justify-center">
-          <Image src="/images/icon_python.svg" alt="Python" width={40} height={40} className="w-10 h-10 object-contain" />
+          <Image src={getAssetUrl('/images/icon_python.svg')} alt="Python" width={40} height={40} className="w-10 h-10 object-contain" />
         </div>
       ),
     },
@@ -210,7 +211,7 @@ const TECHNOLOGIES: Record<string, { name: string; svg: React.ReactNode }[]> = {
       name: '.NET Core',
       svg: (
         <div className="w-12 h-12 flex items-center justify-center">
-          <Image src="/images/icon_netcore.svg" alt=".NET Core" width={40} height={40} className="w-10 h-10 object-contain" />
+          <Image src={getAssetUrl('/images/icon_netcore.svg')} alt=".NET Core" width={40} height={40} className="w-10 h-10 object-contain" />
         </div>
       ),
     },
@@ -255,7 +256,7 @@ export default function TechnologiesSection() {
               Technologies
             </span>
             <Image 
-              src="/images/shape_title_under_line.svg" 
+              src={getAssetUrl('/images/shape_title_under_line.svg')} 
               alt="" 
               width={40} 
               height={8} 

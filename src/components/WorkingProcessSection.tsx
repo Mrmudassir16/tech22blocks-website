@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Plus, Minus } from 'lucide-react';
+import { getAssetUrl } from '@/utils/assets';
 
 interface ProcessStep {
   id: string;
@@ -67,7 +68,7 @@ export default function WorkingProcessSection() {
                   Working Process
                 </span>
                 <Image 
-                  src="/images/shape_title_under_line.svg" 
+                  src={getAssetUrl('/images/shape_title_under_line.svg')} 
                   alt="" 
                   width={40} 
                   height={8} 

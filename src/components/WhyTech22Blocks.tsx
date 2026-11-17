@@ -9,6 +9,7 @@ import {
   Target 
 } from 'lucide-react';
 import { StarWatermark } from '@/components/StarEmblem';
+import { getAssetUrl } from '@/utils/assets';
 
 const WHY_POINTS = [
   {
@@ -58,7 +59,7 @@ export default function WhyTech22Blocks() {
               Why Tech22Blocks
             </span>
             <Image 
-              src="/images/shape_title_under_line.svg" 
+              src={getAssetUrl('/images/shape_title_under_line.svg')} 
               alt="" 
               width={40} 
               height={8} 
