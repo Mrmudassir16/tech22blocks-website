@@ -63,12 +63,6 @@ export default function Navbar() {
                 />
               </div>
             </div>
-            
-            {/* Live Operational Status Node (No Slashes) */}
-            <div className="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/90 border border-emerald-400/30 text-[10px] font-mono text-slate-300 shadow-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
-              <span className="tracking-wider">ENTERPRISE SYSTEM &bull; 2026</span>
-            </div>
           </Link>
 
           {/* Desktop Navigation Pill Group */}

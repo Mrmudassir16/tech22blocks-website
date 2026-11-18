@@ -15,8 +15,7 @@ export default function FoundersSection() {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12 lg:mb-16">
-          <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#38bdf8] mb-3">
-            <StarEmblem size={13} variant="white" />
+          <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#38bdf8] mb-3 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
             <span>Leadership &amp; Heritage</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight">

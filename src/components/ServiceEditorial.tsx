@@ -28,7 +28,6 @@ export default function ServiceEditorial() {
         {/* Section Header */}
         <div className="max-w-3xl mb-12 lg:mb-16">
           <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-sky-400 mb-3 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
-            <StarEmblem size={13} variant="white" />
             <span>Comprehensive Service Architecture</span>
           </div>
           <h2 id="services-detail-heading" className="text-3xl sm:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight">

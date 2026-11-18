@@ -9,17 +9,32 @@ import { getAssetUrl } from '@/utils/assets';
 export default function FinalCTA() {
   return (
     <section 
-      className="bg-[#060b18] text-white py-18 sm:py-22 lg:py-24 relative overflow-hidden border-b border-white/[0.08]" 
+      className="bg-[#04091a] text-white py-18 sm:py-22 lg:py-24 relative overflow-hidden border-b border-white/[0.08]" 
       aria-labelledby="cta-heading"
     >
       {/* Background Volumetric Glow & Signature Star Watermark */}
       <div 
         aria-hidden="true" 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-sky-500/[0.12] rounded-full blur-[150px] pointer-events-none transform-gpu" 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[450px] bg-sky-500/[0.15] rounded-full blur-[150px] pointer-events-none transform-gpu animate-pulse-aura" 
       />
+      <div 
+        aria-hidden="true" 
+        className="absolute top-1/3 left-1/3 w-[500px] h-[350px] bg-[#0052FF]/[0.15] rounded-full blur-[130px] pointer-events-none transform-gpu" 
+      />
+
+      {/* Background Floating Tech Angle Shape */}
+      <div className="absolute top-10 -left-12 w-64 h-96 opacity-15 pointer-events-none animate-float-slow hidden md:block">
+        <Image 
+          src={getAssetUrl('/images/shape_angle_1.webp')} 
+          alt="" 
+          width={280} 
+          height={400} 
+          className="w-full h-auto object-contain brightness-150"
+        />
+      </div>
       
       {/* Hairline subtle top ambient glow line */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
       
       <StarWatermark size={720} position="center" variant="white" opacity={0.02} rotate={-10} />
 
@@ -39,9 +54,9 @@ export default function FinalCTA() {
             />
           </div>
 
-          <h2 id="cta-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight">
+          <h2 id="cta-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
             Have a project or product idea?<br />
-            Let&apos;s engineer something extraordinary together.
+            Let&apos;s engineer something <span className="animate-text-shimmer drop-shadow-[0_0_30px_rgba(56,189,248,0.6)]">extraordinary together.</span>
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">

@@ -11,15 +11,26 @@ export default function CompanyIntro() {
   return (
     <section 
       id="about-mission"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#030712] text-white overflow-hidden border-b border-white/[0.08]" 
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#020713] text-white overflow-hidden border-b border-white/[0.08]" 
       aria-labelledby="about-heading"
     >
       {/* Background Volumetric Flares */}
-      <div className="absolute top-1/2 -left-40 w-[600px] h-[600px] bg-[#0a85b1]/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+      <div className="absolute top-1/2 -left-40 w-[600px] h-[600px] bg-[#0052FF]/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu animate-pulse-aura" />
       <div className="absolute bottom-0 right-10 w-[500px] h-[500px] bg-sky-500/[0.1] rounded-full blur-[130px] pointer-events-none transform-gpu" />
       
+      {/* Background Tech Angle Shape */}
+      <div className="absolute top-1/3 -left-12 w-64 h-96 opacity-20 pointer-events-none animate-float-slow-reverse hidden lg:block">
+        <Image 
+          src={getAssetUrl('/images/shape_angle_2.webp')} 
+          alt="" 
+          width={280} 
+          height={400} 
+          className="w-full h-auto object-contain brightness-150"
+        />
+      </div>
+
       {/* Hairline subtle top ambient glow line */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
       
       <StarWatermark size={680} position="top-right" variant="white" opacity={0.02} rotate={15} />
 
@@ -41,8 +52,8 @@ export default function CompanyIntro() {
               />
             </div>
 
-            <h2 id="about-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white">
-              Tech22Blocks <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-[#0a85b1] bg-clip-text text-transparent">Mission &amp; Goal</span>
+            <h2 id="about-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white cursor-default">
+              Tech22Blocks <span className="animate-text-shimmer drop-shadow-[0_0_25px_rgba(56,189,248,0.45)]">Mission &amp; Goal</span>
             </h2>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
@@ -55,21 +66,21 @@ export default function CompanyIntro() {
 
             {/* Core Capability Checklist with Obsidian Glass Capsules */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/30 transition-all text-sm text-slate-200 backdrop-blur-sm">
-                <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
-                <span className="font-medium">Proprietary Tech IP</span>
+              <div className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/40 hover:bg-white/[0.06] hover:-translate-y-0.5 transition-all text-sm text-slate-200 backdrop-blur-sm cursor-default">
+                <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="font-medium group-hover:text-white transition-colors">Proprietary Tech IP</span>
               </div>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/30 transition-all text-sm text-slate-200 backdrop-blur-sm">
-                <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
-                <span className="font-medium">Zero Architectural Shortcuts</span>
+              <div className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/40 hover:bg-white/[0.06] hover:-translate-y-0.5 transition-all text-sm text-slate-200 backdrop-blur-sm cursor-default">
+                <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="font-medium group-hover:text-white transition-colors">Zero Architectural Shortcuts</span>
               </div>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/30 transition-all text-sm text-slate-200 backdrop-blur-sm">
-                <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
-                <span className="font-medium">Direct Git Repo Access</span>
+              <div className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/40 hover:bg-white/[0.06] hover:-translate-y-0.5 transition-all text-sm text-slate-200 backdrop-blur-sm cursor-default">
+                <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="font-medium group-hover:text-white transition-colors">Direct Git Repo Access</span>
               </div>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/30 transition-all text-sm text-slate-200 backdrop-blur-sm">
-                <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
-                <span className="font-medium">Statutory Compliance Handover</span>
+              <div className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/40 hover:bg-white/[0.06] hover:-translate-y-0.5 transition-all text-sm text-slate-200 backdrop-blur-sm cursor-default">
+                <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="font-medium group-hover:text-white transition-colors">Statutory Compliance Handover</span>
               </div>
             </div>
           </div>

@@ -139,6 +139,99 @@ body {
   transform: translateY(-1px);
 }
 
+/* Dynamic Text Shimmer Sweep Animation */
+@keyframes text-shimmer-sweep {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-text-shimmer {
+  background: linear-gradient(
+    110deg,
+    #ffffff 0%,
+    #bae6fd 25%,
+    #38bdf8 50%,
+    #bae6fd 75%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer-sweep 5s linear infinite;
+  display: inline-block;
+}
+
+/* Smooth Ambient Floating Keyframes */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1.5deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes float-slow-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(14px) rotate(-1.5deg);
+  }
+}
+
+.animate-float-slow-reverse {
+  animation: float-slow-reverse 8.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Pulsing Atmospheric Aura */
+@keyframes pulse-aura {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.06);
+  }
+}
+
+.animate-pulse-aura {
+  animation: pulse-aura 6s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* Kinetic Heading & Card Text Interactions */
+.kinetic-heading-hover {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s ease, letter-spacing 0.3s ease;
+}
+.kinetic-heading-hover:hover {
+  transform: translateX(3px);
+  text-shadow: 0 0 22px rgba(56, 189, 248, 0.6);
+}
+
+.kinetic-card-title {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease, letter-spacing 0.25s ease;
+}
+.group:hover .kinetic-card-title {
+  transform: translateX(4px);
+  color: #38bdf8;
+  letter-spacing: 0.01em;
+}
+
 /* GPU Hardware-Accelerated 3D Ambient Float */
 @keyframes ambient-orbit {
   0% {

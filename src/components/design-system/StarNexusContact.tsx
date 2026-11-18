@@ -33,7 +33,6 @@ export default function StarNexusContact() {
         {/* Header with Star Nexus Eyebrow */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/90 border border-sky-500/30 text-sky-400 text-xs font-mono uppercase tracking-wider mb-4 shadow-lg">
-            <StarEmblem size={13} variant="white" opacity={0.9} />
             <span>Interactive Star Nexus &bull; Direct Founder Access</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">

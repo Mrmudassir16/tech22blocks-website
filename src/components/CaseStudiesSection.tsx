@@ -81,15 +81,26 @@ export default function CaseStudiesSection() {
   return (
     <section 
       id="case-studies"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#060b18] text-white border-b border-white/[0.08]" 
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#03081a] text-white border-b border-white/[0.08] overflow-hidden" 
       aria-labelledby="case-studies-heading"
     >
       {/* Background Volumetric Flares */}
-      <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] bg-sky-500/[0.08] rounded-full blur-[140px] pointer-events-none transform-gpu" />
-      <div className="absolute bottom-10 right-0 w-[550px] h-[550px] bg-[#0a85b1]/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+      <div className="absolute top-1/3 -left-40 w-[650px] h-[650px] bg-[#0052FF]/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu animate-pulse-aura" />
+      <div className="absolute bottom-10 right-0 w-[550px] h-[550px] bg-sky-500/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+
+      {/* Background Tech Angle Shape */}
+      <div className="absolute top-20 -right-16 w-80 h-96 opacity-20 pointer-events-none animate-float-slow hidden lg:block rotate-12">
+        <Image 
+          src={getAssetUrl('/images/shape_angle_1.webp')} 
+          alt="" 
+          width={320} 
+          height={440} 
+          className="w-full h-auto object-contain brightness-150"
+        />
+      </div>
 
       {/* Hairline subtle top ambient glow line */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -108,8 +119,8 @@ export default function CaseStudiesSection() {
             />
           </div>
 
-          <h2 id="case-studies-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight">
-            Our latest <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-[#0a85b1] bg-clip-text text-transparent">Case</span> Studies
+          <h2 id="case-studies-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
+            Our latest <span className="animate-text-shimmer drop-shadow-[0_0_28px_rgba(56,189,248,0.55)]">Case</span> Studies
           </h2>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             Explore how we build production software architectures for global enterprises, modern platforms, and proprietary products.

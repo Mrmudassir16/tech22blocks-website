@@ -49,14 +49,26 @@ const WHY_POINTS = [
 export default function WhyTech22Blocks() {
   return (
     <section 
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#030712] text-white border-b border-white/[0.08] overflow-hidden" 
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#020817] text-white border-b border-white/[0.08] overflow-hidden" 
       aria-labelledby="why-heading"
     >
       {/* Background Volumetric Flares */}
-      <div className="absolute top-1/2 -right-40 w-[600px] h-[600px] bg-sky-500/[0.08] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+      <div className="absolute top-1/2 -right-40 w-[650px] h-[650px] bg-sky-500/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu animate-pulse-aura" />
+      <div className="absolute bottom-0 left-10 w-[500px] h-[500px] bg-emerald-500/[0.06] rounded-full blur-[130px] pointer-events-none transform-gpu" />
+
+      {/* Background Tech Angle Shape */}
+      <div className="absolute top-1/3 -right-12 w-72 h-96 opacity-20 pointer-events-none animate-float-slow hidden lg:block">
+        <Image 
+          src={getAssetUrl('/images/shape_angle_2.webp')} 
+          alt="" 
+          width={280} 
+          height={400} 
+          className="w-full h-auto object-contain brightness-150"
+        />
+      </div>
       
       {/* Hairline subtle top ambient glow line */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
       
       <StarWatermark size={680} position="top-right" variant="white" opacity={0.02} rotate={25} />
       
@@ -76,8 +88,8 @@ export default function WhyTech22Blocks() {
               className="inline-block brightness-200"
             />
           </div>
-          <h2 id="why-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight">
-            Engineering built on <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-[#0a85b1] bg-clip-text text-transparent">ownership</span> and accountability.
+          <h2 id="why-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
+            Engineering built on <span className="animate-text-shimmer drop-shadow-[0_0_28px_rgba(56,189,248,0.55)]">ownership</span> and accountability.
           </h2>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             We focus on shipping software that creates tangible business value, partnering closely with leaders through dedicated engineering collaboration.

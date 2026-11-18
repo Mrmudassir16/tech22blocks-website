@@ -26,7 +26,6 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20 text-xs font-mono text-sky-300">
-              <StarEmblem size={13} variant="white" opacity={0.9} />
               <span>About Tech22Blocks &bull; Est. 2025</span>
             </div>
 

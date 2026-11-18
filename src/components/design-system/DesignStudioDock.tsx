@@ -30,7 +30,6 @@ export default function DesignStudioDock() {
 
         {/* Brand Badge */}
         <div className="flex items-center gap-1.5 px-2 border-r border-slate-800">
-          <StarEmblem size={14} variant="white" opacity={0.9} />
           <span className="text-[11px] font-mono font-bold tracking-wider text-sky-400 uppercase hidden sm:inline">
             Design Studio
           </span>

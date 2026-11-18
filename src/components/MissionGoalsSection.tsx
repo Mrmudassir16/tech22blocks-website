@@ -12,8 +12,7 @@ export default function MissionGoalsSection() {
         
         {/* Mission Statement: Editorial Hero Block */}
         <div className="max-w-4xl">
-          <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-sky-400 mb-3">
-            <StarEmblem size={13} variant="white" />
+          <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-sky-400 mb-3 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
             <span>{mission.title}</span>
           </div>
           <p className="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-3">

@@ -21,7 +21,6 @@ export default function FAQSection() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 lg:mb-16">
           <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#38bdf8] mb-3 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
-            <StarEmblem size={13} variant="white" />
             <span>Clarity &amp; Questions</span>
           </div>
           <h2 id="faq-heading" className="text-3xl sm:text-5xl font-extrabold text-white tracking-[-0.03em]">

@@ -21,7 +21,6 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#38bdf8] mb-4 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
-              <StarEmblem size={13} variant="white" opacity={0.9} />
               <span>Internal R&amp;D Initiatives</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white">
@@ -43,7 +42,6 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mb-16 lg:mb-20">
             <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-sky-400 mb-3 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
-              <StarEmblem size={13} variant="white" />
               <span>Product Philosophy</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-[-0.03em] mt-2">

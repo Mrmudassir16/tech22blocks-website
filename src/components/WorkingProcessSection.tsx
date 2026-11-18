@@ -51,15 +51,26 @@ export default function WorkingProcessSection() {
   return (
     <section 
       id="working-process"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#030712] text-white overflow-hidden border-b border-white/[0.08]"
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#020b18] text-white overflow-hidden border-b border-white/[0.08]"
       aria-labelledby="process-heading"
     >
       {/* Background Volumetric Flares */}
-      <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-sky-500/[0.08] rounded-full blur-[140px] pointer-events-none transform-gpu" />
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#0a85b1]/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+      <div className="absolute top-1/2 left-1/4 w-[650px] h-[650px] bg-sky-500/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu animate-pulse-aura" />
+      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#0052FF]/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+
+      {/* Background Tech Angle Shape */}
+      <div className="absolute top-1/4 -left-12 w-72 h-96 opacity-20 pointer-events-none animate-float-slow-reverse hidden lg:block">
+        <Image 
+          src={getAssetUrl('/images/shape_angle_2.webp')} 
+          alt="" 
+          width={280} 
+          height={400} 
+          className="w-full h-auto object-contain brightness-150"
+        />
+      </div>
 
       {/* Hairline subtle top ambient glow line */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -83,8 +94,8 @@ export default function WorkingProcessSection() {
                 />
               </div>
 
-              <h2 id="process-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight">
-                Our <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-[#0a85b1] bg-clip-text text-transparent">Approach</span>
+              <h2 id="process-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
+                Our <span className="animate-text-shimmer drop-shadow-[0_0_28px_rgba(56,189,248,0.55)]">Approach</span>
               </h2>
             </div>
 
