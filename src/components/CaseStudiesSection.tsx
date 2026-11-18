@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
+import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
 
 interface CaseStudyItem {
   id: string;
@@ -81,30 +82,31 @@ export default function CaseStudiesSection() {
   return (
     <section 
       id="case-studies"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#03081a] text-white border-b border-white/[0.08] overflow-hidden" 
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#03081a] text-white border-b border-white/[0.08]" 
       aria-labelledby="case-studies-heading"
     >
       {/* Background Volumetric Flares */}
       <div className="absolute top-1/3 -left-40 w-[650px] h-[650px] bg-[#0052FF]/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu animate-pulse-aura" />
       <div className="absolute bottom-10 right-0 w-[550px] h-[550px] bg-sky-500/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu" />
 
-      {/* Background Tech Angle Shape */}
-      <div className="absolute top-20 -right-16 w-80 h-96 opacity-20 pointer-events-none animate-float-slow hidden lg:block rotate-12">
-        <Image 
-          src={getAssetUrl('/images/shape_angle_1.webp')} 
-          alt="" 
-          width={320} 
-          height={440} 
-          className="w-full h-auto object-contain brightness-150"
-        />
-      </div>
+      {/* Unique Geometric Ambient Horizon Grid */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #38bdf8 1px, transparent 1px),
+            linear-gradient(to bottom, #38bdf8 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+        }}
+      />
 
       {/* Hairline subtle top ambient glow line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
+        {/* Section Header with Staggered Kinetic Typography */}
         <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="text-xs font-semibold uppercase tracking-widest font-mono text-[#38bdf8]">
@@ -120,21 +122,22 @@ export default function CaseStudiesSection() {
           </div>
 
           <h2 id="case-studies-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-            Our latest <span className="animate-text-shimmer drop-shadow-[0_0_28px_rgba(56,189,248,0.55)]">Case</span> Studies
+            <StaggeredText text="Our latest" /> <KineticShimmerText>Case Studies</KineticShimmerText>
           </h2>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             Explore how we build production software architectures for global enterprises, modern platforms, and proprietary products.
           </p>
         </div>
 
-        {/* Stacking / Overlapping Sticky Cards Wrapper */}
-        <div className="relative pb-6 space-y-8">
+        {/* Stacking / Overlapping Sticky Cards Deck */}
+        <div className="relative pb-24 space-y-12 sm:space-y-16">
           {CASE_STUDIES.map((study, idx) => (
             <div
               key={study.id}
-              className="sticky top-24 sm:top-28 bg-[#0b1120]/95 rounded-3xl overflow-hidden border border-white/[0.1] hover:border-sky-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(56,189,248,0.12)] backdrop-blur-2xl transition-all duration-300"
+              className="sticky bg-[#0b1120]/95 rounded-3xl overflow-hidden border border-white/[0.12] hover:border-sky-400/50 shadow-[0_-12px_40px_rgba(0,0,0,0.85),0_25px_50px_rgba(0,0,0,0.7)] hover:shadow-[0_-12px_40px_rgba(0,0,0,0.9),0_0_35px_rgba(56,189,248,0.2)] backdrop-blur-2xl transition-all duration-300"
               style={{
                 zIndex: 10 + idx * 5,
+                top: `calc(90px + ${idx * 26}px)`,
               }}
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">

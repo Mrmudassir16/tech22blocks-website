@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Plus, Minus } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
+import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
 
 interface ProcessStep {
   id: string;
@@ -58,16 +59,17 @@ export default function WorkingProcessSection() {
       <div className="absolute top-1/2 left-1/4 w-[650px] h-[650px] bg-sky-500/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu animate-pulse-aura" />
       <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#0052FF]/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu" />
 
-      {/* Background Tech Angle Shape */}
-      <div className="absolute top-1/4 -left-12 w-72 h-96 opacity-20 pointer-events-none animate-float-slow-reverse hidden lg:block">
-        <Image 
-          src={getAssetUrl('/images/shape_angle_2.webp')} 
-          alt="" 
-          width={280} 
-          height={400} 
-          className="w-full h-auto object-contain brightness-150"
-        />
-      </div>
+      {/* Unique Linear Pipeline Connecting Rails */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #00F0FF 1px, transparent 1px),
+            linear-gradient(to bottom, #00F0FF 1px, transparent 1px)
+          `,
+          backgroundSize: '56px 56px',
+        }}
+      />
 
       {/* Hairline subtle top ambient glow line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
@@ -95,7 +97,7 @@ export default function WorkingProcessSection() {
               </div>
 
               <h2 id="process-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-                Our <span className="animate-text-shimmer drop-shadow-[0_0_28px_rgba(56,189,248,0.55)]">Approach</span>
+                <StaggeredText text="Our" /> <KineticShimmerText>Approach</KineticShimmerText>
               </h2>
             </div>
 

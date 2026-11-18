@@ -5,6 +5,7 @@ import { ArrowRight, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 import { getAssetUrl } from '@/utils/assets';
+import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
 
 export default function FinalCTA() {
   return (
@@ -22,17 +23,6 @@ export default function FinalCTA() {
         className="absolute top-1/3 left-1/3 w-[500px] h-[350px] bg-[#0052FF]/[0.15] rounded-full blur-[130px] pointer-events-none transform-gpu" 
       />
 
-      {/* Background Floating Tech Angle Shape */}
-      <div className="absolute top-10 -left-12 w-64 h-96 opacity-15 pointer-events-none animate-float-slow hidden md:block">
-        <Image 
-          src={getAssetUrl('/images/shape_angle_1.webp')} 
-          alt="" 
-          width={280} 
-          height={400} 
-          className="w-full h-auto object-contain brightness-150"
-        />
-      </div>
-      
       {/* Hairline subtle top ambient glow line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
       
@@ -55,8 +45,8 @@ export default function FinalCTA() {
           </div>
 
           <h2 id="cta-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-            Have a project or product idea?<br />
-            Let&apos;s engineer something <span className="animate-text-shimmer drop-shadow-[0_0_30px_rgba(56,189,248,0.6)]">extraordinary together.</span>
+            <StaggeredText text="Have a project or product idea?" /> <br />
+            Let&apos;s engineer something <KineticShimmerText>extraordinary together.</KineticShimmerText>
           </h2>
 
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">

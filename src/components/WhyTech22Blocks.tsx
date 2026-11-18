@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { StarWatermark } from '@/components/StarEmblem';
 import { getAssetUrl } from '@/utils/assets';
+import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
 
 const WHY_POINTS = [
   {
@@ -56,17 +57,6 @@ export default function WhyTech22Blocks() {
       <div className="absolute top-1/2 -right-40 w-[650px] h-[650px] bg-sky-500/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu animate-pulse-aura" />
       <div className="absolute bottom-0 left-10 w-[500px] h-[500px] bg-emerald-500/[0.06] rounded-full blur-[130px] pointer-events-none transform-gpu" />
 
-      {/* Background Tech Angle Shape */}
-      <div className="absolute top-1/3 -right-12 w-72 h-96 opacity-20 pointer-events-none animate-float-slow hidden lg:block">
-        <Image 
-          src={getAssetUrl('/images/shape_angle_2.webp')} 
-          alt="" 
-          width={280} 
-          height={400} 
-          className="w-full h-auto object-contain brightness-150"
-        />
-      </div>
-      
       {/* Hairline subtle top ambient glow line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
       
@@ -89,7 +79,7 @@ export default function WhyTech22Blocks() {
             />
           </div>
           <h2 id="why-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-            Engineering built on <span className="animate-text-shimmer drop-shadow-[0_0_28px_rgba(56,189,248,0.55)]">ownership</span> and accountability.
+            <StaggeredText text="Engineering built on" /> <KineticShimmerText>ownership</KineticShimmerText> and accountability.
           </h2>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             We focus on shipping software that creates tangible business value, partnering closely with leaders through dedicated engineering collaboration.

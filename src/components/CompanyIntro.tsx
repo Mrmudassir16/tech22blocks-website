@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ArrowUpRight, Globe2, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { StarWatermark } from '@/components/StarEmblem';
 import { getAssetUrl } from '@/utils/assets';
+import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
 
 export default function CompanyIntro() {
   return (
@@ -18,16 +19,17 @@ export default function CompanyIntro() {
       <div className="absolute top-1/2 -left-40 w-[600px] h-[600px] bg-[#0052FF]/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu animate-pulse-aura" />
       <div className="absolute bottom-0 right-10 w-[500px] h-[500px] bg-sky-500/[0.1] rounded-full blur-[130px] pointer-events-none transform-gpu" />
       
-      {/* Background Tech Angle Shape */}
-      <div className="absolute top-1/3 -left-12 w-64 h-96 opacity-20 pointer-events-none animate-float-slow-reverse hidden lg:block">
-        <Image 
-          src={getAssetUrl('/images/shape_angle_2.webp')} 
-          alt="" 
-          width={280} 
-          height={400} 
-          className="w-full h-auto object-contain brightness-150"
-        />
-      </div>
+      {/* Unique Blueprint Micro-Grid Overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.035] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #38bdf8 1px, transparent 1px),
+            linear-gradient(to bottom, #38bdf8 1px, transparent 1px)
+          `,
+          backgroundSize: '44px 44px',
+        }}
+      />
 
       {/* Hairline subtle top ambient glow line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
@@ -53,7 +55,7 @@ export default function CompanyIntro() {
             </div>
 
             <h2 id="about-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white cursor-default">
-              Tech22Blocks <span className="animate-text-shimmer drop-shadow-[0_0_25px_rgba(56,189,248,0.45)]">Mission &amp; Goal</span>
+              <StaggeredText text="Tech22Blocks" /> <KineticShimmerText>Mission &amp; Goal</KineticShimmerText>
             </h2>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
+import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
 
 interface ServiceItem {
   id: string;
@@ -175,7 +176,7 @@ export default function ServicesOverview() {
           </div>
 
           <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-            How We Can <span className="animate-text-shimmer drop-shadow-[0_0_28px_rgba(56,189,248,0.55)]">Help</span> You
+            <StaggeredText text="How We Can" /> <KineticShimmerText>Help You</KineticShimmerText>
           </h2>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             End-to-end software engineering capabilities tailored for ambitious product founders, modern businesses, and enterprise systems.

@@ -264,3 +264,43 @@ body {
   animation: star-float 6s ease-in-out infinite;
   will-change: transform;
 }
+
+/* Letter-by-Letter Stagger Appearance */
+@keyframes letter-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.9);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-letter-appear {
+  opacity: 0;
+  animation: letter-appear 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform, filter;
+}
+
+/* Kinetic Letter Hover Wave */
+.kinetic-letter-group:hover .kinetic-letter {
+  animation: letter-hover-bounce 0.45s ease forwards;
+  animation-delay: var(--hover-delay, 0ms);
+}
+
+@keyframes letter-hover-bounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-8px) scale(1.18);
+    color: #38bdf8;
+    text-shadow: 0 0 18px rgba(56, 189, 248, 0.85);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}

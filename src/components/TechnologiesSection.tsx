@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { getAssetUrl } from '@/utils/assets';
+import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
 
 interface TechItem {
   name: string;
@@ -338,18 +339,7 @@ export default function TechnologiesSection() {
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-amber-500/[0.06] rounded-full blur-[130px] pointer-events-none transform-gpu" />
 
       {/* Cybernetic Matrix Dot Overlay */}
-      <div className="absolute inset-0 bg-architectural-dots opacity-20 pointer-events-none" />
-
-      {/* Background Tech Angle Shape */}
-      <div className="absolute top-12 -right-12 w-72 h-96 opacity-20 pointer-events-none animate-float-slow hidden lg:block -rotate-6">
-        <Image 
-          src={getAssetUrl('/images/shape_angle_1.webp')} 
-          alt="" 
-          width={280} 
-          height={400} 
-          className="w-full h-auto object-contain brightness-150"
-        />
-      </div>
+      <div className="absolute inset-0 bg-architectural-dots opacity-25 pointer-events-none" />
 
       {/* Hairline subtle top ambient glow line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
@@ -372,7 +362,7 @@ export default function TechnologiesSection() {
           </div>
 
           <h2 id="tech-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-            Technologies We <span className="animate-text-shimmer drop-shadow-[0_0_28px_rgba(56,189,248,0.55)]">Deploy</span>
+            <StaggeredText text="Technologies We" /> <KineticShimmerText>Deploy</KineticShimmerText>
           </h2>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             Battle-tested frameworks, languages, and distributed systems engineered for speed and longevity.
