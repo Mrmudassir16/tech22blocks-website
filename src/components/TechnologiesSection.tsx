@@ -330,16 +330,19 @@ export default function TechnologiesSection() {
   return (
     <section 
       id="technologies"
-      className="relative py-28 lg:py-36 bg-[#060b18] text-white overflow-hidden border-b border-white/[0.08]" 
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#060b18] text-white overflow-hidden border-b border-white/[0.08]" 
       aria-labelledby="tech-heading"
     >
       {/* Background Volumetric Flares */}
       <div className="absolute top-1/3 left-1/3 w-[600px] h-[600px] bg-sky-500/[0.08] rounded-full blur-[140px] pointer-events-none transform-gpu" />
 
+      {/* Hairline subtle top ambient glow line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-14">
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="text-xs font-semibold uppercase tracking-widest font-mono text-[#38bdf8]">
               Technologies
@@ -356,13 +359,13 @@ export default function TechnologiesSection() {
           <h2 id="tech-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight">
             Technologies We <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-[#0a85b1] bg-clip-text text-transparent">Deploy</span>
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-slate-400 leading-relaxed font-normal">
+          <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             Battle-tested frameworks, languages, and distributed systems engineered for speed and longevity.
           </p>
         </div>
 
         {/* Tab Navigation Pill Bar */}
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-10 lg:mb-12">
           <div 
             className="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-full bg-[#0b1120]/90 border border-white/[0.08] backdrop-blur-xl shadow-2xl max-w-full"
             role="tablist"
@@ -380,7 +383,7 @@ export default function TechnologiesSection() {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`px-5 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-white/[0.12] text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25)] border border-white/10'
+                      ? 'bg-gradient-to-r from-sky-500/20 to-sky-400/20 border border-sky-400/40 text-white shadow-[0_0_15px_rgba(56,189,248,0.25)]'
                       : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                   }`}
                 >
@@ -396,12 +399,12 @@ export default function TechnologiesSection() {
           {currentItems.map((item, idx) => (
             <div
               key={idx}
-              className="w-full max-w-[170px] bg-[#0b1120]/80 border border-white/[0.08] hover:border-sky-500/40 rounded-2xl p-7 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_0_25px_rgba(14,165,233,0.18)] group backdrop-blur-sm"
+              className="w-full max-w-[170px] bg-[#0b1120]/80 border border-white/[0.08] hover:border-sky-400/50 rounded-2xl p-7 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_0_25px_rgba(56,189,248,0.2)] group backdrop-blur-sm"
             >
               <div className="mb-4 transition-transform duration-300 group-hover:scale-110">
                 {item.svg}
               </div>
-              <span className="text-xs font-mono font-medium text-slate-200 tracking-wide group-hover:text-white transition-colors">
+              <span className="text-xs font-mono font-medium text-slate-200 tracking-wide group-hover:text-sky-300 transition-colors">
                 {item.name}
               </span>
             </div>

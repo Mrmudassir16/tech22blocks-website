@@ -9,7 +9,7 @@ import { getAssetUrl } from '@/utils/assets';
 export default function FinalCTA() {
   return (
     <section 
-      className="bg-[#060b18] text-white py-28 lg:py-36 relative overflow-hidden border-b border-white/[0.08]" 
+      className="bg-[#060b18] text-white py-18 sm:py-22 lg:py-24 relative overflow-hidden border-b border-white/[0.08]" 
       aria-labelledby="cta-heading"
     >
       {/* Background Volumetric Glow & Signature Star Watermark */}
@@ -17,6 +17,10 @@ export default function FinalCTA() {
         aria-hidden="true" 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-sky-500/[0.12] rounded-full blur-[150px] pointer-events-none transform-gpu" 
       />
+      
+      {/* Hairline subtle top ambient glow line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+      
       <StarWatermark size={720} position="center" variant="white" opacity={0.02} rotate={-10} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -55,7 +59,7 @@ export default function FinalCTA() {
 
             <a
               href={`mailto:${COMPANY.email}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 text-xs font-semibold uppercase tracking-wider font-mono text-slate-200 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.1] hover:border-white/[0.2] rounded-xl backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-4 text-xs font-semibold uppercase tracking-wider font-mono text-slate-200 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.1] hover:border-sky-400/40 rounded-xl backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 shadow-sm"
             >
               <Mail className="w-4 h-4 mr-2 text-sky-400" />
               <span>{COMPANY.email}</span>
@@ -63,16 +67,16 @@ export default function FinalCTA() {
           </div>
 
           {/* Quick Contact & Telemetry Info */}
-          <div className="pt-10 mt-8 border-t border-white/[0.08] grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-400 font-mono">
-            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+          <div className="pt-10 mt-8 border-t border-white/[0.08] grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-300 font-mono">
+            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-400/30 transition-colors">
               <Phone className="w-3.5 h-3.5 text-[#38bdf8]" />
               <span>{COMPANY.phoneDisplay}</span>
             </div>
-            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-400/30 transition-colors">
               <MapPin className="w-3.5 h-3.5 text-[#38bdf8]" />
               <span>Warangal, Telangana, India</span>
             </div>
-            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-400/30 transition-colors">
               <Clock className="w-3.5 h-3.5 text-[#38bdf8]" />
               <span>Direct Founder Engagement</span>
             </div>

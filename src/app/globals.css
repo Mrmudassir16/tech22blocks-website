@@ -48,12 +48,12 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0a85b1;
+  background: #0ea5e9;
 }
 
 /* Glowing Selection */
 ::selection {
-  background: rgba(14, 165, 233, 0.3);
+  background: rgba(14, 165, 233, 0.35);
   color: #ffffff;
 }
 
@@ -66,49 +66,77 @@ body {
 /* Architectural Grid Texture */
 .bg-architectural-grid {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 56px 56px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 52px 52px;
 }
 
 .bg-architectural-dots {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Luminous Glass Panel */
-.glass-panel {
-  background: rgba(11, 17, 32, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+/* Radiant Luminous Glass Card */
+.luminous-card {
+  background: rgba(11, 17, 32, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-panel-hover {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.glass-panel-hover:hover {
-  border-color: rgba(14, 165, 233, 0.35);
-  box-shadow: 0 0 30px rgba(14, 165, 233, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+.luminous-card:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 30px rgba(14, 165, 233, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
-/* Monospace Section Eyebrow Pill */
-.eyebrow-pill {
+/* Kinetic Text Animations */
+@keyframes text-glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 28px rgba(56, 189, 248, 0.45);
+  }
+}
+
+.animate-glow-text {
+  animation: text-glow-pulse 4s ease-in-out infinite;
+}
+
+/* Subtle Kinetic Hover Link */
+.kinetic-text-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease, letter-spacing 0.25s ease;
+}
+.kinetic-text-hover:hover {
+  transform: translateX(3px);
+  color: #38bdf8;
+}
+
+/* Section Eyebrow Badge */
+.eyebrow-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 9999px;
   background: rgba(14, 165, 233, 0.08);
-  border: 1px solid rgba(14, 165, 233, 0.25);
+  border: 1px solid rgba(56, 189, 248, 0.28);
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #38bdf8;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.12);
+  transition: all 0.25s ease;
+}
+.eyebrow-badge:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 25px rgba(14, 165, 233, 0.25);
+  transform: translateY(-1px);
 }
 
 /* GPU Hardware-Accelerated 3D Ambient Float */

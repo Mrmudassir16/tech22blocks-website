@@ -28,7 +28,7 @@ export default function NewsEventsPage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#38bdf8] mb-4 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
               <StarEmblem size={13} variant="white" opacity={0.9} />
-              <span>// Corporate Communications &amp; Disclosures</span>
+              <span>Corporate Communications &amp; Disclosures</span>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white">
               News &amp; Events

@@ -11,12 +11,16 @@ export default function CompanyIntro() {
   return (
     <section 
       id="about-mission"
-      className="relative py-28 lg:py-36 bg-[#030712] text-white overflow-hidden border-b border-white/[0.08]" 
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#030712] text-white overflow-hidden border-b border-white/[0.08]" 
       aria-labelledby="about-heading"
     >
       {/* Background Volumetric Flares */}
       <div className="absolute top-1/2 -left-40 w-[600px] h-[600px] bg-[#0a85b1]/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu" />
       <div className="absolute bottom-0 right-10 w-[500px] h-[500px] bg-sky-500/[0.1] rounded-full blur-[130px] pointer-events-none transform-gpu" />
+      
+      {/* Hairline subtle top ambient glow line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+      
       <StarWatermark size={680} position="top-right" variant="white" opacity={0.02} rotate={15} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -51,19 +55,19 @@ export default function CompanyIntro() {
 
             {/* Core Capability Checklist with Obsidian Glass Capsules */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm text-slate-200 backdrop-blur-sm">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/30 transition-all text-sm text-slate-200 backdrop-blur-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
                 <span className="font-medium">Proprietary Tech IP</span>
               </div>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm text-slate-200 backdrop-blur-sm">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/30 transition-all text-sm text-slate-200 backdrop-blur-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
                 <span className="font-medium">Zero Architectural Shortcuts</span>
               </div>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm text-slate-200 backdrop-blur-sm">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/30 transition-all text-sm text-slate-200 backdrop-blur-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
                 <span className="font-medium">Direct Git Repo Access</span>
               </div>
-              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm text-slate-200 backdrop-blur-sm">
+              <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-sky-400/30 transition-all text-sm text-slate-200 backdrop-blur-sm">
                 <CheckCircle2 className="w-4 h-4 text-[#38bdf8] flex-shrink-0" />
                 <span className="font-medium">Statutory Compliance Handover</span>
               </div>
@@ -74,7 +78,7 @@ export default function CompanyIntro() {
           <div className="lg:col-span-6 relative flex flex-col items-center lg:items-end">
             
             {/* Engineer Working Photo with Luminous Edge */}
-            <div className="relative w-full max-w-[440px] rounded-2xl overflow-hidden shadow-2xl border border-white/[0.12] group">
+            <div className="relative w-full max-w-[440px] rounded-2xl overflow-hidden shadow-2xl border border-white/[0.12] hover:border-sky-400/40 transition-all group">
               <Image 
                 src={getAssetUrl('/images/about_image_6.webp')} 
                 alt="Tech22Blocks Engineering Team at work" 
@@ -88,7 +92,7 @@ export default function CompanyIntro() {
 
             {/* Overlapping Glassmorphic Funfact Card */}
             <div 
-              className="relative lg:-mt-24 w-full max-w-[480px] bg-[#0b1120]/95 text-white p-7 sm:p-9 rounded-2xl shadow-[0_25px_50px_rgba(0,0,0,0.5)] border border-white/[0.12] backdrop-blur-2xl z-20"
+              className="relative lg:-mt-24 w-full max-w-[480px] bg-[#0b1120]/95 text-white p-7 sm:p-9 rounded-2xl shadow-[0_25px_50px_rgba(0,0,0,0.5)] border border-white/[0.12] hover:border-sky-400/40 transition-all backdrop-blur-2xl z-20"
             >
               {/* Top Row: Trusted Avatars + Learn More Button */}
               <div className="flex items-center justify-between pb-6 border-b border-white/[0.08]">

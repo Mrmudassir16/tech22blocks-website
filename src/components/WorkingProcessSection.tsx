@@ -51,12 +51,15 @@ export default function WorkingProcessSection() {
   return (
     <section 
       id="working-process"
-      className="relative py-28 lg:py-36 bg-[#030712] text-white overflow-hidden border-b border-white/[0.08]"
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#030712] text-white overflow-hidden border-b border-white/[0.08]"
       aria-labelledby="process-heading"
     >
       {/* Background Volumetric Flares */}
       <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] bg-sky-500/[0.08] rounded-full blur-[140px] pointer-events-none transform-gpu" />
       <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#0a85b1]/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+
+      {/* Hairline subtle top ambient glow line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

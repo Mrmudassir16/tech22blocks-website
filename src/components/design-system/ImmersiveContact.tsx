@@ -86,7 +86,7 @@ export default function ImmersiveContact() {
               <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                 <span className="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>DISPATCH // DIRECT FOUNDER INBOX</span>
+                  <span>DIRECT FOUNDER INBOX</span>
                 </span>
                 <span className="text-[10px] font-mono text-slate-400">UTC+05:30 (IST)</span>
               </div>

@@ -81,17 +81,20 @@ export default function CaseStudiesSection() {
   return (
     <section 
       id="case-studies"
-      className="relative py-28 lg:py-36 bg-[#060b18] text-white border-b border-white/[0.08]" 
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#060b18] text-white border-b border-white/[0.08]" 
       aria-labelledby="case-studies-heading"
     >
       {/* Background Volumetric Flares */}
       <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] bg-sky-500/[0.08] rounded-full blur-[140px] pointer-events-none transform-gpu" />
       <div className="absolute bottom-10 right-0 w-[550px] h-[550px] bg-[#0a85b1]/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu" />
 
+      {/* Hairline subtle top ambient glow line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="text-xs font-semibold uppercase tracking-widest font-mono text-[#38bdf8]">
               Case Studies
@@ -108,17 +111,17 @@ export default function CaseStudiesSection() {
           <h2 id="case-studies-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight">
             Our latest <span className="bg-gradient-to-r from-sky-300 via-sky-400 to-[#0a85b1] bg-clip-text text-transparent">Case</span> Studies
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-slate-400 leading-relaxed font-normal">
+          <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             Explore how we build production software architectures for global enterprises, modern platforms, and proprietary products.
           </p>
         </div>
 
         {/* Stacking / Overlapping Sticky Cards Wrapper */}
-        <div className="relative pb-24 space-y-12">
+        <div className="relative pb-6 space-y-8">
           {CASE_STUDIES.map((study, idx) => (
             <div
               key={study.id}
-              className="sticky top-24 sm:top-28 bg-[#0b1120]/95 rounded-3xl overflow-hidden border border-white/[0.1] shadow-[0_20px_50px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-300"
+              className="sticky top-24 sm:top-28 bg-[#0b1120]/95 rounded-3xl overflow-hidden border border-white/[0.1] hover:border-sky-400/40 shadow-[0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_50px_rgba(56,189,248,0.12)] backdrop-blur-2xl transition-all duration-300"
               style={{
                 zIndex: 10 + idx * 5,
               }}
@@ -130,13 +133,13 @@ export default function CaseStudiesSection() {
                   <div>
                     {/* Category Label with Monospace Tag */}
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
-                        // {study.category}
+                      <span className="px-2.5 py-1 rounded-md bg-sky-500/10 border border-sky-400/20 text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
+                        {study.category}
                       </span>
                     </div>
 
-                    {/* Case Study Title */}
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-5 hover:text-[#38bdf8] transition-colors leading-tight">
+                    {/* Case Study Title with kinetic hover */}
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-5 hover:text-[#38bdf8] hover:translate-x-0.5 transition-all duration-300 leading-tight">
                       <Link href={study.href}>
                         {study.title}
                       </Link>

@@ -117,12 +117,12 @@ export function HeroVariantB() {
         
         {/* Terminal Telemetry Lines */}
         <div className="absolute top-6 left-6 font-mono text-[10px] text-sky-400/60 space-y-1 hidden sm:block">
-          <div>SYS.ID // TECH22BLOCKS.CORP</div>
-          <div>STATUS // 100% OPERATIONAL</div>
-          <div>NODE.VERIFY // DPIIT.STARTUP_INDIA</div>
+          <div>SYS.ID: TECH22BLOCKS.CORP</div>
+          <div>STATUS: 100% OPERATIONAL</div>
+          <div>NODE.VERIFY: DPIIT.STARTUP_INDIA</div>
         </div>
         <div className="absolute top-6 right-6 font-mono text-[10px] text-emerald-400/60 hidden sm:block">
-          LATENCY // &lt;12MS &bull; ACID READY
+          LATENCY: &lt;12MS &bull; ACID READY
         </div>
       </div>
 

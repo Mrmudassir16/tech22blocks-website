@@ -9,15 +9,15 @@ export default function FoundersSection() {
   const { foundersVision, leadership } = COMPANY;
 
   return (
-    <section id="founders" className="relative py-28 lg:py-36 bg-[#030712] text-white border-t border-white/[0.08] overflow-hidden">
+    <section id="founders" className="relative py-16 sm:py-20 lg:py-24 bg-[#030712] text-white border-t border-white/[0.08] overflow-hidden">
       <StarWatermark size={600} position="bottom-left" variant="white" opacity={0.015} rotate={20} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 lg:mb-20">
+        <div className="max-w-3xl mb-12 lg:mb-16">
           <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#38bdf8] mb-3">
             <StarEmblem size={13} variant="white" />
-            <span>// Leadership &amp; Heritage</span>
+            <span>Leadership &amp; Heritage</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight">
             {foundersVision.mainHeading}

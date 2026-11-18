@@ -21,15 +21,15 @@ export default function ServiceEditorial() {
   const { services } = COMPANY;
 
   return (
-    <section className="relative py-28 lg:py-36 bg-[#060b18] text-white border-b border-white/[0.08] overflow-hidden" aria-labelledby="services-detail-heading">
+    <section className="relative py-16 sm:py-20 lg:py-24 bg-[#060b18] text-white border-b border-white/[0.08] overflow-hidden" aria-labelledby="services-detail-heading">
       <StarWatermark size={680} position="top-right" variant="white" opacity={0.015} rotate={-12} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 lg:mb-24">
+        <div className="max-w-3xl mb-12 lg:mb-16">
           <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-sky-400 mb-3 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
             <StarEmblem size={13} variant="white" />
-            <span>// Comprehensive Service Architecture</span>
+            <span>Comprehensive Service Architecture</span>
           </div>
           <h2 id="services-detail-heading" className="text-3xl sm:text-5xl font-extrabold text-white tracking-[-0.03em] leading-tight">
             End-to-End Technology Capabilities

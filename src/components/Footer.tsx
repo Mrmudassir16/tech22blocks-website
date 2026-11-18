@@ -65,7 +65,7 @@ export default function Footer() {
 
           {/* Explore Pages */}
           <div className="space-y-4">
-            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-200">// Explore</h3>
+            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">Explore</h3>
             <ul className="space-y-2.5 text-sm">
               {[
                 { href: '/about/', label: 'About Us' },
@@ -74,7 +74,7 @@ export default function Footer() {
                 { href: '/news-events/', label: 'News & Events' },
               ].map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-slate-400 hover:text-white transition-colors duration-150">
+                  <Link href={item.href} className="text-slate-400 hover:text-white hover:translate-x-0.5 inline-block transition-all duration-150">
                     {item.label}
                   </Link>
                 </li>
@@ -84,7 +84,7 @@ export default function Footer() {
 
           {/* Services — Exactly the 6 Official Services */}
           <div className="space-y-4">
-            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-200">// Our Services</h3>
+            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">Our Services</h3>
             <ul className="space-y-2.5 text-sm">
               {[
                 { href: '/services/#website-development', label: 'Website Development' },
@@ -95,7 +95,7 @@ export default function Footer() {
                 { href: '/services/#web3', label: 'Web3.0 (Coming Soon)' },
               ].map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-slate-400 hover:text-white transition-colors duration-150">
+                  <Link href={item.href} className="text-slate-400 hover:text-white hover:translate-x-0.5 inline-block transition-all duration-150">
                     {item.label}
                   </Link>
                 </li>
@@ -105,7 +105,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-200">// Contact</h3>
+            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">Contact</h3>
             <ul className="space-y-3.5 text-sm">
               <li>
                 <a

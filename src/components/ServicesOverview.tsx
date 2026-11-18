@@ -127,12 +127,15 @@ export default function ServicesOverview() {
   return (
     <section 
       id="services-overview"
-      className="relative py-28 lg:py-36 bg-[#060b18] text-white overflow-hidden border-b border-white/[0.08]"
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#060b18] text-white overflow-hidden border-b border-white/[0.08]"
       aria-labelledby="services-heading"
     >
       {/* Background Volumetric Glows */}
       <div className="absolute top-1/4 -left-32 w-[600px] h-[600px] bg-sky-500/[0.08] rounded-full blur-[140px] pointer-events-none transform-gpu" />
       <div className="absolute bottom-1/4 -right-32 w-[600px] h-[600px] bg-[#0a85b1]/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+
+      {/* Hairline subtle top ambient glow line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
 
       {/* Background Subtle Tech Shapes */}
       <div className="absolute top-1/4 -left-10 w-64 h-96 opacity-15 pointer-events-none">
@@ -157,7 +160,7 @@ export default function ServicesOverview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 mb-4">
             <span className="text-xs font-semibold uppercase tracking-widest font-mono text-[#38bdf8]">
               Our Services
@@ -174,7 +177,7 @@ export default function ServicesOverview() {
           <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight">
             How We Can <span className="bg-gradient-to-r from-sky-400 via-[#38bdf8] to-[#0a85b1] bg-clip-text text-transparent">Help</span> You
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-slate-400 leading-relaxed font-normal">
+          <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             End-to-end software engineering capabilities tailored for ambitious product founders, modern businesses, and enterprise systems.
           </p>
         </div>
@@ -184,10 +187,10 @@ export default function ServicesOverview() {
           {SERVICES_DATA.map((service) => (
             <div
               key={service.id}
-              className="group relative bg-[#0b1120]/80 rounded-2xl p-8 sm:p-10 flex flex-col justify-between border border-white/[0.08] hover:border-sky-500/40 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 shadow-[0_8px_30px_rgb(0,0,0,0.3)] hover:shadow-[0_15px_35px_rgba(14,165,233,0.12)]"
+              className="group relative bg-[#0b1120]/80 rounded-2xl p-8 sm:p-10 flex flex-col justify-between border border-white/[0.08] hover:border-sky-400/50 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 shadow-[0_8px_30px_rgb(0,0,0,0.3)] hover:shadow-[0_15px_35px_rgba(56,189,248,0.18)]"
             >
               {/* Subtle Card Ambient Glow */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent pointer-events-none" />
 
               <div>
                 {/* Top Row: Icon Container + Monospace Index / Coming Soon */}
@@ -202,17 +205,17 @@ export default function ServicesOverview() {
                       <span>Coming Soon</span>
                     </span>
                   ) : (
-                    <span className="text-xs font-mono font-semibold text-slate-600 group-hover:text-sky-400 transition-colors">
-                      // {service.code}
+                    <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/[0.08] text-slate-400 group-hover:text-sky-300 group-hover:border-sky-400/30 transition-all">
+                      {service.code}
                     </span>
                   )}
                 </div>
 
-                {/* Service Title */}
+                {/* Service Title with kinetic hover */}
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 leading-snug">
                   <Link 
                     href={service.href} 
-                    className="inline-flex items-center gap-2 group-hover:text-[#38bdf8] transition-colors"
+                    className="inline-flex items-center gap-2 group-hover:text-[#38bdf8] group-hover:translate-x-0.5 transition-all duration-300"
                   >
                     <span>{service.title}</span>
                     <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 text-[#38bdf8]" />
@@ -224,7 +227,7 @@ export default function ServicesOverview() {
                   {service.features.map((feat, idx) => (
                     <li
                       key={idx}
-                      className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm text-slate-300 font-medium bg-white/[0.02] border border-white/[0.04] transition-colors group-hover:border-white/[0.08]"
+                      className="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm text-slate-200 font-medium bg-white/[0.02] border border-white/[0.05] transition-all group-hover:border-sky-500/20 group-hover:bg-white/[0.03]"
                     >
                       <span className="flex-shrink-0 w-2 h-2 rounded-full bg-sky-400 shadow-[0_0_6px_#38bdf8]" />
                       <span className="truncate">{feat}</span>
@@ -234,7 +237,7 @@ export default function ServicesOverview() {
               </div>
 
               {/* Direct Link Anchor */}
-              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+              <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between">
                 <Link 
                   href={service.href}
                   className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#38bdf8] hover:text-sky-300 transition-colors group-hover:translate-x-1 duration-200"
@@ -242,8 +245,8 @@ export default function ServicesOverview() {
                   <span>Explore Specifications</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
-                <span className="text-[11px] font-mono text-slate-500">
-                  SPEC // READY
+                <span className="text-[11px] font-mono text-slate-400">
+                  SPEC.READY
                 </span>
               </div>
             </div>

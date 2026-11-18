@@ -48,7 +48,7 @@ export default function AboutPage() {
 
           <div className="border-b border-white/[0.08] pb-8">
             <span className="text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
-              // Origin &amp; Background
+              Origin &amp; Background
             </span>
             <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-[-0.03em] mt-3">
               {story.title}

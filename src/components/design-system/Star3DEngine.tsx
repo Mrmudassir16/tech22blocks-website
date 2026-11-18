@@ -126,7 +126,7 @@ export default function Star3DEngine({
             {/* Top-Right Capability Node */}
             <div className="absolute top-8 right-6 bg-slate-900/90 border border-sky-400/40 rounded-full px-2.5 py-1 text-[10px] font-mono text-sky-300 shadow-lg backdrop-blur-md flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>CORE.ENG // SHIP-READY</span>
+              <span>CORE.ENG &bull; SHIP-READY</span>
             </div>
 
             {/* Bottom-Left Geometry Node */}

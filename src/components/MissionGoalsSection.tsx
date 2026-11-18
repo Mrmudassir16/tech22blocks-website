@@ -6,15 +6,15 @@ export default function MissionGoalsSection() {
   const { mission, goals } = COMPANY;
 
   return (
-    <section className="relative py-28 lg:py-36 bg-[#060b18] text-white border-t border-white/[0.08] overflow-hidden">
+    <section className="relative py-16 sm:py-20 lg:py-24 bg-[#060b18] text-white border-t border-white/[0.08] overflow-hidden">
       <StarWatermark size={580} position="top-right" variant="white" opacity={0.015} rotate={-15} />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 relative z-10">
         
         {/* Mission Statement: Editorial Hero Block */}
         <div className="max-w-4xl">
           <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-sky-400 mb-3">
             <StarEmblem size={13} variant="white" />
-            <span>// {mission.title}</span>
+            <span>{mission.title}</span>
           </div>
           <p className="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-3">
             {mission.subtitle}

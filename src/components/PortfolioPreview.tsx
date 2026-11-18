@@ -4,14 +4,14 @@ import { COMPANY } from '@/data/company';
 
 export default function PortfolioPreview() {
   return (
-    <section className="py-28 lg:py-36 bg-[#060b18] text-white border-b border-white/[0.08]" aria-labelledby="portfolio-heading">
+    <section className="py-16 sm:py-20 lg:py-24 bg-[#060b18] text-white border-b border-white/[0.08]" aria-labelledby="portfolio-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 lg:mb-20 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-6">
           <div className="max-w-2xl">
             <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-sky-400 mb-3 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
-              <span>// Client Case Studies &amp; Implementations</span>
+              <span>Client Case Studies &amp; Implementations</span>
             </div>
             <h2 id="portfolio-heading" className="text-3xl sm:text-5xl font-extrabold text-white tracking-[-0.03em] mt-2">
               Featured Work &amp; Case Studies
@@ -43,7 +43,7 @@ export default function PortfolioPreview() {
               <div className="w-12 h-12 rounded-xl bg-sky-500/[0.08] border border-sky-400/20 flex items-center justify-center text-[#38bdf8] group-hover:scale-105 transition-transform">
                 <Code2 className="w-6 h-6" />
               </div>
-              <span className="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">// Web Engineering</span>
+              <span className="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">Web Engineering</span>
               <h3 className="text-xl font-bold text-white leading-snug group-hover:text-[#38bdf8] transition-colors">
                 Scalable Corporate Web Platforms
               </h3>
@@ -70,7 +70,7 @@ export default function PortfolioPreview() {
               <div className="w-12 h-12 rounded-xl bg-sky-500/[0.08] border border-sky-400/20 flex items-center justify-center text-[#38bdf8] group-hover:scale-105 transition-transform">
                 <Smartphone className="w-6 h-6" />
               </div>
-              <span className="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">// Mobile Systems</span>
+              <span className="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">Mobile Systems</span>
               <h3 className="text-xl font-bold text-white leading-snug group-hover:text-[#38bdf8] transition-colors">
                 Cross-Platform Mobile Applications
               </h3>
@@ -97,7 +97,7 @@ export default function PortfolioPreview() {
               <div className="w-12 h-12 rounded-xl bg-sky-500/[0.08] border border-sky-400/20 flex items-center justify-center text-[#38bdf8] group-hover:scale-105 transition-transform">
                 <LayoutDashboard className="w-6 h-6" />
               </div>
-              <span className="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">// Custom Software</span>
+              <span className="text-xs font-mono font-semibold text-sky-400 uppercase tracking-wider">Custom Software</span>
               <h3 className="text-xl font-bold text-white leading-snug group-hover:text-[#38bdf8] transition-colors">
                 Internal Automation &amp; Portals
               </h3>

@@ -308,7 +308,7 @@ function CustomSoftwareVisual() {
         <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between text-xs font-mono">
           <div className="flex items-center gap-2 text-sky-400">
             <Cpu className="w-4 h-4" />
-            <span>API Gateway // Reverse Proxy</span>
+            <span>API Gateway &bull; Reverse Proxy</span>
           </div>
           <span className="text-slate-400 text-[10px]">Go / Fiber</span>
         </div>
@@ -437,7 +437,7 @@ function Web3Visual() {
         <div className="p-3 rounded-lg bg-black/60 border border-slate-800 font-mono text-[10px] text-slate-400 space-y-1">
           <div>PrevHash: <span className="text-slate-500">0x8a92f01c...</span></div>
           <div>MerkleRoot: <span className="text-amber-400">0x7e22blocks...</span></div>
-          <div>Timestamp: <span className="text-slate-300">2026-Q1 // RESEARCH STAGE</span></div>
+          <div>Timestamp: <span className="text-slate-300">2026-Q1 &bull; RESEARCH STAGE</span></div>
         </div>
 
         {/* Padlock Blueprint Overlay */}
