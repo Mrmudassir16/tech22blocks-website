@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Plus, Minus } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
-import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
+import { CornerBrackets, BorderBeam } from '@/components/design-system/AtmosphericPerimeter';
 
 interface ProcessStep {
   id: string;
@@ -52,7 +53,7 @@ export default function WorkingProcessSection() {
   return (
     <section 
       id="working-process"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#020b18] text-white overflow-hidden border-b border-white/[0.08]"
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#020b18] text-white overflow-hidden"
       aria-labelledby="process-heading"
     >
       {/* Background Volumetric Flares */}
@@ -96,9 +97,14 @@ export default function WorkingProcessSection() {
                 />
               </div>
 
-              <h2 id="process-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-                <StaggeredText text="Our" /> <KineticShimmerText>Approach</KineticShimmerText>
-              </h2>
+              <div className="group/heading inline-block relative">
+                <h2 id="process-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
+                  <StaggeredText text="Our" />{' '}
+                  <StaggeredText text="Approach" isShimmer />
+                </h2>
+                {/* Luminous laser beam underline that shoots out across the heading on hover */}
+                <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[200px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mt-3 shadow-[0_0_14px_#38bdf8]" />
+              </div>
             </div>
 
             {/* Accordion List */}
@@ -109,12 +115,14 @@ export default function WorkingProcessSection() {
                 return (
                   <div 
                     key={step.id}
-                    className={`rounded-2xl transition-all duration-300 border ${
+                    className={`group/step relative rounded-2xl transition-all duration-300 border overflow-hidden ${
                       isOpen 
                         ? 'bg-[#0b1120]/90 border-sky-500/40 shadow-[0_0_25px_rgba(14,165,233,0.15)]' 
                         : 'bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04]'
                     } p-5 sm:p-6 backdrop-blur-sm`}
                   >
+                    {isOpen && <BorderBeam duration={8} />}
+                    {isOpen && <CornerBrackets size="w-3 h-3" color="border-sky-400/40" activeColor="border-sky-300" />}
                     <button
                       type="button"
                       onClick={() => setActiveStep(idx)}

@@ -285,9 +285,24 @@ body {
   will-change: opacity, transform, filter;
 }
 
-/* Kinetic Letter Hover Wave */
+/* Highly Tactile Kinetic Letter Hover Physics */
+.kinetic-letter {
+  display: inline-block;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.15s ease, text-shadow 0.2s ease, filter 0.2s ease;
+  will-change: transform;
+}
+
+.kinetic-letter:hover {
+  transform: translateY(-9px) scale(1.22) rotate(-1.5deg);
+  color: #38bdf8 !important;
+  text-shadow: 0 0 20px #38bdf8, 0 0 35px #0ea5e9, 0 0 60px rgba(14, 165, 233, 0.8) !important;
+  z-index: 20;
+  position: relative;
+}
+
+/* Kinetic Letter Group Wave */
 .kinetic-letter-group:hover .kinetic-letter {
-  animation: letter-hover-bounce 0.45s ease forwards;
+  animation: letter-hover-bounce 0.5s ease forwards;
   animation-delay: var(--hover-delay, 0ms);
 }
 
@@ -295,12 +310,66 @@ body {
   0% {
     transform: translateY(0) scale(1);
   }
-  40% {
+  35% {
     transform: translateY(-8px) scale(1.18);
     color: #38bdf8;
-    text-shadow: 0 0 18px rgba(56, 189, 248, 0.85);
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.95);
+  }
+  70% {
+    transform: translateY(2px) scale(0.98);
   }
   100% {
     transform: translateY(0) scale(1);
   }
 }
+
+/* GPU Hardware-Accelerated Border Beam Rotation */
+@keyframes spin-beam {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-beam {
+  animation: spin-beam 8s linear infinite;
+  will-change: transform;
+}
+
+/* Full-Width Horizontal Laser Beam Sweep */
+@keyframes laser-horizontal-sweep {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.animate-laser-horizontal-sweep {
+  animation: laser-horizontal-sweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+/* Vertical Ambient Guide Rail Laser Sweep */
+@keyframes laser-vertical-sweep {
+  0% {
+    transform: translateY(-120%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.animate-laser-vertical-sweep {
+  animation: laser-vertical-sweep 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+.animate-laser-vertical-sweep-delay {
+  animation: laser-vertical-sweep 7s cubic-bezier(0.4, 0, 0.2, 1) infinite 3.5s;
+  will-change: transform;
+}
+

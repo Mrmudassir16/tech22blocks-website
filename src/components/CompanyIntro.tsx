@@ -6,13 +6,14 @@ import Image from 'next/image';
 import { ArrowUpRight, Globe2, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { StarWatermark } from '@/components/StarEmblem';
 import { getAssetUrl } from '@/utils/assets';
-import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
+import { CornerBrackets, BorderBeam } from '@/components/design-system/AtmosphericPerimeter';
 
 export default function CompanyIntro() {
   return (
     <section 
       id="about-mission"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#020713] text-white overflow-hidden border-b border-white/[0.08]" 
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#020713] text-white overflow-hidden" 
       aria-labelledby="about-heading"
     >
       {/* Background Volumetric Flares */}
@@ -54,9 +55,14 @@ export default function CompanyIntro() {
               />
             </div>
 
-            <h2 id="about-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white cursor-default">
-              <StaggeredText text="Tech22Blocks" /> <KineticShimmerText>Mission &amp; Goal</KineticShimmerText>
-            </h2>
+            <div className="group/heading inline-block relative">
+              <h2 id="about-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white cursor-default">
+                <StaggeredText text="Tech22Blocks" />{' '}
+                <StaggeredText text="Mission & Goal" isShimmer />
+              </h2>
+              {/* Luminous laser beam underline that shoots out across the heading on hover */}
+              <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[260px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mt-3 shadow-[0_0_14px_#38bdf8]" />
+            </div>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
               At Tech22Blocks, our mission is to empower businesses and visionary founders through innovative software solutions that streamline operations, foster growth, and drive success. With a commitment to engineering excellence and customer satisfaction, we deliver production software that ships reliably.
@@ -92,6 +98,7 @@ export default function CompanyIntro() {
             
             {/* Engineer Working Photo with Luminous Edge */}
             <div className="relative w-full max-w-[440px] rounded-2xl overflow-hidden shadow-2xl border border-white/[0.12] hover:border-sky-400/40 transition-all group">
+              <CornerBrackets size="w-3.5 h-3.5" color="border-sky-400/40" activeColor="group-hover:border-sky-300" />
               <Image 
                 src={getAssetUrl('/images/about_image_6.webp')} 
                 alt="Tech22Blocks Engineering Team at work" 
@@ -105,8 +112,10 @@ export default function CompanyIntro() {
 
             {/* Overlapping Glassmorphic Funfact Card */}
             <div 
-              className="relative lg:-mt-24 w-full max-w-[480px] bg-[#0b1120]/95 text-white p-7 sm:p-9 rounded-2xl shadow-[0_25px_50px_rgba(0,0,0,0.5)] border border-white/[0.12] hover:border-sky-400/40 transition-all backdrop-blur-2xl z-20"
+              className="group relative lg:-mt-24 w-full max-w-[480px] bg-[#0b1120]/95 text-white p-7 sm:p-9 rounded-2xl shadow-[0_25px_50px_rgba(0,0,0,0.5)] border border-white/[0.12] hover:border-sky-400/50 transition-all backdrop-blur-2xl z-20 overflow-hidden"
             >
+              <CornerBrackets size="w-3.5 h-3.5" color="border-sky-400/40" activeColor="group-hover:border-sky-300" />
+              <BorderBeam duration={9} />
               {/* Top Row: Trusted Avatars + Learn More Button */}
               <div className="flex items-center justify-between pb-6 border-b border-white/[0.08]">
                 <div>

@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { getAssetUrl } from '@/utils/assets';
-import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
+import { CornerBrackets, BorderBeam } from '@/components/design-system/AtmosphericPerimeter';
 
 interface TechItem {
   name: string;
@@ -331,7 +332,7 @@ export default function TechnologiesSection() {
   return (
     <section 
       id="technologies"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#040a1b] text-white overflow-hidden border-b border-white/[0.08]" 
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#040a1b] text-white overflow-hidden" 
       aria-labelledby="tech-heading"
     >
       {/* Background Volumetric Flares */}
@@ -361,9 +362,14 @@ export default function TechnologiesSection() {
             />
           </div>
 
-          <h2 id="tech-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-            <StaggeredText text="Technologies We" /> <KineticShimmerText>Deploy</KineticShimmerText>
-          </h2>
+          <div className="group/heading inline-block text-center relative">
+            <h2 id="tech-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
+              <StaggeredText text="Technologies We" />{' '}
+              <StaggeredText text="Deploy" isShimmer />
+            </h2>
+            {/* Luminous laser beam underline that shoots out across the heading on hover */}
+            <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[240px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mx-auto mt-3 shadow-[0_0_14px_#38bdf8]" />
+          </div>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             Battle-tested frameworks, languages, and distributed systems engineered for speed and longevity.
           </p>
@@ -372,10 +378,11 @@ export default function TechnologiesSection() {
         {/* Tab Navigation Pill Bar */}
         <div className="flex justify-center mb-10 lg:mb-12">
           <div 
-            className="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-full bg-[#0b1120]/90 border border-white/[0.08] backdrop-blur-xl shadow-2xl max-w-full"
+            className="group relative inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-full bg-[#0b1120]/90 border border-white/[0.08] backdrop-blur-xl shadow-2xl max-w-full overflow-hidden"
             role="tablist"
             aria-label="Technology categories"
           >
+            <BorderBeam duration={9} />
             {CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat.id;
 
@@ -404,8 +411,9 @@ export default function TechnologiesSection() {
           {currentItems.map((item, idx) => (
             <div
               key={idx}
-              className="w-full max-w-[170px] bg-[#0b1120]/80 border border-white/[0.08] hover:border-sky-400/50 rounded-2xl p-7 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_0_25px_rgba(56,189,248,0.2)] group backdrop-blur-sm"
+              className="relative w-full max-w-[170px] bg-[#0b1120]/80 border border-white/[0.08] hover:border-sky-400/50 rounded-2xl p-7 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_0_25px_rgba(56,189,248,0.2)] group backdrop-blur-sm overflow-hidden"
             >
+              <CornerBrackets size="w-2.5 h-2.5" color="border-sky-400/20" activeColor="group-hover:border-sky-400" />
               <div className="mb-4 transition-transform duration-300 group-hover:scale-110">
                 {item.svg}
               </div>

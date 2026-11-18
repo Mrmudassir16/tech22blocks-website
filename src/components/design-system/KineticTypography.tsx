@@ -8,38 +8,43 @@ interface StaggeredTextProps {
   letterClassName?: string;
   delayOffset?: number; // Base delay in ms
   staggerMs?: number;   // Delay per letter in ms
+  isShimmer?: boolean;  // Whether these letters have the shimmer gradient
 }
 
 /**
  * Splits text into individual animated characters with CSS-driven stagger on load and wave hover.
+ * Uses inline-flow architecture (inline + inline-block words) to guarantee 100% natural wrapping
+ * and flawless alignment in both centered and left-aligned parents with ZERO flexbox skew.
  */
 export function StaggeredText({
   text,
   className = '',
   letterClassName = '',
   delayOffset = 0,
-  staggerMs = 35,
+  staggerMs = 30,
+  isShimmer = false,
 }: StaggeredTextProps) {
   let charCount = 0;
   const words = text.split(' ');
 
   return (
-    <span className={`inline-flex flex-wrap items-baseline gap-x-[0.28em] kinetic-letter-group ${className}`}>
+    <span className={`inline kinetic-letter-group ${className}`}>
       {words.map((word, wordIdx) => {
         return (
           <span key={wordIdx} className="inline-block whitespace-nowrap">
             {word.split('').map((char, charIdx) => {
               const currentIdx = charCount++;
               const delay = delayOffset + currentIdx * staggerMs;
-              const hoverDelay = currentIdx * 20;
+              const hoverDelay = currentIdx * 25;
 
               return (
                 <span
                   key={charIdx}
-                  className={`inline-block animate-letter-appear kinetic-letter transition-transform ${letterClassName}`}
+                  className={`inline-block animate-letter-appear kinetic-letter cursor-default select-none ${
+                    isShimmer ? 'animate-text-shimmer drop-shadow-[0_0_20px_rgba(56,189,248,0.7)] font-bold' : ''
+                  } ${letterClassName}`}
                   style={{
                     animationDelay: `${delay}ms`,
-                    // Custom CSS property for hover wave bounce
                     ['--hover-delay' as string]: `${hoverDelay}ms`,
                   }}
                 >
@@ -47,6 +52,8 @@ export function StaggeredText({
                 </span>
               );
             })}
+            {/* Natural inter-word spacing that wraps cleanly without flexbox glitches */}
+            {wordIdx < words.length - 1 && <span className="inline-block">&nbsp;</span>}
           </span>
         );
       })}
@@ -66,3 +73,4 @@ export function KineticShimmerText({ children, className = '' }: KineticShimmerT
     </span>
   );
 }
+

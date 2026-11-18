@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
-import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
+import { CornerBrackets, BorderBeam } from '@/components/design-system/AtmosphericPerimeter';
 
 interface ServiceItem {
   id: string;
@@ -128,7 +129,7 @@ export default function ServicesOverview() {
   return (
     <section 
       id="services-overview"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#050b1a] text-white overflow-hidden border-b border-white/[0.08]"
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#050b1a] text-white overflow-hidden"
       aria-labelledby="services-heading"
     >
       {/* Background Volumetric Glows */}
@@ -175,9 +176,14 @@ export default function ServicesOverview() {
             />
           </div>
 
-          <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-            <StaggeredText text="How We Can" /> <KineticShimmerText>Help You</KineticShimmerText>
-          </h2>
+          <div className="group/heading inline-block text-center relative">
+            <h2 id="services-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
+              <StaggeredText text="How We Can" />{' '}
+              <StaggeredText text="Help You" isShimmer />
+            </h2>
+            {/* Luminous laser beam underline that shoots out across the heading on hover */}
+            <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[260px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mx-auto mt-3 shadow-[0_0_14px_#38bdf8]" />
+          </div>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             End-to-end software engineering capabilities tailored for ambitious product founders, modern businesses, and enterprise systems.
           </p>
@@ -188,8 +194,14 @@ export default function ServicesOverview() {
           {SERVICES_DATA.map((service) => (
             <div
               key={service.id}
-              className="group relative bg-[#0b1120]/80 rounded-2xl p-8 sm:p-10 flex flex-col justify-between border border-white/[0.08] hover:border-sky-400/50 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 shadow-[0_8px_30px_rgb(0,0,0,0.3)] hover:shadow-[0_15px_35px_rgba(56,189,248,0.18)]"
+              className="group relative bg-[#0b1120]/80 rounded-2xl p-8 sm:p-10 flex flex-col justify-between border border-white/[0.08] hover:border-sky-400/50 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 shadow-[0_8px_30px_rgb(0,0,0,0.3)] hover:shadow-[0_15px_35px_rgba(56,189,248,0.18)] overflow-hidden"
             >
+              {/* Corner brackets for high-tech HUD aesthetic */}
+              <CornerBrackets size="w-3 h-3" color="border-sky-400/30" activeColor="group-hover:border-sky-400" />
+              
+              {/* Rotating border beam */}
+              <BorderBeam duration={10} />
+
               {/* Subtle Card Ambient Glow */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent pointer-events-none" />
 

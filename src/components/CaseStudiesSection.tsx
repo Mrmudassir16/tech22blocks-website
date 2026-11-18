@@ -5,7 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
-import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
+import { CornerBrackets, BorderBeam } from '@/components/design-system/AtmosphericPerimeter';
 
 interface CaseStudyItem {
   id: string;
@@ -82,7 +83,7 @@ export default function CaseStudiesSection() {
   return (
     <section 
       id="case-studies"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#03081a] text-white border-b border-white/[0.08]" 
+      className="relative py-16 sm:py-20 lg:py-24 bg-[#03081a] text-white" 
       aria-labelledby="case-studies-heading"
     >
       {/* Background Volumetric Flares */}
@@ -121,9 +122,14 @@ export default function CaseStudiesSection() {
             />
           </div>
 
-          <h2 id="case-studies-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-            <StaggeredText text="Our latest" /> <KineticShimmerText>Case Studies</KineticShimmerText>
-          </h2>
+          <div className="group/heading inline-block text-center relative">
+            <h2 id="case-studies-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
+              <StaggeredText text="Our latest" />{' '}
+              <StaggeredText text="Case Studies" isShimmer />
+            </h2>
+            {/* Luminous laser beam underline that shoots out across the heading on hover */}
+            <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[280px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mx-auto mt-3 shadow-[0_0_14px_#38bdf8]" />
+          </div>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             Explore how we build production software architectures for global enterprises, modern platforms, and proprietary products.
           </p>
@@ -134,12 +140,14 @@ export default function CaseStudiesSection() {
           {CASE_STUDIES.map((study, idx) => (
             <div
               key={study.id}
-              className="sticky bg-[#0b1120]/95 rounded-3xl overflow-hidden border border-white/[0.12] hover:border-sky-400/50 shadow-[0_-12px_40px_rgba(0,0,0,0.85),0_25px_50px_rgba(0,0,0,0.7)] hover:shadow-[0_-12px_40px_rgba(0,0,0,0.9),0_0_35px_rgba(56,189,248,0.2)] backdrop-blur-2xl transition-all duration-300"
+              className="group sticky bg-[#0b1120]/95 rounded-3xl overflow-hidden border border-white/[0.12] hover:border-sky-400/50 shadow-[0_-12px_40px_rgba(0,0,0,0.85),0_25px_50px_rgba(0,0,0,0.7)] hover:shadow-[0_-12px_40px_rgba(0,0,0,0.9),0_0_35px_rgba(56,189,248,0.2)] backdrop-blur-2xl transition-all duration-300"
               style={{
                 zIndex: 10 + idx * 5,
                 top: `calc(90px + ${idx * 26}px)`,
               }}
             >
+              <CornerBrackets size="w-4 h-4" color="border-sky-400/40" activeColor="group-hover:border-sky-300" />
+              <BorderBeam duration={12} />
               <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                 
                 {/* Left Column: Details, Metadata, Core Technologies, and Read Case Button */}

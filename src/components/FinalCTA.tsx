@@ -5,7 +5,8 @@ import { ArrowRight, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
 import { getAssetUrl } from '@/utils/assets';
-import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
+import { CornerBrackets, BorderBeam } from '@/components/design-system/AtmosphericPerimeter';
 
 export default function FinalCTA() {
   return (
@@ -25,6 +26,26 @@ export default function FinalCTA() {
 
       {/* Hairline subtle top ambient glow line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
+
+      {/* Side Decorative Tech Shapes */}
+      <div className="absolute top-1/4 -left-12 w-64 h-80 opacity-20 pointer-events-none animate-float-slow hidden lg:block" aria-hidden="true">
+        <Image 
+          src={getAssetUrl('/images/shape_angle_1.webp')} 
+          alt="" 
+          width={260} 
+          height={340} 
+          className="w-full h-auto object-contain brightness-200"
+        />
+      </div>
+      <div className="absolute bottom-1/4 -right-12 w-64 h-80 opacity-20 pointer-events-none animate-float-slow-reverse hidden lg:block" aria-hidden="true">
+        <Image 
+          src={getAssetUrl('/images/shape_angle_2.webp')} 
+          alt="" 
+          width={260} 
+          height={340} 
+          className="w-full h-auto object-contain brightness-200"
+        />
+      </div>
       
       <StarWatermark size={720} position="center" variant="white" opacity={0.02} rotate={-10} />
 
@@ -44,10 +65,20 @@ export default function FinalCTA() {
             />
           </div>
 
-          <h2 id="cta-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
-            <StaggeredText text="Have a project or product idea?" /> <br />
-            Let&apos;s engineer something <KineticShimmerText>extraordinary together.</KineticShimmerText>
-          </h2>
+          {/* S-Tier Perfectly Centered Kinetic Headline */}
+          <div className="group/heading inline-block text-center relative w-full">
+            <h2 id="cta-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default text-center">
+              <span className="block mb-2 sm:mb-3">
+                <StaggeredText text="Have a project or product idea?" />
+              </span>
+              <span className="block">
+                <StaggeredText text="Let's engineer something" />{' '}
+                <StaggeredText text="extraordinary together." isShimmer />
+              </span>
+            </h2>
+            {/* Luminous laser beam underline that shoots out across the heading on hover */}
+            <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[320px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mx-auto mt-4 shadow-[0_0_14px_#38bdf8]" />
+          </div>
 
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
             Whether you require a mission-critical web platform, an intelligent mobile app, custom enterprise software, or an early consultation on voice AI automation — our leadership and engineering team are ready to collaborate.
@@ -71,17 +102,20 @@ export default function FinalCTA() {
             </a>
           </div>
 
-          {/* Quick Contact & Telemetry Info */}
+          {/* Quick Contact & Telemetry Info with Cyber Corner Reticles */}
           <div className="pt-10 mt-8 border-t border-white/[0.08] grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-300 font-mono">
-            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-400/30 transition-colors">
+            <div className="group relative flex items-center justify-center gap-2 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-400/40 transition-colors overflow-hidden">
+              <CornerBrackets size="w-2.5 h-2.5" color="border-sky-400/30" activeColor="group-hover:border-sky-400" />
               <Phone className="w-3.5 h-3.5 text-[#38bdf8]" />
               <span>{COMPANY.phoneDisplay}</span>
             </div>
-            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-400/30 transition-colors">
+            <div className="group relative flex items-center justify-center gap-2 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-400/40 transition-colors overflow-hidden">
+              <CornerBrackets size="w-2.5 h-2.5" color="border-sky-400/30" activeColor="group-hover:border-sky-400" />
               <MapPin className="w-3.5 h-3.5 text-[#38bdf8]" />
               <span>Warangal, Telangana, India</span>
             </div>
-            <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-400/30 transition-colors">
+            <div className="group relative flex items-center justify-center gap-2 p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-sky-400/40 transition-colors overflow-hidden">
+              <CornerBrackets size="w-2.5 h-2.5" color="border-sky-400/30" activeColor="group-hover:border-sky-400" />
               <Clock className="w-3.5 h-3.5 text-[#38bdf8]" />
               <span>Direct Founder Engagement</span>
             </div>

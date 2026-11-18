@@ -2,15 +2,18 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { StarWatermark } from '@/components/StarEmblem';
 import Star3DEngine from '@/components/design-system/Star3DEngine';
-import { StaggeredText, KineticShimmerText } from '@/components/design-system/KineticTypography';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
+import { CornerBrackets } from '@/components/design-system/AtmosphericPerimeter';
+import { getAssetUrl } from '@/utils/assets';
 
 export default function HeroSection() {
   return (
     <section 
-      className="relative min-h-[82vh] lg:min-h-[85vh] flex items-center bg-[#030712] text-white overflow-hidden border-b border-white/[0.08] pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20"
+      className="relative min-h-[82vh] lg:min-h-[85vh] flex items-center bg-[#030712] text-white overflow-hidden pt-28 sm:pt-32 lg:pt-36 pb-16 sm:pb-20"
       aria-label="Tech22Blocks Corporate Hero"
     >
       {/* Background Architectural Grid & Volumetric Lighting */}
@@ -20,10 +23,30 @@ export default function HeroSection() {
         <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-[#0a85b1]/[0.2] rounded-full blur-[140px] transform-gpu" />
         
         {/* Subtle Cybernetic Corner Crosshairs */}
-        <div className="absolute top-24 left-8 text-sky-400/20 font-mono text-sm hidden lg:block select-none">+</div>
-        <div className="absolute top-24 right-8 text-sky-400/20 font-mono text-sm hidden lg:block select-none">+</div>
-        <div className="absolute bottom-12 left-8 text-sky-400/20 font-mono text-sm hidden lg:block select-none">+</div>
-        <div className="absolute bottom-12 right-8 text-sky-400/20 font-mono text-sm hidden lg:block select-none">+</div>
+        <div className="absolute top-24 left-8 text-sky-400/30 font-mono text-sm hidden lg:block select-none">[+]</div>
+        <div className="absolute top-24 right-8 text-sky-400/30 font-mono text-sm hidden lg:block select-none">[+]</div>
+        <div className="absolute bottom-12 left-8 text-sky-400/30 font-mono text-sm hidden lg:block select-none">[+]</div>
+        <div className="absolute bottom-12 right-8 text-sky-400/30 font-mono text-sm hidden lg:block select-none">[+]</div>
+
+        {/* Ambient Side Shapes */}
+        <div className="absolute top-1/4 -left-14 w-72 h-96 opacity-20 pointer-events-none animate-float-slow hidden xl:block" aria-hidden="true">
+          <Image 
+            src={getAssetUrl('/images/shape_angle_1.webp')} 
+            alt="" 
+            width={280} 
+            height={400} 
+            className="w-full h-auto object-contain brightness-200"
+          />
+        </div>
+        <div className="absolute top-1/3 -right-14 w-80 h-96 opacity-20 pointer-events-none animate-float-slow-reverse hidden xl:block" aria-hidden="true">
+          <Image 
+            src={getAssetUrl('/images/shape_angle_2.webp')} 
+            alt="" 
+            width={300} 
+            height={420} 
+            className="w-full h-auto object-contain brightness-200"
+          />
+        </div>
 
         {/* Precision Grid with Radial Mask */}
         <div 
@@ -49,10 +72,10 @@ export default function HeroSection() {
           <div className="lg:col-span-7 space-y-7">
 
             {/* Core Typography with Letter Stagger & Kinetic Hover */}
-            <div className="space-y-4">
+            <div className="space-y-4 group/heading">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-[-0.035em] leading-[1.05] cursor-default">
                 <StaggeredText text="Engineering software" /> <br className="hidden sm:block" />
-                <KineticShimmerText>that ships.</KineticShimmerText>
+                <StaggeredText text="that ships." isShimmer />
               </h1>
 
               <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-slate-200 tracking-[-0.02em] leading-snug kinetic-heading-hover cursor-default">
