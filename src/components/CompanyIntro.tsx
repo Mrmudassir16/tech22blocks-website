@@ -55,13 +55,11 @@ export default function CompanyIntro() {
               />
             </div>
 
-            <div className="group/heading inline-block relative">
+            <div>
               <h2 id="about-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white cursor-default">
                 <StaggeredText text="Tech22Blocks" />{' '}
                 <StaggeredText text="Mission & Goal" isShimmer />
               </h2>
-              {/* Luminous laser beam underline that shoots out across the heading on hover */}
-              <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[260px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mt-3 shadow-[0_0_14px_#38bdf8]" />
             </div>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
@@ -115,7 +113,6 @@ export default function CompanyIntro() {
               className="group relative lg:-mt-24 w-full max-w-[480px] bg-[#0b1120]/95 text-white p-7 sm:p-9 rounded-2xl shadow-[0_25px_50px_rgba(0,0,0,0.5)] border border-white/[0.12] hover:border-sky-400/50 transition-all backdrop-blur-2xl z-20 overflow-hidden"
             >
               <CornerBrackets size="w-3.5 h-3.5" color="border-sky-400/40" activeColor="group-hover:border-sky-300" />
-              <BorderBeam duration={9} />
               {/* Top Row: Trusted Avatars + Learn More Button */}
               <div className="flex items-center justify-between pb-6 border-b border-white/[0.08]">
                 <div>

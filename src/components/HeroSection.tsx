@@ -22,11 +22,6 @@ export default function HeroSection() {
         <div className="absolute top-1/4 left-1/4 w-[650px] h-[550px] bg-sky-500/[0.14] rounded-full blur-[130px] transform-gpu animate-pulse-aura" />
         <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-[#0a85b1]/[0.2] rounded-full blur-[140px] transform-gpu" />
         
-        {/* Subtle Cybernetic Corner Crosshairs */}
-        <div className="absolute top-24 left-8 text-sky-400/30 font-mono text-sm hidden lg:block select-none">[+]</div>
-        <div className="absolute top-24 right-8 text-sky-400/30 font-mono text-sm hidden lg:block select-none">[+]</div>
-        <div className="absolute bottom-12 left-8 text-sky-400/30 font-mono text-sm hidden lg:block select-none">[+]</div>
-        <div className="absolute bottom-12 right-8 text-sky-400/30 font-mono text-sm hidden lg:block select-none">[+]</div>
 
         {/* Ambient Side Shapes */}
         <div className="absolute top-1/4 -left-14 w-72 h-96 opacity-20 pointer-events-none animate-float-slow hidden xl:block" aria-hidden="true">
@@ -74,8 +69,8 @@ export default function HeroSection() {
             {/* Core Typography with Letter Stagger & Kinetic Hover */}
             <div className="space-y-4 group/heading">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-[-0.035em] leading-[1.05] cursor-default">
-                <StaggeredText text="Engineering software" /> <br className="hidden sm:block" />
-                <StaggeredText text="that ships." isShimmer />
+                <StaggeredText text="Engineering software" interactiveHover /> <br className="hidden sm:block" />
+                <StaggeredText text="that ships." isShimmer interactiveHover />
               </h1>
 
               <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-slate-200 tracking-[-0.02em] leading-snug kinetic-heading-hover cursor-default">

@@ -79,14 +79,12 @@ export default function WhyTech22Blocks() {
               className="inline-block brightness-200"
             />
           </div>
-          <div className="group/heading inline-block relative">
+          <div>
             <h2 id="why-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
               <StaggeredText text="Engineering built on" />{' '}
               <StaggeredText text="ownership" isShimmer />{' '}
               <StaggeredText text="and accountability." />
             </h2>
-            {/* Luminous laser beam underline that shoots out across the heading on hover */}
-            <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[340px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mt-3 shadow-[0_0_14px_#38bdf8]" />
           </div>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             We focus on shipping software that creates tangible business value, partnering closely with leaders through dedicated engineering collaboration.
@@ -104,7 +102,6 @@ export default function WhyTech22Blocks() {
                 className="relative rounded-2xl p-7 bg-[#0b1120]/80 border border-white/[0.08] flex flex-col justify-between hover:border-sky-400/50 hover:-translate-y-1.5 transition-all duration-300 group backdrop-blur-xl shadow-lg hover:shadow-[0_0_30px_rgba(56,189,248,0.18)] overflow-hidden"
               >
                 <CornerBrackets size="w-3 h-3" color="border-sky-400/25" activeColor="group-hover:border-sky-400" />
-                <BorderBeam duration={11} />
                 <div className="space-y-5">
                   
                   {/* Top Bar: Icon + Monospace Step */}

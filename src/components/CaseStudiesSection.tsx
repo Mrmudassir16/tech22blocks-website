@@ -122,13 +122,11 @@ export default function CaseStudiesSection() {
             />
           </div>
 
-          <div className="group/heading inline-block text-center relative">
+          <div>
             <h2 id="case-studies-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
               <StaggeredText text="Our latest" />{' '}
               <StaggeredText text="Case Studies" isShimmer />
             </h2>
-            {/* Luminous laser beam underline that shoots out across the heading on hover */}
-            <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[280px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mx-auto mt-3 shadow-[0_0_14px_#38bdf8]" />
           </div>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             Explore how we build production software architectures for global enterprises, modern platforms, and proprietary products.
@@ -147,7 +145,6 @@ export default function CaseStudiesSection() {
               }}
             >
               <CornerBrackets size="w-4 h-4" color="border-sky-400/40" activeColor="group-hover:border-sky-300" />
-              <BorderBeam duration={12} />
               <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                 
                 {/* Left Column: Details, Metadata, Core Technologies, and Read Case Button */}

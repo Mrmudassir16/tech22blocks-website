@@ -97,13 +97,11 @@ export default function WorkingProcessSection() {
                 />
               </div>
 
-              <div className="group/heading inline-block relative">
+              <div>
                 <h2 id="process-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
                   <StaggeredText text="Our" />{' '}
                   <StaggeredText text="Approach" isShimmer />
                 </h2>
-                {/* Luminous laser beam underline that shoots out across the heading on hover */}
-                <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[200px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mt-3 shadow-[0_0_14px_#38bdf8]" />
               </div>
             </div>
 
@@ -121,7 +119,6 @@ export default function WorkingProcessSection() {
                         : 'bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04]'
                     } p-5 sm:p-6 backdrop-blur-sm`}
                   >
-                    {isOpen && <BorderBeam duration={8} />}
                     {isOpen && <CornerBrackets size="w-3 h-3" color="border-sky-400/40" activeColor="border-sky-300" />}
                     <button
                       type="button"

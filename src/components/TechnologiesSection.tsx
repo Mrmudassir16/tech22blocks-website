@@ -362,13 +362,11 @@ export default function TechnologiesSection() {
             />
           </div>
 
-          <div className="group/heading inline-block text-center relative">
+          <div>
             <h2 id="tech-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
               <StaggeredText text="Technologies We" />{' '}
               <StaggeredText text="Deploy" isShimmer />
             </h2>
-            {/* Luminous laser beam underline that shoots out across the heading on hover */}
-            <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[240px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mx-auto mt-3 shadow-[0_0_14px_#38bdf8]" />
           </div>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
             Battle-tested frameworks, languages, and distributed systems engineered for speed and longevity.
@@ -382,7 +380,6 @@ export default function TechnologiesSection() {
             role="tablist"
             aria-label="Technology categories"
           >
-            <BorderBeam duration={9} />
             {CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat.id;
 

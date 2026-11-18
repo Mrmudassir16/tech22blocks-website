@@ -66,7 +66,7 @@ export default function FinalCTA() {
           </div>
 
           {/* S-Tier Perfectly Centered Kinetic Headline */}
-          <div className="group/heading inline-block text-center relative w-full">
+          <div className="inline-block text-center relative w-full">
             <h2 id="cta-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default text-center">
               <span className="block mb-2 sm:mb-3">
                 <StaggeredText text="Have a project or product idea?" />
@@ -76,8 +76,6 @@ export default function FinalCTA() {
                 <StaggeredText text="extraordinary together." isShimmer />
               </span>
             </h2>
-            {/* Luminous laser beam underline that shoots out across the heading on hover */}
-            <span className="block h-[2px] w-0 group-hover/heading:w-3/4 max-w-[320px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent transition-all duration-500 ease-out mx-auto mt-4 shadow-[0_0_14px_#38bdf8]" />
           </div>
 
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">

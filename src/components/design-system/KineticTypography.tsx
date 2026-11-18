@@ -9,10 +9,11 @@ interface StaggeredTextProps {
   delayOffset?: number; // Base delay in ms
   staggerMs?: number;   // Delay per letter in ms
   isShimmer?: boolean;  // Whether these letters have the shimmer gradient
+  interactiveHover?: boolean; // Enable bouncy hover physics on individual letters
 }
 
 /**
- * Splits text into individual animated characters with CSS-driven stagger on load and wave hover.
+ * Splits text into individual animated characters with CSS-driven stagger on load.
  * Uses inline-flow architecture (inline + inline-block words) to guarantee 100% natural wrapping
  * and flawless alignment in both centered and left-aligned parents with ZERO flexbox skew.
  */
@@ -23,12 +24,13 @@ export function StaggeredText({
   delayOffset = 0,
   staggerMs = 30,
   isShimmer = false,
+  interactiveHover = false,
 }: StaggeredTextProps) {
   let charCount = 0;
   const words = text.split(' ');
 
   return (
-    <span className={`inline kinetic-letter-group ${className}`}>
+    <span className={`inline ${interactiveHover ? 'kinetic-letter-group' : ''} ${className}`}>
       {words.map((word, wordIdx) => {
         return (
           <span key={wordIdx} className="inline-block whitespace-nowrap">
@@ -40,12 +42,12 @@ export function StaggeredText({
               return (
                 <span
                   key={charIdx}
-                  className={`inline-block animate-letter-appear kinetic-letter cursor-default select-none ${
+                  className={`inline-block animate-letter-appear ${interactiveHover ? 'kinetic-letter' : ''} cursor-default select-none ${
                     isShimmer ? 'animate-text-shimmer drop-shadow-[0_0_20px_rgba(56,189,248,0.7)] font-bold' : ''
                   } ${letterClassName}`}
                   style={{
                     animationDelay: `${delay}ms`,
-                    ['--hover-delay' as string]: `${hoverDelay}ms`,
+                    ...(interactiveHover ? { ['--hover-delay' as string]: `${hoverDelay}ms` } : {}),
                   }}
                 >
                   {char}
