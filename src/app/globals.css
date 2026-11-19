@@ -2,161 +2,184 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root, [data-theme="dark"] {
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
-  /* Brand Colors */
-  --color-brand: #0a85b1;
-  --color-brand-cyan: #0ea5e9;
-  --color-brand-light: #38bdf8;
-  --color-brand-dark: #0369a1;
+  /* Semantic Theme Tokens (Dark Mode Default) */
+  --canvas: #0A0E1A;
+  --surface: #0F172A;
+  --surface-elevated: #111827;
+  --surface-card: #0D1527;
+  --border: rgba(255, 255, 255, 0.14);
+  --border-subtle: rgba(56, 189, 248, 0.22);
+  --text-primary: #F1F5F9;
+  --text-muted: #94A3B8;
+  --accent: #0A85B1;
+  --accent-light: #38BDF8;
+  --accent-hover: #0EA5E9;
+  
+  --radius-card: 14px;
+  --radius-shell: 28px;
+  
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.55);
 
-  /* Obsidian Architecture */
-  --color-obsidian-950: #030712;
-  --color-obsidian-900: #060b18;
-  --color-obsidian-850: #0b1120;
-  --color-obsidian-800: #0f172a;
+  --header-bg: rgba(13, 22, 41, 0.88);
+  --header-bg-scrolled: rgba(9, 16, 31, 0.96);
+  --header-border: rgba(56, 189, 248, 0.16);
+  --header-border-scrolled: rgba(56, 189, 248, 0.28);
+}
+
+[data-theme="light"] {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Semantic Theme Tokens (Light Mode) */
+  --canvas: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-elevated: #F1F5F9;
+  --surface-card: #FFFFFF;
+  --border: rgba(15, 23, 42, 0.14);
+  --border-subtle: rgba(10, 110, 143, 0.20);
+  --text-primary: #0F172A;
+  --text-muted: #64748B;
+  --accent: #0A6E8F;
+  --accent-light: #0284C7;
+  --accent-hover: #0369A1;
+
+  --radius-card: 14px;
+  --radius-shell: 28px;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 20px 35px -5px rgba(0, 0, 0, 0.08);
+
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --header-bg-scrolled: rgba(255, 255, 255, 0.98);
+  --header-border: rgba(10, 110, 143, 0.16);
+  --header-border-scrolled: rgba(10, 110, 143, 0.28);
+}
+
+/* Theme-Specific Element Selectors */
+.dark-theme-only {
+  display: block;
+}
+.light-theme-only {
+  display: none !important;
+}
+
+[data-theme="light"] .dark-theme-only {
+  display: none !important;
+}
+[data-theme="light"] .light-theme-only {
+  display: block !important;
 }
 
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
 }
 
 body {
-  color: #f1f5f9;
-  background-color: #030712;
+  color: var(--text-primary);
+  background-color: var(--canvas);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background-color 200ms ease-out, color 200ms ease-out;
 }
 
-/* Premium Dark Micro-Scrollbar */
+/* Premium Adaptive Micro-Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: var(--canvas);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: var(--border);
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0ea5e9;
+  background: var(--accent);
 }
 
-/* Glowing Selection */
+/* Luminous Selection */
 ::selection {
-  background: rgba(14, 165, 233, 0.35);
+  background: rgba(10, 133, 177, 0.35);
   color: #ffffff;
 }
 
 /* Focus Ring */
 *:focus-visible {
-  outline: 2px solid #0ea5e9;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-/* Architectural Grid Texture */
-.bg-architectural-grid {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 52px 52px;
+/* Section Rhythm Container */
+.section-pad {
+  padding-block: clamp(2.75rem, 5vw, 4.25rem);
 }
 
-.bg-architectural-dots {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Header Glassmorphism */
+.header-glass {
+  position: fixed;
+  inset: 0 0 auto 0;
+  width: 100%;
+  background: var(--header-bg);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border-bottom: 1px solid var(--header-border);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.25);
+  transition: border-color 200ms ease-out, background 200ms ease-out, box-shadow 200ms ease-out;
 }
 
-/* Radiant Luminous Glass Card */
-.luminous-card {
-  background: rgba(11, 17, 32, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.header-glass[data-scrolled="true"] {
+  border-bottom-color: var(--header-border-scrolled);
+  background: var(--header-bg-scrolled);
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.45);
 }
 
-.luminous-card:hover {
-  border-color: rgba(56, 189, 248, 0.45);
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 30px rgba(14, 165, 233, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+/* Editorial Serif Headline */
+.font-display-serif {
+  font-family: var(--font-serif);
+}
+
+/* Hard Offset Button */
+.btn-offset {
+  transition: all 180ms ease-out;
+}
+.btn-offset:hover {
   transform: translateY(-2px);
+  box-shadow: 4px 4px 0 var(--border);
 }
 
-/* Kinetic Text Animations */
-@keyframes text-glow-pulse {
-  0%, 100% {
-    text-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
-  }
-  50% {
-    text-shadow: 0 0 28px rgba(56, 189, 248, 0.45);
-  }
+/* Modular Card Surface */
+.card-surface {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: transform 180ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out;
+}
+.card-surface:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
 }
 
-.animate-glow-text {
-  animation: text-glow-pulse 4s ease-in-out infinite;
-}
-
-/* Subtle Kinetic Hover Link */
-.kinetic-text-hover {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease, letter-spacing 0.25s ease;
-}
-.kinetic-text-hover:hover {
-  transform: translateX(3px);
-  color: #38bdf8;
-}
-
-/* Section Eyebrow Badge */
-.eyebrow-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  background: rgba(14, 165, 233, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.28);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #38bdf8;
-  box-shadow: 0 0 20px rgba(14, 165, 233, 0.12);
-  transition: all 0.25s ease;
-}
-.eyebrow-badge:hover {
-  border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 0 0 25px rgba(14, 165, 233, 0.25);
-  transform: translateY(-1px);
-}
-
-/* Dynamic Text Shimmer Sweep Animation */
-@keyframes text-shimmer-sweep {
-  0% {
-    background-position: 200% center;
-  }
-  100% {
-    background-position: -200% center;
-  }
-}
-
+/* Shimmer Accent Gradient */
 .animate-text-shimmer {
   background: linear-gradient(
     110deg,
-    #ffffff 0%,
-    #bae6fd 25%,
-    #38bdf8 50%,
-    #bae6fd 75%,
-    #ffffff 100%
+    var(--text-primary) 0%,
+    var(--accent-light) 30%,
+    var(--accent) 50%,
+    var(--accent-light) 70%,
+    var(--text-primary) 100%
   );
   background-size: 200% auto;
   color: transparent;
@@ -166,88 +189,13 @@ body {
   display: inline-block;
 }
 
-/* Smooth Ambient Floating Keyframes */
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-14px) rotate(1.5deg);
-  }
-}
-
-.animate-float-slow {
-  animation: float-slow 7s ease-in-out infinite;
-  will-change: transform;
-}
-
-@keyframes float-slow-reverse {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(14px) rotate(-1.5deg);
-  }
-}
-
-.animate-float-slow-reverse {
-  animation: float-slow-reverse 8.5s ease-in-out infinite;
-  will-change: transform;
-}
-
-/* Pulsing Atmospheric Aura */
-@keyframes pulse-aura {
-  0%, 100% {
-    opacity: 0.15;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.35;
-    transform: scale(1.06);
-  }
-}
-
-.animate-pulse-aura {
-  animation: pulse-aura 6s ease-in-out infinite;
-  will-change: opacity, transform;
-}
-
-/* Kinetic Heading & Card Text Interactions */
-.kinetic-heading-hover {
-  display: inline-block;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), text-shadow 0.3s ease, letter-spacing 0.3s ease;
-}
-.kinetic-heading-hover:hover {
-  transform: translateX(3px);
-  text-shadow: 0 0 22px rgba(56, 189, 248, 0.6);
-}
-
-.kinetic-card-title {
-  display: inline-block;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease, letter-spacing 0.25s ease;
-}
-.group:hover .kinetic-card-title {
-  transform: translateX(4px);
-  color: #38bdf8;
-  letter-spacing: 0.01em;
-}
-
-/* GPU Hardware-Accelerated 3D Ambient Float */
-@keyframes ambient-orbit {
+@keyframes text-shimmer-sweep {
   0% {
-    transform: perspective(1000px) rotateX(8deg) rotateY(-10deg) rotateZ(0deg);
-  }
-  50% {
-    transform: perspective(1000px) rotateX(12deg) rotateY(10deg) rotateZ(2deg);
+    background-position: 200% center;
   }
   100% {
-    transform: perspective(1000px) rotateX(8deg) rotateY(-10deg) rotateZ(0deg);
+    background-position: -200% center;
   }
-}
-
-.animate-ambient-orbit {
-  animation: ambient-orbit 9s ease-in-out infinite;
-  will-change: transform;
 }
 
 /* GPU Hardware-Accelerated Automatic Float */
@@ -269,107 +217,43 @@ body {
 @keyframes letter-appear {
   0% {
     opacity: 0;
-    transform: translateY(22px) scale(0.9);
-    filter: blur(4px);
+    transform: translateY(18px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0px);
+    transform: translateY(0);
   }
 }
 
 .animate-letter-appear {
   opacity: 0;
-  animation: letter-appear 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  will-change: opacity, transform, filter;
+  animation: letter-appear 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
 }
 
-/* Highly Tactile Kinetic Letter Hover Physics */
+/* Kinetic Letter Hover Wave for Hero Heading */
 .kinetic-letter {
   display: inline-block;
-  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.15s ease, text-shadow 0.2s ease, filter 0.2s ease;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.15s ease;
   will-change: transform;
 }
 
 .kinetic-letter:hover {
-  transform: translateY(-9px) scale(1.22) rotate(-1.5deg);
-  color: #38bdf8 !important;
-  text-shadow: 0 0 20px #38bdf8, 0 0 35px #0ea5e9, 0 0 60px rgba(14, 165, 233, 0.8) !important;
-  z-index: 20;
-  position: relative;
+  transform: translateY(-6px) scale(1.1);
+  color: var(--accent-light) !important;
 }
 
-/* Kinetic Letter Group Wave */
 .kinetic-letter-group:hover .kinetic-letter {
   animation: letter-hover-bounce 0.5s ease forwards;
   animation-delay: var(--hover-delay, 0ms);
 }
 
 @keyframes letter-hover-bounce {
-  0% {
-    transform: translateY(0) scale(1);
+  0%, 100% {
+    transform: translateY(0);
   }
-  35% {
-    transform: translateY(-8px) scale(1.18);
-    color: #38bdf8;
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.95);
-  }
-  70% {
-    transform: translateY(2px) scale(0.98);
-  }
-  100% {
-    transform: translateY(0) scale(1);
+  40% {
+    transform: translateY(-6px);
+    color: var(--accent-light);
   }
 }
-
-/* GPU Hardware-Accelerated Border Beam Rotation */
-@keyframes spin-beam {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-beam {
-  animation: spin-beam 8s linear infinite;
-  will-change: transform;
-}
-
-/* Full-Width Horizontal Laser Beam Sweep */
-@keyframes laser-horizontal-sweep {
-  0% {
-    transform: translateX(-150%);
-  }
-  100% {
-    transform: translateX(100vw);
-  }
-}
-
-.animate-laser-horizontal-sweep {
-  animation: laser-horizontal-sweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  will-change: transform;
-}
-
-/* Vertical Ambient Guide Rail Laser Sweep */
-@keyframes laser-vertical-sweep {
-  0% {
-    transform: translateY(-120%);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
-}
-
-.animate-laser-vertical-sweep {
-  animation: laser-vertical-sweep 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  will-change: transform;
-}
-
-.animate-laser-vertical-sweep-delay {
-  animation: laser-vertical-sweep 7s cubic-bezier(0.4, 0, 0.2, 1) infinite 3.5s;
-  will-change: transform;
-}
-

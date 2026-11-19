@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
+import { useTheme } from '@/context/ThemeContext';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -21,13 +22,26 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { theme, toggleTheme, mounted } = useTheme();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 15);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Prevent background scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   const isActive = (path: string) => {
     if (path === '/') return pathname === '/' || pathname === '';
@@ -35,77 +49,112 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-300 px-3 sm:px-6 lg:px-8 pt-3 sm:pt-4 pointer-events-none">
-      <div 
-        className={`max-w-7xl mx-auto rounded-2xl sm:rounded-full transition-all duration-300 pointer-events-auto ${
-          scrolled
-            ? 'bg-[#060b18]/90 backdrop-blur-2xl border border-sky-400/25 shadow-[0_12px_40px_rgba(0,0,0,0.7),0_0_25px_rgba(14,165,233,0.18),inset_0_1px_0_0_rgba(255,255,255,0.15)] px-4 sm:px-6 py-2.5 sm:py-3'
-            : 'bg-[#060b18]/70 backdrop-blur-xl border border-white/[0.1] shadow-[0_8px_30px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(255,255,255,0.1)] px-4 sm:px-6 py-3 sm:py-3.5'
-        }`}
-      >
-        <div className="flex items-center justify-between">
+    <header 
+      className="header-glass z-50 h-[72px]" 
+      data-scrolled={scrolled ? 'true' : 'false'}
+    >
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
 
-          {/* Logo Capsule with Ambient Illumination */}
-          <Link 
-            href="/" 
-            className="flex items-center gap-3 group" 
-            aria-label="Tech22Blocks Home"
-          >
-            <div className="bg-white px-3 py-1.5 rounded-xl border border-white/40 shadow-sm group-hover:shadow-[0_0_22px_rgba(56,189,248,0.45)] transition-all duration-300 group-hover:scale-[1.02]">
-              <div className="relative h-7 w-36 sm:h-8 sm:w-44">
-                <Image
-                  src={getAssetUrl('/images/tech22blocks-logo.jpg')}
-                  alt="Tech22Blocks — RRK Software Technologies Private Limited"
-                  fill
-                  sizes="(max-width: 640px) 144px, 176px"
-                  priority
-                  className="object-contain object-left"
-                />
-              </div>
+        {/* 1. Left: Official Brand Logo with Dual-Theme Integration */}
+        <Link 
+          href="/" 
+          className="flex items-center gap-3 group flex-shrink-0" 
+          aria-label="Tech22Blocks Home"
+        >
+          <div className="bg-white px-3 py-1.5 rounded-xl border border-white/40 shadow-sm transition-transform duration-200 group-hover:scale-[1.02]">
+            <div className="relative h-7 w-36 sm:h-8 sm:w-44">
+              <Image
+                src={getAssetUrl('/images/tech22blocks-logo.jpg')}
+                alt="Tech22Blocks — RRK Software Technologies Private Limited"
+                fill
+                sizes="(max-width: 640px) 144px, 176px"
+                priority
+                className="object-contain object-left"
+              />
             </div>
-          </Link>
-
-          {/* Desktop Navigation Pill Group */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-950/60 p-1 rounded-full border border-white/[0.08] backdrop-blur-md" aria-label="Main Navigation">
-            {NAV_LINKS.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`relative px-4 py-2 text-xs font-semibold tracking-wide transition-all duration-200 rounded-full ${
-                    active
-                      ? 'text-white bg-white/[0.12] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.25),0_0_15px_rgba(56,189,248,0.2)]'
-                      : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
-                  }`}
-                >
-                  <span className="relative z-10 transition-transform duration-200 inline-block hover:scale-105">
-                    {link.label}
-                  </span>
-                  {active && (
-                    <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent rounded-full shadow-[0_0_8px_#38bdf8]" />
-                  )}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* Desktop CTA Button */}
-          <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
-            <Link
-              href="/contact/"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider font-mono text-white bg-gradient-to-r from-sky-400 via-[#0ea5e9] to-[#0a85b1] hover:from-sky-300 hover:to-[#0ea5e9] rounded-full shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:shadow-[0_0_30px_rgba(14,165,233,0.65)] transition-all duration-200 hover:scale-105 group"
-            >
-              <span>Contact Us</span>
-              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
           </div>
+        </Link>
 
-          {/* Mobile Menu Toggle Button */}
+        {/* 2. Center: Desktop Navigation Links (Increased Font Size text-[14px] - text-[15px]) */}
+        <nav 
+          className="hidden lg:flex items-center gap-6 xl:gap-8" 
+          aria-label="Main Navigation"
+        >
+          {NAV_LINKS.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`relative py-1.5 text-[14px] xl:text-[15px] font-medium tracking-normal transition-colors duration-180 group ${
+                  active 
+                    ? 'text-[var(--text-primary)] font-semibold' 
+                    : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
+                }`}
+              >
+                <span>{link.label}</span>
+                
+                {/* CSS Underline-Reveal on Hover and Active State */}
+                <span 
+                  className={`absolute -bottom-0.5 left-0 h-[2px] bg-[var(--accent)] rounded-full transition-all duration-200 ${
+                    active 
+                      ? 'w-full shadow-[0_0_8px_var(--accent)]' 
+                      : 'w-0 group-hover:w-full opacity-80'
+                  }`} 
+                />
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* 3. Right: Theme Toggle & Primary CTA Button */}
+        <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
+          
+          {/* Sun/Moon Theme Toggle Button */}
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            className="w-10 h-10 rounded-xl flex items-center justify-center bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--accent)] transition-all duration-180 cursor-pointer shadow-sm"
+          >
+            {mounted && theme === 'light' ? (
+              <Moon className="w-4 h-4 text-slate-700 transition-transform duration-200 rotate-0" />
+            ) : (
+              <Sun className="w-4 h-4 text-amber-400 transition-transform duration-200 rotate-0" />
+            )}
+          </button>
+
+          {/* Primary CTA with Hard Offset Hover Effect */}
+          <Link
+            href="/contact/"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-[13px] font-semibold text-white bg-[var(--accent)] hover:bg-[var(--accent-hover)] shadow-[0_4px_14px_rgba(10,133,177,0.35)] btn-offset transition-all"
+          >
+            <span>Contact Us</span>
+            <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+        </div>
+
+        {/* 4. Mobile: Theme Toggle & Hamburger Button */}
+        <div className="flex lg:hidden items-center gap-2">
+          
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="w-9 h-9 rounded-xl flex items-center justify-center bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+          >
+            {mounted && theme === 'light' ? (
+              <Moon className="w-4 h-4 text-slate-700" />
+            ) : (
+              <Sun className="w-4 h-4 text-amber-400" />
+            )}
+          </button>
+
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl text-slate-200 hover:text-white hover:bg-white/[0.08] border border-white/[0.12] transition-colors"
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-[var(--text-primary)] bg-[var(--surface-elevated)] border border-[var(--border)] transition-colors"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -114,9 +163,18 @@ export default function Navbar() {
 
         </div>
 
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden mt-3 pt-3 border-t border-white/[0.1] space-y-1.5 pb-2">
+      </div>
+
+      {/* 5. Mobile Slide-In / Dropdown Drawer with 44px Minimum Tap Targets */}
+      {mobileMenuOpen && (
+        <div 
+          className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 bg-[var(--canvas)]/98 backdrop-blur-2xl border-t border-[var(--border)] p-6 flex flex-col justify-between overflow-y-auto z-50 animate-letter-appear"
+          style={{ height: 'calc(100vh - 72px)' }}
+        >
+          <div className="space-y-1">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] px-3 block mb-2">
+              Navigation Menu
+            </span>
             {NAV_LINKS.map((link) => {
               const active = isActive(link.href);
               return (
@@ -124,30 +182,35 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
+                  className={`flex items-center justify-between px-4 min-h-[46px] rounded-xl text-[16px] font-medium transition-all ${
                     active
-                      ? 'bg-sky-500/15 text-sky-300 border border-sky-400/30 font-semibold shadow-[0_0_15px_rgba(56,189,248,0.15)]'
-                      : 'text-slate-300 hover:text-white hover:bg-white/[0.05]'
+                      ? 'bg-[var(--accent)]/15 text-[var(--accent-light)] font-semibold border border-[var(--accent)]/30'
+                      : 'text-[var(--text-primary)] hover:bg-[var(--surface-elevated)]'
                   }`}
                 >
                   <span>{link.label}</span>
-                  {active && <span className="w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_6px_#38bdf8]" />}
+                  {active && <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />}
                 </Link>
               );
             })}
-            <div className="pt-3 border-t border-white/[0.08]">
-              <Link
-                href="/contact/"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full text-center px-5 py-3 rounded-xl text-xs font-semibold uppercase tracking-wider font-mono text-white bg-gradient-to-r from-sky-400 to-[#0a85b1] shadow-[0_0_20px_rgba(14,165,233,0.4)] transition-all"
-              >
-                <span>Contact Us</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
+          </div>
+
+          <div className="pt-6 border-t border-[var(--border)] space-y-3">
+            <Link
+              href="/contact/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center gap-2 w-full min-h-[48px] rounded-xl text-[14px] font-semibold text-white bg-[var(--accent)] shadow-md transition-all"
+            >
+              <span>Schedule a Consultation</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+
+            <div className="text-center font-mono text-[11px] text-[var(--text-muted)]">
+              RRK Software Technologies &bull; Warangal, India
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   );
 }

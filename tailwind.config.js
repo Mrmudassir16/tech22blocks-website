@@ -5,10 +5,21 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: 'class',
+  darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
       colors: {
+        canvas: 'var(--canvas)',
+        surface: 'var(--surface)',
+        'surface-elevated': 'var(--surface-elevated)',
+        'surface-card': 'var(--surface-card)',
+        border: 'var(--border)',
+        'border-subtle': 'var(--border-subtle)',
+        'text-primary': 'var(--text-primary)',
+        'text-muted': 'var(--text-muted)',
+        accent: 'var(--accent)',
+        'accent-light': 'var(--accent-light)',
+        'accent-hover': 'var(--accent-hover)',
         obsidian: {
           950: '#030712',
           900: '#060b18',
@@ -23,32 +34,31 @@ module.exports = {
           300: '#7dd3fc',
           400: '#38bdf8',
           500: '#0ea5e9',
-          600: '#0a85b1', // Tech22Blocks official logo blue
+          600: '#0a85b1',
           700: '#0284c7',
           800: '#0369a1',
           900: '#075985',
           950: '#082f49',
         },
-        navy: {
-          800: '#111827',
-          900: '#0b1120',
-          950: '#030712',
-        }
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
         display: ['"Plus Jakarta Sans"', 'var(--font-inter)', 'sans-serif'],
       },
       boxShadow: {
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-        'luminous': '0 0 25px rgba(14, 165, 233, 0.25)',
-        'luminous-lg': '0 0 50px rgba(14, 165, 233, 0.35)',
-        'inner-hairline': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.1)',
+        'card': 'var(--shadow-card)',
+        'elevated': 'var(--shadow-elevated)',
+        'offset': '4px 4px 0 var(--border)',
+        'offset-accent': '4px 4px 0 var(--accent)',
+      },
+      borderRadius: {
+        'card': 'var(--radius-card)',
+        'shell': 'var(--radius-shell)',
       },
       animation: {
         'star-float': 'star-float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         'star-float': {

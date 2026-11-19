@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
 import { StaggeredText } from '@/components/design-system/KineticTypography';
-import { CornerBrackets, BorderBeam } from '@/components/design-system/AtmosphericPerimeter';
+import { SectionTransitionShape } from '@/components/design-system/SectionDecorations';
 
 interface CaseStudyItem {
   id: string;
@@ -83,155 +83,137 @@ export default function CaseStudiesSection() {
   return (
     <section 
       id="case-studies"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#03081a] text-white" 
+      className="relative pt-12 sm:pt-16 pb-8 sm:pb-10 bg-[var(--surface-elevated)] text-[var(--text-primary)] transition-colors duration-200" 
       aria-labelledby="case-studies-heading"
     >
-      {/* Background Volumetric Flares */}
-      <div className="absolute top-1/3 -left-40 w-[650px] h-[650px] bg-[#0052FF]/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu animate-pulse-aura" />
-      <div className="absolute bottom-10 right-0 w-[550px] h-[550px] bg-sky-500/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu" />
-
-      {/* Unique Geometric Ambient Horizon Grid */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #38bdf8 1px, transparent 1px),
-            linear-gradient(to bottom, #38bdf8 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-        }}
+      {/* 1. Dynamic Section Transition Shape (Stepped Shelf Left - No straight border line) */}
+      <SectionTransitionShape 
+        position="top" 
+        variant="stepped-left" 
+        fillColor="var(--canvas)" 
       />
 
-      {/* Hairline subtle top ambient glow line */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
-
+      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header with Staggered Kinetic Typography */}
-        <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <span className="text-xs font-semibold uppercase tracking-widest font-mono text-[#38bdf8]">
+        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-10">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
               Case Studies
             </span>
             <Image 
               src={getAssetUrl('/images/shape_title_under_line.svg')} 
               alt="" 
-              width={40} 
-              height={8} 
-              className="inline-block brightness-200"
+              width={48} 
+              height={9} 
+              className="inline-block brightness-150"
             />
           </div>
 
           <div>
-            <h2 id="case-studies-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
+            <h2 id="case-studies-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-[-0.03em] leading-tight cursor-default">
               <StaggeredText text="Our latest" />{' '}
               <StaggeredText text="Case Studies" isShimmer />
             </h2>
           </div>
-          <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+          <p className="mt-4 sm:mt-5 text-sm sm:text-base lg:text-lg text-[var(--text-muted)] leading-relaxed font-normal">
             Explore how we build production software architectures for global enterprises, modern platforms, and proprietary products.
           </p>
         </div>
 
-        {/* Stacking / Overlapping Sticky Cards Deck */}
-        <div className="relative pb-24 space-y-12 sm:space-y-16">
+        {/* Stacking / Overlapping Sticky Cards Deck (Desktop/Tablet Sticky, Responsive on Mobile) */}
+        <div className="relative pb-6 sm:pb-8 space-y-6 sm:space-y-10">
           {CASE_STUDIES.map((study, idx) => (
             <div
               key={study.id}
-              className="group sticky bg-[#0b1120]/95 rounded-3xl overflow-hidden border border-white/[0.12] hover:border-sky-400/50 shadow-[0_-12px_40px_rgba(0,0,0,0.85),0_25px_50px_rgba(0,0,0,0.7)] hover:shadow-[0_-12px_40px_rgba(0,0,0,0.9),0_0_35px_rgba(56,189,248,0.2)] backdrop-blur-2xl transition-all duration-300"
+              className="group md:sticky bg-[var(--surface)] rounded-2xl sm:rounded-[var(--radius-shell)] overflow-hidden border border-[var(--border)] shadow-[0_-12px_32px_rgba(0,0,0,0.35),0_20px_40px_rgba(0,0,0,0.25)] hover:border-[var(--accent)]/50 transition-all duration-300"
               style={{
                 zIndex: 10 + idx * 5,
-                top: `calc(90px + ${idx * 26}px)`,
+                top: `calc(88px + ${idx * 24}px)`,
               }}
             >
-              <CornerBrackets size="w-4 h-4" color="border-sky-400/40" activeColor="group-hover:border-sky-300" />
               <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                 
                 {/* Left Column: Details, Metadata, Core Technologies, and Read Case Button */}
-                <div className="lg:col-span-7 p-8 sm:p-12 lg:p-14 flex flex-col justify-between">
+                <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-between">
                   <div>
                     {/* Category Label with Monospace Tag */}
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="px-2.5 py-1 rounded-md bg-sky-500/10 border border-sky-400/20 text-xs font-mono font-semibold uppercase tracking-wider text-sky-400">
+                    <div className="flex items-center gap-2 mb-3 sm:mb-4">
+                      <span className="px-3 py-1 rounded-md bg-[var(--accent)]/10 border border-[var(--accent)]/20 text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
                         {study.category}
                       </span>
                     </div>
 
-                    {/* Case Study Title with kinetic hover */}
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-5 hover:text-[#38bdf8] hover:translate-x-0.5 transition-all duration-300 leading-tight">
+                    {/* Case Study Title */}
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[var(--text-primary)] mb-3 sm:mb-4 hover:text-[var(--accent)] transition-colors leading-tight">
                       <Link href={study.href}>
                         {study.title}
                       </Link>
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-6 font-normal">
+                    <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed mb-5 font-normal">
                       {study.description}
                     </p>
 
-                    {/* Industry & Country Metadata List */}
-                    <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-8 text-sm">
-                      <div className="text-slate-400">
-                        <strong className="text-white font-semibold">Industry:</strong> {study.industry}
+                    {/* Industry & Country Metadata List (ZentixSoft Trust Pattern) */}
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 text-xs sm:text-sm">
+                      <div className="text-[var(--text-muted)]">
+                        <strong className="text-[var(--text-primary)] font-semibold">Industry:</strong> {study.industry}
                       </div>
-                      <div className="text-slate-400">
-                        <strong className="text-white font-semibold">Country:</strong> {study.country}
+                      <div className="text-[var(--text-muted)]">
+                        <strong className="text-[var(--text-primary)] font-semibold">Country:</strong> {study.country}
                       </div>
                     </div>
+                  </div>
 
-                    {/* Core Technologies Row with Elevated Badges */}
-                    <div className="flex items-center gap-4 mb-8">
-                      <span className="text-xs font-mono font-semibold uppercase tracking-wider text-slate-400">
-                        Core Technologies:
+                  {/* Core Technologies & Action Button */}
+                  <div className="pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
+                    <div>
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] block mb-2 sm:mb-3 font-semibold">
+                        Core Technologies
                       </span>
-                      <div className="flex items-center gap-3">
-                        {study.technologies.map((tech, tIdx) => (
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                        {study.technologies.map((tech, techIdx) => (
                           <div 
-                            key={tIdx}
-                            className="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.1] flex items-center justify-center p-2.5 transition-all duration-200 hover:scale-110 hover:border-sky-400/50 hover:bg-sky-500/[0.1] shadow-lg"
-                            title={tech.name}
+                            key={techIdx} 
+                            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--surface-elevated)] border border-[var(--border)] text-xs font-mono text-[var(--text-primary)]"
                           >
                             <Image 
                               src={getAssetUrl(tech.icon)} 
-                              alt={tech.name} 
-                              width={28} 
-                              height={28} 
-                              className="w-full h-full object-contain"
+                              alt="" 
+                              width={16} 
+                              height={16} 
+                              className="w-4 h-4 object-contain"
                             />
+                            <span>{tech.name}</span>
                           </div>
                         ))}
                       </div>
                     </div>
-                  </div>
 
-                  {/* Action Button */}
-                  <div>
                     <Link
                       href={study.href}
-                      className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 via-[#0a85b1] to-[#0284c7] text-white font-mono font-semibold text-xs tracking-wider uppercase hover:from-sky-400 hover:to-sky-500 transition-all shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:shadow-[0_0_30px_rgba(14,165,233,0.5)] group"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider font-mono text-white bg-[var(--accent)] hover:bg-[var(--accent-hover)] shadow-sm btn-offset flex-shrink-0"
                     >
                       <span>Read Case</span>
-                      <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                        <ArrowUpRight className="w-3.5 h-3.5 text-white" />
-                      </span>
+                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </Link>
                   </div>
+
                 </div>
 
-                {/* Right Column: Vivid Deep Gradient Showcase with Isometric Device Mockup */}
-                <div className="lg:col-span-5 bg-gradient-to-br from-[#0a85b1]/20 via-[#0369a1]/10 to-[#030712] border-t lg:border-t-0 lg:border-l border-white/[0.08] flex items-center justify-center p-8 sm:p-12 relative overflow-hidden min-h-[320px] lg:min-h-full">
-                  {/* Subtle Grid Pattern Overlay */}
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
-                  
-                  <div className="relative z-10 w-full max-w-[420px] transition-transform duration-500 hover:scale-105">
-                    <Image 
-                      src={getAssetUrl(study.image)} 
-                      alt={study.title} 
-                      width={465} 
-                      height={430} 
-                      className="w-full h-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.6)]"
-                    />
-                  </div>
+                {/* Right Column: Case Study Hero Image */}
+                <div className="lg:col-span-5 relative min-h-[280px] sm:min-h-[360px] lg:min-h-full bg-[var(--surface-elevated)] overflow-hidden">
+                  <Image 
+                    src={getAssetUrl(study.image)} 
+                    alt={study.title} 
+                    fill 
+                    sizes="(max-width: 1024px) 100vw, 42vw" 
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[var(--surface)] via-transparent to-transparent opacity-60" />
                 </div>
 
               </div>

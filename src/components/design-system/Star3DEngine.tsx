@@ -56,7 +56,7 @@ export default function Star3DEngine({
 
       {/* 2. Outer Orbital Coordinate Rings (Pure GPU CSS animations, Zero JS calculation) */}
       <div 
-        className={`absolute inset-2 border border-sky-500/20 rounded-full pointer-events-none transform-gpu ${
+        className={`absolute inset-2 border border-[var(--accent)]/25 rounded-full pointer-events-none transform-gpu ${
           isVisible ? 'animate-[spin_40s_linear_infinite]' : ''
         }`}
         style={{
@@ -65,7 +65,7 @@ export default function Star3DEngine({
         }}
       />
       <div 
-        className={`absolute inset-10 border border-sky-400/15 rounded-full pointer-events-none transform-gpu ${
+        className={`absolute inset-10 border border-[var(--accent)]/20 rounded-full pointer-events-none transform-gpu ${
           isVisible ? 'animate-[spin_28s_linear_infinite_reverse]' : ''
         }`}
         style={{
@@ -85,7 +85,7 @@ export default function Star3DEngine({
         {/* Layer 0: Concentric Hexagram Geometry Lines */}
         <svg 
           viewBox="0 0 100 100" 
-          className="absolute w-full h-full pointer-events-none opacity-30 text-sky-400"
+          className="absolute w-full h-full pointer-events-none opacity-30 text-[var(--accent)]"
         >
           <polygon 
             points="50,5 90,28 90,72 50,95 10,72 10,28" 
@@ -105,15 +105,32 @@ export default function Star3DEngine({
         </svg>
 
         {/* Layer 1: High-Definition Luminous Star */}
+        {/* Dark Mode: Luminous White Architectural Star */}
         <div 
-          className="relative w-3/4 h-3/4 transform-gpu"
+          className="dark-theme-only relative w-3/4 h-3/4 transform-gpu"
           style={{
-            filter: 'drop-shadow(0 12px 28px rgba(10, 133, 177, 0.4))',
+            filter: 'drop-shadow(0 14px 30px rgba(10, 133, 177, 0.45))',
           }}
         >
           <Image
             src={getAssetUrl('/images/tech22blocks-star-white-hd.png')}
-            alt="Tech22Blocks Architectural Star"
+            alt="Tech22Blocks Architectural Star (Dark Mode)"
+            fill
+            priority
+            className="object-contain"
+          />
+        </div>
+
+        {/* Light Mode: Official Logo Blue Color Star (#0A85B1) */}
+        <div 
+          className="light-theme-only relative w-3/4 h-3/4 transform-gpu"
+          style={{
+            filter: 'drop-shadow(0 16px 36px rgba(10, 133, 177, 0.35))',
+          }}
+        >
+          <Image
+            src={getAssetUrl('/images/tech22blocks-star-hd.png')}
+            alt="Tech22Blocks Architectural Star (Light Mode)"
             fill
             priority
             className="object-contain"
@@ -124,23 +141,23 @@ export default function Star3DEngine({
         {showCoordinates && (
           <div className="absolute inset-0 pointer-events-none">
             {/* Top-Right Capability Node */}
-            <div className="absolute top-8 right-6 bg-slate-900/90 border border-sky-400/40 rounded-full px-2.5 py-1 text-[10px] font-mono text-sky-300 shadow-lg backdrop-blur-md flex items-center gap-1.5">
+            <div className="absolute top-8 right-6 bg-[var(--surface)]/95 border border-[var(--accent)]/40 rounded-full px-2.5 py-1 text-[10px] font-mono text-[var(--accent)] shadow-lg backdrop-blur-md flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>CORE.ENG &bull; SHIP-READY</span>
             </div>
 
             {/* Bottom-Left Geometry Node */}
-            <div className="absolute bottom-10 left-4 bg-slate-900/90 border border-sky-400/40 rounded-full px-2.5 py-1 text-[10px] font-mono text-slate-300 shadow-lg backdrop-blur-md flex items-center gap-1.5">
-              <span className="text-[#0a85b1]">HEX.06</span>
-              <span className="text-slate-400">&bull; 22 BLOCKS</span>
+            <div className="absolute bottom-10 left-4 bg-[var(--surface)]/95 border border-[var(--accent)]/40 rounded-full px-2.5 py-1 text-[10px] font-mono text-[var(--text-muted)] shadow-lg backdrop-blur-md flex items-center gap-1.5">
+              <span className="text-[var(--accent)] font-semibold">HEX.06</span>
+              <span>&bull; 22 BLOCKS</span>
             </div>
           </div>
         )}
       </div>
 
       {/* Static Subtitle Badge */}
-      <div className="absolute -bottom-6 text-[10px] font-mono text-slate-400/80 tracking-widest uppercase flex items-center gap-1.5 pointer-events-none">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#0a85b1]" />
+      <div className="absolute -bottom-6 text-[10px] font-mono text-[var(--text-muted)] tracking-widest uppercase flex items-center gap-1.5 pointer-events-none">
+        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
         <span>Tech22Blocks Star Engine &bull; Autonomous Architecture</span>
       </div>
     </div>

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Plus, Minus } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
 import { StaggeredText } from '@/components/design-system/KineticTypography';
-import { CornerBrackets, BorderBeam } from '@/components/design-system/AtmosphericPerimeter';
+import { SectionTransitionShape, SectionBackground } from '@/components/design-system/SectionDecorations';
 
 interface ProcessStep {
   id: string;
@@ -53,28 +53,20 @@ export default function WorkingProcessSection() {
   return (
     <section 
       id="working-process"
-      className="relative py-16 sm:py-20 lg:py-24 bg-[#020b18] text-white overflow-hidden"
+      className="relative pt-8 sm:pt-12 pb-12 sm:pb-16 bg-[var(--canvas)] text-[var(--text-primary)] transition-colors duration-200 overflow-hidden"
       aria-labelledby="process-heading"
     >
-      {/* Background Volumetric Flares */}
-      <div className="absolute top-1/2 left-1/4 w-[650px] h-[650px] bg-sky-500/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu animate-pulse-aura" />
-      <div className="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-[#0052FF]/[0.12] rounded-full blur-[140px] pointer-events-none transform-gpu" />
-
-      {/* Unique Linear Pipeline Connecting Rails */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #00F0FF 1px, transparent 1px),
-            linear-gradient(to bottom, #00F0FF 1px, transparent 1px)
-          `,
-          backgroundSize: '56px 56px',
-        }}
+      {/* 1. Dynamic Section Transition Shape (Stepped Shelf Left - User Approved) */}
+      <SectionTransitionShape 
+        position="top" 
+        variant="stepped-left" 
+        fillColor="var(--surface-elevated)" 
       />
 
-      {/* Hairline subtle top ambient glow line */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/35 to-transparent" />
+      {/* 2. Ambient Section Background (Glass Torus - Vivid in Light Mode) */}
+      <SectionBackground type="torus" position="center" opacity="opacity-75 dark:opacity-30" />
 
+      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -84,28 +76,28 @@ export default function WorkingProcessSection() {
             
             {/* Header */}
             <div>
-              <div className="inline-flex items-center gap-2 mb-4">
-                <span className="text-xs font-semibold uppercase tracking-widest font-mono text-[#38bdf8]">
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
                   Working Process
                 </span>
                 <Image 
                   src={getAssetUrl('/images/shape_title_under_line.svg')} 
                   alt="" 
-                  width={40} 
-                  height={8} 
-                  className="inline-block brightness-200"
+                  width={48} 
+                  height={9} 
+                  className="inline-block brightness-150"
                 />
               </div>
 
               <div>
-                <h2 id="process-heading" className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.03em] leading-tight cursor-default">
+                <h2 id="process-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-[-0.03em] leading-tight cursor-default">
                   <StaggeredText text="Our" />{' '}
                   <StaggeredText text="Approach" isShimmer />
                 </h2>
               </div>
             </div>
 
-            {/* Accordion List */}
+            {/* Accordion List (WeEvolveIT Central Process Pattern) */}
             <div className="space-y-4 pt-2">
               {PROCESS_STEPS.map((step, idx) => {
                 const isOpen = activeStep === idx;
@@ -113,26 +105,25 @@ export default function WorkingProcessSection() {
                 return (
                   <div 
                     key={step.id}
-                    className={`group/step relative rounded-2xl transition-all duration-300 border overflow-hidden ${
+                    className={`rounded-[var(--radius-card)] transition-all duration-200 border p-5 sm:p-6 ${
                       isOpen 
-                        ? 'bg-[#0b1120]/90 border-sky-500/40 shadow-[0_0_25px_rgba(14,165,233,0.15)]' 
-                        : 'bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12] hover:bg-white/[0.04]'
-                    } p-5 sm:p-6 backdrop-blur-sm`}
+                        ? 'bg-[var(--surface)] border-[var(--accent)] shadow-md' 
+                        : 'bg-[var(--surface)]/60 border-[var(--border)] hover:border-[var(--border-subtle)] hover:bg-[var(--surface)]'
+                    }`}
                   >
-                    {isOpen && <CornerBrackets size="w-3 h-3" color="border-sky-400/40" activeColor="border-sky-300" />}
                     <button
                       type="button"
                       onClick={() => setActiveStep(idx)}
-                      className="w-full flex items-center justify-between text-left group"
+                      className="w-full flex items-center justify-between text-left group cursor-pointer"
                       aria-expanded={isOpen}
                     >
                       <span className={`text-lg sm:text-xl font-bold tracking-tight transition-colors ${
-                        isOpen ? 'text-[#38bdf8]' : 'text-white group-hover:text-[#38bdf8]'
+                        isOpen ? 'text-[var(--accent)]' : 'text-[var(--text-primary)] group-hover:text-[var(--accent)]'
                       }`}>
                         {step.num}. {step.title}
                       </span>
                       <span className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                        isOpen ? 'bg-sky-500/20 text-[#38bdf8]' : 'bg-white/[0.04] text-slate-400 group-hover:text-white'
+                        isOpen ? 'bg-[var(--accent)]/15 text-[var(--accent)]' : 'bg-[var(--surface-elevated)] text-[var(--text-muted)] group-hover:text-[var(--text-primary)]'
                       }`}>
                         {isOpen ? (
                           <Minus className="w-4 h-4 stroke-[2.5]" />
@@ -144,7 +135,7 @@ export default function WorkingProcessSection() {
 
                     {/* Expanded Body Box */}
                     {isOpen && (
-                      <div className="mt-4 pt-4 border-t border-white/[0.08] text-slate-300 text-sm sm:text-base leading-relaxed transition-all duration-300">
+                      <div className="mt-4 pt-4 border-t border-[var(--border)] text-[var(--text-muted)] text-sm sm:text-base leading-relaxed animate-letter-appear">
                         <p>{step.description}</p>
                       </div>
                     )}
@@ -166,12 +157,12 @@ export default function WorkingProcessSection() {
                     key={step.id}
                     type="button"
                     onClick={() => setActiveStep(idx)}
-                    className={`w-full h-[110px] sm:h-[125px] rounded-[100px] flex items-center justify-center text-center px-8 transition-all duration-300 cursor-pointer ${
-                      idx !== 0 ? '-mt-9 sm:-mt-10' : ''
+                    className={`w-full h-[90px] sm:h-[125px] rounded-[100px] flex items-center justify-center text-center px-4 sm:px-8 transition-all duration-200 cursor-pointer ${
+                      idx !== 0 ? '-mt-7 sm:-mt-10' : ''
                     } ${
                       isActive
-                        ? 'bg-gradient-to-r from-sky-500 via-[#0a85b1] to-[#0284c7] text-white border-2 border-sky-300 z-20 shadow-[0_0_35px_rgba(14,165,233,0.45)] scale-[1.02] font-bold text-xl sm:text-2xl'
-                        : 'bg-[#0b1120]/90 text-slate-300 border border-white/[0.12] hover:border-sky-400/40 hover:text-white z-10 font-semibold text-lg sm:text-xl backdrop-blur-xl shadow-lg'
+                        ? 'bg-[var(--accent)] text-white border-2 border-white/20 z-20 shadow-[0_10px_30px_rgba(10,133,177,0.35)] scale-[1.02] font-bold text-base sm:text-2xl'
+                        : 'bg-[var(--surface)] text-[var(--text-muted)] border border-[var(--border)] hover:border-[var(--accent)]/40 hover:text-[var(--text-primary)] z-10 font-semibold text-sm sm:text-xl shadow-md'
                     }`}
                     style={{
                       position: 'relative',
