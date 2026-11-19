@@ -56,11 +56,14 @@ export default function HeroSection() {
             {/* Core Typography with Stagger and Clean Leading */}
             <div className="space-y-4 group/heading">
               <h1 
-                className="font-extrabold text-[var(--text-primary)] tracking-[-0.035em] cursor-default"
-                style={{ fontSize: 'clamp(2.15rem, 6.5vw, 5.25rem)', lineHeight: '1.08' }}
+                className="font-extrabold text-[var(--text-primary)] tracking-[-0.035em] leading-[1.08] cursor-default text-[2.25rem] sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem]"
               >
-                <StaggeredText text="Engineering software" interactiveHover /> <br className="hidden sm:block" />
-                <StaggeredText text="that ships." isShimmer interactiveHover />
+                <span className="block lg:whitespace-nowrap">
+                  <StaggeredText text="Engineering software" interactiveHover />
+                </span>
+                <span className="block">
+                  <StaggeredText text="that ships." isShimmer interactiveHover />
+                </span>
               </h1>
 
               <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-[var(--text-muted)] tracking-[-0.02em] leading-snug cursor-default">

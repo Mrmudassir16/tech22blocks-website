@@ -165,14 +165,17 @@ export default function Navbar() {
 
       </div>
 
-      {/* 5. Mobile Slide-In / Dropdown Drawer with 44px Minimum Tap Targets */}
+      {/* 5. Mobile Slide-In / Dropdown Drawer (100% Solid Opaque Background) */}
       {mobileMenuOpen && (
         <div 
-          className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 bg-[var(--canvas)]/98 backdrop-blur-2xl border-t border-[var(--border)] p-6 flex flex-col justify-between overflow-y-auto z-50 animate-letter-appear"
-          style={{ height: 'calc(100vh - 72px)' }}
+          className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 w-full p-6 flex flex-col justify-between overflow-y-auto z-[9999] shadow-2xl border-t border-[var(--border)]"
+          style={{ 
+            backgroundColor: 'var(--canvas)', 
+            height: 'calc(100dvh - 72px)',
+          }}
         >
-          <div className="space-y-1">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] px-3 block mb-2">
+          <div className="space-y-2">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--accent)] px-1 block mb-3 font-semibold">
               Navigation Menu
             </span>
             {NAV_LINKS.map((link) => {
@@ -182,24 +185,28 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between px-4 min-h-[46px] rounded-xl text-[16px] font-medium transition-all ${
+                  className={`flex items-center justify-between px-4 min-h-[50px] rounded-xl text-[16px] font-semibold transition-all ${
                     active
-                      ? 'bg-[var(--accent)]/15 text-[var(--accent-light)] font-semibold border border-[var(--accent)]/30'
-                      : 'text-[var(--text-primary)] hover:bg-[var(--surface-elevated)]'
+                      ? 'bg-[var(--accent)] text-white shadow-md'
+                      : 'text-[var(--text-primary)] bg-[var(--surface)] hover:bg-[var(--surface-elevated)] border border-[var(--border)] hover:border-[var(--accent)]/50'
                   }`}
                 >
                   <span>{link.label}</span>
-                  {active && <span className="w-2 h-2 rounded-full bg-[var(--accent)]" />}
+                  {active ? (
+                    <span className="w-2.5 h-2.5 rounded-full bg-white shadow-sm" />
+                  ) : (
+                    <ArrowUpRight className="w-4 h-4 text-[var(--text-muted)]" />
+                  )}
                 </Link>
               );
             })}
           </div>
 
-          <div className="pt-6 border-t border-[var(--border)] space-y-3">
+          <div className="pt-6 border-t border-[var(--border)] space-y-3 mt-6">
             <Link
               href="/contact/"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full min-h-[48px] rounded-xl text-[14px] font-semibold text-white bg-[var(--accent)] shadow-md transition-all"
+              className="flex items-center justify-center gap-2 w-full min-h-[50px] rounded-xl text-[14px] font-semibold text-white bg-[var(--accent)] hover:bg-[var(--accent-hover)] shadow-lg transition-all"
             >
               <span>Schedule a Consultation</span>
               <ArrowUpRight className="w-4 h-4" />

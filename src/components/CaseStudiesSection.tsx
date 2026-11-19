@@ -122,15 +122,15 @@ export default function CaseStudiesSection() {
           </p>
         </div>
 
-        {/* Stacking / Overlapping Sticky Cards Deck (Desktop/Tablet Sticky, Responsive on Mobile) */}
-        <div className="relative pb-6 sm:pb-8 space-y-6 sm:space-y-10">
+        {/* Stacking / Overlapping Sticky Cards Deck (Sticky on Mobile & Desktop) */}
+        <div className="relative pb-16 sm:pb-20 space-y-6 sm:space-y-10">
           {CASE_STUDIES.map((study, idx) => (
             <div
               key={study.id}
-              className="group md:sticky bg-[var(--surface)] rounded-2xl sm:rounded-[var(--radius-shell)] overflow-hidden border border-[var(--border)] shadow-[0_-12px_32px_rgba(0,0,0,0.35),0_20px_40px_rgba(0,0,0,0.25)] hover:border-[var(--accent)]/50 transition-all duration-300"
+              className="group sticky bg-[var(--surface)] rounded-2xl sm:rounded-[var(--radius-shell)] overflow-hidden border border-[var(--border)] shadow-[0_-12px_32px_rgba(0,0,0,0.35),0_20px_40px_rgba(0,0,0,0.25)] hover:border-[var(--accent)]/50 transition-all duration-300"
               style={{
                 zIndex: 10 + idx * 5,
-                top: `calc(88px + ${idx * 24}px)`,
+                top: `calc(76px + ${idx * 18}px)`,
               }}
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
