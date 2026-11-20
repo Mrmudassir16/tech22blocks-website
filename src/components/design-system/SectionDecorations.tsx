@@ -22,7 +22,7 @@ export function SectionTransitionShape({
   variant = 'stepped-left',
   fillColor = 'var(--canvas)',
   className = '',
-  hasBorder = true,
+  hasBorder = false,
 }: SectionTransitionShapeProps) {
   if (variant === 'straight') return null;
 
@@ -40,7 +40,7 @@ export function SectionTransitionShape({
         preserveAspectRatio="none" 
         className="w-full h-[32px] sm:h-[44px] block"
       >
-        {/* Stepped Shelf Left: Elevated tab on left, lower shelf on right */}
+        {/* Stepped Shelf Left: Elevated tab on left, lower shelf on right (No edge-to-edge straight lines) */}
         {variant === 'stepped-left' && (
           <>
             <path 
@@ -49,16 +49,17 @@ export function SectionTransitionShape({
             />
             {hasBorder && (
               <path 
-                d="M 0 0.5 L 420 0.5 L 460 43.5 L 1440 43.5" 
+                d="M 416 0.5 L 464 43.5" 
                 stroke="var(--border)" 
-                strokeWidth="1.5" 
+                strokeWidth="2" 
+                strokeLinecap="round"
                 fill="none" 
               />
             )}
           </>
         )}
 
-        {/* Stepped Shelf Right: Elevated tab on right, lower shelf on left */}
+        {/* Stepped Shelf Right: Elevated tab on right, lower shelf on left (No edge-to-edge straight lines) */}
         {variant === 'stepped-right' && (
           <>
             <path 
@@ -67,16 +68,17 @@ export function SectionTransitionShape({
             />
             {hasBorder && (
               <path 
-                d="M 0 43.5 L 980 43.5 L 1020 0.5 L 1440 0.5" 
+                d="M 976 43.5 L 1024 0.5" 
                 stroke="var(--border)" 
-                strokeWidth="1.5" 
+                strokeWidth="2" 
+                strokeLinecap="round"
                 fill="none" 
               />
             )}
           </>
         )}
 
-        {/* Dual Angled Bends: Chamfered angled bends on BOTH sides (Techco shape_space_2 pattern) */}
+        {/* Dual Angled Bends: Chamfered angled bends on BOTH sides (Only the corner angles, no straight line across) */}
         {variant === 'dual-angled' && (
           <>
             <path 
@@ -88,12 +90,22 @@ export function SectionTransitionShape({
               fill={fillColor} 
             />
             {hasBorder && (
-              <path 
-                d="M 0 0.5 L 50 43.5 L 1390 43.5 L 1440 0.5" 
-                stroke="var(--border)" 
-                strokeWidth="1.5" 
-                fill="none" 
-              />
+              <>
+                <path 
+                  d="M 0 0.5 L 50 43.5" 
+                  stroke="var(--border)" 
+                  strokeWidth="2" 
+                  strokeLinecap="round"
+                  fill="none" 
+                />
+                <path 
+                  d="M 1390 43.5 L 1440 0.5" 
+                  stroke="var(--border)" 
+                  strokeWidth="2" 
+                  strokeLinecap="round"
+                  fill="none" 
+                />
+              </>
             )}
           </>
         )}
@@ -107,9 +119,10 @@ export function SectionTransitionShape({
             />
             {hasBorder && (
               <path 
-                d="M 0 0.5 L 50 43.5 L 1440 43.5" 
+                d="M 0 0.5 L 50 43.5" 
                 stroke="var(--border)" 
-                strokeWidth="1.5" 
+                strokeWidth="2" 
+                strokeLinecap="round"
                 fill="none" 
               />
             )}
@@ -125,9 +138,10 @@ export function SectionTransitionShape({
             />
             {hasBorder && (
               <path 
-                d="M 0 43.5 L 1390 43.5 L 1440 0.5" 
+                d="M 1390 43.5 L 1440 0.5" 
                 stroke="var(--border)" 
-                strokeWidth="1.5" 
+                strokeWidth="2" 
+                strokeLinecap="round"
                 fill="none" 
               />
             )}

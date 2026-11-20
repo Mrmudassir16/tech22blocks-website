@@ -121,12 +121,19 @@ export default function ServiceEditorial() {
                   </div>
 
                   {/* Action Link */}
-                  <div className="pt-3">
+                  <div className="pt-3 flex flex-wrap items-center gap-4">
+                    <Link
+                      href={`/services/${service.id}/`}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-sky-600 hover:bg-sky-500 shadow-md transition-all group"
+                    >
+                      <span>Explore Dedicated Service Page</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    </Link>
                     <Link
                       href="/contact/"
                       className="inline-flex items-center text-xs font-mono font-semibold uppercase tracking-wider text-sky-400 hover:text-sky-300 group transition-colors"
                     >
-                      <span>Discuss Your {service.title} Project</span>
+                      <span>Discuss Project</span>
                       <ArrowRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </div>

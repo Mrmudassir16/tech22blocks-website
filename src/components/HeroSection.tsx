@@ -11,7 +11,7 @@ import { getAssetUrl } from '@/utils/assets';
 export default function HeroSection() {
   return (
     <section 
-      className="relative min-h-[80vh] lg:min-h-[82vh] flex items-center bg-[var(--canvas)] text-[var(--text-primary)] overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-14 lg:pb-16 border-b border-[var(--border)] transition-colors duration-200"
+      className="relative min-h-[100dvh] lg:h-[100dvh] w-full flex items-center justify-center bg-[var(--canvas)] text-[var(--text-primary)] overflow-hidden pt-[72px] pb-8 transition-colors duration-200"
       aria-label="Tech22Blocks Corporate Hero"
     >
       {/* Background Volumetric Vignette & Precision Grid */}
@@ -51,12 +51,12 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
           {/* Left Column: Premium Architectural Typography */}
-          <div className="lg:col-span-7 space-y-7">
+          <div className="lg:col-span-7 space-y-8 lg:space-y-9">
 
             {/* Core Typography with Stagger and Clean Leading */}
-            <div className="space-y-4 group/heading">
+            <div className="space-y-5 group/heading">
               <h1 
-                className="font-extrabold text-[var(--text-primary)] tracking-[-0.035em] leading-[1.08] cursor-default text-[2.25rem] sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem]"
+                className="font-extrabold text-[var(--text-primary)] tracking-[-0.035em] leading-[1.04] cursor-default text-4xl sm:text-6xl lg:text-7xl xl:text-[4.75rem]"
               >
                 <span className="block lg:whitespace-nowrap">
                   <StaggeredText text="Engineering software" interactiveHover />
@@ -66,21 +66,21 @@ export default function HeroSection() {
                 </span>
               </h1>
 
-              <p className="text-xl sm:text-2xl lg:text-3xl font-medium text-[var(--text-muted)] tracking-[-0.02em] leading-snug cursor-default">
+              <p className="text-2xl sm:text-3xl lg:text-[2rem] font-semibold text-[var(--text-muted)] tracking-[-0.02em] leading-snug cursor-default">
                 From ambitious ideas to enterprise-scale solutions.
               </p>
             </div>
 
             {/* Narrative */}
-            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed max-w-2xl font-normal">
+            <p className="text-lg sm:text-xl text-[var(--text-muted)] leading-relaxed max-w-2xl font-normal">
               We build proprietary technology products and develop tailored digital solutions that help businesses solve real-world challenges and move forward with confidence.
             </p>
 
             {/* Action Buttons with 180ms Hover Lift & Hard Offset Shadow */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <Link
                 href="/contact/"
-                className="inline-flex items-center justify-center px-8 py-4 text-xs font-semibold uppercase tracking-wider font-mono text-white bg-[var(--accent)] hover:bg-[var(--accent-hover)] rounded-xl shadow-[0_4px_16px_rgba(10,133,177,0.35)] btn-offset group"
+                className="inline-flex items-center justify-center px-9 py-4 sm:py-4.5 text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-white bg-[var(--accent)] hover:bg-[var(--accent-hover)] rounded-xl shadow-[0_4px_20px_rgba(10,133,177,0.45)] btn-offset group"
               >
                 <span>Discuss Your Project</span>
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-200 group-hover:translate-x-1" />
@@ -88,7 +88,7 @@ export default function HeroSection() {
 
               <Link
                 href="/services/"
-                className="inline-flex items-center justify-center px-8 py-4 text-xs font-semibold uppercase tracking-wider font-mono text-[var(--text-primary)] bg-[var(--surface-elevated)] hover:bg-[var(--surface)] border border-[var(--border)] rounded-xl shadow-sm btn-offset"
+                className="inline-flex items-center justify-center px-9 py-4 sm:py-4.5 text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--text-primary)] bg-[var(--surface-elevated)] hover:bg-[var(--surface)] border border-[var(--border)] rounded-xl shadow-sm btn-offset"
               >
                 <span>Explore Our Capabilities</span>
               </Link>
@@ -111,13 +111,13 @@ export default function HeroSection() {
 
             {/* Soft Ambient Aura */}
             <div 
-              className="absolute w-[360px] h-[360px] sm:w-[440px] sm:h-[440px] bg-sky-500/[0.1] rounded-full blur-[80px] pointer-events-none"
+              className="absolute w-[420px] h-[420px] sm:w-[500px] sm:h-[500px] bg-sky-500/[0.12] rounded-full blur-[90px] pointer-events-none"
               aria-hidden="true" 
             />
 
             {/* 3D Star Engine */}
-            <div className="relative z-10 w-[320px] h-[320px] sm:w-[420px] sm:h-[420px] flex items-center justify-center">
-              <Star3DEngine size={420} interactive={true} autoRotateSpeed={24} />
+            <div className="relative z-10 w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] flex items-center justify-center">
+              <Star3DEngine size={460} interactive={true} autoRotateSpeed={24} />
             </div>
 
           </div>

@@ -33,7 +33,7 @@ const CASE_STUDIES: CaseStudyItem[] = [
       { name: 'Angular', icon: '/images/icon_angular.svg' },
       { name: 'PostgreSQL', icon: '/images/icon_elephent.svg' },
     ],
-    href: '/services/#website-development',
+    href: '/services/website-development/',
   },
   {
     id: 'case-02',
@@ -47,7 +47,7 @@ const CASE_STUDIES: CaseStudyItem[] = [
       { name: '.NET Core', icon: '/images/icon_netcore.svg' },
       { name: 'Python', icon: '/images/icon_python.svg' },
     ],
-    href: '/services/#mobile-applications',
+    href: '/services/mobile-applications/',
   },
   {
     id: 'case-03',
@@ -61,7 +61,7 @@ const CASE_STUDIES: CaseStudyItem[] = [
       { name: 'Angular', icon: '/images/icon_angular.svg' },
       { name: 'Python', icon: '/images/icon_python.svg' },
     ],
-    href: '/services/#custom-software',
+    href: '/services/custom-software/',
   },
   {
     id: 'case-04',
@@ -75,7 +75,7 @@ const CASE_STUDIES: CaseStudyItem[] = [
       { name: '.NET Core', icon: '/images/icon_netcore.svg' },
       { name: 'PostgreSQL', icon: '/images/icon_elephent.svg' },
     ],
-    href: '/services/#it-consulting',
+    href: '/services/it-consulting/',
   },
 ];
 

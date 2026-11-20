@@ -7,6 +7,7 @@ import { ArrowUpRight, Globe2, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
 import { StaggeredText } from '@/components/design-system/KineticTypography';
 import { SectionTransitionShape, SectionBackground } from '@/components/design-system/SectionDecorations';
+import AnimatedStatsStrip from '@/components/design-system/AnimatedCounters';
 
 export default function CompanyIntro() {
   return (
@@ -142,6 +143,10 @@ export default function CompanyIntro() {
           </div>
 
         </div>
+
+        {/* Animated Number Counters (Inspired by SVSS) */}
+        <AnimatedStatsStrip />
+
       </div>
     </section>
   );

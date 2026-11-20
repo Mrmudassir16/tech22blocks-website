@@ -120,9 +120,9 @@ body {
   outline-offset: 2px;
 }
 
-/* Section Rhythm Container */
+/* Section Rhythm Container (Tighter Spacing to Eliminate Empty Gaps) */
 .section-pad {
-  padding-block: clamp(2.75rem, 5vw, 4.25rem);
+  padding-block: clamp(1.75rem, 3vw, 2.75rem);
 }
 
 /* Header Glassmorphism */
@@ -155,7 +155,89 @@ body {
 }
 .btn-offset:hover {
   transform: translateY(-2px);
-  box-shadow: 4px 4px 0 var(--border);
+  box-shadow: 0 8px 20px -2px rgba(2, 132, 199, 0.35);
+}
+
+/* Infinite Marquee Track */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+/* Constant Radiant Explore Glow (Always Glowing as requested) */
+/* Sleek continuous left-to-right luminous shimmer glow */
+@keyframes shimmer-glow-sweep {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+  60%, 100% {
+    transform: translateX(180%) skewX(-20deg);
+  }
+}
+
+.btn-shimmer-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.38) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    transparent 100%
+  );
+  transform: translateX(-120%) skewX(-20deg);
+  animation: shimmer-glow-sweep 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.btn-shimmer-sweep:hover::after {
+  animation-duration: 1.6s;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    transparent 100%
+  );
+}
+
+/* SVSS Industry Auto-Fill Keyframe */
+@keyframes hp-ind-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Techco Corner-Chamfer Architectural Shape */
+.card-chamfer-techco {
+  border-radius: 20px 4px 20px 20px;
+  position: relative;
 }
 
 /* Modular Card Surface */

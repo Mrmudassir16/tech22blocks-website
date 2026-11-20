@@ -3,6 +3,7 @@ import HeroSection from '@/components/HeroSection';
 import ServicesOverview from '@/components/ServicesOverview';
 import CompanyIntro from '@/components/CompanyIntro';
 import CaseStudiesSection from '@/components/CaseStudiesSection';
+import IndustriesSection from '@/components/IndustriesSection';
 import WorkingProcessSection from '@/components/WorkingProcessSection';
 import TechnologiesSection from '@/components/TechnologiesSection';
 import WhyTech22Blocks from '@/components/WhyTech22Blocks';
@@ -23,16 +24,19 @@ export default function HomePage() {
       {/* 4. Case Studies: Stacking / Overlapping Sticky Cards (Our latest Case Studies) */}
       <CaseStudiesSection />
 
-      {/* 5. Working Process: Accordion & Overlapping Oval Rings (Our Approach) */}
+      {/* 5. Industries We Serve (Inspired by SVSS) */}
+      <IndustriesSection />
+
+      {/* 6. Working Process: Accordion & Overlapping Oval Rings (Our Approach) */}
       <WorkingProcessSection />
 
-      {/* 6. Technologies: Pill Tab Switcher & Tech Grid (Technologies We Deploy) */}
+      {/* 7. Technologies: Pill Tab Switcher & Tech Grid (Technologies We Deploy) */}
       <TechnologiesSection />
 
-      {/* 7. Why Tech22Blocks: Four Value Principles */}
+      {/* 8. Why Tech22Blocks: Four Value Principles */}
       <WhyTech22Blocks />
 
-      {/* 8. Final Call To Action: Direct Project Consultation Gateway */}
+      {/* 9. Final Call To Action: Direct Project Consultation Gateway */}
       <FinalCTA />
     </>
   );

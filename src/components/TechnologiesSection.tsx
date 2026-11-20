@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { getAssetUrl } from '@/utils/assets';
 import { SectionTransitionShape, SectionBackground } from '@/components/design-system/SectionDecorations';
+import TechMarquee from '@/components/design-system/TechMarquee';
 
 interface TechItem {
   name: string;
@@ -383,6 +384,11 @@ export default function TechnologiesSection() {
           <p className="mt-4 text-base sm:text-lg text-[var(--text-muted)] leading-relaxed font-normal">
             Battle-tested frameworks, languages, and distributed systems engineered for speed and longevity.
           </p>
+        </div>
+
+        {/* Moving Technology Logos Marquee (Inspired by SVSS) */}
+        <div className="mb-10">
+          <TechMarquee />
         </div>
 
         {/* Tab Navigation Pill Bar */}

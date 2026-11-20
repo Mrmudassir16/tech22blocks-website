@@ -84,12 +84,12 @@ export default function Footer() {
             <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">Our Services</h3>
             <ul className="space-y-2.5 text-sm">
               {[
-                { href: '/services/#website-development', label: 'Website Development' },
-                { href: '/services/#mobile-applications', label: 'Mobile Application Development' },
-                { href: '/services/#uiux-design', label: 'UI/UX Design' },
-                { href: '/services/#custom-software', label: 'Custom Software Development' },
-                { href: '/services/#it-consulting', label: 'IT Consulting & Advisory' },
-                { href: '/services/#web3', label: 'Web3.0 (Coming Soon)' },
+                { href: '/services/website-development/', label: 'Website Development' },
+                { href: '/services/mobile-applications/', label: 'Mobile Application Development' },
+                { href: '/services/uiux-design/', label: 'UI/UX Design' },
+                { href: '/services/custom-software/', label: 'Custom Software Development' },
+                { href: '/services/it-consulting/', label: 'IT Consulting & Advisory' },
+                { href: '/services/web3/', label: 'Web3.0 (Coming Soon)' },
               ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:translate-x-0.5 inline-block transition-all duration-150">
