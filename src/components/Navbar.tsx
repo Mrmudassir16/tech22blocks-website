@@ -173,70 +173,46 @@ export default function Navbar() {
                     </button>
                   </div>
 
-                  {/* Dropdown Menu */}
+                  {/* Dropdown Menu (SVSS Style — Clean Icons + Titles, Zero Text Clutter) */}
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[420px] transition-all duration-200 ${
+                    className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[340px] transition-all duration-200 ${
                       servicesDropdownOpen 
                         ? 'opacity-100 visible translate-y-0 pointer-events-auto' 
                         : 'opacity-0 invisible -translate-y-2 pointer-events-none'
                     }`}
                   >
-                    <div className="p-3 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-2xl backdrop-blur-xl">
-                      <div className="px-3 py-2 border-b border-[var(--border)] flex items-center justify-between">
-                        <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
-                          Our Engineering Services
+                    <div className="p-2.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-xl backdrop-blur-xl">
+                      <div className="px-3 py-2 border-b border-[var(--border)] flex items-center justify-between mb-1">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-[var(--accent)]">
+                          Our Services
                         </span>
                         <Link
                           href="/services/"
                           onClick={() => setServicesDropdownOpen(false)}
-                          className="text-xs font-semibold text-[var(--accent)] hover:underline inline-flex items-center gap-1"
+                          className="text-xs font-medium text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1"
                         >
-                          <span>Overview</span>
+                          <span>All Services</span>
                           <ArrowRight className="w-3 h-3" />
                         </Link>
                       </div>
 
-                      <div className="grid grid-cols-1 gap-1 pt-2">
+                      <div className="space-y-0.5">
                         {COMPANY.services.map((svc) => (
                           <Link
                             key={svc.id}
                             href={`/services/${svc.id}/`}
                             onClick={() => setServicesDropdownOpen(false)}
-                            className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[var(--surface-elevated)] transition-colors group/item"
+                            className="flex items-center justify-between px-3 py-2.5 rounded-xl text-[13.5px] font-medium text-[var(--text-primary)] hover:text-[var(--accent)] hover:bg-[var(--surface-elevated)] transition-all group/item"
                           >
-                            <div className="w-8 h-8 rounded-lg bg-[var(--surface-elevated)] border border-[var(--border)] flex items-center justify-center flex-shrink-0 group-hover/item:border-[var(--accent)] group-hover/item:scale-105 transition-all">
-                              {getServiceIcon(svc.id)}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-center justify-between">
-                                <span className="text-[13px] font-semibold text-[var(--text-primary)] group-hover/item:text-[var(--accent)] transition-colors truncate">
-                                  {svc.title}
-                                </span>
-                                {svc.badge && (
-                                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-400/10 text-amber-500 font-bold ml-2 flex-shrink-0">
-                                    {svc.badge}
-                                  </span>
-                                )}
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 rounded-lg bg-[var(--surface-elevated)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] flex-shrink-0 group-hover/item:border-[var(--accent)] group-hover/item:scale-105 transition-all">
+                                {getServiceIcon(svc.id)}
                               </div>
-                              <p className="text-[11px] text-[var(--text-muted)] line-clamp-1 mt-0.5">
-                                {svc.shortDesc}
-                              </p>
+                              <span className="font-semibold tracking-tight">{svc.title}</span>
                             </div>
+                            <ArrowRight className="w-3.5 h-3.5 text-[var(--text-muted)] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 group-hover/item:text-[var(--accent)] transition-all" />
                           </Link>
                         ))}
-                      </div>
-
-                      {/* Dropdown Footer */}
-                      <div className="mt-2 pt-2 border-t border-[var(--border)] px-3 py-1 flex items-center justify-between text-xs text-[var(--text-muted)]">
-                        <span className="font-mono text-[11px]">DPIIT &bull; MSME Certified</span>
-                        <Link 
-                          href="/contact/" 
-                          onClick={() => setServicesDropdownOpen(false)}
-                          className="text-[var(--accent)] hover:underline font-medium inline-flex items-center gap-1"
-                        >
-                          <span>Request Architecture Audit</span>
-                          <ArrowUpRight className="w-3 h-3" />
-                        </Link>
                       </div>
                     </div>
                   </div>
@@ -364,7 +340,7 @@ export default function Navbar() {
                           onClick={() => setMobileMenuOpen(false)}
                           className="flex items-center justify-between p-2.5 rounded-lg text-xs font-semibold text-[var(--accent)] hover:bg-[var(--surface)] transition-colors"
                         >
-                          <span>// Overview — All Services</span>
+                          <span>All Services Overview</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
                         {COMPANY.services.map((svc) => (
@@ -372,12 +348,12 @@ export default function Navbar() {
                             key={svc.id}
                             href={`/services/${svc.id}/`}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="flex items-center gap-2.5 p-2 rounded-lg text-sm text-[var(--text-primary)] hover:bg-[var(--surface)] transition-colors"
+                            className="flex items-center gap-3 p-2.5 rounded-lg text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] hover:bg-[var(--surface)] transition-colors"
                           >
-                            <span className="p-1 rounded bg-[var(--surface)] border border-[var(--border)]">
+                            <span className="w-7 h-7 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] flex-shrink-0">
                               {getServiceIcon(svc.id)}
                             </span>
-                            <span className="text-xs font-medium truncate">{svc.title}</span>
+                            <span className="truncate">{svc.title}</span>
                           </Link>
                         ))}
                       </div>

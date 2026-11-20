@@ -42,10 +42,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        sans: ['"Poppins"', '"Product Sans"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        serif: ['"Poppins"', '"Product Sans"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
-        display: ['"Plus Jakarta Sans"', 'var(--font-inter)', 'sans-serif'],
+        display: ['"Poppins"', '"Product Sans"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'card': 'var(--shadow-card)',

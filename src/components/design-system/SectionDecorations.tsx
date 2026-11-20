@@ -205,56 +205,8 @@ export function SectionBackground({
     );
   }
 
-  if (type === 'torus') {
-    const isCenter = position === 'center';
-    const isTopRight = position === 'top-right';
-
-    return (
-      <div 
-        className={`pointer-events-none select-none z-0 ${opacity} ${
-          isCenter 
-            ? 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] sm:w-[580px] lg:w-[680px] h-[440px] sm:h-[580px] lg:h-[680px]' 
-            : isTopRight 
-            ? 'absolute -top-10 -right-12 sm:-right-6 w-[360px] sm:w-[480px] h-[360px] sm:h-[480px]' 
-            : 'absolute bottom-4 -left-12 sm:-left-6 w-[360px] sm:w-[480px] h-[360px] sm:h-[480px]'
-        } ${className}`}
-        aria-hidden="true"
-      >
-        <div className="absolute inset-0 bg-sky-400/25 dark:bg-sky-500/10 rounded-full blur-3xl animate-pulse-aura" />
-        <Image
-          src={getAssetUrl('/images/abstract_glass_torus.png')}
-          alt=""
-          fill
-          className="w-full h-full object-contain filter drop-shadow-[0_18px_44px_rgba(10,133,177,0.45)] dark:drop-shadow-[0_16px_40px_rgba(10,133,177,0.35)] animate-float-slow"
-        />
-      </div>
-    );
-  }
-
-  if (type === 'helix') {
-    const isCenter = position === 'center';
-    const isBottomLeft = position === 'bottom-left';
-
-    return (
-      <div 
-        className={`pointer-events-none select-none z-0 ${opacity} ${
-          isCenter 
-            ? 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[440px] sm:w-[580px] lg:w-[680px] h-[440px] sm:h-[580px] lg:h-[680px]' 
-            : isBottomLeft 
-            ? 'absolute -bottom-12 -left-12 sm:-left-6 w-[360px] sm:w-[480px] h-[360px] sm:h-[480px]' 
-            : 'absolute -top-10 -right-12 sm:-right-6 w-[360px] sm:w-[480px] h-[360px] sm:h-[480px]'
-        } ${className}`}
-        aria-hidden="true"
-      >
-        <div className="absolute inset-0 bg-sky-400/25 dark:bg-sky-500/10 rounded-full blur-3xl animate-pulse-aura" />
-        <Image
-          src={getAssetUrl('/images/abstract_fluid_helix.png')}
-          alt=""
-          fill
-          className="w-full h-full object-contain filter drop-shadow-[0_18px_44px_rgba(10,133,177,0.45)] dark:drop-shadow-[0_16px_40px_rgba(10,133,177,0.35)] animate-float-slow-reverse"
-        />
-      </div>
-    );
+  if (type === 'torus' || type === 'helix') {
+    return null;
   }
 
   if (type === 'angle-corner') {

@@ -351,9 +351,6 @@ export default function TechnologiesSection() {
         fillColor="var(--canvas)" 
       />
 
-      {/* 2. Ambient Section Background (Fluid Helix - Vivid in Light Mode) */}
-      <SectionBackground type="helix" position="center" opacity="opacity-75 dark:opacity-30" />
-
       {/* Background Volumetric Glows */}
       <div 
         aria-hidden="true" 

@@ -20,18 +20,6 @@ export default function HeroSection() {
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[500px] bg-sky-500/[0.08] rounded-full blur-[140px] transform-gpu" />
         <div className="absolute top-1/3 right-1/4 w-[550px] h-[550px] bg-[var(--accent)]/[0.12] rounded-full blur-[150px] transform-gpu" />
 
-        {/* Dynamic Moving Tech Visual for Mobile View (Replaces empty grid on mobile when Star is hidden) */}
-        <div className="block lg:hidden absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[380px] h-[280px] sm:h-[380px] max-w-[85vw] opacity-75 dark:opacity-35 pointer-events-none select-none z-0">
-          <div className="absolute inset-0 bg-sky-400/25 dark:bg-sky-500/15 rounded-full blur-3xl animate-pulse-aura" />
-          <Image
-            src={getAssetUrl('/images/abstract_fluid_helix.png')}
-            alt=""
-            fill
-            priority
-            className="object-contain animate-float-slow filter drop-shadow-[0_16px_40px_rgba(10,133,177,0.45)] dark:drop-shadow-[0_12px_36px_rgba(10,133,177,0.4)]"
-          />
-        </div>
-
         {/* Micro-Grid with Radial Mask */}
         <div 
           className="absolute inset-0 opacity-[0.25]"

@@ -20,8 +20,7 @@ export default function FinalCTA() {
         fillColor="var(--canvas)" 
       />
 
-      {/* 2. Keynote Torus Atmosphere + Corner Accent (Vivid in Light Mode) */}
-      <SectionBackground type="torus" position="center" opacity="opacity-75 dark:opacity-30" />
+      {/* 2. Corner Accent (Vivid in Light Mode) */}
       <SectionBackground type="angle-corner" position="bottom-left" opacity="opacity-70 dark:opacity-25" />
 
       {/* Background Volumetric Glow & Signature Star Watermark */}

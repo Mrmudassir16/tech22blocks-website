@@ -63,9 +63,6 @@ export default function WorkingProcessSection() {
         fillColor="var(--surface-elevated)" 
       />
 
-      {/* 2. Ambient Section Background (Glass Torus - Vivid in Light Mode) */}
-      <SectionBackground type="torus" position="center" opacity="opacity-75 dark:opacity-30" />
-
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

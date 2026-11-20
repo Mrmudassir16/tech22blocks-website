@@ -7,11 +7,21 @@ import { Mail, Phone, MapPin, ExternalLink, Linkedin } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import { getAssetUrl } from '@/utils/assets';
 import { StarWatermark } from '@/components/StarEmblem';
+import { useTheme } from '@/context/ThemeContext';
 
 export default function Footer() {
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
+
   return (
     <footer className="relative bg-[var(--canvas)] text-[var(--text-muted)] border-t border-[var(--border)] overflow-hidden transition-colors duration-200">
-      <StarWatermark size={550} position="top-right" variant="white" opacity={0.015} rotate={20} />
+      <StarWatermark 
+        size={550} 
+        position="top-right" 
+        variant={isLight ? 'blue' : 'white'} 
+        opacity={isLight ? 0.045 : 0.015} 
+        rotate={20} 
+      />
 
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 relative z-10">
@@ -19,7 +29,7 @@ export default function Footer() {
 
           {/* Company Column */}
           <div className="lg:col-span-2 space-y-5">
-            <div className="bg-white px-3 py-1.5 rounded-lg border border-[var(--border)] shadow-sm inline-block">
+            <div className="inline-block p-1 rounded-xl bg-transparent dark:bg-white dark:px-3 dark:py-1.5 dark:border dark:border-[var(--border)] dark:shadow-sm transition-colors">
               <div className="relative h-8 w-40 sm:h-8 sm:w-44">
                 <Image
                   src={getAssetUrl('/images/tech22blocks-logo.jpg')}
@@ -147,19 +157,10 @@ export default function Footer() {
         <div className="mt-14 pt-8 border-t border-[var(--border)] flex flex-col lg:flex-row items-center justify-between text-xs text-[var(--text-muted)] gap-6">
           
           {/* Left: Copyright & Statutory Operating Entity */}
-          <div className="text-center lg:text-left space-y-1">
+          <div className="text-center lg:text-left">
             <p className="text-[var(--text-primary)] font-normal">
               &copy; 2026 RRK Software Technologies Private Limited. All rights reserved. Operating as Tech22Blocks.
             </p>
-            <div className="flex items-center justify-center lg:justify-start gap-4 text-[var(--text-muted)] text-[11px] font-mono">
-              <Link href="/about/" className="hover:text-[var(--text-primary)] transition-colors">About</Link>
-              <span>&bull;</span>
-              <Link href="/portfolio/" className="hover:text-[var(--text-primary)] transition-colors">Portfolio</Link>
-              <span>&bull;</span>
-              <Link href="/blogs/" className="hover:text-[var(--text-primary)] transition-colors">Blogs</Link>
-              <span>&bull;</span>
-              <Link href="/contact/" className="hover:text-[var(--text-primary)] transition-colors">Contact</Link>
-            </div>
           </div>
 
           {/* Right: Authentic DPIIT #StartupIndia & MSME Recognition Marks */}
