@@ -173,44 +173,29 @@ export default function Navbar() {
                     </button>
                   </div>
 
-                  {/* Dropdown Menu (SVSS Style — Clean Icons + Titles, Zero Text Clutter) */}
+                  {/* Dropdown Menu (Exact SVSS Style — Only Service Names + 3D Flipping Logo Effect) */}
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[340px] transition-all duration-200 ${
+                    className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[320px] transition-all duration-200 ${
                       servicesDropdownOpen 
                         ? 'opacity-100 visible translate-y-0 pointer-events-auto' 
                         : 'opacity-0 invisible -translate-y-2 pointer-events-none'
                     }`}
                   >
-                    <div className="p-2.5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-xl backdrop-blur-xl">
-                      <div className="px-3 py-2 border-b border-[var(--border)] flex items-center justify-between mb-1">
-                        <span className="text-xs font-semibold uppercase tracking-wider text-[var(--accent)]">
-                          Our Services
-                        </span>
-                        <Link
-                          href="/services/"
-                          onClick={() => setServicesDropdownOpen(false)}
-                          className="text-xs font-medium text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1"
-                        >
-                          <span>All Services</span>
-                          <ArrowRight className="w-3 h-3" />
-                        </Link>
-                      </div>
-
+                    <div className="p-2 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-2xl backdrop-blur-xl">
                       <div className="space-y-0.5">
                         {COMPANY.services.map((svc) => (
                           <Link
                             key={svc.id}
                             href={`/services/${svc.id}/`}
                             onClick={() => setServicesDropdownOpen(false)}
-                            className="flex items-center justify-between px-3 py-2.5 rounded-xl text-[13.5px] font-medium text-[var(--text-primary)] hover:text-[var(--accent)] hover:bg-[var(--surface-elevated)] transition-all group/item"
+                            className="svss-dropdown-item group/item"
                           >
-                            <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-lg bg-[var(--surface-elevated)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] flex-shrink-0 group-hover/item:border-[var(--accent)] group-hover/item:scale-105 transition-all">
-                                {getServiceIcon(svc.id)}
-                              </div>
-                              <span className="font-semibold tracking-tight">{svc.title}</span>
-                            </div>
-                            <ArrowRight className="w-3.5 h-3.5 text-[var(--text-muted)] opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 group-hover/item:text-[var(--accent)] transition-all" />
+                            <span className="svss-dropdown-icon">
+                              {getServiceIcon(svc.id)}
+                            </span>
+                            <span className="svss-dropdown-label truncate font-medium text-[14px]">
+                              {svc.title}
+                            </span>
                           </Link>
                         ))}
                       </div>
@@ -334,26 +319,18 @@ export default function Navbar() {
                     </button>
 
                     {mobileServicesExpanded && (
-                      <div className="pl-3 pr-1 py-2 space-y-1 bg-[var(--surface-elevated)] rounded-xl border border-[var(--border)] mt-1">
-                        <Link
-                          href="/services/"
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="flex items-center justify-between p-2.5 rounded-lg text-xs font-semibold text-[var(--accent)] hover:bg-[var(--surface)] transition-colors"
-                        >
-                          <span>All Services Overview</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
+                      <div className="p-1 space-y-0.5 bg-[var(--surface-elevated)] rounded-xl border border-[var(--border)] mt-1">
                         {COMPANY.services.map((svc) => (
                           <Link
                             key={svc.id}
                             href={`/services/${svc.id}/`}
                             onClick={() => setMobileMenuOpen(false)}
-                            className="flex items-center gap-3 p-2.5 rounded-lg text-sm font-semibold text-[var(--text-primary)] hover:text-[var(--accent)] hover:bg-[var(--surface)] transition-colors"
+                            className="svss-dropdown-item !py-2"
                           >
-                            <span className="w-7 h-7 rounded-lg bg-[var(--surface)] border border-[var(--border)] flex items-center justify-center text-[var(--accent)] flex-shrink-0">
+                            <span className="svss-dropdown-icon !w-7 !h-7">
                               {getServiceIcon(svc.id)}
                             </span>
-                            <span className="truncate">{svc.title}</span>
+                            <span className="svss-dropdown-label truncate font-medium text-[13.5px]">{svc.title}</span>
                           </Link>
                         ))}
                       </div>
