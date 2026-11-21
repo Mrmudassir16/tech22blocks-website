@@ -153,13 +153,13 @@ export default function Footer() {
           {/* Right: Authentic DPIIT #StartupIndia & MSME Recognition Marks (Directly on Footer Background, No White Box) */}
           <div className="flex items-center gap-6 sm:gap-8">
             {/* DPIIT #StartupIndia Official */}
-            <div className="relative h-9 w-32 sm:h-10 sm:w-36 transition-opacity hover:opacity-90">
+            <div className="relative h-10 w-32 sm:h-11 sm:w-36 transition-opacity hover:opacity-90">
               <Image
                 src={getAssetUrl('/images/dpiit-white-transparent.png')}
                 alt="DPIIT #StartupIndia - Government of India Recognized"
                 fill
                 sizes="150px"
-                className="object-contain object-left"
+                className="object-contain object-center"
               />
             </div>
 
@@ -172,7 +172,7 @@ export default function Footer() {
                 alt="Ministry of MSME, Govt. of India Registered Enterprise"
                 fill
                 sizes="130px"
-                className="object-contain object-left"
+                className="object-contain object-center"
               />
             </div>
           </div>
