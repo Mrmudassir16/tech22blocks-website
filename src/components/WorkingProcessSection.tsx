@@ -3,8 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { 
-  Plus, 
-  Minus, 
   CheckCircle2, 
   ArrowRight, 
   ArrowLeft, 
@@ -14,7 +12,8 @@ import {
   Rocket, 
   Activity,
   Layers,
-  Sparkles
+  Sparkles,
+  Check
 } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
 import { StaggeredText } from '@/components/design-system/KineticTypography';
@@ -27,6 +26,7 @@ interface ProcessStep {
   tagline: string;
   description: string;
   highlights: string[];
+  deliverableBadge: string;
 }
 
 const PROCESS_STEPS: ProcessStep[] = [
@@ -36,6 +36,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     title: 'Discovery Phase',
     tagline: 'Requirement Discovery & Architectural Blueprint',
     description: 'We begin with structured requirement discovery, business domain mapping, and technical feasibility validation to ensure absolute clarity on architecture and milestones before writing code.',
+    deliverableBadge: 'Blueprint & Feasibility Scope',
     highlights: [
       'Business domain mapping & feasibility scope validation',
       'Technical architecture blueprint & database schema planning',
@@ -48,6 +49,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     title: 'Design and Development',
     tagline: 'Iterative Engineering & Modern Component Architecture',
     description: 'Data-driven diagnostic and predictive app for improving outcomes. We architect scalable databases, build modular component libraries, and engineer high-performance backend microservices.',
+    deliverableBadge: 'Full-Stack Architecture',
     highlights: [
       'Modular atomic design systems & clickable interactive prototypes',
       'Full-stack TypeScript engineering & type-safe API services',
@@ -60,6 +62,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     title: 'Testing and QA',
     tagline: 'Automated Regression Suites & Security Verification',
     description: 'Comprehensive automated test suites, end-to-end integration tests, static code analysis, and edge-case security verification before enterprise release.',
+    deliverableBadge: 'Automated Regression Suites',
     highlights: [
       'Automated unit, integration, and E2E regression test suites',
       'Multi-device responsiveness & Core Web Vitals profiling',
@@ -72,6 +75,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     title: 'Deployment',
     tagline: 'Zero-Downtime CI/CD Multi-Cloud Delivery',
     description: 'Automated CI/CD deployment pipelines to cloud environments (AWS, Vercel, Docker) with blue-green rollouts, automated rollbacks, and distributed edge CDN delivery.',
+    deliverableBadge: 'Multi-Cloud Production CI/CD',
     highlights: [
       'Zero-downtime blue-green production deployment pipelines',
       'Global edge CDN distribution with sub-second asset delivery',
@@ -84,6 +88,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     title: 'Maintenance',
     tagline: 'Proactive Stewardship & Continuous Optimization',
     description: 'Ongoing code stewardship, automated dependency updates, database index optimization, and proactive performance monitoring to maintain zero-downtime operations.',
+    deliverableBadge: '24/7 SLA Telemetry & Updates',
     highlights: [
       '24/7 uptime monitoring & automated error alerting systems',
       'Proactive security patching & package dependency upgrades',
@@ -97,8 +102,9 @@ export default function WorkingProcessSection() {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isInView, setIsInView] = useState<boolean>(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const stepperScrollRef = useRef<HTMLDivElement>(null);
 
-  // Intersection Observer: Start auto-cycle and trigger chain when scrolled into view
+  // Intersection Observer: Start auto-cycle only when scrolled into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -116,27 +122,39 @@ export default function WorkingProcessSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Automatic Step Progression: Moves one step after another every 4s unless user hovers
+  // Automatic Step Progression: Moves one step after another every 4.5s unless hovered
   useEffect(() => {
     if (!isInView || isHovered) return;
 
     const timer = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % PROCESS_STEPS.length);
-    }, 4000);
+    }, 4500);
 
     return () => clearInterval(timer);
   }, [isInView, isHovered]);
 
+  // Keep active step scrolled into view on mobile
+  useEffect(() => {
+    if (stepperScrollRef.current) {
+      const activeEl = stepperScrollRef.current.children[activeStep] as HTMLElement;
+      if (activeEl) {
+        const container = stepperScrollRef.current;
+        const scrollLeft = activeEl.offsetLeft - container.offsetWidth / 2 + activeEl.offsetWidth / 2;
+        container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+      }
+    }
+  }, [activeStep]);
+
   const currentStep = PROCESS_STEPS[activeStep];
 
-  const getStepIcon = (idx: number) => {
+  const getStepIcon = (idx: number, className = 'w-5 h-5') => {
     switch (idx) {
-      case 0: return <Search className="w-5 h-5" />;
-      case 1: return <Code2 className="w-5 h-5" />;
-      case 2: return <ShieldCheck className="w-5 h-5" />;
-      case 3: return <Rocket className="w-5 h-5" />;
-      case 4: return <Activity className="w-5 h-5" />;
-      default: return <Layers className="w-5 h-5" />;
+      case 0: return <Search className={className} />;
+      case 1: return <Code2 className={className} />;
+      case 2: return <ShieldCheck className={className} />;
+      case 3: return <Rocket className={className} />;
+      case 4: return <Activity className={className} />;
+      default: return <Layers className={className} />;
     }
   };
 
@@ -157,14 +175,18 @@ export default function WorkingProcessSection() {
       {/* Ambient Radial Flare */}
       <div 
         aria-hidden="true" 
-        className="absolute top-1/3 -right-20 w-[550px] h-[550px] bg-[var(--accent)]/[0.04] rounded-full blur-[140px] pointer-events-none transform-gpu" 
+        className="absolute top-1/4 -right-20 w-[550px] h-[550px] bg-[var(--accent)]/[0.04] rounded-full blur-[140px] pointer-events-none transform-gpu" 
+      />
+      <div 
+        aria-hidden="true" 
+        className="absolute bottom-10 -left-20 w-[450px] h-[450px] bg-sky-500/[0.03] rounded-full blur-[120px] pointer-events-none transform-gpu" 
       />
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="mb-10 sm:mb-14">
+        <div className="mb-8 sm:mb-12 text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
               Working Process
@@ -179,213 +201,235 @@ export default function WorkingProcessSection() {
           </div>
 
           <div>
-            <h2 id="process-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-[-0.03em] leading-tight cursor-default">
-              <StaggeredText text="Our" />{' '}
-              <StaggeredText text="Approach" isShimmer />
+            <h2 id="process-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-[-0.03em] leading-tight cursor-default mb-3">
+              <StaggeredText text="How" />{' '}
+              <StaggeredText text="We" />{' '}
+              <StaggeredText text="Engineer" isShimmer />{' '}
+              <StaggeredText text="& Ship" />
             </h2>
+            <p className="text-sm sm:text-base text-[var(--text-muted)] font-normal leading-relaxed max-w-2xl mx-auto">
+              Our end-to-end production software engineering pipeline, delivering transparency, statutory compliance, and zero architectural shortcuts from initial blueprint to continuous scaling.
+            </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          
-          {/* Left Column: Interactive Step Accordion List */}
-          <div className="lg:col-span-5 space-y-3.5">
-            {PROCESS_STEPS.map((step, idx) => {
-              const isActive = activeStep === idx;
+        {/* ========================================================================= */}
+        {/* HORIZONTAL STEPPER & CONNECTING FLOW: Single Unified Interactive Pipeline */}
+        {/* ========================================================================= */}
+        <div 
+          className="rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-xl p-5 sm:p-8 lg:p-10 relative overflow-hidden transition-all duration-300"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
 
-              return (
-                <div 
-                  key={step.id}
-                  className={`rounded-2xl transition-all duration-300 border overflow-hidden ${
-                    isActive 
-                      ? 'bg-[var(--surface)] border-[var(--accent)] shadow-lg shadow-sky-900/10 dark:shadow-sky-950/40 translate-x-1' 
-                      : 'bg-[var(--surface)]/70 border-[var(--border)] hover:border-[var(--accent)]/40 hover:bg-[var(--surface)]'
-                  }`}
-                >
+          {/* 1. Full-Width Horizontal Stepper Track & Connecting Glowing Beam */}
+          <div className="relative mb-8 sm:mb-10 pb-4">
+            
+            {/* Desktop Connecting Background Line */}
+            <div className="hidden md:block absolute top-7 left-12 right-12 h-[3px] bg-[var(--border)] rounded-full -translate-y-1/2 z-0" />
+            
+            {/* Desktop Active Glowing Animated Beam */}
+            <div 
+              className="hidden md:block absolute top-7 left-12 h-[3px] bg-gradient-to-r from-[var(--accent)] via-sky-400 to-[var(--accent)] rounded-full -translate-y-1/2 z-0 transition-all duration-500 ease-out shadow-[0_0_12px_rgba(56,189,248,0.6)]"
+              style={{
+                width: `calc(${(activeStep / (PROCESS_STEPS.length - 1)) * 100}% - 48px)`,
+              }}
+            />
+
+            {/* Stepper Milestone Stations (Horizontal Scrollable on Mobile, 5-col on Desktop) */}
+            <div 
+              ref={stepperScrollRef}
+              className="flex md:grid md:grid-cols-5 items-center justify-between gap-3 sm:gap-4 overflow-x-auto pb-3 md:pb-0 scrollbar-none snap-x relative z-10"
+            >
+              {PROCESS_STEPS.map((step, idx) => {
+                const isActive = activeStep === idx;
+                const isPassed = idx < activeStep;
+
+                return (
                   <button
+                    key={step.id}
                     type="button"
                     onClick={() => setActiveStep(idx)}
-                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left group cursor-pointer"
-                    aria-expanded={isActive}
+                    className={`flex-shrink-0 snap-center group/station flex flex-col items-center text-center p-2.5 sm:p-3 rounded-2xl transition-all duration-300 cursor-pointer focus:outline-none min-w-[130px] md:min-w-0 ${
+                      isActive 
+                        ? 'bg-[var(--surface-elevated)] ring-1 ring-[var(--accent)]/40 shadow-md' 
+                        : 'hover:bg-[var(--surface-elevated)]/50'
+                    }`}
+                    aria-selected={isActive}
+                    aria-label={`Milestone ${step.num}: ${step.title}`}
                   >
-                    <div className="flex items-center gap-3.5">
-                      <span className={`w-9 h-9 rounded-xl flex items-center justify-center font-mono font-bold text-xs transition-all ${
+                    {/* Circle Node Icon */}
+                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center font-mono font-bold text-sm transition-all duration-300 relative ${
+                      isActive
+                        ? 'bg-[var(--accent)] text-white ring-4 ring-sky-500/20 shadow-[0_0_20px_rgba(10,133,177,0.45)] scale-110'
+                        : isPassed
+                        ? 'bg-[var(--accent)]/15 text-[var(--accent)] border border-[var(--accent)]/30'
+                        : 'bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-muted)] group-hover/station:border-[var(--accent)]/50 group-hover/station:text-[var(--text-primary)]'
+                    }`}>
+                      {isPassed ? (
+                        <Check className="w-5 h-5 stroke-[2.5]" />
+                      ) : (
+                        getStepIcon(idx, 'w-5 h-5 sm:w-6 sm:h-6')
+                      )}
+
+                      {/* Small Step Number Floating Pill */}
+                      <span className={`absolute -top-1.5 -right-1.5 px-1.5 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase ${
                         isActive
-                          ? 'bg-[var(--accent)] text-white shadow-md'
-                          : 'bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-muted)] group-hover:text-[var(--accent)]'
+                          ? 'bg-white text-[var(--accent)] shadow-sm'
+                          : 'bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-muted)]'
                       }`}>
                         {step.num}
                       </span>
-                      <span className={`text-base sm:text-lg font-bold tracking-tight transition-colors ${
-                        isActive ? 'text-[var(--accent)]' : 'text-[var(--text-primary)] group-hover:text-[var(--accent)]'
-                      }`}>
-                        {step.title}
-                      </span>
                     </div>
 
-                    <span className={`w-7 h-7 rounded-full flex items-center justify-center transition-all ${
-                      isActive ? 'bg-[var(--accent)]/15 text-[var(--accent)]' : 'bg-[var(--surface-elevated)] text-[var(--text-muted)] group-hover:text-[var(--text-primary)]'
+                    {/* Step Name */}
+                    <span className={`mt-2.5 text-xs sm:text-sm font-bold tracking-tight transition-colors line-clamp-1 ${
+                      isActive ? 'text-[var(--accent)]' : 'text-[var(--text-primary)] group-hover/station:text-[var(--accent)]'
                     }`}>
-                      {isActive ? (
-                        <Minus className="w-3.5 h-3.5 stroke-[2.5]" />
-                      ) : (
-                        <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
-                      )}
+                      {step.title}
+                    </span>
+
+                    {/* Concise Phase Tag */}
+                    <span className="text-[10px] sm:text-[11px] font-mono text-[var(--text-muted)] tracking-tight hidden sm:block mt-0.5">
+                      {step.deliverableBadge}
                     </span>
                   </button>
-
-                  {/* Accordion Body */}
-                  {isActive && (
-                    <div className="px-5 pb-5 pt-1 text-[var(--text-muted)] text-xs sm:text-sm leading-relaxed border-t border-[var(--border)] animate-letter-appear">
-                      <p>{step.description}</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
-          {/* Right Column: Connected Interactive Chain Pipeline Console */}
-          <div 
-            className="lg:col-span-7"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <div className="p-6 sm:p-8 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-xl relative overflow-hidden transition-all duration-300">
-              
-              {/* 1. Connected Chain Step Tracker (Top Connected Progress Bar) */}
-              <div className="relative mb-8 pb-6 border-b border-[var(--border)]">
-                
-                {/* Connecting Line Track */}
-                <div className="absolute top-5 left-6 right-6 h-[3px] bg-[var(--border)] rounded-full -translate-y-1/2 z-0" />
-                
-                {/* Active Glowing Connected Beam Line */}
-                <div 
-                  className="absolute top-5 left-6 h-[3px] bg-gradient-to-r from-[var(--accent)] to-sky-400 rounded-full -translate-y-1/2 z-0 transition-all duration-500 shadow-[0_0_12px_rgba(56,189,248,0.6)]"
-                  style={{
-                    width: `calc(${(activeStep / (PROCESS_STEPS.length - 1)) * 100}% - 48px)`,
-                  }}
-                />
-
-                {/* 5 Connected Step Milestone Nodes */}
-                <div className="relative z-10 flex items-center justify-between">
-                  {PROCESS_STEPS.map((step, idx) => {
-                    const isPassedOrCurrent = idx <= activeStep;
-                    const isCurrent = idx === activeStep;
-
-                    return (
-                      <button
-                        key={step.id}
-                        type="button"
-                        onClick={() => setActiveStep(idx)}
-                        className="group/node flex flex-col items-center cursor-pointer focus:outline-none"
-                        aria-label={`Go to step ${step.num}: ${step.title}`}
-                      >
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center font-mono font-bold text-xs transition-all duration-300 ${
-                          isCurrent
-                            ? 'bg-[var(--accent)] text-white ring-4 ring-sky-500/20 shadow-[0_0_16px_rgba(10,133,177,0.5)] scale-110'
-                            : isPassedOrCurrent
-                            ? 'bg-[var(--accent)] text-white'
-                            : 'bg-[var(--surface-elevated)] border-2 border-[var(--border)] text-[var(--text-muted)] group-hover/node:border-[var(--accent)]'
-                        }`}>
-                          {step.num}
-                        </div>
-                        <span className={`text-[11px] font-semibold mt-2 hidden sm:block tracking-tight transition-colors ${
-                          isCurrent ? 'text-[var(--accent)] font-bold' : 'text-[var(--text-muted)] group-hover/node:text-[var(--text-primary)]'
-                        }`}>
-                          {step.title.split(' ')[0]}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+          {/* 2. Main Active Stage Card: Rich Architectural Deep Dive (Single Unified View) */}
+          <div className="bg-[var(--surface-elevated)] border border-[var(--border)] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 relative overflow-hidden transition-all duration-300">
+            
+            {/* Top Stage Bar: Phase Chip, Deliverable Badge, Step Counter */}
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-5 border-b border-[var(--border)]">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/30 text-xs font-mono font-bold uppercase tracking-wider text-[var(--accent)]">
+                  <Sparkles className="w-3.5 h-3.5 text-[var(--accent)] animate-pulse" />
+                  Phase {currentStep.num} of 05
+                </span>
+                <span className="inline-block px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-xs font-mono text-[var(--text-muted)]">
+                  {currentStep.deliverableBadge}
+                </span>
               </div>
 
-              {/* 2. Main Live Stage Card for the Active Step */}
-              <div className="space-y-6">
-                
-                {/* Phase Indicator & Auto-Cycle Tag */}
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/30 text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--accent)]">
-                    <Sparkles className="w-3.5 h-3.5 text-[var(--accent)] animate-pulse" />
-                    <span>Phase {currentStep.num} // {currentStep.title}</span>
-                  </div>
+              <div className="text-xs font-mono font-semibold text-[var(--text-muted)] flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Enterprise Production Standard</span>
+              </div>
+            </div>
 
-                  <span className="text-xs font-mono text-[var(--text-muted)]">
-                    Step {activeStep + 1} of {PROCESS_STEPS.length}
-                  </span>
-                </div>
-
-                {/* Step Headline & Subtitle */}
+            {/* Stage Body Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              {/* Left Side: Headline, Architectural Tagline & Narrative */}
+              <div className="lg:col-span-7 space-y-4">
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight mb-2">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight mb-2">
                     {currentStep.title}
                   </h3>
-                  <p className="text-xs sm:text-sm font-mono text-[var(--accent)] font-medium">
+                  <p className="text-sm sm:text-base font-mono text-[var(--accent)] font-semibold">
                     {currentStep.tagline}
                   </p>
                 </div>
 
-                {/* Detailed Description */}
-                <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed pt-1">
                   {currentStep.description}
                 </p>
 
-                {/* Key Deliverables & Engineering Architecture Highlights */}
+                {/* Mobile / Inline Milestone Progress Bar */}
                 <div className="pt-2">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] font-semibold block mb-3">
-                    Architectural Milestones & Deliverables
-                  </span>
-                  <div className="space-y-2.5">
-                    {currentStep.highlights.map((h, i) => (
-                      <div 
-                        key={i}
-                        className="flex items-center gap-3 p-3 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)] text-xs sm:text-sm font-medium text-[var(--text-primary)] shadow-sm"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-[var(--accent)] flex-shrink-0" />
-                        <span>{h}</span>
-                      </div>
-                    ))}
+                  <div className="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)] mb-1.5">
+                    <span>Engineering Milestone Progress</span>
+                    <span>{((activeStep + 1) * 20)}% Pipeline Complete</span>
                   </div>
-                </div>
-
-                {/* Auto-Cycle Timer Progress Line */}
-                <div className="pt-4">
-                  <div className="w-full h-1 bg-[var(--border)] rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 bg-[var(--border)] rounded-full overflow-hidden">
                     <div 
                       key={activeStep}
-                      className="h-full bg-[var(--accent)] rounded-full animate-progress-fill"
+                      className="h-full bg-gradient-to-r from-[var(--accent)] to-sky-400 rounded-full transition-all duration-500"
                       style={{
-                        animationDuration: '4s',
+                        width: `${((activeStep + 1) * 20)}%`,
                       }}
                     />
                   </div>
                 </div>
+              </div>
 
-                {/* Action Controls: Previous / Next Step Buttons */}
-                <div className="pt-2 flex items-center justify-between gap-4">
-                  <button
-                    type="button"
-                    onClick={() => setActiveStep((prev) => (prev - 1 + PROCESS_STEPS.length) % PROCESS_STEPS.length)}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--accent)] text-xs sm:text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-all cursor-pointer"
-                  >
-                    <ArrowLeft className="w-4 h-4" />
-                    <span>Previous</span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveStep((prev) => (prev + 1) % PROCESS_STEPS.length)}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-xs sm:text-sm font-bold text-white shadow-md shadow-sky-900/20 transition-all cursor-pointer group/next"
-                  >
-                    <span>Next Phase</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/next:translate-x-1" />
-                  </button>
+              {/* Right Side: Key Deliverables & Architectural Checkpoints */}
+              <div className="lg:col-span-5 bg-[var(--surface)] p-5 sm:p-6 rounded-2xl border border-[var(--border)] space-y-3.5 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--text-muted)] font-bold">
+                    Phase Deliverables & Scope
+                  </span>
+                  <span className="text-[11px] font-mono text-[var(--accent)] font-semibold">
+                    Verified Gate
+                  </span>
                 </div>
 
+                <div className="space-y-2.5">
+                  {currentStep.highlights.map((highlight, i) => (
+                    <div 
+                      key={i}
+                      className="flex items-start gap-3 p-3 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)] text-xs sm:text-sm font-medium text-[var(--text-primary)] transition-all hover:border-[var(--accent)]/40"
+                    >
+                      <CheckCircle2 className="w-4 h-4 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+                      <span className="leading-snug">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
             </div>
+
+            {/* Bottom Controls Bar: Previous / Next & Autoplay Indicator */}
+            <div className="mt-8 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row items-center justify-between gap-4">
+              
+              {/* Stepper Dots & Pause Reminder */}
+              <div className="flex items-center gap-2">
+                {PROCESS_STEPS.map((s, idx) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => setActiveStep(idx)}
+                    className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                      activeStep === idx 
+                        ? 'w-8 bg-[var(--accent)]' 
+                        : 'w-2.5 bg-[var(--border)] hover:bg-[var(--text-muted)]'
+                    }`}
+                    aria-label={`Jump to phase ${idx + 1}`}
+                  />
+                ))}
+                <span className="ml-3 text-[11px] font-mono text-[var(--text-muted)] hidden md:inline">
+                  {isHovered ? '(Auto-cycle paused on hover)' : '(Auto-advancing every 4.5s)'}
+                </span>
+              </div>
+
+              {/* Navigation Action Buttons */}
+              <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+                <button
+                  type="button"
+                  onClick={() => setActiveStep((prev) => (prev - 1 + PROCESS_STEPS.length) % PROCESS_STEPS.length)}
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--accent)] text-xs sm:text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--surface)] hover:bg-[var(--surface-elevated)] transition-all cursor-pointer"
+                  aria-label="Previous Phase"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  <span>Previous</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveStep((prev) => (prev + 1) % PROCESS_STEPS.length)}
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-xs sm:text-sm font-bold text-white shadow-md shadow-sky-900/20 transition-all cursor-pointer group/next"
+                  aria-label="Next Phase"
+                >
+                  <span>Next Phase</span>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover/next:translate-x-1" />
+                </button>
+              </div>
+
+            </div>
+
           </div>
 
         </div>

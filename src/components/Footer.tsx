@@ -150,29 +150,29 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Right: Authentic DPIIT #StartupIndia & MSME Recognition Marks */}
-          <div className="flex items-center gap-3 bg-white p-2 sm:px-3 sm:py-2 rounded-xl shadow-md border border-white/20">
+          {/* Right: Authentic DPIIT #StartupIndia & MSME Recognition Marks (Directly on Footer Background, No White Box) */}
+          <div className="flex items-center gap-6 sm:gap-8">
             {/* DPIIT #StartupIndia Official */}
-            <div className="relative h-7 w-28 sm:w-32">
+            <div className="relative h-9 w-32 sm:h-10 sm:w-36 transition-opacity hover:opacity-90">
               <Image
-                src={getAssetUrl('/images/dpiit-startup-india-official.png')}
+                src={getAssetUrl('/images/dpiit-white-transparent.png')}
                 alt="DPIIT #StartupIndia - Government of India Recognized"
                 fill
-                sizes="130px"
-                className="object-contain object-center"
+                sizes="150px"
+                className="object-contain object-left"
               />
             </div>
 
-            <div className="h-6 w-px bg-slate-300" />
+            <div className="h-8 w-px bg-white/25" />
 
             {/* Ministry of MSME Official */}
-            <div className="relative h-7 w-24 sm:w-28">
+            <div className="relative h-10 w-28 sm:h-11 sm:w-32 transition-opacity hover:opacity-90">
               <Image
-                src={getAssetUrl('/images/msme-gov-official.png')}
+                src={getAssetUrl('/images/msme-white-transparent.png')}
                 alt="Ministry of MSME, Govt. of India Registered Enterprise"
                 fill
-                sizes="115px"
-                className="object-contain object-center"
+                sizes="130px"
+                className="object-contain object-left"
               />
             </div>
           </div>
