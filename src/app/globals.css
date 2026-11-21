@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 :root, [data-theme="dark"] {
-  --font-sans: 'Poppins', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Poppins', 'Product Sans', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Poppins', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Plus Jakarta Sans', 'Poppins', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
   /* Semantic Theme Tokens (Dark Mode Default) */
@@ -33,8 +34,9 @@
 }
 
 [data-theme="light"] {
-  --font-sans: 'Poppins', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Poppins', 'Product Sans', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Poppins', 'Product Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Plus Jakarta Sans', 'Poppins', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
   /* Semantic Theme Tokens (Light Mode) */
@@ -90,6 +92,12 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   transition: background-color 200ms ease-out, color 200ms ease-out;
+}
+
+/* Modern Premium Heading Typography */
+h1, h2, h3, h4, h5, h6, .font-display, .font-heading {
+  font-family: var(--font-display);
+  letter-spacing: -0.028em;
 }
 
 /* Premium Adaptive Micro-Scrollbar */

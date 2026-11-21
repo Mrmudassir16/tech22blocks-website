@@ -42,10 +42,12 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ['"Poppins"', '"Product Sans"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        serif: ['"Poppins"', '"Product Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', '"Poppins"', '"Product Sans"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['"Plus Jakarta Sans"', '"Poppins"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
-        display: ['"Poppins"', '"Product Sans"', 'system-ui', 'sans-serif'],
+        body: ['"Poppins"', '"Product Sans"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'card': 'var(--shadow-card)',
