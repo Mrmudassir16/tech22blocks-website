@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Calendar, Tag, FileText, ChevronRight, Download, Filter } from 'lucide-react';
-import { COMPANY, NewsItem } from '@/data/company';
+import { Calendar, Filter } from 'lucide-react';
+import { COMPANY } from '@/data/company';
 import FinalCTA from '@/components/FinalCTA';
-import StarEmblem, { StarWatermark } from '@/components/StarEmblem';
+import { StarWatermark } from '@/components/StarEmblem';
 
 export default function NewsEventsPage() {
   const { newsAndEvents } = COMPANY;
@@ -18,21 +18,21 @@ export default function NewsEventsPage() {
     : newsAndEvents.filter(item => item.category === selectedCategory);
 
   return (
-    <>
+    <div className="bg-[var(--canvas)] text-[var(--text-primary)] transition-colors duration-200">
       {/* Header */}
-      <section className="relative bg-[#030712] text-white py-24 lg:py-32 border-b border-white/[0.08] overflow-hidden">
-        <StarWatermark size={650} position="top-right" variant="white" opacity={0.02} rotate={15} />
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[500px] bg-sky-500/[0.1] rounded-full blur-[140px] pointer-events-none transform-gpu" />
+      <section className="relative bg-[var(--surface)] text-[var(--text-primary)] py-14 sm:py-20 lg:py-28 border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
+        <StarWatermark size={650} position="top-right" variant="blue" opacity={0.03} rotate={15} />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[400px] bg-[var(--accent)]/[0.06] rounded-full blur-[140px] pointer-events-none transform-gpu" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[#38bdf8] mb-4 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-400/20">
+            <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[var(--accent)] mb-3 sm:mb-4 px-3 py-1 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/30">
               <span>Corporate Communications &amp; Disclosures</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-tight text-white">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-[var(--text-primary)] font-display">
               News &amp; Events
             </h1>
-            <p className="mt-6 text-xl text-slate-300 font-normal leading-relaxed">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl text-[var(--text-muted)] font-normal leading-relaxed">
               Official press releases, annual company letters, financial year milestones, and strategic announcements from RRK Software Technologies Private Limited (operating as Tech22Blocks).
             </p>
           </div>
@@ -40,13 +40,13 @@ export default function NewsEventsPage() {
       </section>
 
       {/* Corporate Newsroom Section */}
-      <section className="py-24 lg:py-32 bg-[#060b18] text-white border-b border-white/[0.08]">
+      <section className="py-14 sm:py-20 lg:py-24 bg-[var(--canvas)] text-[var(--text-primary)] border-b border-[var(--border)] transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Filter Bar */}
-          <div className="flex flex-wrap items-center justify-between pb-8 mb-12 border-b border-white/[0.08] gap-4">
-            <div className="flex items-center space-x-2 text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider">
-              <Filter className="w-4 h-4 text-sky-400" />
+          <div className="flex flex-wrap items-center justify-between pb-6 mb-10 sm:mb-12 border-b border-[var(--border)] gap-3">
+            <div className="flex items-center space-x-2 text-xs font-mono font-semibold text-[var(--text-muted)] uppercase tracking-wider">
+              <Filter className="w-4 h-4 text-[var(--accent)]" />
               <span>Filter By Category:</span>
             </div>
 
@@ -55,10 +55,10 @@ export default function NewsEventsPage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-mono font-semibold tracking-wide transition-all ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold tracking-wide transition-all cursor-pointer ${
                     selectedCategory === cat
-                      ? 'bg-white/[0.12] text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] border border-white/20'
-                      : 'bg-white/[0.03] text-slate-400 hover:text-white border border-white/[0.06] hover:bg-white/[0.06]'
+                      ? 'bg-[var(--accent)] text-white shadow-sm'
+                      : 'bg-[var(--surface)] text-[var(--text-muted)] hover:text-[var(--text-primary)] border border-[var(--border)] hover:border-[var(--accent)]'
                   }`}
                 >
                   {cat}
@@ -68,53 +68,53 @@ export default function NewsEventsPage() {
           </div>
 
           {/* Chronological Disclosures Stream */}
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-10">
             {filteredItems.map((item) => (
               <article
                 key={item.id}
                 id={item.id}
-                className="bg-[#0b1120]/80 border border-white/[0.08] hover:border-sky-500/40 rounded-3xl p-8 sm:p-10 space-y-6 transition-all duration-300 shadow-xl backdrop-blur-xl"
+                className="bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 space-y-5 sm:space-y-6 transition-all duration-300 shadow-md"
               >
                 {/* Meta Header */}
-                <div className="flex flex-wrap items-center justify-between text-xs text-slate-400 font-mono gap-2 border-b border-white/[0.06] pb-5">
+                <div className="flex flex-wrap items-center justify-between text-xs text-[var(--text-muted)] font-mono gap-2 border-b border-[var(--border)] pb-4">
                   <div className="flex items-center space-x-3">
-                    <span className="flex items-center text-slate-300 font-medium">
-                      <Calendar className="w-3.5 h-3.5 mr-1.5 text-sky-400" />
+                    <span className="flex items-center text-[var(--text-primary)] font-medium">
+                      <Calendar className="w-3.5 h-3.5 mr-1.5 text-[var(--accent)]" />
                       {item.date}
                     </span>
                     <span>&bull;</span>
-                    <span className="px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 font-semibold border border-sky-400/20">
+                    <span className="px-2.5 py-0.5 rounded-full bg-[var(--accent)]/10 text-[var(--accent)] font-semibold border border-[var(--accent)]/30">
                       {item.category}
                     </span>
                   </div>
-                  <span className="text-[11px] text-slate-500">
+                  <span className="text-[11px] text-[var(--text-muted)]">
                     RRK Software Technologies Pvt. Ltd. Official Release
                   </span>
                 </div>
 
                 {/* Release Headline */}
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-[-0.02em] leading-snug">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight leading-snug font-display">
                   {item.title}
                 </h2>
 
                 {/* Summary */}
-                <div className="text-base text-slate-200 font-normal leading-relaxed bg-white/[0.02] p-5 rounded-2xl border border-white/[0.04]">
+                <div className="text-sm sm:text-base text-[var(--text-primary)] font-medium leading-relaxed bg-[var(--surface-elevated)] p-4 sm:p-5 rounded-2xl border border-[var(--border)]">
                   {item.summary}
                 </div>
 
                 {/* Full Release Body */}
-                <div className="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed font-normal pt-2">
+                <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed font-normal pt-1">
                   {item.content.map((paragraph, pIdx) => (
                     <p key={pIdx}>{paragraph}</p>
                   ))}
                 </div>
 
                 {/* Footer Attribution */}
-                <div className="pt-6 border-t border-white/[0.06] flex flex-wrap items-center justify-between text-xs text-slate-400 gap-4 font-mono">
+                <div className="pt-5 border-t border-[var(--border)] flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[var(--text-muted)] gap-3 font-mono">
                   <span>Issued by: Office of the Directors (Shivasai Adepu &amp; Rajkumar Adepu)</span>
                   <Link
                     href="/contact/"
-                    className="text-sky-400 font-semibold hover:text-sky-300 transition-colors uppercase tracking-wider"
+                    className="text-[var(--accent)] font-semibold hover:underline uppercase tracking-wider"
                   >
                     Direct Press or Partner Inquiries &rarr;
                   </Link>
@@ -128,6 +128,6 @@ export default function NewsEventsPage() {
 
       {/* Final Call to Action */}
       <FinalCTA />
-    </>
+    </div>
   );
 }
