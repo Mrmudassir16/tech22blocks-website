@@ -449,3 +449,139 @@ h1, h2, h3, h4, h5, h6, .font-display, .font-heading {
     color: var(--accent-light);
   }
 }
+
+/* ========================================================================= */
+/* ABOUT US 3D INTERACTIVE STYLES (Inspired by SVSS Design System)          */
+/* ========================================================================= */
+
+/* 1. 3D Isometric Wall in Hero */
+.ab-wall-container {
+  position: relative;
+  height: 380px;
+  perspective: 1400px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 80%, transparent 100%);
+}
+
+@media (max-width: 640px) {
+  .ab-wall-container {
+    height: 260px;
+  }
+}
+
+.ab-wall-plane {
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  top: 10px;
+  display: grid;
+  gap: 16px;
+  transform: rotateX(28deg) rotateZ(-5deg);
+  transform-origin: 50% 0;
+  pointer-events: none;
+}
+
+@keyframes ab-marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes ab-marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.ab-marquee-row-left {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: ab-marquee-left 38s linear infinite;
+}
+
+.ab-marquee-row-right {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: ab-marquee-right 42s linear infinite;
+}
+
+.ab-wall-container:hover .ab-marquee-row-left,
+.ab-wall-container:hover .ab-marquee-row-right {
+  animation-play-state: paused;
+}
+
+/* 2. 3D Turning Prism for Mission, Vision & Values */
+.ab-prism-scene {
+  width: min(620px, 100%);
+  height: 290px;
+  perspective: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .ab-prism-scene {
+    height: 320px;
+  }
+}
+
+.ab-prism-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.3, 0.8, 0.3, 1);
+}
+
+.ab-prism-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 28px 32px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 640px) {
+  .ab-prism-face {
+    padding: 22px 20px;
+  }
+}
+
+/* 3. Leadership Team 3D Flip Card */
+.ab-team-card {
+  perspective: 1000px;
+}
+
+.ab-team-flipper {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 24px;
+}
+
+.ab-team-flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+.ab-team-face-front,
+.ab-team-face-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 24px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.ab-team-face-back {
+  transform: rotateY(180deg);
+}

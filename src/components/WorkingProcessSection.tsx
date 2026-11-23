@@ -253,9 +253,9 @@ export default function WorkingProcessSection() {
             
             {/* Top Row: Phase Tag & Navigation Controls */}
             <div className="flex items-center justify-between gap-3 mb-3 pb-3 border-b border-[var(--border)]">
-              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/30 text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--accent)]">
-                <Sparkles className="w-3 h-3 text-[var(--accent)]" />
-                <span>Phase {currentStep.num} // {currentStep.title}</span>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/25 text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--accent)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
+                <span>Phase {currentStep.num}</span>
               </div>
 
               {/* Prev / Next & Step Indicator */}
