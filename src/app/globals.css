@@ -590,10 +590,43 @@ h1, h2, h3, h4, h5, h6, .font-display, .font-heading {
 /* GLOWING GLOBE & RIPPLE ANIMATIONS (Techco Style About Us Section)        */
 /* ========================================================================= */
 
-@keyframes globe-ripple-1 {
+.techco-icon-globe {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 22px rgba(10, 133, 177, 0.55);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.techco-icon-globe::before,
+.techco-icon-globe::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  animation: techco-ripple 1.8s linear infinite;
+  pointer-events: none;
+}
+
+.techco-icon-globe::after {
+  animation-delay: 0.9s;
+}
+
+@keyframes techco-ripple {
   0% {
-    transform: scale(0.75);
-    opacity: 0.9;
+    transform: scale(1);
+    opacity: 0.95;
   }
   100% {
     transform: scale(2.2);
@@ -601,34 +634,15 @@ h1, h2, h3, h4, h5, h6, .font-display, .font-heading {
   }
 }
 
-@keyframes globe-ripple-2 {
-  0% {
-    transform: scale(0.75);
-    opacity: 0.85;
-  }
-  100% {
-    transform: scale(2.7);
-    opacity: 0;
-  }
-}
-
-@keyframes globe-spin-slow {
-  0% {
+@keyframes techco-globe-spin {
+  from {
     transform: rotate(0deg);
   }
-  100% {
+  to {
     transform: rotate(360deg);
   }
 }
 
-.globe-ripple-ring-1 {
-  animation: globe-ripple-1 2.4s cubic-bezier(0.1, 0.6, 0.4, 1) infinite;
-}
-
-.globe-ripple-ring-2 {
-  animation: globe-ripple-2 2.4s cubic-bezier(0.1, 0.6, 0.4, 1) infinite 1s;
-}
-
-.globe-spin-icon {
-  animation: globe-spin-slow 20s linear infinite;
+.techco-globe-spin {
+  animation: techco-globe-spin 18s linear infinite;
 }

@@ -96,7 +96,7 @@ export default function CompanyIntro() {
               <div className="absolute inset-0 bg-gradient-to-t from-[var(--canvas)] via-transparent to-transparent opacity-80" />
             </div>
 
-            {/* Overlapping Surface Funfact Card (Modeled on Techco Software Company Funfact Staging) */}
+            {/* Overlapping Surface Funfact Card (Exact Techco Software Company Staging) */}
             <div 
               className="relative -mt-8 sm:-mt-14 lg:-mt-22 w-full max-w-[490px] bg-[var(--surface)] text-[var(--text-primary)] p-5 sm:p-7 rounded-[26px] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.3)] border border-[var(--border)] hover:border-[var(--accent)]/50 z-20 transition-all duration-300 group/card overflow-hidden"
             >
@@ -106,9 +106,9 @@ export default function CompanyIntro() {
                 className="absolute -top-6 -right-6 w-32 h-32 rounded-bl-full bg-gradient-to-bl from-sky-500/20 via-[var(--accent)]/15 to-transparent pointer-events-none group-hover/card:scale-125 transition-transform duration-500 blur-xs"
               />
 
-              {/* Top Row: Trusted Avatars with Glowing (+) Badge + Learn More Action */}
+              {/* Top Row: Customer Count (Avatars + Happy Customers) and Learn More Action */}
               <div className="flex items-center justify-between pb-5 border-b border-[var(--border)] relative z-10">
-                <div className="flex items-center gap-3">
+                <div>
                   {/* Overlapping Avatar Stack with prominent (+) badge */}
                   <div className="flex items-center -space-x-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-700 to-blue-500 text-white flex items-center justify-center font-bold text-xs ring-2 ring-[var(--surface)] shadow-sm">
@@ -126,88 +126,60 @@ export default function CompanyIntro() {
                     </div>
                   </div>
 
-                  <div className="text-left">
-                    <span className="text-xs sm:text-sm font-bold text-[var(--text-primary)] block font-display leading-tight">
-                      Engineering Leadership
-                    </span>
-                    <span className="text-[11px] font-mono text-[var(--accent)] font-semibold">
-                      30+ Yrs Collective Craft
-                    </span>
-                  </div>
+                  <p className="text-xs sm:text-sm font-bold text-[var(--text-primary)] font-display mt-2 mb-0">
+                    Happy Customers
+                  </p>
                 </div>
 
                 {/* Learn More Action Button */}
                 <Link 
                   href="/about/"
-                  className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold text-white bg-[var(--accent)] hover:bg-[var(--accent-hover)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 group/btn flex-shrink-0"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-[var(--accent)] hover:bg-[var(--accent-hover)] transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 group/btn flex-shrink-0"
                 >
                   <span>Learn More</span>
                   <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                 </Link>
               </div>
 
-              {/* Middle Row: Techco Funfact Metric Counters */}
-              <div className="py-5 grid grid-cols-2 gap-4 border-b border-[var(--border)] relative z-10">
-                <div className="p-3 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)]">
-                  <div className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-display tracking-tight">
-                    06<span className="text-[var(--accent)]">+</span>
-                  </div>
-                  <div className="text-xs font-semibold text-[var(--text-primary)] mt-0.5 font-display">
-                    Official Services
-                  </div>
-                  <div className="text-[10px] font-mono text-[var(--text-muted)] mt-0.5">
-                    Full-Stack Engineering
-                  </div>
+              {/* Bottom Area: Exact Techco Layout with Glowing Globe on Left and Counters on Right */}
+              <div className="pt-6 flex items-center justify-between gap-4 relative z-10">
+                {/* Techco-Style Exact Glowing Icon Globe with Staggered Expanding Ripples */}
+                <div className="techco-icon-globe flex-shrink-0" aria-label="Global Software Engineering">
+                  <svg 
+                    fill="none" 
+                    height="24" 
+                    viewBox="0 0 32 32" 
+                    width="24" 
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="techco-globe-spin"
+                  >
+                    <path d="M16 31C24.2843 31 31 24.2843 31 16C31 7.71573 24.2843 1 16 1C7.71573 1 1 7.71573 1 16C1 24.2843 7.71573 31 16 31Z" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    <path d="M9.9999 2.5H11.4999C8.5749 11.26 8.5749 20.74 11.4999 29.5H9.9999" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    <path d="M20.5 2.5C23.425 11.26 23.425 20.74 20.5 29.5" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    <path d="M2.5 22V20.5C11.26 23.425 20.74 23.425 29.5 20.5V22" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                    <path d="M2.5 11.4999C11.26 8.5749 20.74 8.5749 29.5 11.4999" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+                  </svg>
                 </div>
 
-                <div className="p-3 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)]">
-                  <div className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-display tracking-tight">
-                    100<span className="text-[var(--accent)]">%</span>
-                  </div>
-                  <div className="text-xs font-semibold text-[var(--text-primary)] mt-0.5 font-display">
-                    Code Ownership
-                  </div>
-                  <div className="text-[10px] font-mono text-[var(--text-muted)] mt-0.5">
-                    Zero Lock-In Guarantee
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Row: The Iconic Glowing Wireframe Globe with Ripple Waves */}
-              <div className="pt-4 flex items-center justify-between gap-3 relative z-10">
-                <div className="flex items-center gap-3">
-                  {/* Glowing Globe Vessel with Animated Expanding Ripples */}
-                  <div className="relative w-11 h-11 flex-shrink-0 flex items-center justify-center">
-                    <div 
-                      aria-hidden="true"
-                      className="absolute inset-0 rounded-full border border-[var(--accent)] globe-ripple-ring-1 pointer-events-none"
-                    />
-                    <div 
-                      aria-hidden="true"
-                      className="absolute inset-0 rounded-full border border-sky-400 globe-ripple-ring-2 pointer-events-none"
-                    />
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[var(--accent)] via-sky-500 to-blue-600 flex items-center justify-center text-white shadow-[0_0_20px_rgba(10,133,177,0.55)] relative z-10">
-                      <Globe2 className="w-5 h-5 globe-spin-icon text-white" />
+                {/* Techco Funfact Metric Counters */}
+                <div className="flex items-center gap-6 sm:gap-8 justify-end flex-1">
+                  <div className="text-right">
+                    <div className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-display tracking-tight leading-none">
+                      06<span className="text-[var(--accent)] font-bold">+</span>
                     </div>
+                    <h3 className="text-xs text-[var(--text-muted)] mt-1 font-normal font-sans">
+                      Projects Done
+                    </h3>
                   </div>
 
-                  <div>
-                    <span className="text-xs font-bold text-[var(--text-primary)] block font-display leading-tight">
-                      Global Engineering Standards
-                    </span>
-                    <span className="text-[11px] font-mono text-[var(--text-muted)]">
-                      Warangal, India &bull; Worldwide Delivery
-                    </span>
+                  <div className="text-right">
+                    <div className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-display tracking-tight leading-none">
+                      100<span className="text-[var(--accent)] font-bold">%</span>
+                    </div>
+                    <h3 className="text-xs text-[var(--text-muted)] mt-1 font-normal font-sans">
+                      Results Guaranteed
+                    </h3>
                   </div>
-                </div>
-
-                <div className="hidden sm:block text-right">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block">
-                    Entity Status
-                  </span>
-                  <span className="text-xs font-bold font-mono text-[var(--accent)]">
-                    DPIIT &bull; MSME
-                  </span>
                 </div>
               </div>
             </div>
