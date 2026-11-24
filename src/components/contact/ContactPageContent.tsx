@@ -8,7 +8,7 @@ export default function ContactPageContent() {
   return (
     <div className="bg-[var(--canvas)] text-[var(--text-primary)] transition-colors duration-200">
       {/* Contact Hero Header */}
-      <section className="relative bg-[var(--surface)] text-[var(--text-primary)] py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
+      <section className="relative bg-[var(--surface)] text-[var(--text-primary)] pt-24 sm:pt-28 pb-14 sm:pb-20 lg:py-24 border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
         <StarWatermark size={580} position="top-right" variant="blue" opacity={0.03} rotate={15} />
         
         {/* Subtle ambient flare */}

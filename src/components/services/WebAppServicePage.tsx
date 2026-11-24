@@ -153,7 +153,7 @@ export default function WebAppServicePage() {
       {/* ========================================================================= */}
       {/* 1. HERO SECTION (SVSS wd-hero-sec)                                        */}
       {/* ========================================================================= */}
-      <section className="relative pt-20 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24 border-b border-[var(--border)] bg-[var(--surface)] overflow-hidden transition-colors duration-200">
+      <section className="relative pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24 border-b border-[var(--border)] bg-[var(--surface)] overflow-hidden transition-colors duration-200">
         <StarWatermark size={680} position="top-right" variant="blue" opacity={0.03} rotate={15} />
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[400px] bg-[var(--accent)]/[0.06] rounded-full blur-[140px] pointer-events-none transform-gpu" />
 

@@ -14,7 +14,7 @@ export default function ProductsPage() {
   return (
     <div className="bg-[var(--canvas)] text-[var(--text-primary)] transition-colors duration-200">
       {/* Product Hero Header */}
-      <section className="relative bg-[var(--surface)] text-[var(--text-primary)] py-14 sm:py-20 lg:py-28 border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
+      <section className="relative bg-[var(--surface)] text-[var(--text-primary)] pt-24 sm:pt-28 pb-14 sm:pb-20 lg:py-28 border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
         <StarWatermark size={650} position="top-right" variant="blue" opacity={0.03} rotate={15} />
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[400px] bg-[var(--accent)]/[0.06] rounded-full blur-[140px] pointer-events-none transform-gpu" />
 

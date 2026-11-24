@@ -111,16 +111,16 @@ export default function Navbar() {
         {/* 1. Left: Official Brand Logo with Dual-Theme Integration */}
         <Link 
           href="/" 
-          className="flex items-center gap-3 group flex-shrink-0" 
+          className="flex items-center gap-2 sm:gap-3 group flex-shrink-0" 
           aria-label="Tech22Blocks Home"
         >
-          <div className="bg-white px-3 py-1.5 rounded-xl border border-white/40 shadow-sm transition-transform duration-200 group-hover:scale-[1.02]">
-            <div className="relative h-7 w-36 sm:h-8 sm:w-44">
+          <div className="bg-white px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-white/40 shadow-sm transition-transform duration-200 group-hover:scale-[1.02]">
+            <div className="relative h-6 w-32 sm:h-8 sm:w-44">
               <Image
                 src={getAssetUrl('/images/tech22blocks-logo.jpg')}
                 alt="Tech22Blocks — RRK Software Technologies Private Limited"
                 fill
-                sizes="(max-width: 640px) 144px, 176px"
+                sizes="(max-width: 640px) 128px, 176px"
                 priority
                 className="object-contain object-left"
               />
@@ -257,13 +257,13 @@ export default function Navbar() {
         </div>
 
         {/* 4. Mobile: Theme Toggle & Hamburger Button */}
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-1.5 sm:gap-2 flex-shrink-0">
           
           <button
             type="button"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="w-9 h-9 rounded-xl flex items-center justify-center bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-xl flex items-center justify-center bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors cursor-pointer flex-shrink-0"
           >
             {mounted && theme === 'light' ? (
               <Moon className="w-4 h-4 text-slate-700" />
@@ -275,7 +275,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="w-10 h-10 rounded-xl flex items-center justify-center text-[var(--text-primary)] bg-[var(--surface-elevated)] border border-[var(--border)] transition-colors"
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-[var(--text-primary)] bg-[var(--surface-elevated)] border border-[var(--border)] transition-colors flex-shrink-0"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >

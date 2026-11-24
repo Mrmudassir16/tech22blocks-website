@@ -28,12 +28,12 @@ const WALL_TILES_ROW2 = [
 
 export default function AboutHeroWall() {
   return (
-    <section className="relative pt-10 sm:pt-14 lg:pt-16 pb-4 sm:pb-6 bg-[var(--canvas)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
+    <section className="relative pt-28 sm:pt-32 lg:pt-36 pb-6 sm:pb-8 bg-[var(--canvas)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
       
       {/* Background Soft Glow */}
       <div 
         aria-hidden="true" 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-[var(--accent)]/[0.07] rounded-full blur-[140px] pointer-events-none transform-gpu" 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[700px] h-[300px] bg-[var(--accent)]/[0.07] rounded-full blur-[140px] pointer-events-none transform-gpu" 
       />
 
       {/* Hero Copy (Modeled on SVSS ab-wall-copy) */}

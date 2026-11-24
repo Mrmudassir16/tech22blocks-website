@@ -138,7 +138,7 @@ export default function TechcoServicesSection() {
       {/* ========================================================================= */}
       {/* 1. TECHCO-STYLE HERO BANNER WITH 3D ANIMATED ILLUSTRATION                 */}
       {/* ========================================================================= */}
-      <section className="relative py-14 sm:py-20 lg:py-24 bg-[var(--surface)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
+      <section className="relative pt-24 sm:pt-28 pb-14 sm:pb-20 lg:py-24 bg-[var(--surface)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
         <StarWatermark size={650} position="top-right" variant="blue" opacity={0.03} rotate={15} />
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[400px] bg-[var(--accent)]/[0.06] rounded-full blur-[140px] pointer-events-none transform-gpu" />
 

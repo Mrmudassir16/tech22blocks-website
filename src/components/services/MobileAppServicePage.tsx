@@ -470,7 +470,7 @@ self.addEventListener('fetch', (event) => {
       {/* ========================================================================= */}
       {/* 1. HERO SECTION WITH AUTHENTIC SVSS ms-lh-kicker & COMPACT PHONE          */}
       {/* ========================================================================= */}
-      <section className="relative pt-20 pb-16 sm:pt-26 sm:pb-20 lg:pt-28 lg:pb-22 border-b border-[var(--border)] overflow-hidden">
+      <section className="relative pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24 border-b border-[var(--border)] overflow-hidden">
         
         {/* Ambient Gradient Glow */}
         <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-gradient-to-tr from-[var(--accent)]/15 via-sky-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />

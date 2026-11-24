@@ -41,7 +41,9 @@ export default function Star3DEngine({
       className={`relative flex items-center justify-center select-none pointer-events-none ${className}`}
       style={{
         width: `${size}px`,
+        maxWidth: '100%',
         height: `${size}px`,
+        maxHeight: '100%',
       }}
     >
       {/* 1. Ambient Volumetric Radial Halo (Pre-rendered GPU composite) */}

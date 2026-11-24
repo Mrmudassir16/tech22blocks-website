@@ -17,8 +17,8 @@ export default function HeroSection() {
       {/* Background Volumetric Vignette & Precision Grid */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Soft Ambient Radial Flares */}
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[500px] bg-sky-500/[0.08] rounded-full blur-[140px] transform-gpu" />
-        <div className="absolute top-1/3 right-1/4 w-[550px] h-[550px] bg-[var(--accent)]/[0.12] rounded-full blur-[150px] transform-gpu" />
+        <div className="absolute top-1/4 left-1/4 w-[600px] max-w-full h-[500px] bg-sky-500/[0.08] rounded-full blur-[140px] transform-gpu pointer-events-none" />
+        <div className="absolute top-1/3 right-1/4 w-[550px] max-w-full h-[550px] bg-[var(--accent)]/[0.12] rounded-full blur-[150px] transform-gpu pointer-events-none" />
 
         {/* Micro-Grid with Radial Mask */}
         <div 
@@ -99,13 +99,14 @@ export default function HeroSection() {
 
             {/* Soft Ambient Aura */}
             <div 
-              className="absolute w-[420px] h-[420px] sm:w-[500px] sm:h-[500px] bg-sky-500/[0.12] rounded-full blur-[90px] pointer-events-none"
+              className="absolute w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-sky-500/[0.12] rounded-full blur-[90px] pointer-events-none"
               aria-hidden="true" 
             />
 
             {/* 3D Star Engine */}
-            <div className="relative z-10 w-[360px] h-[360px] sm:w-[480px] sm:h-[480px] flex items-center justify-center">
-              <Star3DEngine size={460} interactive={true} autoRotateSpeed={24} />
+            <div className="relative z-10 w-full max-w-[280px] h-[280px] sm:max-w-[420px] sm:h-[420px] lg:max-w-[480px] lg:h-[480px] flex items-center justify-center">
+              <Star3DEngine size={280} interactive={true} autoRotateSpeed={24} className="sm:hidden" />
+              <Star3DEngine size={460} interactive={true} autoRotateSpeed={24} className="hidden sm:flex" />
             </div>
 
           </div>
