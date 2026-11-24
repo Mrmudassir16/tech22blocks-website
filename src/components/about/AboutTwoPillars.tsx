@@ -6,8 +6,8 @@ import { Box, Wrench, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export default function AboutTwoPillars() {
   return (
-    <section className="relative py-14 sm:py-20 lg:py-24 bg-[var(--surface)] text-[var(--text-primary)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 sm:space-y-14">
+    <section className="relative py-10 sm:py-14 lg:py-16 bg-[var(--surface)] text-[var(--text-primary)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8 sm:space-y-10">
         
         {/* Section Header */}
         <div className="max-w-3xl">

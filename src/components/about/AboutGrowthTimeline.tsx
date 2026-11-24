@@ -64,11 +64,11 @@ export default function AboutGrowthTimeline() {
   const progressPercent = ((currentIndex + 1) / MILESTONES.length) * 100;
 
   return (
-    <section className="relative py-14 sm:py-20 lg:py-24 bg-[var(--surface)] text-[var(--text-primary)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
+    <section className="relative py-10 sm:py-14 lg:py-16 bg-[var(--surface)] text-[var(--text-primary)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-8 sm:mb-12">
+        <div className="max-w-3xl mb-6 sm:mb-8">
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
             Our Journey
           </span>

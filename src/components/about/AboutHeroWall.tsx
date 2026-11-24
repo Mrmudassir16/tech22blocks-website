@@ -28,21 +28,16 @@ const WALL_TILES_ROW2 = [
 
 export default function AboutHeroWall() {
   return (
-    <section className="relative pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12 bg-[var(--canvas)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
+    <section className="relative pt-10 sm:pt-14 lg:pt-16 pb-4 sm:pb-6 bg-[var(--canvas)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
       
       {/* Background Soft Glow */}
       <div 
         aria-hidden="true" 
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[var(--accent)]/[0.07] rounded-full blur-[140px] pointer-events-none transform-gpu" 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-[var(--accent)]/[0.07] rounded-full blur-[140px] pointer-events-none transform-gpu" 
       />
 
       {/* Hero Copy (Modeled on SVSS ab-wall-copy) */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 mb-8 sm:mb-12">
-        <div className="inline-flex items-center gap-2 mb-3.5 px-3 py-1 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/25 text-xs font-mono font-semibold text-[var(--accent)]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-          <span>Who We Are &bull; Est. 2025</span>
-        </div>
-
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 mb-5 sm:mb-7">
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-[var(--text-primary)] font-display">
           Engineering Digital Success{' '}
           <span className="bg-gradient-to-r from-[var(--accent)] via-sky-500 to-indigo-500 bg-clip-text text-transparent">

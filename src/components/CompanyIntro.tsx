@@ -165,7 +165,7 @@ export default function CompanyIntro() {
                 <div className="flex items-center gap-6 sm:gap-8 justify-end flex-1">
                   <div className="text-right">
                     <div className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-display tracking-tight leading-none">
-                      06<span className="text-[var(--accent)] font-bold">+</span>
+                      10<span className="text-[var(--accent)] font-bold">+</span>
                     </div>
                     <h3 className="text-xs text-[var(--text-muted)] mt-1 font-normal font-sans">
                       Projects Done

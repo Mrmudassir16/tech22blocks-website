@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { 
   CheckCircle2, 
   ArrowRight, 
-  ArrowLeft, 
   Search, 
   Code2, 
   ShieldCheck, 
@@ -21,8 +20,9 @@ import { SectionTransitionShape } from '@/components/design-system/SectionDecora
 interface ProcessStep {
   id: string;
   num: string;
+  pct: number;
   title: string;
-  navTitle: string;
+  image: string;
   shortDesc: string;
   deliverables: string[];
 }
@@ -31,111 +31,92 @@ const PROCESS_STEPS: ProcessStep[] = [
   {
     id: 'step-01',
     num: '01',
+    pct: 20,
     title: 'Discovery Phase',
-    navTitle: 'Discovery',
-    shortDesc: 'Structured requirement discovery, technical feasibility validation, and architectural blueprinting before code execution.',
-    deliverables: ['Scope & Feasibility', 'Architecture Blueprint', 'Milestone Roadmap'],
+    image: 'images/svss/proc-planning.webp',
+    shortDesc: 'Structured requirement discovery, technical feasibility validation, and architectural blueprinting before code execution. We establish clear milestone deliverables and product roadmaps.',
+    deliverables: ['Scope & Feasibility Analysis', 'Architecture Blueprint', 'Milestone Delivery Roadmap'],
   },
   {
     id: 'step-02',
     num: '02',
-    title: 'Design and Development',
-    navTitle: 'Design & Dev',
-    shortDesc: 'Modern atomic component systems, full-stack TypeScript engineering, and scalable backend microservices.',
-    deliverables: ['Interactive Prototypes', 'Full-Stack Code', 'Git Code Reviews'],
+    pct: 40,
+    title: 'Design and Architecture',
+    image: 'images/svss/proc-design.webp',
+    shortDesc: 'Modern atomic component systems, high-fidelity clickable Figma prototypes, and clean domain-driven architecture designed for zero tech-debt from day one.',
+    deliverables: ['Interactive Design Prototypes', 'Design System & Tokens', 'Database Schema Models'],
   },
   {
     id: 'step-03',
     num: '03',
-    title: 'Testing and QA',
-    navTitle: 'Testing & QA',
-    shortDesc: 'Comprehensive automated test suites, multi-device responsiveness testing, and security vulnerability checks.',
-    deliverables: ['Automated Regression', 'Cross-Device QA', 'Security Compliance'],
+    pct: 60,
+    title: 'Engineering and Development',
+    image: 'images/svss/proc-dev.webp',
+    shortDesc: 'Agile sprint execution using full-stack TypeScript, native mobile engines (Swift/Kotlin/Flutter), and scalable microservices with daily commits and weekly sprint demos.',
+    deliverables: ['Clean Full-Stack Code', 'Automated Unit Test Suites', 'Weekly Working Software Demos'],
   },
   {
     id: 'step-04',
     num: '04',
-    title: 'Deployment',
-    navTitle: 'Deployment',
-    shortDesc: 'Automated CI/CD multi-cloud production rollouts with blue-green delivery and zero-downtime cutover.',
-    deliverables: ['Zero-Downtime CI/CD', 'Edge CDN Rollout', 'Health Telemetry'],
+    pct: 80,
+    title: 'Testing and Quality Assurance',
+    image: 'images/svss/proc-testing.webp',
+    shortDesc: 'Comprehensive automated regression test suites, cross-browser/device responsiveness verification, latency stress audits, and OWASP security vulnerability checks.',
+    deliverables: ['Automated End-to-End Tests', 'Cross-Device QA Signoff', 'Security & Latency Audits'],
   },
   {
     id: 'step-05',
     num: '05',
-    title: 'Maintenance',
-    navTitle: 'Maintenance',
-    shortDesc: 'Proactive 24/7 uptime monitoring, security patching, and continuous database & latency optimization.',
-    deliverables: ['24/7 Monitoring', 'Security Patches', 'Sub-100ms Tuning'],
+    pct: 100,
+    title: 'Deployment and Continuous Scaling',
+    image: 'images/svss/proc-launch.webp',
+    shortDesc: 'Zero-downtime production cutovers with blue-green CI/CD automation, cloud infrastructure provisioning, store submissions, and 24/7 proactive uptime telemetry.',
+    deliverables: ['Automated CI/CD Deployment', 'Store Launch Management', '3-Month Post-Launch Warranty'],
   },
 ];
 
 export default function WorkingProcessSection() {
   const [activeStep, setActiveStep] = useState<number>(0);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [isInView, setIsInView] = useState<boolean>(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const stepperScrollRef = useRef<HTMLDivElement>(null);
+  const stepRefs = useRef<(HTMLLIElement | null)[]>([]);
 
-  // Intersection Observer: Start auto-cycle only when scrolled into view
+  // IntersectionObserver: Active step is driven by the middle of the screen
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0]) {
-          setIsInView(entries[0].isIntersecting);
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number(entry.target.getAttribute('data-home-step'));
+            if (!isNaN(idx)) {
+              setActiveStep(idx);
+            }
+          }
+        });
       },
-      { threshold: 0.2 }
+      {
+        root: null,
+        rootMargin: '-45% 0px -45% 0px',
+      }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    stepRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
 
     return () => observer.disconnect();
   }, []);
 
-  // Automatic Step Progression: Moves one step after another every 4.5s unless hovered
-  useEffect(() => {
-    if (!isInView || isHovered) return;
-
-    const timer = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % PROCESS_STEPS.length);
-    }, 4500);
-
-    return () => clearInterval(timer);
-  }, [isInView, isHovered]);
-
-  // Keep active step scrolled into view on mobile
-  useEffect(() => {
-    if (stepperScrollRef.current) {
-      const activeEl = stepperScrollRef.current.children[activeStep] as HTMLElement;
-      if (activeEl) {
-        const container = stepperScrollRef.current;
-        const scrollLeft = activeEl.offsetLeft - container.offsetWidth / 2 + activeEl.offsetWidth / 2;
-        container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-      }
-    }
-  }, [activeStep]);
-
-  const currentStep = PROCESS_STEPS[activeStep];
-
-  const getStepIcon = (idx: number, className = 'w-4 h-4 sm:w-5 sm:h-5') => {
-    switch (idx) {
-      case 0: return <Search className={className} />;
-      case 1: return <Code2 className={className} />;
-      case 2: return <ShieldCheck className={className} />;
-      case 3: return <Rocket className={className} />;
-      case 4: return <Activity className={className} />;
-      default: return <Layers className={className} />;
+  const handleStepClick = (idx: number) => {
+    setActiveStep(idx);
+    const target = stepRefs.current[idx];
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
   return (
     <section 
-      ref={sectionRef}
       id="working-process"
-      className="relative pt-6 sm:pt-10 pb-12 sm:pb-16 bg-[var(--canvas)] text-[var(--text-primary)] transition-colors duration-200 overflow-hidden"
+      className="relative pt-12 sm:pt-16 pb-16 sm:pb-24 ms-jr-sec ms-jr-themed transition-colors duration-200"
       aria-labelledby="process-heading"
     >
       {/* Dynamic Section Transition Shape (Stepped Shelf Left) */}
@@ -155,7 +136,7 @@ export default function WorkingProcessSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="mb-6 sm:mb-8 text-center max-w-3xl mx-auto">
+        <div className="mb-10 sm:mb-14 text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 mb-2.5">
             <span className="text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
               Working Process
@@ -170,159 +151,97 @@ export default function WorkingProcessSection() {
           </div>
 
           <div>
-            <h2 id="process-heading" className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight cursor-default mb-2 font-display">
+            <h2 id="process-heading" className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight cursor-default mb-3 font-display">
               <StaggeredText text="How" />{' '}
               <StaggeredText text="We" />{' '}
               <StaggeredText text="Engineer" isShimmer />{' '}
               <StaggeredText text="& Ship" />
             </h2>
-            <p className="text-xs sm:text-sm text-[var(--text-muted)] font-normal leading-relaxed max-w-xl mx-auto">
-              A disciplined, milestone-driven development pipeline from initial architecture to continuous scaling.
+            <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] font-normal leading-relaxed max-w-xl mx-auto">
+              A disciplined, milestone-driven development journey from initial discovery to continuous production scaling.
             </p>
           </div>
         </div>
 
-        {/* ========================================================================= */}
-        {/* COMPACT & UNIFORM STEPPER FLOW: Consistent Appearance Across All Phases   */}
-        {/* ========================================================================= */}
-        <div 
-          className="rounded-2xl sm:rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-lg p-4 sm:p-6 lg:p-7 relative overflow-hidden transition-all duration-300"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-
-          {/* 1. Horizontal Stepper Stations Track (Clean Symmetrical Structure, Zero Ticks, No Piercing Line) */}
-          <div className="relative mb-6 pb-2">
+        {/* Authentic SVSS ms-jr Scroll Journey Grid */}
+        <div className="ms-jr">
+          
+          {/* Left Sticky Stage (.ms-jr-stage) */}
+          <div className="ms-jr-stage" aria-hidden="true">
             
-            {/* Clean, Subtle Connecting Track (Runs behind stations without piercing into logos) */}
-            <div className="hidden md:block absolute top-6 left-12 right-12 h-[2px] bg-[var(--border)] rounded-full -translate-y-1/2 z-0" />
-
-            {/* Stepper Milestone Stations: Never mutates to ticks, remains clean on all phases */}
-            <div 
-              ref={stepperScrollRef}
-              className="flex md:grid md:grid-cols-5 items-center justify-between gap-2.5 sm:gap-3 overflow-x-auto pb-2 md:pb-0 scrollbar-none snap-x relative z-10"
-            >
-              {PROCESS_STEPS.map((step, idx) => {
-                const isActive = activeStep === idx;
-
+            {/* Screen Container with Multi-Layered Stage Images */}
+            <div className="ms-jr-screen">
+              {PROCESS_STEPS.map((step, sIdx) => {
+                const isOn = activeStep === sIdx;
                 return (
-                  <button
-                    key={step.id}
-                    type="button"
-                    onClick={() => setActiveStep(idx)}
-                    className={`flex-shrink-0 snap-center group/station flex flex-col items-center text-center p-2 rounded-xl transition-all duration-300 cursor-pointer focus:outline-none min-w-[105px] md:min-w-0 ${
-                      isActive 
-                        ? 'bg-[var(--surface-elevated)] ring-1 ring-[var(--accent)]/40 shadow-sm' 
-                        : 'hover:bg-[var(--surface-elevated)]/50'
+                  <Image
+                    key={sIdx}
+                    src={getAssetUrl(step.image)}
+                    alt={step.title}
+                    fill
+                    sizes="(max-width: 900px) 100vw, 550px"
+                    priority={sIdx === 0}
+                    data-active={isOn ? 'true' : 'false'}
+                    className={`object-cover transition-all duration-700 ${
+                      isOn ? 'on opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
                     }`}
-                    aria-selected={isActive}
-                    aria-label={`Milestone ${step.num}: ${step.title}`}
-                  >
-                    {/* Circle Node Icon: ALWAYS shows the authentic phase icon & number, NEVER a tick mark */}
-                    <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-mono font-bold text-xs transition-all duration-300 relative ${
-                      isActive
-                        ? 'bg-[var(--accent)] text-white ring-4 ring-sky-500/20 shadow-[0_0_14px_rgba(10,133,177,0.4)] scale-105'
-                        : 'bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-muted)] group-hover/station:border-[var(--accent)]/50 group-hover/station:text-[var(--text-primary)]'
-                    }`}>
-                      {getStepIcon(idx)}
-
-                      {/* Small Step Number Floating Pill: ALWAYS displays 01, 02, 03, 04, 05 */}
-                      <span className={`absolute -top-1 -right-1 px-1 py-0.2 rounded text-[9px] font-mono font-bold uppercase ${
-                        isActive
-                          ? 'bg-white text-[var(--accent)] shadow-sm'
-                          : 'bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-muted)]'
-                      }`}>
-                        {step.num}
-                      </span>
-                    </div>
-
-                    {/* Step Name */}
-                    <span className={`mt-2 text-xs font-bold tracking-tight transition-colors line-clamp-1 ${
-                      isActive ? 'text-[var(--accent)] font-bold' : 'text-[var(--text-primary)] group-hover/station:text-[var(--accent)]'
-                    }`}>
-                      {step.navTitle}
-                    </span>
-                  </button>
+                  />
                 );
               })}
-            </div>
-          </div>
 
-          {/* 2. Sleek, Focused Active Stage Console (Matches Screenshot) */}
-          <div className="bg-[var(--surface-elevated)] border border-[var(--border)] rounded-xl sm:rounded-2xl p-4 sm:p-6 relative overflow-hidden transition-all duration-300">
-            
-            {/* Top Row: Phase Tag & Navigation Controls */}
-            <div className="flex items-center justify-between gap-3 mb-3 pb-3 border-b border-[var(--border)]">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/25 text-[11px] font-mono font-bold uppercase tracking-wider text-[var(--accent)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
-                <span>Phase {currentStep.num}</span>
-              </div>
-
-              {/* Prev / Next & Step Indicator */}
-              <div className="flex items-center gap-2">
-                <div className="hidden sm:flex items-center gap-1.5 mr-2">
-                  {PROCESS_STEPS.map((s, idx) => (
-                    <button
-                      key={s.id}
-                      type="button"
-                      onClick={() => setActiveStep(idx)}
-                      className={`h-2 rounded-full transition-all cursor-pointer ${
-                        activeStep === idx 
-                          ? 'w-5 bg-[var(--accent)]' 
-                          : 'w-2 bg-[var(--border)] hover:bg-[var(--text-muted)]'
-                      }`}
-                      aria-label={`Jump to phase ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveStep((prev) => (prev - 1 + PROCESS_STEPS.length) % PROCESS_STEPS.length)}
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-[var(--border)] hover:border-[var(--accent)] text-[var(--text-muted)] hover:text-[var(--text-primary)] bg-[var(--surface)] flex items-center justify-center transition-all cursor-pointer"
-                  aria-label="Previous Phase"
-                >
-                  <ArrowLeft className="w-3.5 h-3.5" />
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveStep((prev) => (prev + 1) % PROCESS_STEPS.length)}
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white flex items-center justify-center shadow-sm transition-all cursor-pointer"
-                  aria-label="Next Phase"
-                >
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Main Content: Title & Concise Summary */}
-            <div className="space-y-1.5 mb-4">
-              <h3 className="text-lg sm:text-xl font-extrabold text-[var(--text-primary)] tracking-tight font-display">
-                {currentStep.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed max-w-3xl">
-                {currentStep.shortDesc}
-              </p>
-            </div>
-
-            {/* Bottom Row: Key Deliverables as Compact Inline Pills */}
-            <div className="pt-2.5 border-t border-[var(--border)]/70 flex flex-wrap items-center gap-2">
-              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)] font-semibold mr-1">
-                Deliverables:
+              {/* Live Badge that lights up at 100% Launch Stage */}
+              <span className={`ms-jr-live ${activeStep === 4 ? 'on' : ''}`}>
+                Production Live &amp; Scaling
               </span>
-              {currentStep.deliverables.map((deliv, i) => (
-                <div 
-                  key={i}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-[11px] sm:text-xs font-medium text-[var(--text-primary)]"
-                >
-                  <CheckCircle2 className="w-3 h-3 text-[var(--accent)] flex-shrink-0" />
-                  <span>{deliv}</span>
-                </div>
-              ))}
+            </div>
+
+            {/* Progress Meter with Stage Name and Percentage */}
+            <div className="ms-jr-meter">
+              <span className="ms-jr-stagename">
+                {PROCESS_STEPS[activeStep]?.title}
+              </span>
+              <span className="ms-jr-pct">
+                <b>{PROCESS_STEPS[activeStep]?.pct}</b>%
+              </span>
+              <span className="ms-jr-bar">
+                <i style={{ width: `${PROCESS_STEPS[activeStep]?.pct}%` }} />
+              </span>
             </div>
 
           </div>
+
+          {/* Right Steps Column with Scroll Heights (.ms-jr-steps) */}
+          <ol className="ms-jr-steps">
+            {PROCESS_STEPS.map((step, idx) => {
+              const isOn = activeStep === idx;
+              return (
+                <li
+                  key={step.id}
+                  ref={(el) => { stepRefs.current[idx] = el; }}
+                  data-home-step={idx}
+                  onClick={() => handleStepClick(idx)}
+                  className={`${isOn ? 'on' : ''}`}
+                >
+                  <span className="ms-jr-num">{step.num}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.shortDesc}</p>
+
+                  {/* Deliverables Badges */}
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {step.deliverables.map((item, dIdx) => (
+                      <span 
+                        key={dIdx}
+                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-primary)]"
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[var(--accent)] shrink-0" />
+                        <span>{item}</span>
+                      </span>
+                    ))}
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
 
         </div>
 

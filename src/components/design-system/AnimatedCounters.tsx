@@ -19,7 +19,7 @@ export interface StatItem {
 export const COMPANY_STATS: StatItem[] = [
   {
     id: 'projects',
-    value: 50,
+    value: 10,
     prefix: '+',
     suffix: '',
     label: 'Projects Delivered',
