@@ -116,7 +116,7 @@ export default function WorkingProcessSection() {
   return (
     <section 
       id="working-process"
-      className="relative pt-12 sm:pt-16 pb-16 sm:pb-24 ms-jr-sec ms-jr-themed transition-colors duration-200"
+      className="relative pt-12 sm:pt-16 pb-16 sm:pb-24 ms-jr-sec ms-jr-themed overflow-x-clip transition-colors duration-200"
       aria-labelledby="process-heading"
     >
       {/* Dynamic Section Transition Shape (Stepped Shelf Left) */}

@@ -83,7 +83,7 @@ export default function CaseStudiesSection() {
   return (
     <section 
       id="case-studies"
-      className="relative pt-12 sm:pt-16 pb-8 sm:pb-10 bg-[var(--surface-elevated)] text-[var(--text-primary)] transition-colors duration-200" 
+      className="relative pt-12 sm:pt-16 pb-8 sm:pb-10 bg-[var(--surface-elevated)] text-[var(--text-primary)] overflow-x-clip transition-colors duration-200" 
       aria-labelledby="case-studies-heading"
     >
       {/* 1. Dynamic Section Transition Shape (Stepped Shelf Left - No straight border line) */}
