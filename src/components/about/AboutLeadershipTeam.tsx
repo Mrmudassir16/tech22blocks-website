@@ -78,9 +78,11 @@ export default function AboutLeadershipTeam() {
         
         {/* Main Leadership Section Header */}
         <div className="max-w-3xl mb-8 sm:mb-10">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
-            Leadership &amp; Heritage
-          </span>
+          <div>
+            <span className="heading-focus-underline text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
+              Leadership &amp; Heritage
+            </span>
+          </div>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
             <StaggeredText text="Our" />{' '}
             <StaggeredText text="Leadership" isShimmer />
@@ -181,9 +183,11 @@ export default function AboutLeadershipTeam() {
 
         {/* Team Members Section Header (Below Father & Son) */}
         <div className="max-w-3xl mb-7 sm:mb-9">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
-            Leadership &amp; Talent
-          </span>
+          <div>
+            <span className="heading-focus-underline text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
+              Leadership &amp; Talent
+            </span>
+          </div>
           <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
             <StaggeredText text="Leadership" />{' '}
             <StaggeredText text="Team" isShimmer />

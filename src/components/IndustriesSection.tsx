@@ -138,17 +138,10 @@ export default function IndustriesSection() {
         
         {/* Section Header (SVSS Style Eyebrow + Subtitle) */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)] bg-[var(--surface)] px-3 py-1 rounded-full border border-[var(--border)] shadow-sm">
+          <div className="mb-3">
+            <span className="heading-focus-underline text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
               Industries
             </span>
-            <Image 
-              src={getAssetUrl('/images/shape_title_under_line.svg')} 
-              alt="" 
-              width={44} 
-              height={8} 
-              className="inline-block brightness-150"
-            />
           </div>
 
           <h2 id="industries-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-[-0.03em] leading-tight cursor-default">

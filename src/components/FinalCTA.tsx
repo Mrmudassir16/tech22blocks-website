@@ -32,17 +32,10 @@ export default function FinalCTA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-6 sm:space-y-8">
           
-          <div className="inline-flex items-center gap-2 mb-2">
-            <span className="text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
+          <div className="mb-2">
+            <span className="heading-focus-underline text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
               Initiate an Engineering Dialogue
             </span>
-            <Image 
-              src={getAssetUrl('/images/shape_title_under_line.svg')} 
-              alt="" 
-              width={48} 
-              height={9} 
-              className="inline-block opacity-80"
-            />
           </div>
 
           {/* Perfectly Centered Balanced Headline */}

@@ -22,9 +22,11 @@ export default function AboutPartnerIntro() {
         
         {/* Intro Copy */}
         <div className="max-w-3xl">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
-            Generational Trust &bull; Modern Craft
-          </span>
+          <div>
+            <span className="heading-focus-underline text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
+              Generational Trust &bull; Modern Craft
+            </span>
+          </div>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2.5 font-display">
             <StaggeredText text="Your Trusted" />{' '}
             <StaggeredText text="Technology Partner" isShimmer />

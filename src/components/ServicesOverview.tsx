@@ -168,17 +168,10 @@ export default function ServicesOverview() {
         
         {/* Section Header (SVSS Style Eyebrow + Crisp Typography) */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)] bg-[var(--surface)] px-3 py-1 rounded-full border border-[var(--border)] shadow-sm">
+          <div className="mb-3">
+            <span className="heading-focus-underline text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
               Our Services
             </span>
-            <Image 
-              src={getAssetUrl('/images/shape_title_under_line.svg')} 
-              alt="" 
-              width={44} 
-              height={8} 
-              className="inline-block brightness-150"
-            />
           </div>
 
           <div>

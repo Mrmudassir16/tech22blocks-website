@@ -657,6 +657,11 @@ self.addEventListener('fetch', (event) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Platform Stack
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="One Team for" />{' '}
               <StaggeredText text="Every Platform" isShimmer />
@@ -752,9 +757,11 @@ self.addEventListener('fetch', (event) => {
           
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block">
-              Solutions
-            </span>
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Solutions
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Full-Spectrum Digital Solutions," />{' '}
               <StaggeredText text="Under One Roof" isShimmer />
@@ -887,9 +894,11 @@ self.addEventListener('fetch', (event) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block">
-              Proven Delivery
-            </span>
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Proven Delivery
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Apps" />{' '}
               <StaggeredText text="We’ve Built" isShimmer />
@@ -986,9 +995,11 @@ self.addEventListener('fetch', (event) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block">
-              Industry Domains
-            </span>
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Industry Domains
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Apps" />{' '}
               <StaggeredText text="We Build" isShimmer />
@@ -1122,6 +1133,11 @@ self.addEventListener('fetch', (event) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-sky-400 font-mono">
+                Engineering Process
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-display mb-3">
               Our Custom Mobile App Development Process{' '}
               <span className="text-sky-400">to Boost Your Business</span>
@@ -1235,9 +1251,11 @@ self.addEventListener('fetch', (event) => {
             <div className="lg:col-span-7 space-y-6">
               
               <div>
-                <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block">
-                  Engineering Standards
-                </span>
+                <div className="mb-2">
+                  <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                    Engineering Standards
+                  </span>
+                </div>
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-4">
                   <StaggeredText text="Why" />{' '}
                   <StaggeredText text="Choose Us" isShimmer />
@@ -1317,9 +1335,11 @@ self.addEventListener('fetch', (event) => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center mb-10 sm:mb-14">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block">
-              Clear Answers
-            </span>
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Clear Answers
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Mobile App" />{' '}
               <StaggeredText text="Development FAQs" isShimmer />

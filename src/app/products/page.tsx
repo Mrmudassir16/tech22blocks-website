@@ -20,8 +20,10 @@ export default function ProductsPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[var(--accent)] mb-3 sm:mb-4 px-3 py-1 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/30">
-              <span>Internal R&amp;D Initiatives</span>
+            <div className="mb-3 sm:mb-4">
+              <span className="heading-focus-underline text-xs font-mono font-bold uppercase tracking-widest text-[var(--accent)]">
+                Internal R&amp;D Initiatives
+              </span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-[var(--text-primary)] font-display">
               We don&apos;t just build for clients. We build for ourselves too.
@@ -41,8 +43,10 @@ export default function ProductsPage() {
         <StarWatermark size={550} position="bottom-right" variant="blue" opacity={0.02} rotate={-10} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mb-10 sm:mb-14">
-            <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[var(--accent)] mb-3 px-3 py-1 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/30">
-              <span>Product Philosophy</span>
+            <div className="mb-3">
+              <span className="heading-focus-underline text-xs font-mono font-bold uppercase tracking-widest text-[var(--accent)]">
+                Product Philosophy
+              </span>
             </div>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
               Why We Build In-House Products

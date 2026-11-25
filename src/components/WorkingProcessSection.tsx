@@ -137,17 +137,10 @@ export default function WorkingProcessSection() {
         
         {/* Section Header */}
         <div className="mb-10 sm:mb-14 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 mb-2.5">
-            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
+          <div className="mb-2.5">
+            <span className="heading-focus-underline text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
               Working Process
             </span>
-            <Image 
-              src={getAssetUrl('/images/shape_title_under_line.svg')} 
-              alt="" 
-              width={42} 
-              height={8} 
-              className="inline-block brightness-150"
-            />
           </div>
 
           <div>

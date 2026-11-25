@@ -32,17 +32,10 @@ export default function CompanyIntro() {
           
           {/* Left Column: Heading, Focus Underline, and Mission Statement */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2">
-              <span className="text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
+            <div>
+              <span className="heading-focus-underline text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
                 About Us
               </span>
-              <Image 
-                src={getAssetUrl('/images/shape_title_under_line.svg')} 
-                alt="" 
-                width={48} 
-                height={9} 
-                className="inline-block brightness-150"
-              />
             </div>
 
             <div>

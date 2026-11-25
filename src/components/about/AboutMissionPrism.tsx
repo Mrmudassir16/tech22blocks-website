@@ -44,9 +44,11 @@ export default function AboutMissionPrism() {
         
         {/* Section Header */}
         <div className="max-w-2xl mx-auto mb-6 sm:mb-8">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
-            Core Philosophy
-          </span>
+          <div>
+            <span className="heading-focus-underline text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
+              Core Philosophy
+            </span>
+          </div>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
             <StaggeredText text="Mission, Vision" />{' '}
             <StaggeredText text="& Values" isShimmer />

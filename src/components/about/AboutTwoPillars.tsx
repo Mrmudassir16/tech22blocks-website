@@ -12,9 +12,11 @@ export default function AboutTwoPillars() {
         
         {/* Section Header */}
         <div className="max-w-3xl">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
-            Our Business Pillars
-          </span>
+          <div>
+            <span className="heading-focus-underline text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
+              Our Business Pillars
+            </span>
+          </div>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
             <StaggeredText text="What" />{' '}
             <StaggeredText text="We Do" isShimmer />

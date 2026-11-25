@@ -98,17 +98,10 @@ export default function CaseStudiesSection() {
         
         {/* Section Header with Staggered Kinetic Typography */}
         <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-10">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
+          <div className="mb-3">
+            <span className="heading-focus-underline text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
               Case Studies
             </span>
-            <Image 
-              src={getAssetUrl('/images/shape_title_under_line.svg')} 
-              alt="" 
-              width={48} 
-              height={9} 
-              className="inline-block brightness-150"
-            />
           </div>
 
           <div>

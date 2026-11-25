@@ -69,17 +69,10 @@ export default function WhyTech22Blocks() {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-8 lg:mb-10">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
+          <div className="mb-3">
+            <span className="heading-focus-underline text-sm sm:text-base font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
               Why Tech22Blocks
             </span>
-            <Image 
-              src={getAssetUrl('/images/shape_title_under_line.svg')} 
-              alt="" 
-              width={48} 
-              height={9} 
-              className="inline-block opacity-80"
-            />
           </div>
 
           <h2 id="why-heading" className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-[-0.03em] leading-tight">

@@ -848,9 +848,11 @@ export default function WebAppServicePage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block font-mono">
-              Engineering Services
-            </span>
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Engineering Services
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Web Application Development" />{' '}
               <StaggeredText text="Services We Offer" isShimmer />
@@ -982,9 +984,11 @@ export default function WebAppServicePage() {
       <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block font-mono">
-              Anatomy &amp; Architecture
-            </span>
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Anatomy &amp; Architecture
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Explore a Website" />{' '}
               <StaggeredText text="We Design" isShimmer />
@@ -1152,9 +1156,11 @@ export default function WebAppServicePage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block font-mono">
-              Domain Engineering
-            </span>
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Domain Engineering
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Web Apps Built" />{' '}
               <StaggeredText text="for Your Industry" isShimmer />
@@ -1284,9 +1290,11 @@ export default function WebAppServicePage() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block font-mono">
-              Selected Concept Works
-            </span>
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Selected Concept Works
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Our" />{' '}
               <StaggeredText text="Works" isShimmer />
@@ -1533,6 +1541,11 @@ export default function WebAppServicePage() {
       <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--canvas)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Strategic ROI
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Reasons to Invest in" />{' '}
               <StaggeredText text="Web Application Development" isShimmer />
@@ -1569,6 +1582,11 @@ export default function WebAppServicePage() {
       <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Why Tech22Blocks
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Tech22Blocks is Your Ultimate Destination" />{' '}
               <StaggeredText text="for Web Development Services" isShimmer />
@@ -1615,6 +1633,11 @@ export default function WebAppServicePage() {
       <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--canvas)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Technology Stack
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Our Web App Development Company’s" />{' '}
               <StaggeredText text="Technology Stack" isShimmer />
@@ -1684,6 +1707,11 @@ export default function WebAppServicePage() {
       <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Engineering Roadmap
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Our Web App" />{' '}
               <StaggeredText text="Development Process" isShimmer />
@@ -1729,6 +1757,11 @@ export default function WebAppServicePage() {
       <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--canvas)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-14">
+            <div className="mb-2">
+              <span className="heading-focus-underline text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] font-mono">
+                Clear Answers
+              </span>
+            </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
               <StaggeredText text="Frequently Asked" />{' '}
               <StaggeredText text="Questions" isShimmer />

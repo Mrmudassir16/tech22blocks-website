@@ -248,17 +248,10 @@ export default function TechcoServicesSection() {
           
           {/* Section Sub-Header */}
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-            <div className="inline-flex items-center gap-2 mb-2.5">
-              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
+            <div className="mb-2.5">
+              <span className="heading-focus-underline text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
                 Featured Services
               </span>
-              <Image 
-                src={getAssetUrl('/images/shape_title_under_line.svg')} 
-                alt="" 
-                width={42} 
-                height={8} 
-                className="inline-block brightness-150"
-              />
             </div>
             <h2 id="featured-services-heading" className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-display mb-4">
               <StaggeredText text="Empowering Your Business Through" />{' '}
@@ -386,17 +379,10 @@ export default function TechcoServicesSection() {
 
             {/* Right Content Column */}
             <div className="lg:col-span-7 order-1 lg:order-2">
-              <div className="inline-flex items-center gap-2 mb-2.5">
-                <span className="text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
+              <div className="mb-2.5">
+                <span className="heading-focus-underline text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
                   Why Us • Better Value
                 </span>
-                <Image 
-                  src={getAssetUrl('/images/shape_title_under_line.svg')} 
-                  alt="" 
-                  width={42} 
-                  height={8} 
-                  className="inline-block brightness-150"
-                />
               </div>
               <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-display mb-3">
                 <StaggeredText text="Why Our Services are" />{' '}
