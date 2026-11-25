@@ -20,9 +20,6 @@ export default function FinalCTA() {
         fillColor="var(--canvas)" 
       />
 
-      {/* 2. Corner Accent (Vivid in Light Mode) */}
-      <SectionBackground type="angle-corner" position="bottom-left" opacity="opacity-70 dark:opacity-25" />
-
       {/* Background Volumetric Glow & Signature Star Watermark */}
       <div 
         aria-hidden="true" 

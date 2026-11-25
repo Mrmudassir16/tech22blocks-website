@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Box, Wrench, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 
 export default function AboutTwoPillars() {
   return (
@@ -15,7 +16,8 @@ export default function AboutTwoPillars() {
             Our Business Pillars
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
-            What We Do
+            <StaggeredText text="What" />{' '}
+            <StaggeredText text="We Do" isShimmer />
           </h2>
           <p className="mt-3 text-xs sm:text-sm lg:text-base text-[var(--text-muted)] font-normal">
             Two distinct engineering models uniting proprietary product innovation with custom technology delivery.

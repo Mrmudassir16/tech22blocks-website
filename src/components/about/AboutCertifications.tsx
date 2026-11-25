@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { getAssetUrl } from '@/utils/assets';
 import { ShieldCheck, CheckCircle2, Award } from 'lucide-react';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 
 export default function AboutCertifications() {
   return (
@@ -16,7 +17,8 @@ export default function AboutCertifications() {
             Verified Standards
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
-            Certifications &amp; Recognition
+            <StaggeredText text="Certifications &" />{' '}
+            <StaggeredText text="Recognition" isShimmer />
           </h2>
           <p className="mt-3 text-xs sm:text-sm lg:text-base text-[var(--text-muted)] font-normal">
             Operating with verified government registrations and enterprise-grade software standards.

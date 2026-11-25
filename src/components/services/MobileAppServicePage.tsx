@@ -24,6 +24,7 @@ import {
 import { getAssetUrl } from '@/utils/assets';
 import { DETAILED_SERVICES } from '@/data/serviceDetails';
 import { StarWatermark } from '@/components/StarEmblem';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 
 export default function MobileAppServicePage() {
   const data = DETAILED_SERVICES['mobile-applications'];
@@ -491,10 +492,8 @@ self.addEventListener('fetch', (event) => {
 
               {/* H1 Heading */}
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-[var(--text-primary)] font-display">
-                Mobile App Development{' '}
-                <span className="bg-gradient-to-r from-[var(--accent)] via-blue-500 to-indigo-500 bg-clip-text text-transparent">
-                  Company in India
-                </span>
+                <StaggeredText text="Mobile App Development" />{' '}
+                <StaggeredText text="Company in India" isShimmer />
               </h1>
 
               {/* Subtitle */}
@@ -659,7 +658,8 @@ self.addEventListener('fetch', (event) => {
           
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              One Team for Every Platform
+              <StaggeredText text="One Team for" />{' '}
+              <StaggeredText text="Every Platform" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
               We provide custom mobile app development services and IT solutions designed for the future. Pick a platform to see what we build with it.
@@ -756,7 +756,8 @@ self.addEventListener('fetch', (event) => {
               Solutions
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Full-Spectrum Digital Solutions, Under One Roof
+              <StaggeredText text="Full-Spectrum Digital Solutions," />{' '}
+              <StaggeredText text="Under One Roof" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
               Pick a service line to see what we build and how we engineer enterprise mobile resilience.
@@ -890,7 +891,8 @@ self.addEventListener('fetch', (event) => {
               Proven Delivery
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Apps We’ve Built
+              <StaggeredText text="Apps" />{' '}
+              <StaggeredText text="We’ve Built" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
               Explore 2 benchmark applications engineered by our team, delivering high-speed native UX, offline resiliency, and store-approved excellence.
@@ -988,7 +990,8 @@ self.addEventListener('fetch', (event) => {
               Industry Domains
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Apps We Build
+              <StaggeredText text="Apps" />{' '}
+              <StaggeredText text="We Build" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
               Drag, swipe, or click through our industry solutions. We craft custom mobile architectures tailored to domain-specific workflows.
@@ -1120,7 +1123,8 @@ self.addEventListener('fetch', (event) => {
           
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-display mb-3">
-              Our Custom Mobile App Development Process to Boost Your Business
+              Our Custom Mobile App Development Process{' '}
+              <span className="text-sky-400">to Boost Your Business</span>
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-slate-300 leading-relaxed bg-white/5 border border-white/10 rounded-2xl p-4">
               We offer comprehensive custom mobile app development services aimed at empowering businesses to succeed in the digital age. Our approach focuses on developing innovative, user-centered applications specifically designed to meet your requirements.
@@ -1235,7 +1239,8 @@ self.addEventListener('fetch', (event) => {
                   Engineering Standards
                 </span>
                 <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-4">
-                  Why Choose Us
+                  <StaggeredText text="Why" />{' '}
+                  <StaggeredText text="Choose Us" isShimmer />
                 </h2>
                 <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
                   Tech22Blocks builds software with enterprise discipline and generational rigor. Here is why global enterprises and fast-growing founders trust our mobile engineering team.
@@ -1316,7 +1321,8 @@ self.addEventListener('fetch', (event) => {
               Clear Answers
             </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Mobile App Development FAQs
+              <StaggeredText text="Mobile App" />{' '}
+              <StaggeredText text="Development FAQs" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm text-[var(--text-muted)]">
               Everything you need to know about timelines, code ownership, and store approvals.
@@ -1362,7 +1368,8 @@ self.addEventListener('fetch', (event) => {
             Start Your Mobile Project
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white">
-            Let’s Turn Your Vision into Reality!
+            Let’s Turn Your Vision{' '}
+            <span className="text-sky-400">into Reality!</span>
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
             Need a high-performance native iOS or Android app, or an accelerated cross-platform launch? Schedule a technical discovery call with our engineering leads today.

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { COMPANY } from '@/data/company';
 import { StarWatermark } from '@/components/StarEmblem';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 
 export default function FAQSection() {
   const { faqs } = COMPANY;
@@ -14,17 +15,18 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="relative py-14 sm:py-20 lg:py-24 bg-[var(--surface-elevated)] text-[var(--text-primary)] border-t border-[var(--border)] overflow-hidden transition-colors duration-200" aria-labelledby="faq-heading">
+    <section className="relative py-12 sm:py-16 lg:py-20 bg-[var(--surface-elevated)] text-[var(--text-primary)] border-t border-[var(--border)] overflow-hidden transition-colors duration-200" aria-labelledby="faq-heading">
       <StarWatermark size={580} position="bottom-right" variant="blue" opacity={0.02} rotate={15} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-[var(--accent)] mb-3 px-3 py-1 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/30">
             <span>Clarity &amp; Questions</span>
           </div>
           <h2 id="faq-heading" className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight font-display">
-            Frequently Asked Questions
+            <StaggeredText text="Frequently Asked" />{' '}
+            <StaggeredText text="Questions" isShimmer />
           </h2>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-[var(--text-muted)] font-normal">
             Straightforward answers regarding our software capabilities, working models, and technology services.

@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { getAssetUrl } from '@/utils/assets';
 import { StarWatermark } from '@/components/StarEmblem';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 
 export interface TechcoServiceItem {
   id: string;
@@ -136,17 +137,17 @@ export default function TechcoServicesSection() {
     <div className="relative overflow-hidden bg-[var(--canvas)] text-[var(--text-primary)] transition-colors duration-200">
       
       {/* ========================================================================= */}
-      {/* 1. TECHCO-STYLE HERO BANNER WITH 3D ANIMATED ILLUSTRATION                 */}
+      {/* 1. TECHCO-STYLE FULL-VIEWPORT HERO BANNER WITH 3D ANIMATED ILLUSTRATION   */}
       {/* ========================================================================= */}
-      <section className="relative pt-24 sm:pt-28 pb-14 sm:pb-20 lg:py-24 bg-[var(--surface)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
+      <section className="relative min-h-[100dvh] flex items-center pt-28 sm:pt-32 lg:pt-28 pb-12 sm:pb-16 bg-[var(--surface)] border-b border-[var(--border)] overflow-hidden transition-colors duration-200">
         <StarWatermark size={650} position="top-right" variant="blue" opacity={0.03} rotate={15} />
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[400px] bg-[var(--accent)]/[0.06] rounded-full blur-[140px] pointer-events-none transform-gpu" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-5">
+            <div className="lg:col-span-7 space-y-5 sm:space-y-6">
               {/* Clean Badge without "Our Main Services" */}
               <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[var(--accent)] px-3.5 py-1.5 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/30 backdrop-blur-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
@@ -154,11 +155,13 @@ export default function TechcoServicesSection() {
               </div>
 
               {/* Main Headings */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-[var(--text-primary)] font-display">
-                Our Services
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[64px] font-extrabold tracking-tight leading-[1.08] text-[var(--text-primary)] font-display">
+                <StaggeredText text="Our" />{' '}
+                <StaggeredText text="Services" isShimmer />
               </h1>
-              <p className="text-xl sm:text-2xl font-bold text-[var(--accent)] font-display">
-                Tailored IT Solutions for Your Success
+              <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-[var(--text-primary)] font-display">
+                Tailored IT Solutions{' '}
+                <span className="text-[var(--accent)]">for Your Success</span>
               </p>
               <p className="text-sm sm:text-base lg:text-lg text-[var(--text-muted)] font-normal leading-relaxed max-w-2xl">
                 We understand that every business is unique, with its own operational constraints, scale targets, and technical debt. We engineer dependable digital platforms, native apps, and custom enterprise software designed to eliminate bottlenecks and deliver lasting commercial impact.
@@ -193,7 +196,7 @@ export default function TechcoServicesSection() {
 
             {/* Right Side: Techco 3D Animated Image */}
             <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[420px] lg:max-w-[460px] aspect-square flex items-center justify-center">
+              <div className="relative w-full max-w-[340px] sm:max-w-[440px] lg:max-w-[520px] aspect-square flex items-center justify-center">
                 {/* Ambient Glow */}
                 <div className="absolute inset-4 bg-[var(--accent)]/15 rounded-full blur-3xl pointer-events-none transform-gpu animate-pulse" />
                 
@@ -240,11 +243,11 @@ export default function TechcoServicesSection() {
       {/* ========================================================================= */}
       {/* 2. FEATURED SERVICES (6 BIG TECHCO CARDS IN 2-COL GRID)                   */}
       {/* ========================================================================= */}
-      <section id="featured-services" className="relative py-14 sm:py-20 lg:py-24 bg-[var(--canvas)]" aria-labelledby="featured-services-heading">
+      <section id="featured-services" className="relative py-12 sm:py-16 lg:py-20 bg-[var(--canvas)]" aria-labelledby="featured-services-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           {/* Section Sub-Header */}
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-2 mb-2.5">
               <span className="text-xs sm:text-sm font-bold uppercase tracking-wider font-mono text-[var(--accent)]">
                 Featured Services
@@ -258,7 +261,8 @@ export default function TechcoServicesSection() {
               />
             </div>
             <h2 id="featured-services-heading" className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-display mb-4">
-              Empowering Your Business Through Scalable Technology
+              <StaggeredText text="Empowering Your Business Through" />{' '}
+              <StaggeredText text="Scalable Technology" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] font-normal leading-relaxed">
               Explore our core capabilities. Click any service card to open its dedicated deep-dive page with architecture scope, stack details, and deliverables.
@@ -348,7 +352,7 @@ export default function TechcoServicesSection() {
       {/* ========================================================================= */}
       {/* 3. "WHY OUR SERVICES ARE BETTER THAN OTHERS?" WITH 3D VISUAL              */}
       {/* ========================================================================= */}
-      <section className="relative py-14 sm:py-20 lg:py-24 bg-[var(--surface)] border-y border-[var(--border)] overflow-hidden transition-colors duration-200">
+      <section className="relative py-12 sm:py-16 lg:py-20 bg-[var(--surface)] border-y border-[var(--border)] overflow-hidden transition-colors duration-200">
         <StarWatermark size={600} position="top-right" variant="blue" opacity={0.02} rotate={-20} />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -395,7 +399,8 @@ export default function TechcoServicesSection() {
                 />
               </div>
               <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight leading-tight font-display mb-3">
-                Why Our Services are Better Than Others?
+                <StaggeredText text="Why Our Services are" />{' '}
+                <StaggeredText text="Better Than Others?" isShimmer />
               </h2>
               <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] font-normal leading-relaxed mb-8">
                 We combine enterprise engineering rigor with transparent sprint velocity. Here is how our model outperforms conventional outsourcing agencies.

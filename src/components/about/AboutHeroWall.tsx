@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Sparkles, Layers, ShieldCheck, Cpu, Smartphone, Globe, Code2, Database } from 'lucide-react';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 
 const WALL_TILES_ROW1 = [
   { title: 'VoiSage AI Voice Assistant', tag: 'Proprietary AI', icon: Cpu, color: 'from-sky-500/20 to-blue-600/30' },
@@ -39,10 +40,8 @@ export default function AboutHeroWall() {
       {/* Hero Copy (Modeled on SVSS ab-wall-copy) */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 mb-5 sm:mb-7">
         <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-[var(--text-primary)] font-display">
-          Engineering Digital Success{' '}
-          <span className="bg-gradient-to-r from-[var(--accent)] via-sky-500 to-indigo-500 bg-clip-text text-transparent">
-            Since 2025
-          </span>
+          <StaggeredText text="Engineering Digital Success" />{' '}
+          <StaggeredText text="Since 2025" isShimmer />
         </h1>
 
         <p className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-[var(--text-muted)] font-normal leading-relaxed max-w-2xl mx-auto">

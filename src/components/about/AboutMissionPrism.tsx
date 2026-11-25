@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Target, Compass, Award } from 'lucide-react';
 import { COMPANY } from '@/data/company';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 
 export default function AboutMissionPrism() {
   const [activeFace, setActiveFace] = useState<number>(0);
@@ -47,7 +48,8 @@ export default function AboutMissionPrism() {
             Core Philosophy
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
-            Mission, Vision &amp; Values
+            <StaggeredText text="Mission, Vision" />{' '}
+            <StaggeredText text="& Values" isShimmer />
           </h2>
           <p className="mt-3 text-xs sm:text-sm lg:text-base text-[var(--text-muted)] font-normal">
             What we work for, where we are going, and the principles that guide every release.

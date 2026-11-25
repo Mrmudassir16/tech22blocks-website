@@ -9,6 +9,7 @@ import {
   ShieldCheck, 
   MessageSquareCode 
 } from 'lucide-react';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 
 export default function AboutWhatMakesDifferent() {
   const commitments = [
@@ -66,7 +67,8 @@ export default function AboutWhatMakesDifferent() {
             Our Commitments
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
-            What Makes Tech22Blocks Different?
+            <StaggeredText text="What Makes Tech22Blocks" />{' '}
+            <StaggeredText text="Different?" isShimmer />
           </h2>
           <p className="mt-3 text-xs sm:text-sm lg:text-base text-[var(--text-muted)] font-normal">
             Six engineering commitments we make to every client, and keep, release after release.

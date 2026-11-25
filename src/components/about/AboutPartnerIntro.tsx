@@ -4,6 +4,7 @@ import React from 'react';
 import { COMPANY } from '@/data/company';
 import { StarWatermark } from '@/components/StarEmblem';
 import { ShieldCheck, Code, Zap, Clock } from 'lucide-react';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 
 export default function AboutPartnerIntro() {
   const metrics = [
@@ -25,7 +26,8 @@ export default function AboutPartnerIntro() {
             Generational Trust &bull; Modern Craft
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2.5 font-display">
-            Your Trusted Technology Partner
+            <StaggeredText text="Your Trusted" />{' '}
+            <StaggeredText text="Technology Partner" isShimmer />
           </h2>
           <div className="mt-5 sm:mt-6 space-y-4 text-sm sm:text-base lg:text-lg text-[var(--text-muted)] leading-relaxed font-normal">
             <p className="text-base sm:text-xl font-medium text-[var(--text-primary)] leading-snug">

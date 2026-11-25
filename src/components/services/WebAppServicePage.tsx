@@ -1,165 +1,664 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
-import { 
-  ArrowRight, 
-  ArrowUpRight, 
-  CheckCircle2, 
-  ShieldCheck, 
-  ChevronRight, 
-  ChevronDown, 
-  Zap, 
-  Globe, 
-  Layers, 
-  Code2, 
-  Workflow, 
-  Clock, 
-  Award, 
-  Users, 
-  Sparkles, 
-  Database, 
-  Server, 
-  Monitor, 
-  Tablet, 
+import Image from 'next/image';
+import {
+  ArrowRight,
+  ChevronRight,
+  ChevronLeft,
+  ChevronDown,
+  CheckCircle2,
+  Monitor,
+  Tablet,
   Smartphone,
-  ExternalLink,
-  Lock,
-  BarChart3
+  Globe,
 } from 'lucide-react';
 import { DETAILED_SERVICES } from '@/data/serviceDetails';
+import { getAssetUrl } from '@/utils/assets';
 import { StarWatermark } from '@/components/StarEmblem';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 import FinalCTA from '@/components/FinalCTA';
+
+interface StackIndustryItem {
+  id: string;
+  num: string;
+  ac: string;
+  title: string;
+  image: string;
+  desc: string;
+  points: string[];
+  deviceTitle: string;
+  tiles: string[];
+}
 
 export default function WebAppServicePage() {
   const data = DETAILED_SERVICES['website-development'];
-  const [browserPreviewSize, setBrowserPreviewSize] = useState<'desktop' | 'tablet' | 'phone'>('desktop');
+
+  // 1. Hero Interactive Browser State (Desktop/Tablet/Phone + Wireframe Wipe)
+  const [browserSize, setBrowserSize] = useState<'desktop' | 'tablet' | 'phone'>('desktop');
+  const [wipeCut, setWipeCut] = useState<number>(50);
+  const wipeTouchedRef = useRef<boolean>(false);
+  const heroFrameRef = useRef<HTMLDivElement>(null);
+
+  // 2. Web Application Development Services 3D Cover Flow State
+  const [activeServiceFlow, setActiveServiceFlow] = useState<number>(2);
+  const serviceFlowRef = useRef<HTMLDivElement>(null);
+  const dragStartX = useRef<number | null>(null);
+  const dragMoved = useRef<boolean>(false);
+
+  // 3. Explore a Website We Design (Hotspots + Tilt)
+  const [activeHotspot, setActiveHotspot] = useState<number>(0);
+  const hotspotSvgRef = useRef<SVGSVGElement>(null);
+  const hotspotStageRef = useRef<HTMLDivElement>(null);
+
+  // 4. Web Apps Built for Your Industry (Sticky Left Nav + Stacking Cards)
+  const [activeIndustryCard, setActiveIndustryCard] = useState<number>(0);
+  const industryCardRefs = useRef<(HTMLLIElement | null)[]>([]);
+
+  // 5. Technology Stack Tabs
+  const [activeTechTab, setActiveTechTab] = useState<number>(0);
+
+  // 6. Our Web App Development Process (Scroll-driven Line Progress)
+  const processContainerRef = useRef<HTMLDivElement>(null);
+  const processLineRef = useRef<HTMLSpanElement>(null);
+  const processStepRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const [processFillPct, setProcessFillPct] = useState<number>(0);
+  const [activeProcessSteps, setActiveProcessSteps] = useState<boolean[]>(
+    () => new Array(7).fill(false)
+  );
+
+  // 7. FAQs
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
-  const toggleFaq = (index: number) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  // ---------------------------------------------------------------------------
+  // Hero Auto-Sweep Demo for Wireframe <-> Live Site Wipe
+  // ---------------------------------------------------------------------------
+  useEffect(() => {
+    const el = heroFrameRef.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let rafId = 0;
+    let timeoutId = 0;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          io.disconnect();
+          let t0: number | null = null;
+          const step = (t: number) => {
+            if (wipeTouchedRef.current) return;
+            t0 = t0 ?? t;
+            const p = Math.min(1, (t - t0) / 2200);
+            setWipeCut(Math.round(50 + Math.sin(p * Math.PI * 2) * 30));
+            if (p < 1) {
+              rafId = requestAnimationFrame(step);
+            }
+          };
+          timeoutId = window.setTimeout(() => {
+            rafId = requestAnimationFrame(step);
+          }, 500);
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      clearTimeout(timeoutId);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  // ---------------------------------------------------------------------------
+  // Data: Web Application Development Services We Offer (8 Reference Services)
+  // ---------------------------------------------------------------------------
+  const webServices = [
+    {
+      title: 'Custom Web Development',
+      image: '/images/svss/web/svc-custom-web.webp',
+      desc: 'Our custom web application development services utilize agile methodology to transform concepts into fully tailored web solutions that boost user engagement.',
+      cta: 'Build a Custom Web App',
+    },
+    {
+      title: 'E-Commerce Development',
+      image: '/images/svss/web/svc-ecommerce.webp',
+      desc: 'Enhance your online business with our expertise in e-commerce web application development. We create robust sales platforms and optimize user experiences to drive your revenue growth.',
+      cta: 'Launch an E-Commerce Store',
+    },
+    {
+      title: 'SaaS Web App Development',
+      image: '/images/svss/web/svc-saas.webp',
+      desc: 'Unlock the benefits of Software as a Service (SaaS) with our expert web app development company, providing long-term scalability and accessibility.',
+      cta: 'Architect Your SaaS Platform',
+    },
+    {
+      title: 'Web Portal Development',
+      image: '/images/svss/web/svc-portal.webp',
+      desc: 'Elevate your business with our feature-packed web portals, expertly crafted by our web application developers to ensure smooth interactions and enhance engagement with your target audience.',
+      cta: 'Build an Enterprise Portal',
+    },
+    {
+      title: 'Progressive Web App Development',
+      image: '/images/svss/web/svc-pwa.webp',
+      desc: 'Stay ahead of the curve by teaming up with our cutting-edge web app development company. We deliver web apps that offer outstanding user experiences and seamless cross-platform compatibility.',
+      cta: 'Ship a Fast PWA',
+    },
+    {
+      title: 'Custom CMS Development',
+      image: '/images/svss/web/svc-cms.webp',
+      desc: 'Gain complete control over your content with our custom CMS development services. We provide flexibility and user-friendly solutions tailored to meet your specific needs.',
+      cta: 'Explore Headless CMS',
+    },
+    {
+      title: 'Enterprise Web Development',
+      image: '/images/svss/web/svc-enterprise.webp',
+      desc: 'Enhance your business with cutting-edge web app solutions from our enterprise engineering team, designed to help your organization excel in the digital era.',
+      cta: 'Scale Enterprise Web',
+    },
+    {
+      title: 'Web App Support and Maintenance',
+      image: '/images/svss/web/svc-maintenance.webp',
+      desc: 'Ensure your web applications run smoothly with our dedicated support and maintenance services. We provide proactive monitoring and regular updates to keep everything at peak performance, giving you peace of mind.',
+      cta: 'Secure Ongoing Support',
+    },
+  ];
+
+  // Cover Flow Navigation Handlers
+  const goServiceFlow = useCallback(
+    (idx: number) => {
+      setActiveServiceFlow(Math.max(0, Math.min(webServices.length - 1, idx)));
+    },
+    [webServices.length]
+  );
+
+  const handleFlowPointerDown = (e: React.PointerEvent) => {
+    dragStartX.current = e.clientX;
+    dragMoved.current = false;
   };
 
-  const bentoServices = [
+  const handleFlowPointerMove = (e: React.PointerEvent) => {
+    if (dragStartX.current === null) return;
+    const dx = e.clientX - dragStartX.current;
+    if (Math.abs(dx) > 55) {
+      dragMoved.current = true;
+      goServiceFlow(activeServiceFlow + (dx < 0 ? 1 : -1));
+      dragStartX.current = e.clientX;
+    }
+  };
+
+  const handleFlowPointerUp = () => {
+    dragStartX.current = null;
+  };
+
+  const handleFlowKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      goServiceFlow(activeServiceFlow + 1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goServiceFlow(activeServiceFlow - 1);
+    }
+  };
+
+  // ---------------------------------------------------------------------------
+  // Data: Explore a Website We Design (5 Hotspots)
+  // ---------------------------------------------------------------------------
+  const hotspots = [
     {
+      id: 0,
+      title: 'Hero that converts',
+      desc: 'A headline, offer and button that explain what you do in five seconds and lead visitors to act.',
+      left: '14%',
+      top: '27%',
+    },
+    {
+      id: 1,
+      title: 'Service sections',
+      desc: 'Clear cards for each product or service, written and laid out for both visitors and Google.',
+      left: '14%',
+      top: '50%',
+    },
+    {
+      id: 2,
+      title: 'Mobile-first layout',
+      desc: 'Every page adapts to phones, where most of your visitors arrive.',
+      left: '73%',
+      top: '40%',
+    },
+    {
+      id: 3,
+      title: 'Speed score 90+',
+      desc: 'Optimised images, caching and clean code for Core Web Vitals and better rankings.',
+      left: '6%',
+      top: '71%',
+    },
+    {
+      id: 4,
+      title: 'Your brand colours',
+      desc: 'Typography and colours follow your brand, managed from an easy CMS.',
+      left: '79%',
+      top: '14%',
+    },
+  ];
+
+  const handleHotspotMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!hotspotStageRef.current || !hotspotSvgRef.current) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const r = hotspotStageRef.current.getBoundingClientRect();
+    const dx = (e.clientX - r.left) / r.width - 0.5;
+    const dy = (e.clientY - r.top) / r.height - 0.5;
+    hotspotSvgRef.current.style.transform = `rotateY(${dx * 10}deg) rotateX(${-dy * 10}deg)`;
+    hotspotSvgRef.current.querySelectorAll<SVGGElement>('.art-layer').forEach((layer) => {
+      const depth = Number(layer.dataset.depth) || 0;
+      layer.style.transform = `translate(${dx * depth * 520}px, ${dy * depth * 520}px)`;
+    });
+  };
+
+  const handleHotspotLeave = () => {
+    if (!hotspotSvgRef.current) return;
+    hotspotSvgRef.current.style.transform = '';
+    hotspotSvgRef.current.querySelectorAll<SVGGElement>('.art-layer').forEach((layer) => {
+      layer.style.transform = '';
+    });
+  };
+
+  // ---------------------------------------------------------------------------
+  // Data: Web Apps Built for Your Industry (9 Reference Industries -> Stacking)
+  // ---------------------------------------------------------------------------
+  const industryStackCards: StackIndustryItem[] = [
+    {
+      id: 'ind-0',
       num: '01',
-      title: 'Custom Web Development',
-      desc: 'Our custom web application development services utilize agile methodology to transform concepts into fully tailored web solutions that boost user engagement and operational speed.',
-      isBig: true,
-      badge: 'Full-Stack TypeScript',
-      highlights: ['Next.js 14 App Router', 'React Server Components', 'Strict TypeScript typing', 'Sub-second LCP'],
+      ac: '#0284c7',
+      title: 'Health Care',
+      image: '/images/svss/web/ind-healthcare.webp',
+      desc: 'As a technology partner specializing in healthcare app development, we use our expertise to create solutions that simplify administrative tasks and enhance healthcare management systems.',
+      points: [
+        'Patient portals & teleconsultation workflows',
+        'Electronic record access & lab report delivery',
+        'HIPAA-aligned role permissions & audit logs',
+      ],
+      deviceTitle: 'HealthCare Portal UI',
+      tiles: ['Patient Intake Hub', 'Doctor Scheduling', 'Lab Report Vault', 'Billing & Claims'],
     },
     {
+      id: 'ind-1',
       num: '02',
-      title: 'High-Volume E-Commerce Development',
-      desc: 'Enhance your online business with our expertise in headless e-commerce web application development. We create robust sales platforms and optimize user experiences to drive revenue growth.',
-      isBig: true,
-      badge: 'Headless Commerce',
-      highlights: ['Headless Shopify / Medusa', 'Instant 2-tap checkout funnels', 'Multi-currency localization', 'Live inventory webhooks'],
+      ac: '#0d9488',
+      title: 'Retail',
+      image: '/images/svss/web/ind-retail.webp',
+      desc: 'We offer web app development services designed to enhance online shopping experiences, ensure secure payment processing, and manage inventory efficiently, all aimed at increasing sales.',
+      points: [
+        'Unified multi-store catalog & live stock sync',
+        'High-conversion checkout & coupon engines',
+        'Customer loyalty accounts & order history',
+      ],
+      deviceTitle: 'Retail Commerce Engine',
+      tiles: ['Omnichannel Catalog', 'POS Inventory Sync', 'PCI-Ready Checkout', 'Loyalty Analytics'],
     },
     {
+      id: 'ind-2',
       num: '03',
-      title: 'SaaS Web App Development',
-      desc: 'Scalable multi-tenant SaaS platforms with secure data isolation, role-based access, and automated Stripe billing.',
-      isBig: false,
-      badge: 'B2B SaaS',
-      highlights: ['Tenant data isolation', 'Usage metering & tiers'],
+      ac: '#7c3aed',
+      title: 'e-Commerce',
+      image: '/images/svss/web/ind-ecommerce.webp',
+      desc: 'As a web application development company, we specialize in customizing online store solutions to meet your unique needs, enhancing revenue through secure and efficient platforms.',
+      points: [
+        'Sub-second SSR storefronts & instant filtering',
+        'Automated GST invoicing & shipping webhooks',
+        'Multi-currency carts & abandoned cart recovery',
+      ],
+      deviceTitle: 'e-Commerce Storefront',
+      tiles: ['SSR Product Grid', 'Razorpay & Stripe', 'Shipment Webhooks', 'Admin Merchandising'],
     },
     {
+      id: 'ind-3',
       num: '04',
-      title: 'Enterprise Customer Portals',
-      desc: 'Secure, authenticated B2B customer self-service hubs for real-time order tracking, invoice downloads, and support ticketing.',
-      isBig: false,
-      badge: 'Client Hubs',
-      highlights: ['Self-service accounts', 'Dynamic invoice PDFs'],
+      ac: '#d97706',
+      title: 'Real Estate',
+      image: '/images/svss/web/ind-realestate.webp',
+      desc: 'We provide tools for listing properties, conducting virtual tours, and streamlining communication, making the buying and selling process easier for both agents and clients.',
+      points: [
+        'Interactive property search & availability filters',
+        'Site-visit booking funnels & CRM lead routing',
+        'High-resolution project galleries & floor plans',
+      ],
+      deviceTitle: 'Property Platform Hub',
+      tiles: ['Verified Listings', 'Virtual Property Tours', 'Site Visit Scheduler', 'Agent CRM Pipeline'],
     },
     {
+      id: 'ind-4',
       num: '05',
-      title: 'Progressive Web Apps (PWA)',
-      desc: 'Installable web experiences with offline caching, push notifications, and fast navigation without app store barriers.',
-      isBig: false,
-      badge: 'Installable PWA',
-      highlights: ['Service worker caching', 'Add to Home Screen'],
+      ac: '#2563eb',
+      title: 'Logistics',
+      image: '/images/svss/web/ind-logistics.png',
+      desc: 'We develop web applications for the logistics industry that enhance supply chain management, streamline order tracking, and optimize inventory control, ensuring smooth operations and on-time deliveries.',
+      points: [
+        'Live fleet dispatch & checkpoint visibility',
+        'Warehouse inward/outward barcode ledgers',
+        'Automated digital manifests & SLA alerts',
+      ],
+      deviceTitle: 'Supply Chain Console',
+      tiles: ['Fleet Telemetry', 'Shipment Tracking', 'Warehouse Stock', 'Digital e-Way Bills'],
     },
     {
+      id: 'ind-5',
       num: '06',
-      title: 'Custom Headless CMS Development',
-      desc: 'Decoupled content architectures giving marketing teams complete visual editing autonomy with live draft previews.',
-      isBig: false,
-      badge: 'Sanity / Strapi',
-      highlights: ['Zero-code page builder', 'Automated asset CDN'],
+      ac: '#059669',
+      title: 'Education',
+      image: '/images/svss/web/ind-education.png',
+      desc: 'Our web app developers create interactive e-learning platforms, administrative tools, and communication systems tailored for educational institutions.',
+      points: [
+        'Role-based LMS portals for students & faculty',
+        'Adaptive course modules, quizzes & progress tracking',
+        'Automated PDF transcripts, fees & certificates',
+      ],
+      deviceTitle: 'LMS Academic Hub',
+      tiles: ['Interactive Courses', 'Assessment Engine', 'Student Dashboards', 'Certificate Issuer'],
     },
     {
+      id: 'ind-6',
       num: '07',
-      title: 'Enterprise Core Web Modernization',
-      desc: 'Refactoring slow, monolithic legacy codebases into modular micro-frontends with zero system downtime or data loss.',
-      isBig: false,
-      badge: 'Modernization',
-      highlights: ['Strangler Fig pattern', 'Automated dual-write'],
+      ac: '#0a85b1',
+      title: 'Fintech',
+      image: '/images/svss/web/ind-fintech.webp',
+      desc: 'Tech22Blocks specializes in secure and efficient financial platforms, delivering online banking, payment processing, and investment solutions that adhere to industry standards.',
+      points: [
+        'Append-only ledger accounting & reconciliation',
+        'Multi-factor authentication & strict RBAC',
+        'Real-time payment webhook orchestration',
+      ],
+      deviceTitle: 'Fintech Core Ledger',
+      tiles: ['Payment Orchestration', 'KYC & Onboarding', 'Immutable Audit Log', 'Portfolio Telemetry'],
     },
     {
+      id: 'ind-7',
       num: '08',
-      title: 'Web App Support and Maintenance',
-      desc: '24/7 uptime monitoring, monthly security vulnerability patches, database index tuning, and performance guardrails.',
-      isBig: false,
-      badge: '24/7 SLA',
-      highlights: ['Sub-100ms response SLA', 'Continuous CI/CD audits'],
+      ac: '#e11d48',
+      title: 'Manufacturing',
+      image: '/images/svss/web/ind-manufacturing.webp',
+      desc: 'We create web app solutions designed to enhance production processes, streamline inventory control, and improve supply chain management, thereby boosting operational efficiency.',
+      points: [
+        'Bill-of-Materials & shop-floor production tracking',
+        'Vendor procurement & purchase order approvals',
+        'Scheduled preventive maintenance logs',
+      ],
+      deviceTitle: 'Plant Operations ERP',
+      tiles: ['Production Queue', 'Vendor Portals', 'Inventory Thresholds', 'Quality Assurance'],
+    },
+    {
+      id: 'ind-8',
+      num: '09',
+      ac: '#0ea5e9',
+      title: 'On-Demand',
+      image: '/images/svss/web/ind-ondemand.png',
+      desc: 'We provide tailored web application development, delivering user-friendly features that simplify booking, payment, and communication for both clients and service providers.',
+      points: [
+        'Live booking dispatch & provider assignment',
+        'Automated SMS/WhatsApp & push notifications',
+        'Dynamic slot scheduling & settlement payouts',
+      ],
+      deviceTitle: 'On-Demand Marketplace',
+      tiles: ['Instant Slot Booking', 'Provider Matching', 'Escrow Settlement', 'Live Order Status'],
     },
   ];
 
-  const industryVerticals = [
-    { title: 'Health Care', desc: 'Accessible, HIPAA-compliant patient portals, doctor booking calendars, and lab report downloads.' },
-    { title: 'Retail & Consumer', desc: 'Omnichannel inventory catalogs, localized multi-currency pricing, and customer loyalty rewards.' },
-    { title: 'E-Commerce', desc: 'Sub-second catalog browsing, instant sliding carts, and automated shipping/tax calculation.' },
-    { title: 'Real Estate', desc: 'Interactive property listings, high-resolution virtual tours, and direct CRM lead ingestion.' },
-    { title: 'Logistics & Supply Chain', desc: 'Fleet dispatch consoles, real-time shipment milestones, and automated digital bills of lading.' },
-    { title: 'Education & EdTech', desc: 'Gated student workspaces, video streaming with progress tracking, and dynamic PDF certificates.' },
-    { title: 'FinTech & Payments', desc: 'Secure B2B payment gateways, virtual account ledgers, and automated compliance audit logging.' },
-    { title: 'Manufacturing & ERP', desc: 'Automated inventory tracking, supplier procurement portals, and machine maintenance logs.' },
-    { title: 'On-Demand Platforms', desc: 'Real-time booking dispatch, dynamic surge pricing, and live service status notifications.' },
-  ];
+  // Scroll Observer for Stacking Industry Cards Left Navigation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number(entry.target.getAttribute('data-ind-idx'));
+            if (!isNaN(idx)) {
+              setActiveIndustryCard(idx);
+            }
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0.1,
+      }
+    );
 
+    industryCardRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleIndustryNavClick = (idx: number) => {
+    setActiveIndustryCard(idx);
+    const target = industryCardRefs.current[idx];
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // ---------------------------------------------------------------------------
+  // Data: Reasons to Invest in Web Application Development (6 Cards)
+  // ---------------------------------------------------------------------------
   const reasonsToInvest = [
-    { title: 'Streamline the Business Process', desc: 'Centralize operations into one unified web platform, eliminating manual email handoffs and spreadsheet chaos.' },
-    { title: 'Gain Competitive Edge', desc: 'Sub-second load times and intuitive workflows convert visitors into long-term clients before competitors even load.' },
-    { title: 'Enhanced Efficiency', desc: 'Automate repetitive workflows, invoice distribution, and customer onboarding to scale revenue without adding headcount.' },
-    { title: 'Customizable and Scalable', desc: 'Engineered specifically around your proprietary business logic, scaling effortlessly as transaction volumes multiply.' },
-    { title: 'Continuous Business Operation', desc: 'Cloud-native infrastructure deployed globally ensures 24/7/365 availability with automated multi-region failover.' },
-    { title: 'Automates Repetitive Tasks', desc: 'Background job queues handle heavy data processing, PDF generation, and third-party API syncs in the background.' },
+    'Streamline the Business Process',
+    'Gain Competitive Edge',
+    'Enhanced Efficiency',
+    'Customizable and Scalable',
+    'Continuous Business Operation',
+    'Automates Repetitive Tasks',
   ];
 
+  // ---------------------------------------------------------------------------
+  // Data: Tech22Blocks is Your Ultimate Destination (6 Icon Cards)
+  // ---------------------------------------------------------------------------
   const destinationBenefits = [
-    { title: 'Cost-Effective Milestone Process', desc: 'Billed transparently by verified milestones. You test and verify working software every sprint before release sign-off.' },
-    { title: 'All Under One Roof', desc: 'From UX design and technical architecture to full-stack code, SEO schemas, and 24/7 cloud DevOps maintenance.' },
-    { title: 'Senior Creative Engineering Team', desc: 'Work directly with hands-on senior full-stack engineers who understand database indexing and edge caching.' },
-    { title: '24/7 Help Desk & Telemetry', desc: 'Continuous uptime monitoring with proactive alerting ensures issues are resolved before users notice.' },
-    { title: 'Modern Technology Integration', desc: 'Engineered with Next.js 14, TypeScript, and modern headless CMS platforms — zero outdated plugins.' },
-    { title: 'Post-Deployment SLA & Warranty', desc: 'Includes complimentary 30–60 days warranty plus dedicated ongoing maintenance retainers for long-term growth.' },
+    {
+      title: 'Cost-Effective Process',
+      icon: '/images/svss/web/dest-cost.png',
+      desc: 'At Tech22Blocks, we deliver web app development services that balance cost-effectiveness with high quality, ensuring your project is completed efficiently and to the highest standards.',
+    },
+    {
+      title: 'All Under One Roof',
+      icon: '/images/svss/web/dest-roof.png',
+      desc: 'Design, development, hosting, SEO and support from one team, so you always have a single point of contact.',
+    },
+    {
+      title: 'Creative Team',
+      icon: '/images/svss/web/dest-team.png',
+      desc: 'At Tech22Blocks, our creative web app developers are dedicated to transforming your vision into innovative web solutions, bringing creativity to every element of your project.',
+    },
+    {
+      title: '24/7 Help Desk',
+      icon: '/images/svss/web/dest-helpdesk.png',
+      desc: 'At Tech22Blocks, we are committed to providing support whenever you need it, ensuring a seamless development experience from start to finish.',
+    },
+    {
+      title: 'New Technology Integration',
+      icon: '/images/svss/web/dest-tech.png',
+      desc: 'As a forward-thinking web application development company, Tech22Blocks remains at the forefront of technology by integrating the latest advancements into your web apps, ensuring you stay ahead of the curve.',
+    },
+    {
+      title: 'Post-Deployment Services',
+      icon: '/images/svss/web/dest-support.png',
+      desc: 'Our web development services extend beyond the initial launch, focusing on the continued success of your web application through regular updates, maintenance, and ongoing support.',
+    },
   ];
 
-  const webProcessStages = [
-    { num: '01', title: 'Ideation & Scope', desc: 'We dissect your business goals, user personas, and technical constraints to construct a verified architecture specification.' },
-    { num: '02', title: 'Competitive Analysis', desc: 'Auditing market leaders to identify user experience gaps and Core Web Vitals advantages.' },
-    { num: '03', title: 'Intuitive UI/UX Design', desc: 'Figma component systems, responsive wireframes, and interactive prototypes tested across desktop and mobile screens.' },
-    { num: '04', title: 'Development Phase', desc: 'Two-week agile sprints in shared Git repositories with clean TypeScript typing and weekly staging previews.' },
-    { num: '05', title: 'Robust Testing', desc: 'Cross-browser QA, automated regression suites, screen-reader accessibility, and security penetration checks.' },
-    { num: '06', title: 'Production Deployment', desc: 'Zero-downtime DNS cutover, automated 301 redirect mapping, and Google Search Console indexing setup.' },
-    { num: '07', title: 'Support and Maintenance', desc: '24/7 uptime telemetry, monthly security dependency updates, and continuous performance tuning.' },
+  // ---------------------------------------------------------------------------
+  // Data: Technology Stack (6 Reference Tabs & 40 Icons)
+  // ---------------------------------------------------------------------------
+  const techStackTabs = [
+    {
+      label: 'Programming Languages',
+      items: [
+        { name: 'C', icon: '/images/svss/web/tech/lang-c.png' },
+        { name: 'C++', icon: '/images/svss/web/tech/lang-cpp.png' },
+        { name: 'HTML5', icon: '/images/svss/web/tech/lang-html.png' },
+        { name: 'JavaScript', icon: '/images/svss/web/tech/lang-js.png' },
+        { name: 'Java', icon: '/images/svss/web/tech/lang-java.png' },
+        { name: 'Kotlin', icon: '/images/svss/web/tech/lang-kotlin.webp' },
+        { name: 'Swift', icon: '/images/svss/web/tech/lang-swift.png' },
+        { name: 'Python', icon: '/images/svss/web/tech/lang-python.webp' },
+        { name: 'Objective-C', icon: '/images/svss/web/tech/lang-objc.png' },
+      ],
+    },
+    {
+      label: 'Frameworks',
+      items: [
+        { name: 'Ionic', icon: '/images/svss/web/tech/fw-ionic.png' },
+        { name: 'Node.js', icon: '/images/svss/web/tech/fw-nodejs.png' },
+        { name: 'PhoneGap', icon: '/images/svss/web/tech/fw-phonegap.png' },
+        { name: 'Xamarin', icon: '/images/svss/web/tech/fw-xamarin.png' },
+        { name: 'Appcelerator', icon: '/images/svss/web/tech/fw-appcelerator.png' },
+        { name: 'Flutter', icon: '/images/svss/web/tech/fw-flutter.png' },
+      ],
+    },
+    {
+      label: 'Databases',
+      items: [
+        { name: 'PostgreSQL', icon: '/images/svss/web/tech/db-postgres.webp' },
+        { name: 'SQL Server', icon: '/images/svss/web/tech/db-sqlserver.png' },
+        { name: 'Apache HBase', icon: '/images/svss/web/tech/db-hbase.webp' },
+        { name: 'Apache NiFi', icon: '/images/svss/web/tech/db-nifi.png' },
+        { name: 'Cassandra', icon: '/images/svss/web/tech/db-cassandra.webp' },
+        { name: 'Apache Hive', icon: '/images/svss/web/tech/db-hive.png' },
+        { name: 'MongoDB', icon: '/images/svss/web/tech/db-mongodb.png' },
+        { name: 'MySQL', icon: '/images/svss/web/tech/db-mysql.png' },
+        { name: 'Oracle DB', icon: '/images/svss/web/tech/db-oracle.png' },
+      ],
+    },
+    {
+      label: 'DevOps',
+      items: [
+        { name: 'Kubernetes', icon: '/images/svss/web/tech/devops-k8s.png' },
+        { name: 'OpenShift', icon: '/images/svss/web/tech/devops-openshift.png' },
+        { name: 'Puppet', icon: '/images/svss/web/tech/devops-puppet.png' },
+        { name: 'SaltStack', icon: '/images/svss/web/tech/devops-saltstack.png' },
+        { name: 'Terraform', icon: '/images/svss/web/tech/devops-terraform.png' },
+        { name: 'Ansible', icon: '/images/svss/web/tech/devops-ansible.webp' },
+        { name: 'Chef', icon: '/images/svss/web/tech/devops-chef.png' },
+        { name: 'Docker', icon: '/images/svss/web/tech/devops-docker.png' },
+      ],
+    },
+    {
+      label: 'Payment Gateways',
+      items: [
+        { name: 'Alipay', icon: '/images/svss/web/tech/pay-alipay.png' },
+        { name: 'PayPal', icon: '/images/svss/web/tech/pay-paypal.webp' },
+        { name: 'Square', icon: '/images/svss/web/tech/pay-square.png' },
+        { name: 'Stripe', icon: '/images/svss/web/tech/pay-stripe.png' },
+      ],
+    },
+    {
+      label: 'Clouds',
+      items: [
+        { name: 'Microsoft Azure', icon: '/images/svss/web/tech/cloud-azure.png' },
+        { name: 'DigitalOcean', icon: '/images/svss/web/tech/cloud-do.png' },
+        { name: 'Google Cloud', icon: '/images/svss/web/tech/cloud-gcp.png' },
+        { name: 'AWS', icon: '/images/svss/web/tech/cloud-aws.png' },
+      ],
+    },
   ];
+
+  // ---------------------------------------------------------------------------
+  // Data: Our Web App Development Process (7 Reference Stages)
+  // ---------------------------------------------------------------------------
+  const webProcessStages = [
+    {
+      num: '1',
+      title: 'Ideation',
+      desc: 'At Tech22Blocks, our web application development process begins with generating creative ideas, engaging in brainstorming sessions, and thoroughly validating concepts to ensure their viability.',
+    },
+    {
+      num: '2',
+      title: 'Competitive Analysis',
+      desc: 'In the next phase, our web development team crafts a detailed strategy by gathering pertinent information and market insights through an extensive competitive analysis.',
+    },
+    {
+      num: '3',
+      title: 'Intuitive UI/UX Design',
+      desc: "We then concentrate on designing a visually striking, user-friendly interface with seamless navigation, making sure it communicates your brand's message in the most engaging way possible.",
+    },
+    {
+      num: '4',
+      title: 'Development Phase',
+      desc: 'As a trusted web app development company, we are committed to creating responsive, custom web applications tailored to meet the exact needs of our clients.',
+    },
+    {
+      num: '5',
+      title: 'Robust Testing',
+      desc: 'Our expert team of testers performs thorough evaluations at multiple stages to ensure the final web application is free from errors and glitches, providing a smooth and seamless user experience.',
+    },
+    {
+      num: '6',
+      title: 'Deployment',
+      desc: 'After thorough testing through multiple stages, our developers successfully launch the web app, guaranteeing a smooth and efficient deployment process.',
+    },
+    {
+      num: '7',
+      title: 'Support and Maintenance',
+      desc: 'Finally, Tech22Blocks offers continuous support and maintenance to keep your web application optimized, secure, and current, ensuring a smooth user experience over time.',
+    },
+  ];
+
+  // Scroll Listener for Process Timeline Progress Bar & Active Step Highlighting
+  useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) {
+      setProcessFillPct(100);
+      setActiveProcessSteps(new Array(7).fill(true));
+      return;
+    }
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const lineEl = processLineRef.current;
+      if (!lineEl) return;
+      const mid = window.innerHeight * 0.55;
+      const rect = lineEl.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1, (mid - rect.top) / rect.height));
+      setProcessFillPct(Number((progress * 100).toFixed(1)));
+      setActiveProcessSteps(
+        processStepRefs.current.map((el) =>
+          el ? el.getBoundingClientRect().top + 24 < mid : false
+        )
+      );
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
 
   return (
-    <div className="bg-[var(--canvas)] text-[var(--text-primary)] transition-colors duration-200 overflow-hidden">
-      
+    <div className="bg-[var(--canvas)] text-[var(--text-primary)] transition-colors duration-200">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION (SVSS wd-hero-sec)                                        */}
+      {/* 1. HERO SECTION WITH INTERACTIVE WIREFRAME/LIVE BROWSER MOCKUP            */}
       {/* ========================================================================= */}
       <section className="relative pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24 border-b border-[var(--border)] bg-[var(--surface)] overflow-hidden transition-colors duration-200">
         <StarWatermark size={680} position="top-right" variant="blue" opacity={0.03} rotate={15} />
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[400px] bg-[var(--accent)]/[0.06] rounded-full blur-[140px] pointer-events-none transform-gpu" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          
-          {/* Breadcrumb Navigation */}
+          {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-6">
             <ol className="flex items-center space-x-2 text-xs font-mono text-[var(--text-muted)]">
               <li>
@@ -167,42 +666,41 @@ export default function WebAppServicePage() {
                   Home
                 </Link>
               </li>
-              <li><ChevronRight className="w-3 h-3 text-[var(--border)]" /></li>
+              <li>
+                <ChevronRight className="w-3 h-3 text-[var(--border)]" />
+              </li>
               <li>
                 <Link href="/services/" className="hover:text-[var(--accent)] transition-colors">
                   Services
                 </Link>
               </li>
-              <li><ChevronRight className="w-3 h-3 text-[var(--border)]" /></li>
-              <li className="text-[var(--accent)] font-semibold">
-                Website Development
+              <li>
+                <ChevronRight className="w-3 h-3 text-[var(--border)]" />
               </li>
+              <li className="text-[var(--accent)] font-semibold">Website Development</li>
             </ol>
           </nav>
 
-          {/* Hero Top Content (wd-hero-top) */}
-          <div className="text-center max-w-4xl mx-auto space-y-5 mb-12 sm:mb-16">
-            
-            {/* Kicker Tag */}
+          {/* Hero Copy */}
+          <div className="text-center max-w-4xl mx-auto space-y-5 mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[var(--accent)] px-3.5 py-1.5 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/30 backdrop-blur-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
-              <span>Website Designing &amp; Full-Stack Web Apps</span>
+              <span>Website designing &amp; web apps</span>
             </div>
 
-            {/* H1 with SVSS signature highlight span */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-[var(--text-primary)] font-display">
-              Trusted Web Application{' '}
-              <span className="text-[var(--accent)] block sm:inline">
-                Development Company
-              </span>
+              <StaggeredText text="Trusted Web Application" />{' '}
+              <StaggeredText text="Development Company" isShimmer />
             </h1>
 
             <p className="text-sm sm:text-base lg:text-lg text-[var(--text-muted)] font-normal leading-relaxed max-w-2xl mx-auto">
-              With a team of dedicated full-stack engineers, Tech22Blocks provides personalized web application development services tailored to your unique requirements, from high-converting corporate portals to full enterprise SaaS platforms.
+              With a team of dedicated engineers, Tech22Blocks offers personalised web application
+              development services tailored to your unique requirements, from business websites to
+              full SaaS platforms.
             </p>
 
-            {/* Action Buttons (wd-hero-btns) */}
-            <div className="pt-3 flex flex-wrap items-center justify-center gap-4">
+            {/* Buttons */}
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
               <Link
                 href="/contact/"
                 className="px-6 py-3.5 rounded-xl text-sm font-bold text-white bg-[var(--accent)] hover:bg-[var(--accent-hover)] shadow-lg shadow-[var(--accent)]/20 transition-all flex items-center gap-2"
@@ -212,312 +710,617 @@ export default function WebAppServicePage() {
               </Link>
               <a
                 href="#our-works"
-                className="text-xs sm:text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors inline-flex items-center gap-1.5 px-4 py-3"
+                className="px-5 py-3.5 rounded-xl text-sm font-semibold text-[var(--text-primary)] bg-[var(--surface-elevated)] hover:bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-all"
               >
-                <span>See our work</span>
-                <span aria-hidden="true">→</span>
+                See our work
               </a>
             </div>
 
-            {/* Feature Points Row (wd-points) */}
-            <ul className="pt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-mono text-[var(--text-muted)]">
-              {['Mobile-first design', 'SEO-ready code', 'Easy Headless CMS', 'Support after launch'].map((pt, idx) => (
-                <li 
-                  key={idx}
-                  className="px-3 py-1.5 rounded-lg bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-primary)] font-medium flex items-center gap-1.5"
-                >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[var(--accent)]" />
-                  <span>{pt}</span>
-                </li>
-              ))}
+            {/* 4 Key Features Row */}
+            <ul className="pt-3 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-[var(--text-muted)]">
+              {['Mobile-first design', 'SEO-ready code', 'Easy CMS', 'Support after launch'].map(
+                (pt, idx) => (
+                  <li
+                    key={idx}
+                    className="px-3 py-1.5 rounded-lg bg-[var(--surface-elevated)] border border-[var(--border)] text-[var(--text-primary)] font-medium flex items-center gap-1.5"
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
+                    <span>{pt}</span>
+                  </li>
+                )
+              )}
             </ul>
-
           </div>
 
-          {/* ========================================================================= */}
-          {/* INTERACTIVE BROWSER WINDOW MOCKUP (SVSS wd-browser)                       */}
-          {/* ========================================================================= */}
-          <div className="max-w-4xl mx-auto">
-            <div className="wd-browser-window">
-              
-              {/* Browser Header Bar with 3 Dots & Device Switcher */}
-              <div className="wd-browser-bar">
-                
-                {/* 3 Dots */}
-                <div className="wd-browser-dots">
-                  <span className="bg-rose-500/80" />
-                  <span className="bg-amber-500/80" />
-                  <span className="bg-emerald-500/80" />
-                </div>
+          {/* Interactive Browser Frame with Wireframe <-> Live Site Wipe & Desktop/Tablet/Phone Toggle */}
+          <div className="wd-browser" data-size={browserSize}>
+            <div className="wd-bar">
+              <span aria-hidden="true" className="wd-dots">
+                <i />
+                <i />
+                <i />
+              </span>
 
-                {/* URL Bar Badge */}
-                <div className="px-4 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-xs font-mono text-[var(--text-muted)] flex items-center gap-1.5">
-                  <Lock className="w-3 h-3 text-emerald-500" />
-                  <span className="text-[var(--text-primary)] font-semibold">nexusflow.tech22blocks.com</span>
-                </div>
+              <span className="wd-url font-mono">nexusflow.tech22blocks.com</span>
 
-                {/* Interactive Device Size Switcher */}
-                <div className="flex items-center gap-1 bg-[var(--surface)] p-1 rounded-lg border border-[var(--border)]">
-                  <button
-                    type="button"
-                    onClick={() => setBrowserPreviewSize('desktop')}
-                    className={`px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer flex items-center gap-1 ${
-                      browserPreviewSize === 'desktop' 
-                        ? 'bg-[var(--accent)] text-white shadow-sm' 
-                        : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
-                    }`}
-                  >
-                    <Monitor className="w-3 h-3" />
-                    <span className="hidden sm:inline">Desktop</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setBrowserPreviewSize('tablet')}
-                    className={`px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer flex items-center gap-1 ${
-                      browserPreviewSize === 'tablet' 
-                        ? 'bg-[var(--accent)] text-white shadow-sm' 
-                        : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
-                    }`}
-                  >
-                    <Tablet className="w-3 h-3" />
-                    <span className="hidden sm:inline">Tablet</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setBrowserPreviewSize('phone')}
-                    className={`px-2.5 py-1 rounded text-xs font-mono font-medium transition-all cursor-pointer flex items-center gap-1 ${
-                      browserPreviewSize === 'phone' 
-                        ? 'bg-[var(--accent)] text-white shadow-sm' 
-                        : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
-                    }`}
-                  >
-                    <Smartphone className="w-3 h-3" />
-                    <span className="hidden sm:inline">Phone</span>
-                  </button>
-                </div>
-
-              </div>
-
-              {/* Browser Viewport Content with Animated Width Transition */}
-              <div className="bg-slate-950 p-4 sm:p-6 lg:p-8 flex justify-center transition-all duration-500">
-                <div 
-                  className={`transition-all duration-500 w-full ${
-                    browserPreviewSize === 'desktop' 
-                      ? 'max-w-full' 
-                      : browserPreviewSize === 'tablet' 
-                      ? 'max-w-[75%]' 
-                      : 'max-w-[340px]'
-                  }`}
+              <div aria-label="Preview size" className="wd-sizes" role="group">
+                <button
+                  type="button"
+                  aria-pressed={browserSize === 'desktop'}
+                  onClick={() => setBrowserSize('desktop')}
+                  className="inline-flex items-center gap-1.5"
                 >
-                  {/* High-Polish Simulated Web Portal Screen */}
-                  <div className="rounded-2xl bg-slate-900 border border-slate-800 p-4 sm:p-6 text-white space-y-5">
-                    
-                    {/* Top Row: Portal Identity & User Profile */}
-                    <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-                      <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 rounded-lg bg-[var(--accent)] flex items-center justify-center font-bold text-xs">
-                          NF
-                        </div>
-                        <div>
-                          <div className="text-xs font-bold">NexusFlow Portal</div>
-                          <div className="text-[10px] text-slate-400 font-mono">Enterprise B2B Hub</div>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
-                        <span className="text-[10px] font-mono text-emerald-400 font-semibold">Sub-0.6s LCP</span>
-                      </div>
-                    </div>
-
-                    {/* KPI Cards Row */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60">
-                        <div className="text-[10px] text-slate-400">Total B2B Volume</div>
-                        <div className="text-sm sm:text-base font-extrabold text-white mt-0.5">$1.84M</div>
-                        <div className="text-[9px] text-emerald-400 font-mono">+18% this month</div>
-                      </div>
-                      <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60">
-                        <div className="text-[10px] text-slate-400">Avg Page Load</div>
-                        <div className="text-sm sm:text-base font-extrabold text-white mt-0.5">540ms</div>
-                        <div className="text-[9px] text-sky-400 font-mono">Edge CDN Cache</div>
-                      </div>
-                      <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60 col-span-2 sm:col-span-1">
-                        <div className="text-[10px] text-slate-400">Active Workspaces</div>
-                        <div className="text-sm sm:text-base font-extrabold text-white mt-0.5">142 Accounts</div>
-                        <div className="text-[9px] text-purple-400 font-mono">Zero Downtime</div>
-                      </div>
-                    </div>
-
-                    {/* Simulated Table Data */}
-                    <div className="p-3 rounded-xl bg-slate-800/50 border border-slate-800 space-y-2">
-                      <div className="flex items-center justify-between text-[11px] font-bold text-slate-300 pb-1 border-b border-slate-800">
-                        <span>Recent Client Invoices</span>
-                        <span className="font-mono text-[10px] text-slate-400">Status</span>
-                      </div>
-                      {[
-                        { client: 'Apex Distribution Corp', id: 'INV-4091', amount: '$42,500', status: 'PAID' },
-                        { client: 'Vanguard Medical Devices', id: 'INV-4092', amount: '$18,200', status: 'PROCESSING' },
-                        { client: 'Pacific Logistics Group', id: 'INV-4093', amount: '$89,000', status: 'PAID' },
-                      ].map((inv, idx) => (
-                        <div key={idx} className="flex items-center justify-between text-[11px] text-slate-300">
-                          <div>
-                            <span className="font-medium text-white">{inv.client}</span>{' '}
-                            <span className="font-mono text-slate-500 text-[10px]">({inv.id})</span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-mono font-bold text-slate-200">{inv.amount}</span>
-                            <span className={`px-1.5 py-0.2 rounded text-[9px] font-mono font-bold ${
-                              inv.status === 'PAID' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-400'
-                            }`}>
-                              {inv.status}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                  </div>
-                </div>
+                  <Monitor className="w-3.5 h-3.5" />
+                  <span>Desktop</span>
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={browserSize === 'tablet'}
+                  onClick={() => setBrowserSize('tablet')}
+                  className="inline-flex items-center gap-1.5"
+                >
+                  <Tablet className="w-3.5 h-3.5" />
+                  <span>Tablet</span>
+                </button>
+                <button
+                  type="button"
+                  aria-pressed={browserSize === 'phone'}
+                  onClick={() => setBrowserSize('phone')}
+                  className="inline-flex items-center gap-1.5"
+                >
+                  <Smartphone className="w-3.5 h-3.5" />
+                  <span>Phone</span>
+                </button>
               </div>
+            </div>
 
+            <div className="wd-view">
+              <div
+                ref={heroFrameRef}
+                className="wd-frame"
+                style={{ '--cut': `${wipeCut}%` } as React.CSSProperties}
+              >
+                <img
+                  src={getAssetUrl('/images/web-hero-preview.jpg')}
+                  alt="Responsive multi-device enterprise SaaS platform engineered by Tech22Blocks"
+                  className="wd-live"
+                />
+
+                {/* Blueprint Wireframe Layer clipped dynamically by --cut */}
+                <div aria-hidden="true" className="wd-wire">
+                  <span className="w-nav">
+                    <i />
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                  <span className="w-title" />
+                  <span className="w-line" />
+                  <span className="w-line s" />
+                  <span className="w-btn" />
+                  <span className="w-img" />
+                  <span className="w-cards">
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                </div>
+
+                {/* Interactive Range Handle & Knob */}
+                <label className="wd-handle">
+                  <span className="sr-only">
+                    Drag to compare the wireframe with the finished site
+                  </span>
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    value={wipeCut}
+                    onChange={(e) => {
+                      wipeTouchedRef.current = true;
+                      setWipeCut(Number(e.target.value));
+                    }}
+                  />
+                  <span aria-hidden="true" className="wd-knob">
+                    ⇆
+                  </span>
+                </label>
+
+                <span aria-hidden="true" className="wd-tag l">
+                  Wireframe
+                </span>
+                <span aria-hidden="true" className="wd-tag r">
+                  Live site
+                </span>
+              </div>
             </div>
           </div>
-
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. SERVICES WE OFFER (SVSS BENTO GRID: wd-svc-sec & wd-bento)              */}
+      {/* 2. WEB APPLICATION DEVELOPMENT SERVICES WE OFFER                          */}
+      {/* (Reference images & copy + Mobile App page 3D Cover Flow behavior!)       */}
       {/* ========================================================================= */}
-      <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--canvas)]">
+      <section
+        id="web-services"
+        className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--canvas)] overflow-hidden"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block font-mono">
+              Engineering Services
+            </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Web Application Development Services We Offer
+              <StaggeredText text="Web Application Development" />{' '}
+              <StaggeredText text="Services We Offer" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
-              We adopt a tailored approach to developing web applications that seamlessly align with your business goals. From initial concept to final deployment, we guarantee that your digital solution is as distinctive as your vision.
+              We adopt a tailored approach to developing web applications that seamlessly align
+              with your business goals. From initial concept to final deployment, we guarantee that
+              your digital solution is as distinctive as your vision.
             </p>
           </div>
 
-          {/* Authentic SVSS Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {bentoServices.map((tile, idx) => (
-              <div
-                key={idx}
-                className={`wd-tile-hover p-6 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-sm flex flex-col justify-between ${
-                  tile.isBig ? 'md:col-span-2' : ''
-                }`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xl font-mono font-extrabold text-[var(--accent)]">
-                      {tile.num}
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20">
-                      {tile.badge}
-                    </span>
-                  </div>
+          {/* 3D Cover Flow Carousel (.ms-flow) */}
+          <div
+            ref={serviceFlowRef}
+            className="ms-flow focus:outline-none"
+            tabIndex={0}
+            onKeyDown={handleFlowKeyDown}
+            onPointerDown={handleFlowPointerDown}
+            onPointerMove={handleFlowPointerMove}
+            onPointerUp={handleFlowPointerUp}
+            onPointerCancel={handleFlowPointerUp}
+            onPointerLeave={handleFlowPointerUp}
+          >
+            <ul className="ms-flow-track">
+              {webServices.map((svc, idx) => {
+                const off = idx - activeServiceFlow;
+                const abs = Math.abs(off);
+                const isFar = abs > 3;
 
-                  <h3 className="text-lg sm:text-xl font-extrabold text-[var(--text-primary)] font-display tracking-tight mb-2">
-                    {tile.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed mb-5">
-                    {tile.desc}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-[var(--border)] space-y-1">
-                  {tile.highlights.map((hl, hIdx) => (
-                    <div key={hIdx} className="flex items-center gap-2 text-xs text-[var(--text-primary)]">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[var(--accent)] flex-shrink-0" />
-                      <span>{hl}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+                return (
+                  <li
+                    key={idx}
+                    onClick={() => {
+                      if (!dragMoved.current && idx !== activeServiceFlow) {
+                        goServiceFlow(idx);
+                      }
+                    }}
+                    className={`ms-flow-card ${isFar ? 'far' : ''}`}
+                    aria-hidden={off !== 0}
+                    style={
+                      {
+                        '--off': off,
+                        '--abs': abs,
+                        transform: `translateX(calc(${off} * 58%)) translateZ(calc(${abs} * -170px)) rotateY(calc(${off} * -38deg))`,
+                        opacity: isFar ? 0 : Math.max(0, 1 - abs * 0.22),
+                        zIndex: Math.max(1, 20 - abs),
+                        filter: `brightness(${Math.max(0.45, 1 - abs * 0.14)})`,
+                      } as React.CSSProperties
+                    }
+                  >
+                    <Image
+                      src={getAssetUrl(svc.image)}
+                      alt={svc.title}
+                      fill
+                      sizes="(max-width: 640px) 250px, 420px"
+                      className="object-cover"
+                      priority={idx === 2}
+                    />
+                    <b>{svc.title}</b>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
 
+          {/* Synchronized Side-by-Side / Center Caption Controls matching Mobile App page */}
+          <div className="max-w-2xl mx-auto mt-8 flex flex-col items-center">
+            <div className="flex items-center justify-between w-full gap-4">
+              <button
+                type="button"
+                onClick={() => goServiceFlow(activeServiceFlow - 1)}
+                disabled={activeServiceFlow === 0}
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-elevated)] flex items-center justify-center text-[var(--text-primary)] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm flex-shrink-0"
+                aria-label="Previous web development service"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              <div className="text-center px-2 sm:px-4 flex-1">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[var(--text-primary)] font-display">
+                  {webServices[activeServiceFlow]?.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[var(--text-muted)] mt-2 leading-relaxed">
+                  {webServices[activeServiceFlow]?.desc}
+                </p>
+                <Link
+                  href="/contact/"
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[var(--accent)] hover:underline"
+                >
+                  <span>{webServices[activeServiceFlow]?.cta}</span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => goServiceFlow(activeServiceFlow + 1)}
+                disabled={activeServiceFlow === webServices.length - 1}
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--surface-elevated)] flex items-center justify-center text-[var(--text-primary)] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-sm flex-shrink-0"
+                aria-label="Next web development service"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Dots */}
+            <div className="flex items-center justify-center gap-2 mt-6">
+              {webServices.map((_, dotIdx) => (
+                <button
+                  key={dotIdx}
+                  type="button"
+                  onClick={() => goServiceFlow(dotIdx)}
+                  className={`h-2 rounded-full transition-all ${
+                    dotIdx === activeServiceFlow
+                      ? 'w-6 bg-[var(--accent)]'
+                      : 'w-2 bg-[var(--border)] hover:bg-[var(--text-muted)]'
+                  }`}
+                  aria-label={`Jump to service ${dotIdx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. WEB APPS BUILT FOR YOUR INDUSTRY (SVSS bg-soft)                        */}
+      {/* 3. EXPLORE A WEBSITE WE DESIGN (INTERACTIVE SVG + 5 HOTSPOTS)             */}
       {/* ========================================================================= */}
       <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block font-mono">
+              Anatomy &amp; Architecture
+            </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Web Apps Built for Your Industry
+              <StaggeredText text="Explore a Website" />{' '}
+              <StaggeredText text="We Design" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
-              Explore specialized domain applications we engineer across commercial verticals.
+              Tap a number to see the building blocks of a fast, search-friendly website.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {industryVerticals.map((ind, idx) => (
-              <div 
-                key={idx}
-                className="p-6 rounded-2xl bg-[var(--canvas)] border border-[var(--border)] hover:border-[var(--accent)]/50 shadow-sm transition-all group"
+          <div className="sv-hs">
+            {/* Left Interactive Stage with SVG Artwork + 5 Pulsing Hotspots */}
+            <div
+              ref={hotspotStageRef}
+              className="sv-hs-stage"
+              onPointerMove={handleHotspotMove}
+              onPointerLeave={handleHotspotLeave}
+            >
+              <svg
+                ref={hotspotSvgRef}
+                aria-label="Explore a Website We Design"
+                role="img"
+                viewBox="0 0 520 420"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <div className="w-8 h-8 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center font-bold mb-3">
-                  <Globe className="w-4 h-4" />
-                </div>
-                <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] font-display mb-1.5 group-hover:text-[var(--accent)] transition-colors">
-                  {ind.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
-                  {ind.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+                <defs>
+                  <linearGradient id="t22WebBg" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stopColor="#e8f4ff" />
+                    <stop offset="1" stopColor="#d7ecff" />
+                  </linearGradient>
+                  <linearGradient id="t22WebHero" x1="0" x2="1" y1="0" y2="0">
+                    <stop offset="0" stopColor="#0a85b1" />
+                    <stop offset="1" stopColor="#38bdf8" />
+                  </linearGradient>
+                </defs>
+                <g className="art-layer" data-depth="0.01">
+                  <circle cx="260" cy="210" fill="url(#t22WebBg)" r="195" />
+                </g>
+                <g className="art-layer" data-depth="0.03">
+                  <rect fill="#fff" height="250" rx="16" stroke="#d6e6f5" width="350" x="56" y="70" />
+                  <rect fill="#eef3f8" height="30" rx="16" width="350" x="56" y="70" />
+                  <rect fill="#eef3f8" height="14" width="350" x="56" y="86" />
+                  <circle cx="76" cy="85" fill="#f87171" r="5" />
+                  <circle cx="92" cy="85" fill="#fbbf24" r="5" />
+                  <circle cx="108" cy="85" fill="#34d399" r="5" />
+                  <rect fill="#fff" height="12" rx="6" width="180" x="128" y="79" />
+                  <rect fill="url(#t22WebHero)" height="86" rx="10" width="314" x="74" y="114" />
+                  <g fill="#fff">
+                    <rect height="10" rx="4" width="130" x="92" y="134" />
+                    <rect height="8" opacity=".75" rx="4" width="96" x="92" y="152" />
+                  </g>
+                  <rect className="art-pulse" fill="#fbbf24" height="18" rx="9" width="64" x="92" y="170" />
+                  <circle cx="330" cy="157" fill="#fff" opacity=".2" r="28" />
+                  <g fill="#eef3f8">
+                    <rect height="88" rx="10" width="96" x="74" y="212" />
+                    <rect height="88" rx="10" width="96" x="183" y="212" />
+                    <rect height="88" rx="10" width="96" x="292" y="212" />
+                  </g>
+                  <g fill="#cfe2f3">
+                    <rect height="40" rx="6" width="72" x="86" y="224" />
+                    <rect height="40" rx="6" width="72" x="195" y="224" />
+                    <rect height="40" rx="6" width="72" x="304" y="224" />
+                  </g>
+                  <g fill="#9fb2c4">
+                    <rect height="7" rx="3" width="60" x="86" y="274" />
+                    <rect height="7" rx="3" width="60" x="195" y="274" />
+                    <rect height="7" rx="3" width="60" x="304" y="274" />
+                  </g>
+                </g>
+                <g className="art-layer art-float" data-depth="0.08">
+                  <rect fill="#0f172a" height="180" rx="18" width="96" x="382" y="170" />
+                  <rect fill="#fff" height="156" rx="12" width="80" x="390" y="182" />
+                  <rect fill="url(#t22WebHero)" height="40" rx="6" width="64" x="398" y="192" />
+                  <g fill="#cfe2f3">
+                    <rect height="26" rx="5" width="64" x="398" y="240" />
+                    <rect height="26" rx="5" width="64" x="398" y="272" />
+                  </g>
+                  <g fill="#9fb2c4">
+                    <rect height="6" rx="3" width="44" x="398" y="306" />
+                    <rect height="6" rx="3" width="32" x="398" y="318" />
+                  </g>
+                </g>
+                <g className="art-layer art-float delay" data-depth="0.09">
+                  <rect fill="#fff" height="56" rx="14" stroke="#cfe0f0" width="128" x="30" y="300" />
+                  <circle cx="62" cy="328" fill="none" r="18" stroke="#e5e7eb" strokeWidth="5" />
+                  <circle
+                    className="art-draw"
+                    cx="62"
+                    cy="328"
+                    fill="none"
+                    r="18"
+                    stroke="#16a34a"
+                    strokeDasharray="108 113"
+                    strokeWidth="5"
+                    transform="rotate(-90 62 328)"
+                  />
+                  <text
+                    fill="#16a34a"
+                    fontFamily="Arial"
+                    fontSize="11"
+                    fontWeight="700"
+                    textAnchor="middle"
+                    x="62"
+                    y="332"
+                  >
+                    98
+                  </text>
+                  <text fill="#5c6b7a" fontFamily="Arial" fontSize="10" x="90" y="324">
+                    Page speed
+                  </text>
+                  <text fill="#0f172a" fontFamily="Arial" fontSize="11" fontWeight="700" x="90" y="339">
+                    Excellent
+                  </text>
+                </g>
+                <g className="art-layer art-float" data-depth="0.07">
+                  <rect fill="#fff" height="40" rx="20" stroke="#cfe0f0" width="92" x="410" y="60" />
+                  <circle cx="430" cy="80" fill="#0a85b1" r="8" />
+                  <circle cx="452" cy="80" fill="#38bdf8" r="8" />
+                  <circle cx="474" cy="80" fill="#fbbf24" r="8" />
+                </g>
+              </svg>
 
+              {hotspots.map((spot) => (
+                <button
+                  key={spot.id}
+                  type="button"
+                  aria-label={spot.title}
+                  aria-pressed={activeHotspot === spot.id}
+                  className="sv-hs-dot"
+                  style={{ left: spot.left, top: spot.top }}
+                  onClick={() => setActiveHotspot(spot.id)}
+                  onMouseEnter={() => setActiveHotspot(spot.id)}
+                >
+                  {spot.id + 1}
+                </button>
+              ))}
+            </div>
+
+            {/* Right Interactive Hotspot Accordion List */}
+            <ol className="sv-hs-list">
+              {hotspots.map((spot) => {
+                const isActive = activeHotspot === spot.id;
+                return (
+                  <li key={spot.id} className={isActive ? 'is-active' : ''}>
+                    <button type="button" onClick={() => setActiveHotspot(spot.id)}>
+                      <span>{spot.id + 1}</span>
+                      {spot.title}
+                    </button>
+                    <p>{spot.desc}</p>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. "OUR WORKS" (SVSS ws-sec with BROWSER WINDOW FRAMES)                   */}
+      {/* 4. WEB APPS BUILT FOR YOUR INDUSTRY                                       */}
+      {/* (Reference 9 Industries + Mobile App page Stacking Cards & Sticky Nav)    */}
+      {/* Note: NO overflow-hidden on this section so sticky nav & cards work!      */}
       {/* ========================================================================= */}
-      <section id="our-works" className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--canvas)]">
+      <section
+        id="industries"
+        className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--canvas)]"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block font-mono">
+              Domain Engineering
+            </span>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Our Works
+              <StaggeredText text="Web Apps Built" />{' '}
+              <StaggeredText text="for Your Industry" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
-              Websites and web platforms we have designed and built, live in production today. Scroll to explore each one.
+              To revolutionize digital innovation and optimize business operations, our web
+              application development services are crafted to enhance your online presence and
+              deliver tangible results.
+            </p>
+          </div>
+
+          <div className="hp-scwrap">
+            {/* Sticky Left Vertical Navigation */}
+            <nav className="hp-sc-nav" aria-label="Industry Solutions Navigation">
+              <ol>
+                {industryStackCards.map((ind, idx) => {
+                  const isCurrent = activeIndustryCard === idx;
+                  return (
+                    <li key={ind.id}>
+                      <button
+                        type="button"
+                        onClick={() => handleIndustryNavClick(idx)}
+                        aria-current={isCurrent ? 'true' : undefined}
+                        style={{ '--ac': ind.ac } as React.CSSProperties}
+                      >
+                        <i aria-hidden="true" />
+                        <span>{ind.title}</span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ol>
+            </nav>
+
+            {/* Right Stacking Cards List */}
+            <ol className="hp-stack-cards">
+              {industryStackCards.map((ind, idx) => (
+                <li
+                  key={ind.id}
+                  id={ind.id}
+                  ref={(el) => {
+                    industryCardRefs.current[idx] = el;
+                  }}
+                  data-ind-idx={idx}
+                  className="hp-sc"
+                  style={{ '--k': idx, '--ac': ind.ac } as React.CSSProperties}
+                >
+                  <article className="hp-sc-card">
+                    {/* Left Copy */}
+                    <div className="hp-sc-copy">
+                      <div className="flex items-center gap-2">
+                        <span className="hp-sc-num">
+                          {ind.num} <i>/ 09</i>
+                        </span>
+                        <span className="hp-sc-name">· Industry Vertical</span>
+                      </div>
+
+                      <h3>{ind.title}</h3>
+                      <p>{ind.desc}</p>
+
+                      <ul className="hp-sol-points">
+                        {ind.points.map((pt, pIdx) => (
+                          <li key={pIdx}>{pt}</li>
+                        ))}
+                      </ul>
+
+                      <Link href="/contact/" className="hp-sc-btn">
+                        <span>Build for {ind.title}</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+
+                    {/* Right Device Frame */}
+                    <div className="hp-sc-device">
+                      <div className="hp-sc-bar">
+                        <i />
+                        <i />
+                        <i />
+                        <span>{ind.deviceTitle}</span>
+                      </div>
+
+                      <div className="hp-sc-screen">
+                        <div className="hp-sc-hello flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-xl bg-white/95 p-1.5 flex items-center justify-center flex-shrink-0 shadow-sm">
+                            <Image
+                              src={getAssetUrl(ind.image)}
+                              alt={ind.title}
+                              width={40}
+                              height={40}
+                              className="object-contain w-full h-full"
+                            />
+                          </div>
+                          <div>
+                            <b>{ind.title}</b>
+                            <span className="text-[11px] text-white/85 block">
+                              Production Web Architecture
+                            </span>
+                          </div>
+                        </div>
+
+                        <ul className="hp-sc-tiles">
+                          {ind.tiles.map((tileName, tIdx) => (
+                            <li key={tIdx}>
+                              <span className="hp-sc-ic">
+                                <Globe className="w-4 h-4 text-[var(--accent)]" />
+                              </span>
+                              <span>{tileName}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. OUR WORKS (ONLY 2 DUMMY ITEMS SIMILAR TO REFERENCE)                    */}
+      {/* ========================================================================= */}
+      <section
+        id="our-works"
+        className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--surface)]"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+            <span className="text-xs font-extrabold uppercase tracking-widest text-[var(--accent)] mb-2 block font-mono">
+              Selected Concept Works
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
+              <StaggeredText text="Our" />{' '}
+              <StaggeredText text="Works" isShimmer />
+            </h2>
+            <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
+              Web platforms and enterprise systems designed with clean UX and sub-second response
+              times.
             </p>
           </div>
 
           <div className="space-y-16 sm:space-y-24">
-            
-            {/* WORK 1: NexusFlow Enterprise Portal */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-              
-              {/* Browser Frame Column (ws-frame) */}
+            {/* DUMMY WORK 01 */}
+            <article className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               <div className="lg:col-span-6">
-                <div className="wd-browser-window">
+                <div className="wd-browser-window relative group">
                   <div className="wd-browser-bar">
                     <div className="wd-browser-dots">
                       <span className="bg-rose-500/80" />
                       <span className="bg-amber-500/80" />
                       <span className="bg-emerald-500/80" />
                     </div>
-                    <span className="text-xs font-mono text-[var(--text-muted)]">nexusflow.portal</span>
-                    <span className="text-[10px] font-mono text-emerald-500 font-bold">● LIVE</span>
+                    <span className="text-xs font-mono text-[var(--text-muted)]">
+                      nexusflow.tech22blocks.com
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-500 font-bold">
+                      ● DUMMY WORK 01
+                    </span>
                   </div>
-                  
-                  {/* Viewport content */}
-                  <div className="bg-slate-950 p-6 text-white space-y-4">
+
+                  {/* Interactive Vertical Scrollable Preview Window */}
+                  <div className="bg-slate-950 p-5 sm:p-6 text-white space-y-4 h-[340px] overflow-y-auto scrollbar-thin">
                     <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                       <div>
-                        <div className="text-xs text-slate-400">Client Hub</div>
+                        <div className="text-xs text-slate-400">Enterprise B2B Portal</div>
                         <div className="text-base font-bold">NexusFlow Industrial Portal</div>
                       </div>
                       <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400">
@@ -525,82 +1328,101 @@ export default function WebAppServicePage() {
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                      <div className="p-2.5 rounded bg-slate-900 border border-slate-800">
+                    <div className="grid grid-cols-2 gap-3 text-xs font-mono">
+                      <div className="p-3 rounded-lg bg-slate-900 border border-slate-800">
                         <div className="text-slate-400 text-[10px]">Real-Time Catalog</div>
-                        <div className="font-bold text-white text-sm">12,400+ SKUs</div>
+                        <div className="font-bold text-white text-sm mt-1">12,400+ SKUs</div>
                       </div>
-                      <div className="p-2.5 rounded bg-slate-900 border border-slate-800">
+                      <div className="p-3 rounded-lg bg-slate-900 border border-slate-800">
                         <div className="text-slate-400 text-[10px]">Auto Invoicing</div>
-                        <div className="font-bold text-white text-sm">Stripe Webhooks</div>
+                        <div className="font-bold text-white text-sm mt-1">Stripe Webhooks</div>
                       </div>
                     </div>
 
-                    <div className="p-3 rounded bg-slate-900 border border-slate-800 space-y-1.5 text-xs">
-                      <div className="flex items-center justify-between font-bold text-slate-300">
-                        <span>Multi-Role Permissions Matrix</span>
-                        <span className="text-emerald-400">RBAC Verified</span>
+                    <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800 space-y-2 text-xs">
+                      <div className="flex items-center justify-between font-bold text-slate-200">
+                        <span>Wholesale Order Pipeline</span>
+                        <span className="text-sky-400">Active Sync</span>
                       </div>
-                      <div className="text-[10px] text-slate-400">
-                        Wholesale buyer tiers, automated margin calculation, and one-click repeat ordering.
+                      <div className="space-y-1.5 text-[11px] text-slate-400 font-mono">
+                        <div className="flex justify-between">
+                          <span>PO #8821 — Bulk Switchgear</span>
+                          <span className="text-emerald-400">Dispatched</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>PO #8822 — Grid Controllers</span>
+                          <span className="text-amber-400">Processing</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>PO #8823 — Telemetry Gateways</span>
+                          <span className="text-sky-400">Quoted</span>
+                        </div>
                       </div>
+                    </div>
+
+                    <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800 text-xs space-y-1">
+                      <div className="font-bold text-slate-200">Multi-Role Access Control</div>
+                      <p className="text-[11px] text-slate-400 leading-relaxed">
+                        Department buyer budgets, manager sign-off gates, and instant ERP inventory
+                        reservations.
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Work Details Copy (ws-copy) */}
               <div className="lg:col-span-6 space-y-4">
-                <span className="text-xs font-mono font-extrabold text-[var(--accent)] block">
-                  01 // B2B Enterprise Portal &amp; SaaS
+                <span className="text-5xl sm:text-6xl font-extrabold font-mono text-[var(--accent)]/20 block leading-none select-none">
+                  01
+                </span>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--accent)] block">
+                  Enterprise Portal &amp; B2B SaaS
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-display tracking-tight">
                   NexusFlow Enterprise Portal
                 </h3>
                 <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-                  A high-throughput B2B customer self-service portal engineered for an industrial distributor. Replaced manual email ticketing with real-time order tracking, automated invoicing, bulk catalog search, and multi-tier user role permissions.
+                  A high-throughput B2B customer self-service platform engineered to replace manual
+                  email ordering with live wholesale pricing, automated invoicing, and multi-tier
+                  team permissions.
                 </p>
 
-                {/* What we built definition list (dl.ws-built) */}
                 <div className="pt-2">
                   <div className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--text-primary)] mb-2">
-                    What We Built:
+                    What we built
                   </div>
-                  <dl className="space-y-2 border-t border-[var(--border)] pt-2 text-xs sm:text-sm">
+                  <dl className="space-y-1 border-t border-[var(--border)] pt-2 text-xs sm:text-sm">
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 py-1.5 border-b border-[var(--border)]/60">
                       <dt className="font-bold text-[var(--text-primary)] col-span-1">Catalog</dt>
-                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">Real-time stock, tiered wholesale pricing &amp; backorders</dd>
+                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">
+                        Real-time stock, tiered wholesale pricing &amp; backorders
+                      </dd>
                     </div>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 py-1.5 border-b border-[var(--border)]/60">
                       <dt className="font-bold text-[var(--text-primary)] col-span-1">Invoicing</dt>
-                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">Instant PDF billing generation &amp; Stripe payment gateway</dd>
+                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">
+                        Instant PDF billing generation &amp; Stripe payment gateway
+                      </dd>
                     </div>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 py-1.5 border-b border-[var(--border)]/60">
                       <dt className="font-bold text-[var(--text-primary)] col-span-1">Security</dt>
-                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">Multi-tenant isolation &amp; role-based RBAC permissions</dd>
+                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">
+                        Multi-tenant isolation &amp; role-based RBAC permissions
+                      </dd>
                     </div>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 py-1.5 border-b border-[var(--border)]/60">
                       <dt className="font-bold text-[var(--text-primary)] col-span-1">Speed</dt>
-                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">Sub-second LCP (0.6s) across global cloud edge CDN</dd>
+                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">
+                        Sub-second LCP (0.6s) across global edge CDN
+                      </dd>
                     </div>
                   </dl>
                 </div>
-
-                <div className="pt-3 flex flex-wrap gap-2">
-                  {['Next.js 14 App Router', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Stripe', 'Edge CDN'].map((t, i) => (
-                    <span key={i} className="text-xs font-mono px-3 py-1 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)]">
-                      {t}
-                    </span>
-                  ))}
-                </div>
               </div>
+            </article>
 
-            </div>
-
-            {/* WORK 2: ApexAnalytics SaaS Platform */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-              
-              {/* Browser Frame Column (ws-frame) */}
+            {/* DUMMY WORK 02 */}
+            <article className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               <div className="lg:col-span-6 lg:order-2">
                 <div className="wd-browser-window">
                   <div className="wd-browser-bar">
@@ -609,162 +1431,174 @@ export default function WebAppServicePage() {
                       <span className="bg-amber-500/80" />
                       <span className="bg-emerald-500/80" />
                     </div>
-                    <span className="text-xs font-mono text-[var(--text-muted)]">app.apexanalytics.io</span>
-                    <span className="text-[10px] font-mono text-emerald-500 font-bold">● LIVE</span>
+                    <span className="text-xs font-mono text-[var(--text-muted)]">
+                      analytics.tech22blocks.com
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-500 font-bold">
+                      ● DUMMY WORK 02
+                    </span>
                   </div>
-                  
-                  {/* Viewport content */}
-                  <div className="bg-slate-950 p-6 text-white space-y-4">
+
+                  <div className="bg-slate-950 p-5 sm:p-6 text-white space-y-4 h-[340px] overflow-y-auto scrollbar-thin">
                     <div className="flex items-center justify-between pb-3 border-b border-slate-800">
                       <div>
-                        <div className="text-xs text-slate-400">BI Telemetry Engine</div>
-                        <div className="text-base font-bold">ApexAnalytics Real-Time Dashboard</div>
+                        <div className="text-xs text-slate-400">BI Telemetry Platform</div>
+                        <div className="text-base font-bold">ApexAnalytics Cloud Console</div>
                       </div>
                       <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-sky-500/20 text-sky-400">
-                        100k+ Points/Sec
+                        100k+ Pts/Sec
                       </span>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                      <div className="p-2.5 rounded bg-slate-900 border border-slate-800">
-                        <div className="text-slate-400 text-[10px]">Processing Speed</div>
-                        <div className="font-bold text-white text-sm">60 FPS Vector Render</div>
+                    <div className="grid grid-cols-2 gap-3 text-xs font-mono">
+                      <div className="p-3 rounded-lg bg-slate-900 border border-slate-800">
+                        <div className="text-slate-400 text-[10px]">Vector Rendering</div>
+                        <div className="font-bold text-white text-sm mt-1">60 FPS Smooth</div>
                       </div>
-                      <div className="p-2.5 rounded bg-slate-900 border border-slate-800">
+                      <div className="p-3 rounded-lg bg-slate-900 border border-slate-800">
                         <div className="text-slate-400 text-[10px]">Uptime SLA</div>
-                        <div className="font-bold text-white text-sm">99.99% Enterprise</div>
+                        <div className="font-bold text-white text-sm mt-1">99.99% Global</div>
                       </div>
                     </div>
 
-                    <div className="p-3 rounded bg-slate-900 border border-slate-800 space-y-1.5 text-xs">
-                      <div className="flex items-center justify-between font-bold text-slate-300">
-                        <span>Automated Scheduled Reporting</span>
+                    <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800 space-y-2 text-xs">
+                      <div className="flex items-center justify-between font-bold text-slate-200">
+                        <span>Automated Compliance Digest</span>
                         <span className="text-emerald-400">SOC2 Ready</span>
                       </div>
-                      <div className="text-[10px] text-slate-400">
-                        Automated weekly PDF compliance packages, custom filter bookmarks, and team sharing.
-                      </div>
+                      <p className="text-[11px] text-slate-400 leading-relaxed">
+                        Weekly scheduled PDF executive reports, multi-currency rollups, and live
+                        filter bookmarks across distributed cloud nodes.
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Work Details Copy (ws-copy) */}
               <div className="lg:col-span-6 space-y-4 lg:order-1">
-                <span className="text-xs font-mono font-extrabold text-[var(--accent)] block">
-                  02 // Business Intelligence &amp; Data Platform
+                <span className="text-5xl sm:text-6xl font-extrabold font-mono text-[var(--accent)]/20 block leading-none select-none">
+                  02
+                </span>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--accent)] block">
+                  Analytics &amp; Cloud Platform
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] font-display tracking-tight">
                   ApexAnalytics SaaS Platform
                 </h3>
                 <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
-                  A real-time financial telemetry dashboard processing millions of daily transactions. Features custom vector chart rendering, automated PDF reporting, multi-currency conversion, and team workspace collaboration.
+                  A real-time telemetry and reporting web application processing daily streaming
+                  metrics with interactive charts, instant filtering, and automated team exports.
                 </p>
 
-                {/* What we built definition list (dl.ws-built) */}
                 <div className="pt-2">
                   <div className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--text-primary)] mb-2">
-                    What We Built:
+                    What we built
                   </div>
-                  <dl className="space-y-2 border-t border-[var(--border)] pt-2 text-xs sm:text-sm">
+                  <dl className="space-y-1 border-t border-[var(--border)] pt-2 text-xs sm:text-sm">
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 py-1.5 border-b border-[var(--border)]/60">
                       <dt className="font-bold text-[var(--text-primary)] col-span-1">Engine</dt>
-                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">100k+ data points rendered with hardware-accelerated 60 FPS charts</dd>
+                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">
+                        100k+ data points rendered with responsive vector charts
+                      </dd>
                     </div>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 py-1.5 border-b border-[var(--border)]/60">
-                      <dt className="font-bold text-[var(--text-primary)] col-span-1">Telemetry</dt>
-                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">Instant client-side multi-parameter filtering &amp; CSV export</dd>
+                      <dt className="font-bold text-[var(--text-primary)] col-span-1">Reporting</dt>
+                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">
+                        Multi-parameter filtering &amp; scheduled CSV/PDF export
+                      </dd>
                     </div>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 py-1.5 border-b border-[var(--border)]/60">
                       <dt className="font-bold text-[var(--text-primary)] col-span-1">Caching</dt>
-                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">Global Edge KV caching achieving sub-50ms query responses</dd>
+                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">
+                        Global Edge KV caching for sub-50ms query responses
+                      </dd>
                     </div>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 py-1.5 border-b border-[var(--border)]/60">
                       <dt className="font-bold text-[var(--text-primary)] col-span-1">Audit</dt>
-                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">SOC2 compliant append-only immutable action log</dd>
+                      <dd className="text-[var(--text-muted)] col-span-2 sm:col-span-3">
+                        Append-only immutable action log across teams
+                      </dd>
                     </div>
                   </dl>
                 </div>
-
-                <div className="pt-3 flex flex-wrap gap-2">
-                  {['Next.js SSR', 'React', 'TypeScript', 'Edge Functions', 'Tailwind CSS', 'Chart.js'].map((t, i) => (
-                    <span key={i} className="text-xs font-mono px-3 py-1 rounded-lg bg-[var(--surface)] border border-[var(--border)] text-[var(--text-primary)]">
-                      {t}
-                    </span>
-                  ))}
-                </div>
               </div>
-
-            </div>
-
+            </article>
           </div>
-
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. REASONS TO INVEST IN WEB APPLICATION DEVELOPMENT                       */}
+      {/* 6. REASONS TO INVEST IN WEB APPLICATION DEVELOPMENT                       */}
       {/* ========================================================================= */}
-      <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--surface)]">
+      <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--canvas)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Reasons to Invest in Web Application Development
+              <StaggeredText text="Reasons to Invest in" />{' '}
+              <StaggeredText text="Web Application Development" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
-              Why leading organizations build custom web platforms instead of settling for off-the-shelf templates.
+              Building a custom web application isn’t merely an option; it’s a strategic decision.
+              It opens the door to higher profitability, serves as a platform for ongoing
+              innovation, and drives business growth. Let us transform your idea into clever and
+              effective digital solutions.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {reasonsToInvest.map((reason, idx) => (
-              <div 
+              <div
                 key={idx}
-                className="p-6 rounded-2xl bg-[var(--canvas)] border border-[var(--border)] hover:border-[var(--accent)]/50 shadow-sm transition-all"
+                className="group relative pl-16 pr-6 py-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)] transition-all duration-200 hover:-translate-y-0.5 flex items-center"
               >
-                <div className="text-xs font-mono font-bold text-[var(--accent)] mb-2">
-                  // Advantage 0{idx + 1}
-                </div>
-                <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] font-display mb-2">
-                  {reason.title}
+                <span className="absolute left-5 top-1/2 -translate-y-1/2 text-3xl font-extrabold font-mono text-[var(--accent)]">
+                  0{idx + 1}
+                </span>
+                <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] font-display">
+                  {reason}
                 </h3>
-                <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
-                  {reason.desc}
-                </p>
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. WHY TECH22BLOCKS IS YOUR ULTIMATE DESTINATION                          */}
+      {/* 7. TECH22BLOCKS IS YOUR ULTIMATE DESTINATION FOR WEB DEVELOPMENT SERVICES */}
       {/* ========================================================================= */}
-      <section className="py-14 sm:py-20 border-b border-[var(--border)] bg-[var(--canvas)]">
+      <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--surface)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Tech22Blocks is Your Destination for Web Development
+              <StaggeredText text="Tech22Blocks is Your Ultimate Destination" />{' '}
+              <StaggeredText text="for Web Development Services" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
-              We combine enterprise engineering rigor with transparent sprint velocity.
+              Our web application development team offers comprehensive services designed to
+              maximize ROI and enhance profitability for your business. We achieve this by
+              implementing strategic solutions and innovative approaches tailored to your needs.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinationBenefits.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
-                className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] hover:border-[var(--accent)]/50 shadow-sm transition-all"
+                className="p-6 sm:p-7 rounded-2xl bg-[var(--canvas)] border border-[var(--border)] hover:border-[var(--accent)] transition-all duration-300 hover:-translate-y-1 shadow-sm text-center flex flex-col items-center"
               >
-                <div className="w-8 h-8 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] flex items-center justify-center font-bold mb-3">
-                  <Award className="w-4 h-4" />
+                <div className="w-16 h-16 rounded-2xl bg-[var(--accent)]/10 border border-[var(--accent)]/20 p-3 flex items-center justify-center mb-4">
+                  <Image
+                    src={getAssetUrl(item.icon)}
+                    alt={item.title}
+                    width={48}
+                    height={48}
+                    className="object-contain w-full h-full"
+                  />
                 </div>
-                <h3 className="text-base font-bold text-[var(--text-primary)] font-display mb-2">
-                  {item.title}
+                <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] font-display mb-2">
+                  <Link href="/contact/" className="hover:text-[var(--accent)] transition-colors">
+                    {item.title}
+                  </Link>
                 </h3>
                 <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
                   {item.desc}
@@ -772,61 +1606,136 @@ export default function WebAppServicePage() {
               </div>
             ))}
           </div>
-
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. OUR WEB APP DEVELOPMENT PROCESS (SVSS wd-log-sec)                      */}
+      {/* 8. OUR WEB APP DEVELOPMENT COMPANY’S TECHNOLOGY STACK                     */}
       {/* ========================================================================= */}
-      <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--surface)]">
+      <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--canvas)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Our Web App Development Process
+              <StaggeredText text="Our Web App Development Company’s" />{' '}
+              <StaggeredText text="Technology Stack" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
-              A disciplined 7-stage engineering methodology turning technical requirements into scalable production releases.
+              With a solid foundation in cutting-edge technologies, we guarantee that your web apps
+              are future-proof and meet all user requirements.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {webProcessStages.map((stage) => (
-              <div 
-                key={stage.num}
-                className="p-5 rounded-2xl bg-[var(--canvas)] border border-[var(--border)] hover:border-[var(--accent)]/50 shadow-sm transition-all flex flex-col justify-between"
-              >
-                <div>
-                  <div className="text-2xl font-mono font-extrabold text-[var(--accent)] mb-2">
-                    {stage.num}
-                  </div>
-                  <h3 className="text-base font-bold text-[var(--text-primary)] font-display mb-2">
-                    {stage.title}
-                  </h3>
-                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
-                    {stage.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
+          {/* Interactive Tab Buttons */}
+          <div
+            className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10"
+            role="tablist"
+            aria-label="Technology Stack Categories"
+          >
+            {techStackTabs.map((tab, tIdx) => {
+              const isSelected = activeTechTab === tIdx;
+              return (
+                <button
+                  key={tab.label}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  onClick={() => setActiveTechTab(tIdx)}
+                  className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                    isSelected
+                      ? 'bg-[var(--text-primary)] text-[var(--canvas)] shadow-md'
+                      : 'bg-[var(--surface)] text-[var(--text-muted)] border border-[var(--border)] hover:text-[var(--text-primary)] hover:border-[var(--accent)]/50'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
           </div>
 
+          {/* Active Category Icon Cards */}
+          <ul className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-4xl mx-auto">
+            {techStackTabs[activeTechTab]?.items.map((tech) => (
+              <li
+                key={tech.name}
+                className="flex flex-col items-center gap-2 group"
+                title={tech.name}
+              >
+                <span className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white border border-[var(--border)] shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-200 flex items-center justify-center p-3">
+                  <Image
+                    src={getAssetUrl(tech.icon)}
+                    alt={tech.name}
+                    width={56}
+                    height={56}
+                    className="object-contain w-12 h-12 sm:w-14 sm:h-14"
+                  />
+                </span>
+                <small className="text-xs font-mono text-[var(--text-muted)] font-medium">
+                  {tech.name}
+                </small>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 8. WEB APP DEVELOPMENT FAQS (SVSS Accordion)                              */}
+      {/* 9. OUR WEB APP DEVELOPMENT PROCESS (SCROLL-DRIVEN VERTICAL TIMELINE)      */}
+      {/* ========================================================================= */}
+      <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--surface)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
+              <StaggeredText text="Our Web App" />{' '}
+              <StaggeredText text="Development Process" isShimmer />
+            </h2>
+            <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
+              We’ve carefully developed a strategic roadmap that guides you through each step with
+              precision, ensuring your project reaches its full potential and achieves success.
+            </p>
+          </div>
+
+          <div ref={processContainerRef} className="wd-steps">
+            <span ref={processLineRef} aria-hidden="true" className="wd-steps-line">
+              <i style={{ height: `${processFillPct}%` }} />
+            </span>
+
+            <ol>
+              {webProcessStages.map((stage, sIdx) => {
+                const isLit = activeProcessSteps[sIdx];
+                return (
+                  <li
+                    key={stage.num}
+                    ref={(el) => {
+                      processStepRefs.current[sIdx] = el;
+                    }}
+                    className={`wd-step ${isLit ? 'in' : ''}`}
+                  >
+                    <span className="wd-step-num font-mono">{stage.num}</span>
+                    <div className="wd-step-card">
+                      <h3 className="font-display">{stage.title}</h3>
+                      <p>{stage.desc}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 10. WEB APPLICATION DEVELOPMENT FAQS                                      */}
       {/* ========================================================================= */}
       <section className="py-14 sm:py-20 lg:py-24 border-b border-[var(--border)] bg-[var(--canvas)]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-12 sm:mb-14">
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[var(--text-primary)] tracking-tight font-display mb-3">
-              Web Application Development FAQs
+              <StaggeredText text="Frequently Asked" />{' '}
+              <StaggeredText text="Questions" isShimmer />
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-[var(--text-muted)] leading-relaxed">
-              Straightforward answers to common questions about Next.js architectures, SEO equity preservation, CMS editing, and IP ownership.
+              Straightforward answers to common questions about web app architectures, SEO equity,
+              CMS editing, and full code ownership.
             </p>
           </div>
 
@@ -834,22 +1743,24 @@ export default function WebAppServicePage() {
             {data.faqs.map((faq, idx) => {
               const isOpen = openFaqIndex === idx;
               return (
-                <div 
+                <div
                   key={idx}
                   className="rounded-2xl bg-[var(--surface)] border border-[var(--border)] overflow-hidden transition-all duration-200"
                 >
                   <button
                     type="button"
-                    onClick={() => toggleFaq(idx)}
+                    onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
                     className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
                     aria-expanded={isOpen}
                   >
                     <span className="text-sm sm:text-base font-bold text-[var(--text-primary)] font-display">
                       {faq.question}
                     </span>
-                    <div className={`w-8 h-8 rounded-full bg-[var(--surface-elevated)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] transition-transform duration-300 flex-shrink-0 ${
-                      isOpen ? 'rotate-180 text-[var(--accent)] border-[var(--accent)]' : ''
-                    }`}>
+                    <div
+                      className={`w-8 h-8 rounded-full bg-[var(--surface-elevated)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] transition-transform duration-300 flex-shrink-0 ${
+                        isOpen ? 'rotate-180 text-[var(--accent)] border-[var(--accent)]' : ''
+                      }`}
+                    >
                       <ChevronDown className="w-4 h-4" />
                     </div>
                   </button>
@@ -863,36 +1774,13 @@ export default function WebAppServicePage() {
               );
             })}
           </div>
-
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 9. LET'S BUILD YOUR CUSTOM WEB APPLICATION CTA                            */}
+      {/* 11. FINAL CALL TO ACTION (Triangle corner image already removed globally) */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-20 bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 text-white relative overflow-hidden border-b border-[var(--border)]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center space-y-5 relative z-10">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-sky-400">
-            // Start Your Web Project
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display tracking-tight text-white">
-            Let’s Build Your Custom Web Application!
-          </h2>
-          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Transform your business workflows with a resilient, sub-second web platform. Tell us your requirements and receive a free technical feasibility blueprint and milestone quote.
-          </p>
-          <div className="pt-2">
-            <Link
-              href="/contact/"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-xl text-sm font-bold text-slate-950 bg-white hover:bg-sky-400 hover:text-slate-950 shadow-xl transition-all"
-            >
-              <span>Schedule Architecture Call</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
+      <FinalCTA />
     </div>
   );
 }

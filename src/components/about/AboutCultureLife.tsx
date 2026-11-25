@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Lightbulb, Users2, Rocket, BrainCircuit, ShieldCheck, HeartHandshake } from 'lucide-react';
+import { StaggeredText } from '@/components/design-system/KineticTypography';
 
 export default function AboutCultureLife() {
   const cultureItems = [
@@ -53,7 +54,8 @@ export default function AboutCultureLife() {
             Culture &amp; Team
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
-            Life @ Tech22Blocks
+            <StaggeredText text="Life @" />{' '}
+            <StaggeredText text="Tech22Blocks" isShimmer />
           </h2>
           <p className="mt-3 text-xs sm:text-sm lg:text-base text-[var(--text-muted)] font-normal">
             Great software is engineered by empowered, curious people. Here is what defines our engineering workplace.
