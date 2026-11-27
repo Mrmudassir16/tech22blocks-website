@@ -23,7 +23,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     id: 'shivasai',
     name: 'Shivasai Adepu',
     role: 'Director / CEO',
-    department: 'Product & Tech Leadership',
+    department: 'Product & Architecture',
     monogram: 'SA',
     colorScheme: 'from-sky-500 to-blue-700',
     linkedin: COMPANY.leadership[0]?.linkedin || 'https://www.linkedin.com/in/shivasaiadepu/',
@@ -181,19 +181,19 @@ export default function AboutLeadershipTeam() {
           </div>
         </div>
 
-        {/* Team Members Section Header (Below Father & Son) */}
+        {/* Team Members Section Header (Below Father & Son Leadership Section) */}
         <div className="max-w-3xl mb-7 sm:mb-9">
           <div>
             <span className="heading-focus-underline text-xs font-mono font-semibold uppercase tracking-wider text-[var(--accent)]">
-              Leadership &amp; Talent
+              People Behind Tech22Blocks
             </span>
           </div>
           <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight mt-2 font-display">
-            <StaggeredText text="Leadership" />{' '}
+            <StaggeredText text="Our" />{' '}
             <StaggeredText text="Team" isShimmer />
           </h3>
           <p className="mt-3 text-xs sm:text-sm lg:text-base text-[var(--text-muted)] font-normal">
-            Meet the people driving innovation, architectural rigor, and corporate stewardship at Tech22Blocks. Tap a card to read more.
+            Founders, engineering architects, and department heads building production software and AI systems together. Tap any card to read more.
           </p>
         </div>
 
