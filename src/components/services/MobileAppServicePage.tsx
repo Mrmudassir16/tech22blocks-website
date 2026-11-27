@@ -520,36 +520,36 @@ self.addEventListener('fetch', (event) => {
               </div>
 
               {/* Hero Stats Grid */}
-              <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-[var(--border)]">
-                <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[var(--text-primary)]">
+              <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 items-stretch border-t border-[var(--border)]">
+                <div className="flex flex-col justify-between p-3 sm:p-3.5 rounded-xl bg-[var(--surface-elevated)]/70 border border-[var(--border)]">
+                  <div className="text-sm sm:text-base xl:text-lg font-extrabold font-mono text-[var(--text-primary)] leading-snug">
                     60 FPS
                   </div>
-                  <div className="text-xs text-[var(--text-muted)] font-medium">
+                  <div className="text-[11px] sm:text-xs text-[var(--text-muted)] font-medium leading-snug mt-1.5">
                     Fluid UI Frame Rate
                   </div>
                 </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[var(--text-primary)]">
+                <div className="flex flex-col justify-between p-3 sm:p-3.5 rounded-xl bg-[var(--surface-elevated)]/70 border border-[var(--border)]">
+                  <div className="text-sm sm:text-base xl:text-lg font-extrabold font-mono text-[var(--text-primary)] leading-snug">
                     100%
                   </div>
-                  <div className="text-xs text-[var(--text-muted)] font-medium">
+                  <div className="text-[11px] sm:text-xs text-[var(--text-muted)] font-medium leading-snug mt-1.5">
                     Code &amp; IP Ownership
                   </div>
                 </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[var(--text-primary)]">
+                <div className="flex flex-col justify-between p-3 sm:p-3.5 rounded-xl bg-[var(--surface-elevated)]/70 border border-[var(--border)]">
+                  <div className="text-sm sm:text-base xl:text-lg font-extrabold font-mono text-[var(--text-primary)] leading-snug">
                     100%
                   </div>
-                  <div className="text-xs text-[var(--text-muted)] font-medium">
+                  <div className="text-[11px] sm:text-xs text-[var(--text-muted)] font-medium leading-snug mt-1.5">
                     Store Approval Rate
                   </div>
                 </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[var(--text-primary)]">
+                <div className="flex flex-col justify-between p-3 sm:p-3.5 rounded-xl bg-[var(--surface-elevated)]/70 border border-[var(--border)]">
+                  <div className="text-sm sm:text-base xl:text-lg font-extrabold font-mono text-[var(--text-primary)] leading-snug">
                     99.98%
                   </div>
-                  <div className="text-xs text-[var(--text-muted)] font-medium">
+                  <div className="text-[11px] sm:text-xs text-[var(--text-muted)] font-medium leading-snug mt-1.5">
                     Architecture SLA
                   </div>
                 </div>
