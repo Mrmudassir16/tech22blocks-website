@@ -24,68 +24,8 @@ interface ServiceItem {
 
 const SERVICES_DATA: ServiceItem[] = [
   {
-    id: 'custom-software',
-    code: '01',
-    category: 'Enterprise Systems',
-    title: 'Custom Software Development',
-    shortDesc: 'Bespoke core systems, enterprise application architectures, and robust business workflows tailored to your operating model.',
-    href: '/services/custom-software/',
-    accentGradient: 'from-blue-600 to-sky-500',
-    glowColor: 'rgba(14, 165, 233, 0.35)',
-    cornerGradient: 'from-sky-500/25 via-blue-600/15 to-transparent',
-    iconSvg: (
-      <svg className="w-10 h-10" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Pins in warm amber */}
-        <path d="M22 6V13M32 6V13M42 6V13M22 51V58M32 51V58M42 51V58M6 22H13M6 32H13M6 42H13M51 22H58M51 32H58M51 42H58" stroke="#F59E0B" strokeWidth="3.2" strokeLinecap="round" />
-        {/* Outer Chip Body */}
-        <rect x="13" y="13" width="38" height="38" rx="8" fill="#FEF3C7" stroke="#0F172A" strokeWidth="2.6" />
-        {/* Inner Silicon Core */}
-        <rect x="20" y="20" width="24" height="24" rx="5" fill="#38BDF8" stroke="#0F172A" strokeWidth="2.4" />
-        {/* Code Brackets Inside */}
-        <path d="M27.5 28L23.5 32L27.5 36M36.5 28L40.5 32L36.5 36M33.5 27L30.5 37" stroke="#0F172A" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-    features: [
-      'Software architecture & microservices design',
-      'System integration & high-throughput APIs',
-      'Legacy app modernization & refactoring',
-    ],
-  },
-  {
-    id: 'it-consulting',
-    code: '02',
-    category: 'Intelligence & Advisory',
-    title: 'Audit & IT Consulting Services',
-    shortDesc: 'Pragmatic technical advisory helping business leaders make informed architectural, vendor, and scaling decisions.',
-    href: '/services/it-consulting/',
-    accentGradient: 'from-indigo-600 to-blue-500',
-    glowColor: 'rgba(99, 102, 241, 0.35)',
-    cornerGradient: 'from-indigo-500/25 via-blue-600/15 to-transparent',
-    iconSvg: (
-      <svg className="w-10 h-10" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        {/* Connecting Lines */}
-        <path d="M32 22V42M16 48V38H48V48" stroke="#0F172A" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-        {/* Top Strategy Bar */}
-        <rect x="8" y="8" width="48" height="14" rx="5" fill="#FEF3C7" stroke="#0F172A" strokeWidth="2.5" />
-        <circle cx="16" cy="15" r="2.2" fill="#F59E0B" />
-        <path d="M24 15H46" stroke="#0F172A" strokeWidth="2.4" strokeLinecap="round" />
-        {/* Center Audit Node */}
-        <circle cx="32" cy="36" r="7" fill="#38BDF8" stroke="#0F172A" strokeWidth="2.5" />
-        {/* Bottom Endpoint Nodes */}
-        <rect x="10" y="46" width="12" height="10" rx="3" fill="#818CF8" stroke="#0F172A" strokeWidth="2.4" />
-        <rect x="26" y="46" width="12" height="10" rx="3" fill="#34D399" stroke="#0F172A" strokeWidth="2.4" />
-        <rect x="42" y="46" width="12" height="10" rx="3" fill="#38BDF8" stroke="#0F172A" strokeWidth="2.4" />
-      </svg>
-    ),
-    features: [
-      'TechGuard Architectural Audit',
-      'CyberSafe & Cloud IT Consulting',
-      'AssuranceEdge Governance & Strategy',
-    ],
-  },
-  {
     id: 'website-development',
-    code: '03',
+    code: '01',
     category: 'Digital Experience',
     title: 'Web Application Design & Development',
     shortDesc: 'High-performance, search-optimized web platforms built with modern component architectures for speed, reliability, and conversions.',
@@ -118,7 +58,7 @@ const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: 'mobile-applications',
-    code: '04',
+    code: '02',
     category: 'Digital Experience',
     title: 'Mobile App Design & Development',
     shortDesc: 'Native and cross-platform iOS & Android applications engineered for fluid 60 FPS performance, offline sync, and security.',
@@ -148,7 +88,7 @@ const SERVICES_DATA: ServiceItem[] = [
   },
   {
     id: 'uiux-design',
-    code: '05',
+    code: '03',
     category: 'Digital Experience',
     title: 'UI/UX Design Services',
     shortDesc: 'Purposeful digital interfaces engineered through empathetic user research, interactive wireframing, and design systems.',
@@ -173,6 +113,66 @@ const SERVICES_DATA: ServiceItem[] = [
       'Pixel-perfect UI design systems in Figma',
       'User journey mapping & UX wireframing',
       'Interactive clickable prototype validation',
+    ],
+  },
+  {
+    id: 'custom-software',
+    code: '04',
+    category: 'Enterprise Systems',
+    title: 'Custom Software Development',
+    shortDesc: 'Bespoke core systems, enterprise application architectures, and robust business workflows tailored to your operating model.',
+    href: '/services/custom-software/',
+    accentGradient: 'from-blue-600 to-sky-500',
+    glowColor: 'rgba(14, 165, 233, 0.35)',
+    cornerGradient: 'from-sky-500/25 via-blue-600/15 to-transparent',
+    iconSvg: (
+      <svg className="w-10 h-10" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Pins in warm amber */}
+        <path d="M22 6V13M32 6V13M42 6V13M22 51V58M32 51V58M42 51V58M6 22H13M6 32H13M6 42H13M51 22H58M51 32H58M51 42H58" stroke="#F59E0B" strokeWidth="3.2" strokeLinecap="round" />
+        {/* Outer Chip Body */}
+        <rect x="13" y="13" width="38" height="38" rx="8" fill="#FEF3C7" stroke="#0F172A" strokeWidth="2.6" />
+        {/* Inner Silicon Core */}
+        <rect x="20" y="20" width="24" height="24" rx="5" fill="#38BDF8" stroke="#0F172A" strokeWidth="2.4" />
+        {/* Code Brackets Inside */}
+        <path d="M27.5 28L23.5 32L27.5 36M36.5 28L40.5 32L36.5 36M33.5 27L30.5 37" stroke="#0F172A" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    features: [
+      'Software architecture & microservices design',
+      'System integration & high-throughput APIs',
+      'Legacy app modernization & refactoring',
+    ],
+  },
+  {
+    id: 'it-consulting',
+    code: '05',
+    category: 'Intelligence & Advisory',
+    title: 'Audit & IT Consulting Services',
+    shortDesc: 'Pragmatic technical advisory helping business leaders make informed architectural, vendor, and scaling decisions.',
+    href: '/services/it-consulting/',
+    accentGradient: 'from-indigo-600 to-blue-500',
+    glowColor: 'rgba(99, 102, 241, 0.35)',
+    cornerGradient: 'from-indigo-500/25 via-blue-600/15 to-transparent',
+    iconSvg: (
+      <svg className="w-10 h-10" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Connecting Lines */}
+        <path d="M32 22V42M16 48V38H48V48" stroke="#0F172A" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+        {/* Top Strategy Bar */}
+        <rect x="8" y="8" width="48" height="14" rx="5" fill="#FEF3C7" stroke="#0F172A" strokeWidth="2.5" />
+        <circle cx="16" cy="15" r="2.2" fill="#F59E0B" />
+        <path d="M24 15H46" stroke="#0F172A" strokeWidth="2.4" strokeLinecap="round" />
+        {/* Center Audit Node */}
+        <circle cx="32" cy="36" r="7" fill="#38BDF8" stroke="#0F172A" strokeWidth="2.5" />
+        {/* Bottom Endpoint Nodes */}
+        <rect x="10" y="46" width="12" height="10" rx="3" fill="#818CF8" stroke="#0F172A" strokeWidth="2.4" />
+        <rect x="26" y="46" width="12" height="10" rx="3" fill="#34D399" stroke="#0F172A" strokeWidth="2.4" />
+        <rect x="42" y="46" width="12" height="10" rx="3" fill="#38BDF8" stroke="#0F172A" strokeWidth="2.4" />
+      </svg>
+    ),
+    features: [
+      'TechGuard Architectural Audit',
+      'CyberSafe & Cloud IT Consulting',
+      'AssuranceEdge Governance & Strategy',
     ],
   },
   {
